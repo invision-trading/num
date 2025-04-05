@@ -4,18 +4,18 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 
-import static java.math.RoundingMode.HALF_UP;
+import static java.math.RoundingMode.HALF_EVEN;
 
 /**
  * {@link Num}, short for "number", is an interface for performing mathematical operations on real numbers in decimal.
- * Object instances of this interface are immutable.
+ * Object instances of this interface are immutable. All methods in this interface return non-<code>null</code> values
+ * or throw a {@link RuntimeException}. All implementations of this interface are interoperable with each other.
  *
  * @see DoubleNum
  * @see DecimalNum
  * @see NaNNum
  * @see Math
- * @see <a href="https://github.com/ta4j/ta4j">ta4j</a>
- * @see <a href="https://github.com/eobermuhlner/big-math">big-math</a>
+ * @see <a href="https://github.com/ta4j/ta4j">ta4j GitHub</a>
  * @see <a href="https://en.wikipedia.org/wiki/Computer_algebra">Wikipedia</a>
  */
 public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNum, NaNNum {
@@ -569,10 +569,10 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Calls {@link #round(int, RoundingMode)} with <code>scale</code> set to <code>0</code> and
-     * <code>roundingMode</code> set to {@link RoundingMode#HALF_UP}.
+     * <code>roundingMode</code> set to {@link RoundingMode#HALF_EVEN}.
      */
     default Num round() {
-        return round(0, HALF_UP);
+        return round(0, HALF_EVEN);
     }
 
     /**
@@ -583,10 +583,10 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
-     * Calls {@link #round(int, RoundingMode)} with <code>roundingMode</code> set to {@link RoundingMode#HALF_UP}.
+     * Calls {@link #round(int, RoundingMode)} with <code>roundingMode</code> set to {@link RoundingMode#HALF_EVEN}.
      */
     default Num round(int scale) {
-        return round(scale, HALF_UP);
+        return round(scale, HALF_EVEN);
     }
 
     /**
@@ -602,10 +602,11 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num round(int scale, RoundingMode roundingMode);
 
     /**
-     * Calls {@link #precision(int, RoundingMode)} with <code>roundingMode</code> set to {@link RoundingMode#HALF_UP}.
+     * Calls {@link #precision(int, RoundingMode)} with <code>roundingMode</code> set to
+     * {@link RoundingMode#HALF_EVEN}.
      */
     default Num precision(int significantFigures) {
-        return precision(significantFigures, HALF_UP);
+        return precision(significantFigures, HALF_EVEN);
     }
 
     /**
@@ -685,7 +686,9 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/0">Wikipedia</a>
      * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
      */
-    boolean isNotZero();
+    default boolean isNotZero() {
+        return !isZero();
+    }
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is equal to the given {@link Num}:
@@ -711,7 +714,9 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
      */
-    boolean isNotEqual(Num other);
+    default boolean isNotEqual(Num other) {
+        return !isEqual(other);
+    }
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is less than the given
