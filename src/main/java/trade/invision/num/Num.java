@@ -610,17 +610,26 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
-     * Performs a precision modification operation by rounding to the number of the given
-     * <code>significantFigures</code> of this {@link Num} without modifying the scale.
+     * Calls {@link #precision(MathContext)} with {@link MathContext#getPrecision()} set to
+     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
+     */
+    default Num precision(int significantFigures, RoundingMode roundingMode) {
+        return precision(new MathContext(significantFigures, roundingMode));
+    }
+
+    /**
+     * Performs a precision modification operation by setting the number of significant figures in this {@link Num} to
+     * {@link MathContext#getPrecision()}, without modifying the scale of this {@link Num}, and rounding excess
+     * significant figures according to {@link MathContext#getRoundingMode()}.
      *
-     * @param significantFigures the significant figures
-     * @param roundingMode       the {@link RoundingMode}
+     * @param mathContext the {@link MathContext}
      *
      * @return the precise {@link Num}
      *
+     * @see MathContext
      * @see <a href="https://en.wikipedia.org/wiki/Significant_figures">Wikipedia</a>
      */
-    Num precision(int significantFigures, RoundingMode roundingMode);
+    Num precision(MathContext mathContext);
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is less than zero: <code>this <
@@ -871,6 +880,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return the {@link MathContext}
      */
     MathContext getContext();
+
+    /**
+     * Returns {@link MathContext#getPrecision()} from {@link #getContext()}.
+     */
+    default int getPrecision() {
+        return getContext().getPrecision();
+    }
+
+    /**
+     * Returns {@link MathContext#getRoundingMode()} from {@link #getContext()}.
+     */
+    default RoundingMode getRoundingMode() {
+        return getContext().getRoundingMode();
+    }
 
     /**
      * Performs an {@link Object} equivalence operation. To perform a numerical equivalence operation, use
