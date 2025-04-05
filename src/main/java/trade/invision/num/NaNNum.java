@@ -316,6 +316,11 @@ public final class NaNNum implements Num {
     }
 
     @Override
+    public int signum() {
+        return 0;
+    }
+
+    @Override
     public boolean isNegative() {
         return false;
     }

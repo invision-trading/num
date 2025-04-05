@@ -632,6 +632,16 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num precision(MathContext mathContext);
 
     /**
+     * Performs a signum operation on this {@link Num}, yielding <code>-1</code> for negative numbers, <code>1</code>
+     * for positive numbers, and <code>0</code> for all other values (e.g. <code>0</code> or <code>NaN</code>).
+     *
+     * @return the signum <code>int</code>
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Sign_function">Wikipedia</a>
+     */
+    int signum();
+
+    /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is less than zero: <code>this <
      * 0</code>.
      *
