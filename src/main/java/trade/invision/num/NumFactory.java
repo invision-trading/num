@@ -26,25 +26,13 @@ public interface NumFactory {
     Num of(String number);
 
     /**
-     * @return the {@link Num} of <code>0.1</code>
+     * Creates a new {@link Num} with the value of the given {@link Num}.
      *
-     * @see #of(String)
-     */
-    Num tenth();
-
-    /**
-     * @return the {@link Num} of <code>0.01</code>
+     * @param number the {@link Num}
      *
-     * @see #of(String)
+     * @return the {@link Num}
      */
-    Num hundredth();
-
-    /**
-     * @return the {@link Num} of <code>0.001</code>
-     *
-     * @see #of(String)
-     */
-    Num thousandth();
+    Num of(Num number);
 
     /**
      * @return the {@link Num} of <code>-1</code>
@@ -80,6 +68,27 @@ public interface NumFactory {
      * @see #of(Number)
      */
     Num three();
+
+    /**
+     * @return the {@link Num} of <code>0.1</code>
+     *
+     * @see #of(String)
+     */
+    Num tenth();
+
+    /**
+     * @return the {@link Num} of <code>0.01</code>
+     *
+     * @see #of(String)
+     */
+    Num hundredth();
+
+    /**
+     * @return the {@link Num} of <code>0.001</code>
+     *
+     * @see #of(String)
+     */
+    Num thousandth();
 
     /**
      * @return the {@link Num} of <code>10</code>

@@ -9,7 +9,7 @@ import java.math.RoundingMode;
 import static java.math.MathContext.DECIMAL64;
 
 /**
- * {@link NaNNum}, short for Not a Number (NaN), is a {@link Num} that represents an undefined and unrepresentable
+ * {@link NaNNum}, short for "Not a Number" (NaN), is a {@link Num} that represents an undefined and unrepresentable
  * numerical value. All operations result in itself. It is not equal to itself or any other value. It compares unordered
  * with itself and all other values. It is not negative, positive, or zero. It has no integer or {@link BigDecimal}
  * representation.
@@ -22,74 +22,79 @@ public final class NaNNum implements Num {
     /**
      * Global static instance of {@link NaNNum}.
      */
-    public static NaNNum NaN = new NaNNum();
+    public static final NaNNum NaN = new NaNNum();
 
     /**
      * A {@link NumFactory} for {@link NaNNum}. All methods return {@link #NaN}.
      */
-    public NumFactory FACTORY = new NumFactory() {
+    public static final NumFactory FACTORY = new NumFactory() {
         @Override
-        public NaNNum of(Number number) {
+        public Num of(Number number) {
             return NaN;
         }
 
         @Override
-        public NaNNum of(String number) {
+        public Num of(String number) {
             return NaN;
         }
 
         @Override
-        public NaNNum tenth() {
+        public Num of(Num number) {
             return NaN;
         }
 
         @Override
-        public NaNNum hundredth() {
+        public Num negativeOne() {
             return NaN;
         }
 
         @Override
-        public NaNNum thousandth() {
+        public Num zero() {
             return NaN;
         }
 
         @Override
-        public NaNNum negativeOne() {
+        public Num one() {
             return NaN;
         }
 
         @Override
-        public NaNNum zero() {
+        public Num two() {
             return NaN;
         }
 
         @Override
-        public NaNNum one() {
+        public Num three() {
             return NaN;
         }
 
         @Override
-        public NaNNum two() {
+        public Num tenth() {
             return NaN;
         }
 
         @Override
-        public NaNNum three() {
+        public Num hundredth() {
             return NaN;
         }
 
         @Override
-        public NaNNum ten() {
+        public Num thousandth() {
             return NaN;
         }
 
         @Override
-        public NaNNum hundred() {
+        public Num ten() {
             return NaN;
         }
 
         @Override
-        public NaNNum thousand() {
+        public Num hundred() {
+            return NaN;
+        }
+
+        @Override
+        public Num thousand() {
             return NaN;
         }
     };
@@ -107,217 +112,217 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public NaNNum add(Num addend) {
+    public Num add(Num addend) {
         return this;
     }
 
     @Override
-    public NaNNum subtract(Num subtrahend) {
+    public Num subtract(Num subtrahend) {
         return this;
     }
 
     @Override
-    public NaNNum multiply(Num multiplicand) {
+    public Num multiply(Num multiplicand) {
         return this;
     }
 
     @Override
-    public NaNNum divide(Num divisor) {
+    public Num divide(Num divisor) {
         return this;
     }
 
     @Override
-    public NaNNum remainder(Num divisor) {
+    public Num remainder(Num divisor) {
         return this;
     }
 
     @Override
-    public NaNNum power(Num exponent) {
+    public Num power(Num exponent) {
         return this;
     }
 
     @Override
-    public NaNNum square() {
+    public Num square() {
         return this;
     }
 
     @Override
-    public NaNNum cube() {
+    public Num cube() {
         return this;
     }
 
     @Override
-    public NaNNum exponential() {
+    public Num exponential() {
         return this;
     }
 
     @Override
-    public NaNNum root(Num degree) {
+    public Num root(Num degree) {
         return this;
     }
 
     @Override
-    public NaNNum squareRoot() {
+    public Num squareRoot() {
         return this;
     }
 
     @Override
-    public NaNNum cubeRoot() {
+    public Num cubeRoot() {
         return this;
     }
 
     @Override
-    public NaNNum naturalLogarithm() {
+    public Num naturalLogarithm() {
         return this;
     }
 
     @Override
-    public NaNNum logarithm() {
+    public Num logarithm() {
         return this;
     }
 
     @Override
-    public NaNNum logarithm(Num base) {
+    public Num logarithm(Num base) {
         return this;
     }
 
     @Override
-    public NaNNum absoluteValue() {
+    public Num absoluteValue() {
         return this;
     }
 
     @Override
-    public NaNNum negate() {
+    public Num negate() {
         return this;
     }
 
     @Override
-    public NaNNum reciprocal() {
+    public Num reciprocal() {
         return this;
     }
 
     @Override
-    public NaNNum floor() {
+    public Num floor() {
         return this;
     }
 
     @Override
-    public NaNNum ceil() {
+    public Num ceil() {
         return this;
     }
 
     @Override
-    public NaNNum degrees() {
+    public Num degrees() {
         return this;
     }
 
     @Override
-    public NaNNum radians() {
+    public Num radians() {
         return this;
     }
 
     @Override
-    public NaNNum sine() {
+    public Num sine() {
         return this;
     }
 
     @Override
-    public NaNNum cosine() {
+    public Num cosine() {
         return this;
     }
 
     @Override
-    public NaNNum tangent() {
+    public Num tangent() {
         return this;
     }
 
     @Override
-    public NaNNum inverseSine() {
+    public Num inverseSine() {
         return this;
     }
 
     @Override
-    public NaNNum inverseCosine() {
+    public Num inverseCosine() {
         return this;
     }
 
     @Override
-    public NaNNum inverseTangent() {
+    public Num inverseTangent() {
         return this;
     }
 
     @Override
-    public NaNNum inverseTangent2(Num x) {
+    public Num inverseTangent2(Num x) {
         return this;
     }
 
     @Override
-    public NaNNum hyperbolicSine() {
+    public Num hyperbolicSine() {
         return this;
     }
 
     @Override
-    public NaNNum hyperbolicCosine() {
+    public Num hyperbolicCosine() {
         return this;
     }
 
     @Override
-    public NaNNum hyperbolicTangent() {
+    public Num hyperbolicTangent() {
         return this;
     }
 
     @Override
-    public NaNNum inverseHyperbolicSine() {
+    public Num inverseHyperbolicSine() {
         return this;
     }
 
     @Override
-    public NaNNum inverseHyperbolicCosine() {
+    public Num inverseHyperbolicCosine() {
         return this;
     }
 
     @Override
-    public NaNNum inverseHyperbolicTangent() {
+    public Num inverseHyperbolicTangent() {
         return this;
     }
 
     @Override
-    public NaNNum hypotenuse(Num y) {
+    public Num hypotenuse(Num y) {
         return this;
     }
 
     @Override
-    public NaNNum average(Num other) {
+    public Num average(Num other) {
         return this;
     }
 
     @Override
-    public NaNNum minimum(Num other) {
+    public Num minimum(Num other) {
         return this;
     }
 
     @Override
-    public NaNNum maximum(Num other) {
+    public Num maximum(Num other) {
         return this;
     }
 
     @Override
-    public NaNNum integralPart() {
+    public Num integralPart() {
         return this;
     }
 
     @Override
-    public NaNNum fractionalPart() {
+    public Num fractionalPart() {
         return this;
     }
 
     @Override
-    public NaNNum round(int scale, RoundingMode roundingMode) {
+    public Num round(int scale, RoundingMode roundingMode) {
         return this;
     }
 
     @Override
-    public NaNNum precision(MathContext mathContext) {
+    public Num precision(MathContext mathContext) {
         return this;
     }
 
@@ -353,6 +358,11 @@ public final class NaNNum implements Num {
 
     @Override
     public boolean isEqual(Num other) {
+        return false;
+    }
+
+    @Override
+    public boolean isEqual(Num other, Num epsilon) {
         return false;
     }
 

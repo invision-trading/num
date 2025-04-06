@@ -9,21 +9,20 @@ import static java.math.RoundingMode.HALF_EVEN;
 /**
  * {@link Num}, short for "number", is an interface for performing mathematical operations on real numbers in decimal.
  * Implementations wrap a {@link Number} instance so that performing mathematical operations on floating-point binary
- * numbers ({@link Double}) or arbitrary-precision decimal numbers ({@link BigDecimal}) is trivial. Object instances of
- * this interface are immutable. All methods in this interface return non-<code>null</code> values or throw a
- * {@link RuntimeException}. All implementations of this interface are interoperable with each other. Operations
- * involving different implementations will result in a {@link Num} that trends towards an increase in precision. For
- * example, subtracting a {@link DecimalNum} from a {@link DoubleNum} will result in a {@link DecimalNum}. Similarly,
- * adding a {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>16</code> to a {@link DecimalNum} with
- * a {@link DecimalNum#getPrecision()} of <code>32</code> will result in a {@link DecimalNum} with a
- * {@link DecimalNum#getPrecision()} of <code>32</code>.
+ * numbers ({@link Double} via {@link DoubleNum}) or arbitrary-precision decimal numbers ({@link BigDecimal} via
+ * {@link DecimalNum}) is trivial. Object instances of this interface are immutable. All methods in this interface
+ * return non-<code>null</code> values or throw a {@link RuntimeException}. All implementations of this interface are
+ * interoperable with each other. Operations involving different implementations will result in a {@link Num} that
+ * trends towards an increase in precision. For example, subtracting a {@link DecimalNum} from a {@link DoubleNum} will
+ * result in a {@link DecimalNum}. Similarly, adding a {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of
+ * <code>16</code> to a {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>32</code> will result in a
+ * {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>32</code>.
  *
  * @see DoubleNum
  * @see DecimalNum
  * @see NaNNum
- * @see Math
- * @see <a href="https://github.com/ta4j/ta4j">ta4j GitHub</a>
  * @see <a href="https://en.wikipedia.org/wiki/Computer_algebra">Wikipedia</a>
+ * @see <a href="https://github.com/ta4j/ta4j">ta4j GitHub</a>
  */
 public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNum, NaNNum {
 
@@ -275,7 +274,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num cubeRoot();
 
     /**
-     * Performs a natural logarithm (logarithm with a base of <code>e</code>) operation using this {@link Num} as the
+     * Performs a natural logarithm (logarithm with a base of <i>e</i>) operation using this {@link Num} as the
      * anti-logarithm and <a href="https://en.wikipedia.org/wiki/Euler%27s_number"><i>e</i> (Euler's number)</a> as the
      * base: <code>log<sub>e</sub>this</code> or <code>ln(this)</code>.
      *
@@ -781,7 +780,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is not equal to zero:
-     * <code>this != 0</code>.
+     * <code>this != 0</code> or <code>this ≠ 0</code>.
      *
      * @return <code>true</code> if this {@link Num} is not equal to zero, <code>false</code> otherwise
      *
@@ -820,6 +819,63 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     boolean isEqual(Num other);
 
     /**
+     * @see #isEqual(Num, Num)
+     */
+    default boolean isEqual(Number other, Number epsilon) {
+        return isEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isEqual(Num, Num)
+     */
+    default boolean isEqual(Number other, String epsilon) {
+        return isEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isEqual(Num, Num)
+     */
+    default boolean isEqual(Number other, Num epsilon) {
+        return isEqual(factory().of(other), epsilon);
+    }
+
+    /**
+     * @see #isEqual(Num, Num)
+     */
+    default boolean isEqual(String other, Number epsilon) {
+        return isEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isEqual(Num, Num)
+     */
+    default boolean isEqual(String other, String epsilon) {
+        return isEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isEqual(Num, Num)
+     */
+    default boolean isEqual(String other, Num epsilon) {
+        return isEqual(factory().of(other), epsilon);
+    }
+
+    /**
+     * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly equal to the given
+     * {@link Num}: <code>|this - other| < epsilon</code>.
+     *
+     * @param other   the other {@link Num}
+     * @param epsilon the epsilon (tolerance) {@link Num}
+     *
+     * @return <code>true</code> if this {@link Num} is tolerantly equal to the <code>other</code> {@link Num},
+     * <code>false</code> otherwise
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
+     */
+    boolean isEqual(Num other, Num epsilon);
+
+    /**
      * @see #isNotEqual(Num)
      */
     default boolean isNotEqual(Number other) {
@@ -835,7 +891,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is not equal to the given
-     * {@link Num}: <code>this != other</code>.
+     * {@link Num}: <code>this != other</code> or <code>this ≠ other</code>.
      *
      * @param other the other {@link Num}
      *
@@ -846,6 +902,65 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      */
     default boolean isNotEqual(Num other) {
         return !isEqual(other);
+    }
+
+    /**
+     * @see #isNotEqual(Num, Num)
+     */
+    default boolean isNotEqual(Number other, Number epsilon) {
+        return isNotEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isNotEqual(Num, Num)
+     */
+    default boolean isNotEqual(Number other, String epsilon) {
+        return isNotEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isNotEqual(Num, Num)
+     */
+    default boolean isNotEqual(Number other, Num epsilon) {
+        return isNotEqual(factory().of(other), epsilon);
+    }
+
+    /**
+     * @see #isNotEqual(Num, Num)
+     */
+    default boolean isNotEqual(String other, Number epsilon) {
+        return isNotEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isNotEqual(Num, Num)
+     */
+    default boolean isNotEqual(String other, String epsilon) {
+        return isNotEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isNotEqual(Num, Num)
+     */
+    default boolean isNotEqual(String other, Num epsilon) {
+        return isNotEqual(factory().of(other), epsilon);
+    }
+
+    /**
+     * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly not equal to the
+     * given {@link Num}: <code>|this - other| >= epsilon</code>.
+     *
+     * @param other   the other {@link Num}
+     * @param epsilon the epsilon (tolerance) {@link Num}
+     *
+     * @return <code>true</code> if this {@link Num} is tolerantly not equal to the <code>other</code> {@link Num},
+     * <code>false</code> otherwise
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
+     */
+    default boolean isNotEqual(Num other, Num epsilon) {
+        return !isEqual(other, epsilon);
     }
 
     /**
