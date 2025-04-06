@@ -1,5 +1,7 @@
 package trade.invision.num;
 
+import java.math.BigDecimal;
+
 /**
  * {@link NumFactory} is an interface for creating {@link Num} instances.
  */
@@ -17,22 +19,31 @@ public interface NumFactory {
     Num of(Number number);
 
     /**
-     * Creates a new {@link Num} with the value of the given {@link String} representing a number.
+     * Creates a new {@link Num} with the value of the given {@link BigDecimal}.
      *
-     * @param number the {@link String} representing a number
+     * @param bigDecimal the {@link BigDecimal}
      *
      * @return the {@link Num}
      */
-    Num of(String number);
+    Num of(BigDecimal bigDecimal);
+
+    /**
+     * Creates a new {@link Num} with the value of the given {@link String} representing a number.
+     *
+     * @param string the {@link String} representing a number
+     *
+     * @return the {@link Num}
+     */
+    Num of(String string);
 
     /**
      * Creates a new {@link Num} with the value of the given {@link Num}.
      *
-     * @param number the {@link Num}
+     * @param num the {@link Num}
      *
      * @return the {@link Num}
      */
-    Num of(Num number);
+    Num of(Num num);
 
     /**
      * @return the {@link Num} of <code>-1</code>

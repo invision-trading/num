@@ -20,26 +20,37 @@ import static java.math.MathContext.DECIMAL64;
 public final class NaNNum implements Num {
 
     /**
-     * Global static instance of {@link NaNNum}.
+     * Singleton instance of {@link NaNNum}.
      */
     public static final NaNNum NaN = new NaNNum();
 
     /**
-     * A {@link NumFactory} for {@link NaNNum}. All methods return {@link #NaN}.
+     * The {@link NumFactory} for {@link NaNNum}.
+     *
+     * @return the {@link NumFactory}
      */
-    public static final NumFactory FACTORY = new NumFactory() {
+    public static NumFactory nanNumFactory() {
+        return FACTORY;
+    }
+
+    private static final NumFactory FACTORY = new NumFactory() {
         @Override
         public Num of(Number number) {
             return NaN;
         }
 
         @Override
-        public Num of(String number) {
+        public Num of(BigDecimal bigDecimal) {
             return NaN;
         }
 
         @Override
-        public Num of(Num number) {
+        public Num of(String string) {
+            return NaN;
+        }
+
+        @Override
+        public Num of(Num num) {
             return NaN;
         }
 
@@ -377,12 +388,22 @@ public final class NaNNum implements Num {
     }
 
     @Override
+    public boolean isLessThanOrEqual(Num other, Num epsilon) {
+        return false;
+    }
+
+    @Override
     public boolean isGreaterThan(Num other) {
         return false;
     }
 
     @Override
     public boolean isGreaterThanOrEqual(Num other) {
+        return false;
+    }
+
+    @Override
+    public boolean isGreaterThanOrEqual(Num other, Num epsilon) {
         return false;
     }
 
