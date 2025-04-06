@@ -1,7 +1,7 @@
 package trade.invision.num;
 
 /**
- * {@link NumFactory} is an interface for creating new {@link Num} instances.
+ * {@link NumFactory} is an interface for creating {@link Num} instances.
  */
 public interface NumFactory {
 

@@ -34,7 +34,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Number unwrap();
 
     /**
-     * The {@link NumFactory} for this type of {@link Num} implementation.
+     * The {@link NumFactory} to create {@link Num} instances with the same type as this {@link Num}.
      *
      * @return the {@link NumFactory}
      */
@@ -715,7 +715,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a signum operation on this {@link Num}, yielding <code>-1</code> for negative numbers, <code>1</code>
-     * for positive numbers, and <code>0</code> for all other values (e.g. <code>0</code> or <code>NaN</code>).
+     * for positive numbers, and <code>0</code> for all other values (<code>0</code> or <code>NaN</code>).
      *
      * @return the signum <code>int</code>
      *
@@ -777,19 +777,6 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
      */
     boolean isZero();
-
-    /**
-     * Performs a mathematical comparison operation to determine if this {@link Num} is not equal to zero:
-     * <code>this != 0</code> or <code>this ≠ 0</code>.
-     *
-     * @return <code>true</code> if this {@link Num} is not equal to zero, <code>false</code> otherwise
-     *
-     * @see <a href="https://en.wikipedia.org/wiki/0">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
-     */
-    default boolean isNotZero() {
-        return !isZero();
-    }
 
     /**
      * @see #isEqual(Num)
@@ -862,7 +849,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly equal to the given
-     * {@link Num}: <code>|this - other| < epsilon</code>.
+     * {@link Num}: <code>|this - other| <= epsilon</code>.
      *
      * @param other   the other {@link Num}
      * @param epsilon the epsilon (tolerance) {@link Num}
@@ -874,94 +861,6 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
      */
     boolean isEqual(Num other, Num epsilon);
-
-    /**
-     * @see #isNotEqual(Num)
-     */
-    default boolean isNotEqual(Number other) {
-        return isNotEqual(factory().of(other));
-    }
-
-    /**
-     * @see #isNotEqual(Num)
-     */
-    default boolean isNotEqual(String other) {
-        return isNotEqual(factory().of(other));
-    }
-
-    /**
-     * Performs a mathematical comparison operation to determine if this {@link Num} is not equal to the given
-     * {@link Num}: <code>this != other</code> or <code>this ≠ other</code>.
-     *
-     * @param other the other {@link Num}
-     *
-     * @return <code>true</code> if this {@link Num} is not equal to the <code>other</code> {@link Num},
-     * <code>false</code> otherwise
-     *
-     * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
-     */
-    default boolean isNotEqual(Num other) {
-        return !isEqual(other);
-    }
-
-    /**
-     * @see #isNotEqual(Num, Num)
-     */
-    default boolean isNotEqual(Number other, Number epsilon) {
-        return isNotEqual(factory().of(other), factory().of(epsilon));
-    }
-
-    /**
-     * @see #isNotEqual(Num, Num)
-     */
-    default boolean isNotEqual(Number other, String epsilon) {
-        return isNotEqual(factory().of(other), factory().of(epsilon));
-    }
-
-    /**
-     * @see #isNotEqual(Num, Num)
-     */
-    default boolean isNotEqual(Number other, Num epsilon) {
-        return isNotEqual(factory().of(other), epsilon);
-    }
-
-    /**
-     * @see #isNotEqual(Num, Num)
-     */
-    default boolean isNotEqual(String other, Number epsilon) {
-        return isNotEqual(factory().of(other), factory().of(epsilon));
-    }
-
-    /**
-     * @see #isNotEqual(Num, Num)
-     */
-    default boolean isNotEqual(String other, String epsilon) {
-        return isNotEqual(factory().of(other), factory().of(epsilon));
-    }
-
-    /**
-     * @see #isNotEqual(Num, Num)
-     */
-    default boolean isNotEqual(String other, Num epsilon) {
-        return isNotEqual(factory().of(other), epsilon);
-    }
-
-    /**
-     * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly not equal to the
-     * given {@link Num}: <code>|this - other| >= epsilon</code>.
-     *
-     * @param other   the other {@link Num}
-     * @param epsilon the epsilon (tolerance) {@link Num}
-     *
-     * @return <code>true</code> if this {@link Num} is tolerantly not equal to the <code>other</code> {@link Num},
-     * <code>false</code> otherwise
-     *
-     * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
-     */
-    default boolean isNotEqual(Num other, Num epsilon) {
-        return !isEqual(other, epsilon);
-    }
 
     /**
      * @see #isLessThan(Num)
@@ -978,8 +877,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
-     * Performs a mathematical comparison operation to determine if this {@link Num} is less than the given
-     * {@link Num}:
+     * Performs a mathematical comparison operation to determine if this {@link Num} is less than the given {@link Num}:
      * <code>this < other</code>.
      *
      * @param other the other {@link Num}
@@ -1017,6 +915,63 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      */
     boolean isLessThanOrEqual(Num other);
+
+    /**
+     * @see #isLessThanOrEqual(Num, Num)
+     */
+    default boolean isLessThanOrEqual(Number other, Number epsilon) {
+        return isLessThanOrEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Num, Num)
+     */
+    default boolean isLessThanOrEqual(Number other, String epsilon) {
+        return isLessThanOrEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Num, Num)
+     */
+    default boolean isLessThanOrEqual(Number other, Num epsilon) {
+        return isLessThanOrEqual(factory().of(other), epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Num, Num)
+     */
+    default boolean isLessThanOrEqual(String other, Number epsilon) {
+        return isLessThanOrEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Num, Num)
+     */
+    default boolean isLessThanOrEqual(String other, String epsilon) {
+        return isLessThanOrEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Num, Num)
+     */
+    default boolean isLessThanOrEqual(String other, Num epsilon) {
+        return isLessThanOrEqual(factory().of(other), epsilon);
+    }
+
+    /**
+     * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly less than or equal to
+     * the given {@link Num}: <code>other - this >= -epsilon</code> or <code>other - this ≥ -epsilon</code>.
+     *
+     * @param other   the other {@link Num}
+     * @param epsilon the epsilon (tolerance) {@link Num}
+     *
+     * @return <code>true</code> if this {@link Num} is tolerantly less than or equal to the <code>other</code>
+     * {@link Num}, <code>false</code> otherwise
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
+     */
+    boolean isLessThanOrEqual(Num other, Num epsilon);
 
     /**
      * @see #isGreaterThan(Num)
@@ -1071,6 +1026,63 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      */
     boolean isGreaterThanOrEqual(Num other);
+
+    /**
+     * @see #isGreaterThanOrEqual(Num, Num)
+     */
+    default boolean isGreaterThanOrEqual(Number other, Number epsilon) {
+        return isGreaterThanOrEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Num, Num)
+     */
+    default boolean isGreaterThanOrEqual(Number other, String epsilon) {
+        return isGreaterThanOrEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Num, Num)
+     */
+    default boolean isGreaterThanOrEqual(Number other, Num epsilon) {
+        return isGreaterThanOrEqual(factory().of(other), epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Num, Num)
+     */
+    default boolean isGreaterThanOrEqual(String other, Number epsilon) {
+        return isGreaterThanOrEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Num, Num)
+     */
+    default boolean isGreaterThanOrEqual(String other, String epsilon) {
+        return isGreaterThanOrEqual(factory().of(other), factory().of(epsilon));
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Num, Num)
+     */
+    default boolean isGreaterThanOrEqual(String other, Num epsilon) {
+        return isGreaterThanOrEqual(factory().of(other), epsilon);
+    }
+
+    /**
+     * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly greater than or equal
+     * to the given {@link Num}: <code>this - other >= -epsilon</code> or <code>this - other ≥ -epsilon</code>.
+     *
+     * @param other   the other {@link Num}
+     * @param epsilon the epsilon (tolerance) {@link Num}
+     *
+     * @return <code>true</code> if this {@link Num} is tolerantly greater than or equal to the <code>other</code>
+     * {@link Num}, <code>false</code> otherwise
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
+     */
+    boolean isGreaterThanOrEqual(Num other, Num epsilon);
 
     /**
      * Checks if this {@link Num} is {@link NaNNum#NaN}.
