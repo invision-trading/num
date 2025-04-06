@@ -24,285 +24,300 @@ public final class NaNNum implements Num {
      */
     public static NaNNum NaN = new NaNNum();
 
+    /**
+     * A {@link NumFactory} for {@link NaNNum}. All methods return {@link #NaN}.
+     */
+    public NumFactory FACTORY = new NumFactory() {
+        @Override
+        public NaNNum of(Number number) {
+            return NaN;
+        }
+
+        @Override
+        public NaNNum of(String number) {
+            return NaN;
+        }
+
+        @Override
+        public NaNNum tenth() {
+            return NaN;
+        }
+
+        @Override
+        public NaNNum hundredth() {
+            return NaN;
+        }
+
+        @Override
+        public NaNNum thousandth() {
+            return NaN;
+        }
+
+        @Override
+        public NaNNum negativeOne() {
+            return NaN;
+        }
+
+        @Override
+        public NaNNum zero() {
+            return NaN;
+        }
+
+        @Override
+        public NaNNum one() {
+            return NaN;
+        }
+
+        @Override
+        public NaNNum two() {
+            return NaN;
+        }
+
+        @Override
+        public NaNNum three() {
+            return NaN;
+        }
+
+        @Override
+        public NaNNum ten() {
+            return NaN;
+        }
+
+        @Override
+        public NaNNum hundred() {
+            return NaN;
+        }
+
+        @Override
+        public NaNNum thousand() {
+            return NaN;
+        }
+    };
+
     private NaNNum() {}
 
     @Override
-    public Num numOf(Number number) {
+    public Number unwrap() {
+        return Double.NaN;
+    }
+
+    @Override
+    public NumFactory factory() {
+        return FACTORY;
+    }
+
+    @Override
+    public NaNNum add(Num addend) {
         return this;
     }
 
     @Override
-    public Num numOf(String number) {
+    public NaNNum subtract(Num subtrahend) {
         return this;
     }
 
     @Override
-    public Num numOfTenth() {
+    public NaNNum multiply(Num multiplicand) {
         return this;
     }
 
     @Override
-    public Num numOfHundredth() {
+    public NaNNum divide(Num divisor) {
         return this;
     }
 
     @Override
-    public Num numOfThousandth() {
+    public NaNNum remainder(Num divisor) {
         return this;
     }
 
     @Override
-    public Num numOfNegativeOne() {
+    public NaNNum power(Num exponent) {
         return this;
     }
 
     @Override
-    public Num numOfZero() {
+    public NaNNum square() {
         return this;
     }
 
     @Override
-    public Num numOfOne() {
+    public NaNNum cube() {
         return this;
     }
 
     @Override
-    public Num numOfTwo() {
+    public NaNNum exponential() {
         return this;
     }
 
     @Override
-    public Num numOfThree() {
+    public NaNNum root(Num degree) {
         return this;
     }
 
     @Override
-    public Num numOfTen() {
+    public NaNNum squareRoot() {
         return this;
     }
 
     @Override
-    public Num numOfHundred() {
+    public NaNNum cubeRoot() {
         return this;
     }
 
     @Override
-    public Num numOfThousand() {
+    public NaNNum naturalLogarithm() {
         return this;
     }
 
     @Override
-    public Num add(Num addend) {
+    public NaNNum logarithm() {
         return this;
     }
 
     @Override
-    public Num subtract(Num subtrahend) {
+    public NaNNum logarithm(Num base) {
         return this;
     }
 
     @Override
-    public Num multiply(Num multiplicand) {
+    public NaNNum absoluteValue() {
         return this;
     }
 
     @Override
-    public Num divide(Num divisor) {
+    public NaNNum negate() {
         return this;
     }
 
     @Override
-    public Num remainder(Num divisor) {
+    public NaNNum reciprocal() {
         return this;
     }
 
     @Override
-    public Num power(Num exponent) {
+    public NaNNum floor() {
         return this;
     }
 
     @Override
-    public Num square() {
+    public NaNNum ceil() {
         return this;
     }
 
     @Override
-    public Num cube() {
+    public NaNNum degrees() {
         return this;
     }
 
     @Override
-    public Num exponential() {
+    public NaNNum radians() {
         return this;
     }
 
     @Override
-    public Num root(Num degree) {
+    public NaNNum sine() {
         return this;
     }
 
     @Override
-    public Num squareRoot() {
+    public NaNNum cosine() {
         return this;
     }
 
     @Override
-    public Num cubeRoot() {
+    public NaNNum tangent() {
         return this;
     }
 
     @Override
-    public Num naturalLogarithm() {
+    public NaNNum inverseSine() {
         return this;
     }
 
     @Override
-    public Num logarithm() {
+    public NaNNum inverseCosine() {
         return this;
     }
 
     @Override
-    public Num logarithm(Num base) {
+    public NaNNum inverseTangent() {
         return this;
     }
 
     @Override
-    public Num absoluteValue() {
+    public NaNNum inverseTangent2(Num x) {
         return this;
     }
 
     @Override
-    public Num negate() {
+    public NaNNum hyperbolicSine() {
         return this;
     }
 
     @Override
-    public Num reciprocal() {
+    public NaNNum hyperbolicCosine() {
         return this;
     }
 
     @Override
-    public Num floor() {
+    public NaNNum hyperbolicTangent() {
         return this;
     }
 
     @Override
-    public Num ceil() {
+    public NaNNum inverseHyperbolicSine() {
         return this;
     }
 
     @Override
-    public Num degrees() {
+    public NaNNum inverseHyperbolicCosine() {
         return this;
     }
 
     @Override
-    public Num radians() {
+    public NaNNum inverseHyperbolicTangent() {
         return this;
     }
 
     @Override
-    public Num sine() {
+    public NaNNum hypotenuse(Num y) {
         return this;
     }
 
     @Override
-    public Num cosine() {
+    public NaNNum average(Num other) {
         return this;
     }
 
     @Override
-    public Num tangent() {
+    public NaNNum minimum(Num other) {
         return this;
     }
 
     @Override
-    public Num inverseSine() {
+    public NaNNum maximum(Num other) {
         return this;
     }
 
     @Override
-    public Num inverseCosine() {
+    public NaNNum integralPart() {
         return this;
     }
 
     @Override
-    public Num inverseTangent() {
+    public NaNNum fractionalPart() {
         return this;
     }
 
     @Override
-    public Num inverseTangent2(Num x) {
+    public NaNNum round(int scale, RoundingMode roundingMode) {
         return this;
     }
 
     @Override
-    public Num hyperbolicSine() {
-        return this;
-    }
-
-    @Override
-    public Num hyperbolicCosine() {
-        return this;
-    }
-
-    @Override
-    public Num hyperbolicTangent() {
-        return this;
-    }
-
-    @Override
-    public Num inverseHyperbolicSine() {
-        return this;
-    }
-
-    @Override
-    public Num inverseHyperbolicCosine() {
-        return this;
-    }
-
-    @Override
-    public Num inverseHyperbolicTangent() {
-        return this;
-    }
-
-    @Override
-    public Num hypotenuse(Num y) {
-        return this;
-    }
-
-    @Override
-    public Num average(Num other) {
-        return this;
-    }
-
-    @Override
-    public Num minimum(Num other) {
-        return this;
-    }
-
-    @Override
-    public Num maximum(Num other) {
-        return this;
-    }
-
-    @Override
-    public Num integralPart() {
-        return this;
-    }
-
-    @Override
-    public Num fractionalPart() {
-        return this;
-    }
-
-    @Override
-    public Num round(int scale, RoundingMode roundingMode) {
-        return this;
-    }
-
-    @Override
-    public Num precision(MathContext mathContext) {
+    public NaNNum precision(MathContext mathContext) {
         return this;
     }
 
@@ -399,11 +414,6 @@ public final class NaNNum implements Num {
     @Override
     public BigDecimal asBigDecimal() {
         throw new ArithmeticException("No NaN representation for 'BigDecimal'!");
-    }
-
-    @Override
-    public Number unwrap() {
-        return Double.NaN;
     }
 
     @Override

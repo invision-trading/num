@@ -8,13 +8,15 @@ import static java.math.RoundingMode.HALF_EVEN;
 
 /**
  * {@link Num}, short for "number", is an interface for performing mathematical operations on real numbers in decimal.
- * Object instances of this interface are immutable. All methods in this interface return non-<code>null</code> values
- * or throw a {@link RuntimeException}. All implementations of this interface are interoperable with each other.
- * Operations involving different implementations will result in a {@link Num} that trends towards an increase in
- * precision. For example, subtracting a {@link DecimalNum} from a {@link DoubleNum} will result in a
- * {@link DecimalNum}. Similarly, adding a {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of
- * <code>16</code> to a {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>32</code> will result in a
- * {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>32</code>.
+ * Implementations wrap a {@link Number} instance so that performing mathematical operations on floating-point binary
+ * numbers ({@link Double}) or arbitrary-precision decimal numbers ({@link BigDecimal}) is trivial. Object instances of
+ * this interface are immutable. All methods in this interface return non-<code>null</code> values or throw a
+ * {@link RuntimeException}. All implementations of this interface are interoperable with each other. Operations
+ * involving different implementations will result in a {@link Num} that trends towards an increase in precision. For
+ * example, subtracting a {@link DecimalNum} from a {@link DoubleNum} will result in a {@link DecimalNum}. Similarly,
+ * adding a {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>16</code> to a {@link DecimalNum} with
+ * a {@link DecimalNum#getPrecision()} of <code>32</code> will result in a {@link DecimalNum} with a
+ * {@link DecimalNum#getPrecision()} of <code>32</code>.
  *
  * @see DoubleNum
  * @see DecimalNum
@@ -26,115 +28,31 @@ import static java.math.RoundingMode.HALF_EVEN;
 public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNum, NaNNum {
 
     /**
-     * Creates a new {@link Num} with the same type of this {@link Num} and with the value of the given {@link Number}.
-     * <br>
-     * Do not use this method for non-integer decimal numbers. Use {@link #numOf(String)} instead.
+     * Gets the wrapped {@link Number} value of this {@link Num}.
      *
-     * @param number the {@link Number}
-     *
-     * @return the {@link Num}
+     * @return the {@link Number}
      */
-    Num numOf(Number number);
+    Number unwrap();
 
     /**
-     * Creates a new {@link Num} with the same type of this {@link Num} and with the value of the given {@link String}
-     * representing a number.
+     * The {@link NumFactory} for this type of {@link Num} implementation.
      *
-     * @param number the {@link String} representing a number
-     *
-     * @return the {@link Num}
+     * @return the {@link NumFactory}
      */
-    Num numOf(String number);
-
-    /**
-     * @return the {@link Num} of <code>0.1</code>
-     *
-     * @see #numOf(String)
-     */
-    Num numOfTenth();
-
-    /**
-     * @return the {@link Num} of <code>0.01</code>
-     *
-     * @see #numOf(String)
-     */
-    Num numOfHundredth();
-
-    /**
-     * @return the {@link Num} of <code>0.001</code>
-     *
-     * @see #numOf(String)
-     */
-    Num numOfThousandth();
-
-    /**
-     * @return the {@link Num} of <code>-1</code>
-     *
-     * @see #numOf(Number)
-     */
-    Num numOfNegativeOne();
-
-    /**
-     * @return the {@link Num} of <code>0</code>
-     *
-     * @see #numOf(Number)
-     */
-    Num numOfZero();
-
-    /**
-     * @return the {@link Num} of <code>1</code>
-     *
-     * @see #numOf(Number)
-     */
-    Num numOfOne();
-
-    /**
-     * @return the {@link Num} of <code>2</code>
-     *
-     * @see #numOf(Number)
-     */
-    Num numOfTwo();
-
-    /**
-     * @return the {@link Num} of <code>3</code>
-     *
-     * @see #numOf(Number)
-     */
-    Num numOfThree();
-
-    /**
-     * @return the {@link Num} of <code>10</code>
-     *
-     * @see #numOf(Number)
-     */
-    Num numOfTen();
-
-    /**
-     * @return the {@link Num} of <code>100</code>
-     *
-     * @see #numOf(Number)
-     */
-    Num numOfHundred();
-
-    /**
-     * @return the {@link Num} of <code>1000</code>
-     *
-     * @see #numOf(Number)
-     */
-    Num numOfThousand();
+    NumFactory factory();
 
     /**
      * @see #add(Num)
      */
     default Num add(Number addend) {
-        return add(numOf(addend));
+        return add(factory().of(addend));
     }
 
     /**
      * @see #add(Num)
      */
     default Num add(String addend) {
-        return add(numOf(addend));
+        return add(factory().of(addend));
     }
 
     /**
@@ -153,14 +71,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #subtract(Num)
      */
     default Num subtract(Number subtrahend) {
-        return subtract(numOf(subtrahend));
+        return subtract(factory().of(subtrahend));
     }
 
     /**
      * @see #subtract(Num)
      */
     default Num subtract(String subtrahend) {
-        return subtract(numOf(subtrahend));
+        return subtract(factory().of(subtrahend));
     }
 
     /**
@@ -179,14 +97,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #multiply(Num)
      */
     default Num multiply(Number multiplicand) {
-        return multiply(numOf(multiplicand));
+        return multiply(factory().of(multiplicand));
     }
 
     /**
      * @see #multiply(Num)
      */
     default Num multiply(String multiplicand) {
-        return multiply(numOf(multiplicand));
+        return multiply(factory().of(multiplicand));
     }
 
     /**
@@ -205,14 +123,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #divide(Num)
      */
     default Num divide(Number divisor) {
-        return divide(numOf(divisor));
+        return divide(factory().of(divisor));
     }
 
     /**
      * @see #divide(Num)
      */
     default Num divide(String divisor) {
-        return divide(numOf(divisor));
+        return divide(factory().of(divisor));
     }
 
     /**
@@ -231,14 +149,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #remainder(Num)
      */
     default Num remainder(Number divisor) {
-        return remainder(numOf(divisor));
+        return remainder(factory().of(divisor));
     }
 
     /**
      * @see #remainder(Num)
      */
     default Num remainder(String divisor) {
-        return remainder(numOf(divisor));
+        return remainder(factory().of(divisor));
     }
 
     /**
@@ -257,14 +175,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #power(Num)
      */
     default Num power(Number exponent) {
-        return power(numOf(exponent));
+        return power(factory().of(exponent));
     }
 
     /**
      * @see #power(Num)
      */
     default Num power(String exponent) {
-        return power(numOf(exponent));
+        return power(factory().of(exponent));
     }
 
     /**
@@ -314,14 +232,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #root(Num)
      */
     default Num root(Number degree) {
-        return root(numOf(degree));
+        return root(factory().of(degree));
     }
 
     /**
      * @see #root(Num)
      */
     default Num root(String degree) {
-        return root(numOf(degree));
+        return root(factory().of(degree));
     }
 
     /**
@@ -381,14 +299,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #logarithm(Num)
      */
     default Num logarithm(Number base) {
-        return logarithm(numOf(base));
+        return logarithm(factory().of(base));
     }
 
     /**
      * @see #logarithm(Num)
      */
     default Num logarithm(String base) {
-        return logarithm(numOf(base));
+        return logarithm(factory().of(base));
     }
 
     /**
@@ -529,14 +447,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #inverseTangent2(Num)
      */
     default Num inverseTangent2(Number x) {
-        return inverseTangent2(numOf(x));
+        return inverseTangent2(factory().of(x));
     }
 
     /**
      * @see #inverseTangent2(Num)
      */
     default Num inverseTangent2(String x) {
-        return inverseTangent2(numOf(x));
+        return inverseTangent2(factory().of(x));
     }
 
     /**
@@ -612,14 +530,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #hypotenuse(Num)
      */
     default Num hypotenuse(Number y) {
-        return hypotenuse(numOf(y));
+        return hypotenuse(factory().of(y));
     }
 
     /**
      * @see #hypotenuse(Num)
      */
     default Num hypotenuse(String y) {
-        return hypotenuse(numOf(y));
+        return hypotenuse(factory().of(y));
     }
 
     /**
@@ -638,14 +556,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #average(Num)
      */
     default Num average(Number other) {
-        return average(numOf(other));
+        return average(factory().of(other));
     }
 
     /**
      * @see #average(Num)
      */
     default Num average(String other) {
-        return average(numOf(other));
+        return average(factory().of(other));
     }
 
     /**
@@ -664,14 +582,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #minimum(Num)
      */
     default Num minimum(Number other) {
-        return minimum(numOf(other));
+        return minimum(factory().of(other));
     }
 
     /**
      * @see #minimum(Num)
      */
     default Num minimum(String other) {
-        return minimum(numOf(other));
+        return minimum(factory().of(other));
     }
 
     /**
@@ -690,14 +608,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #maximum(Num)
      */
     default Num maximum(Number other) {
-        return maximum(numOf(other));
+        return maximum(factory().of(other));
     }
 
     /**
      * @see #maximum(Num)
      */
     default Num maximum(String other) {
-        return maximum(numOf(other));
+        return maximum(factory().of(other));
     }
 
     /**
@@ -878,14 +796,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #isEqual(Num)
      */
     default boolean isEqual(Number other) {
-        return isEqual(numOf(other));
+        return isEqual(factory().of(other));
     }
 
     /**
      * @see #isEqual(Num)
      */
     default boolean isEqual(String other) {
-        return isEqual(numOf(other));
+        return isEqual(factory().of(other));
     }
 
     /**
@@ -905,14 +823,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #isNotEqual(Num)
      */
     default boolean isNotEqual(Number other) {
-        return isNotEqual(numOf(other));
+        return isNotEqual(factory().of(other));
     }
 
     /**
      * @see #isNotEqual(Num)
      */
     default boolean isNotEqual(String other) {
-        return isNotEqual(numOf(other));
+        return isNotEqual(factory().of(other));
     }
 
     /**
@@ -934,14 +852,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #isLessThan(Num)
      */
     default boolean isLessThan(Number other) {
-        return isLessThan(numOf(other));
+        return isLessThan(factory().of(other));
     }
 
     /**
      * @see #isLessThan(Num)
      */
     default boolean isLessThan(String other) {
-        return isLessThan(numOf(other));
+        return isLessThan(factory().of(other));
     }
 
     /**
@@ -962,14 +880,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #isLessThanOrEqual(Num)
      */
     default boolean isLessThanOrEqual(Number other) {
-        return isLessThanOrEqual(numOf(other));
+        return isLessThanOrEqual(factory().of(other));
     }
 
     /**
      * @see #isLessThanOrEqual(Num)
      */
     default boolean isLessThanOrEqual(String other) {
-        return isLessThanOrEqual(numOf(other));
+        return isLessThanOrEqual(factory().of(other));
     }
 
     /**
@@ -989,14 +907,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #isGreaterThan(Num)
      */
     default boolean isGreaterThan(Number other) {
-        return isGreaterThan(numOf(other));
+        return isGreaterThan(factory().of(other));
     }
 
     /**
      * @see #isGreaterThan(Num)
      */
     default boolean isGreaterThan(String other) {
-        return isGreaterThan(numOf(other));
+        return isGreaterThan(factory().of(other));
     }
 
     /**
@@ -1016,14 +934,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #isGreaterThanOrEqual(Num)
      */
     default boolean isGreaterThanOrEqual(Number other) {
-        return isGreaterThanOrEqual(numOf(other));
+        return isGreaterThanOrEqual(factory().of(other));
     }
 
     /**
      * @see #isGreaterThanOrEqual(Num)
      */
     default boolean isGreaterThanOrEqual(String other) {
-        return isGreaterThanOrEqual(numOf(other));
+        return isGreaterThanOrEqual(factory().of(other));
     }
 
     /**
@@ -1124,13 +1042,6 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return the {@link BigDecimal}
      */
     BigDecimal asBigDecimal();
-
-    /**
-     * Gets the wrapped {@link Number} value of this {@link Num}.
-     *
-     * @return the {@link Number}
-     */
-    Number unwrap();
 
     /**
      * Gets the {@link MathContext} representing the <code>precision</code> and {@link RoundingMode} used by
