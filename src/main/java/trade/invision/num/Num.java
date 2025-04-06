@@ -10,6 +10,11 @@ import static java.math.RoundingMode.HALF_EVEN;
  * {@link Num}, short for "number", is an interface for performing mathematical operations on real numbers in decimal.
  * Object instances of this interface are immutable. All methods in this interface return non-<code>null</code> values
  * or throw a {@link RuntimeException}. All implementations of this interface are interoperable with each other.
+ * Operations involving different implementations will result in a {@link Num} that trends towards an increase in
+ * precision. For example, subtracting a {@link DecimalNum} from a {@link DoubleNum} will result in a
+ * {@link DecimalNum}. Similarly, adding a {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of
+ * <code>16</code> to a {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>32</code> will result in a
+ * {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>32</code>.
  *
  * @see DoubleNum
  * @see DecimalNum
@@ -119,6 +124,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num numOfThousand();
 
     /**
+     * @see #add(Num)
+     */
+    default Num add(Number addend) {
+        return add(numOf(addend));
+    }
+
+    /**
+     * @see #add(Num)
+     */
+    default Num add(String addend) {
+        return add(numOf(addend));
+    }
+
+    /**
      * Performs an addition (plus) operation by adding the given {@link Num} to this {@link Num}: <code>this +
      * addend</code>.
      *
@@ -129,6 +148,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Addition">Wikipedia</a>
      */
     Num add(Num addend);
+
+    /**
+     * @see #subtract(Num)
+     */
+    default Num subtract(Number subtrahend) {
+        return subtract(numOf(subtrahend));
+    }
+
+    /**
+     * @see #subtract(Num)
+     */
+    default Num subtract(String subtrahend) {
+        return subtract(numOf(subtrahend));
+    }
 
     /**
      * Performs a subtraction (minus) operation by subtracting the given {@link Num} from this {@link Num}: <code>this -
@@ -143,6 +176,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num subtract(Num subtrahend);
 
     /**
+     * @see #multiply(Num)
+     */
+    default Num multiply(Number multiplicand) {
+        return multiply(numOf(multiplicand));
+    }
+
+    /**
+     * @see #multiply(Num)
+     */
+    default Num multiply(String multiplicand) {
+        return multiply(numOf(multiplicand));
+    }
+
+    /**
      * Performs a multiplication (times) operation by multiplying this {@link Num} by the given {@link Num}: <code>this
      * * multiplicand</code>.
      *
@@ -153,6 +200,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Multiplication">Wikipedia</a>
      */
     Num multiply(Num multiplicand);
+
+    /**
+     * @see #divide(Num)
+     */
+    default Num divide(Number divisor) {
+        return divide(numOf(divisor));
+    }
+
+    /**
+     * @see #divide(Num)
+     */
+    default Num divide(String divisor) {
+        return divide(numOf(divisor));
+    }
 
     /**
      * Performs a division (divided by) operation by dividing this {@link Num} by the given {@link Num}: <code>this /
@@ -167,6 +228,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num divide(Num divisor);
 
     /**
+     * @see #remainder(Num)
+     */
+    default Num remainder(Number divisor) {
+        return remainder(numOf(divisor));
+    }
+
+    /**
+     * @see #remainder(Num)
+     */
+    default Num remainder(String divisor) {
+        return remainder(numOf(divisor));
+    }
+
+    /**
      * Performs a modulo (remainder of) operation by dividing this {@link Num} by the given {@link Num} and yielding the
      * remainder: <code>this % divisor</code>.
      *
@@ -179,16 +254,18 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num remainder(Num divisor);
 
     /**
-     * Performs an exponentiation (power) operation by raising this {@link Num} to the given <code>int</code>:
-     * <code>this ^ exponent</code> or <code>this<sup>exponent</sup></code>.
-     *
-     * @param exponent the <code>int</code> to raise to
-     *
-     * @return the power {@link Num}
-     *
-     * @see <a href="https://en.wikipedia.org/wiki/Exponentiation">Wikipedia</a>
+     * @see #power(Num)
      */
-    Num power(int exponent);
+    default Num power(Number exponent) {
+        return power(numOf(exponent));
+    }
+
+    /**
+     * @see #power(Num)
+     */
+    default Num power(String exponent) {
+        return power(numOf(exponent));
+    }
 
     /**
      * Performs an exponentiation (power) operation by raising this {@link Num} to the given {@link Num}: <code>this ^
@@ -232,6 +309,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Exponential_function">Wikipedia</a>
      */
     Num exponential();
+
+    /**
+     * @see #root(Num)
+     */
+    default Num root(Number degree) {
+        return root(numOf(degree));
+    }
+
+    /**
+     * @see #root(Num)
+     */
+    default Num root(String degree) {
+        return root(numOf(degree));
+    }
 
     /**
      * Performs an <i>n</i>th root (radical) operation using this {@link Num} as the radicand and the given {@link Num}
@@ -287,14 +378,18 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num logarithm();
 
     /**
-     * Performs a logarithm (log) operation using this {@link Num} as the anti-logarithm and the given <code>int</code>
-     * as the base: <code>log<sub>base</sub>this</code>.
-     *
-     * @return the logarithm {@link Num}
-     *
-     * @see <a href="https://en.wikipedia.org/wiki/Logarithm">Wikipedia</a>
+     * @see #logarithm(Num)
      */
-    Num logarithm(int base);
+    default Num logarithm(Number base) {
+        return logarithm(numOf(base));
+    }
+
+    /**
+     * @see #logarithm(Num)
+     */
+    default Num logarithm(String base) {
+        return logarithm(numOf(base));
+    }
 
     /**
      * Performs a logarithm (log) operation using this {@link Num} as the anti-logarithm and the given {@link Num} as
@@ -431,6 +526,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num inverseTangent();
 
     /**
+     * @see #inverseTangent2(Num)
+     */
+    default Num inverseTangent2(Number x) {
+        return inverseTangent2(numOf(x));
+    }
+
+    /**
+     * @see #inverseTangent2(Num)
+     */
+    default Num inverseTangent2(String x) {
+        return inverseTangent2(numOf(x));
+    }
+
+    /**
      * Performs a trigonometric 2-argument inverse tangent operation using this {@link Num} in radians as <i>y</i> and
      * the given {@link Num} in radians as <i>x</i>: <code>atan2(y,x)</code>.
      *
@@ -500,6 +609,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num inverseHyperbolicTangent();
 
     /**
+     * @see #hypotenuse(Num)
+     */
+    default Num hypotenuse(Number y) {
+        return hypotenuse(numOf(y));
+    }
+
+    /**
+     * @see #hypotenuse(Num)
+     */
+    default Num hypotenuse(String y) {
+        return hypotenuse(numOf(y));
+    }
+
+    /**
      * Performs a trigonometric hypotenuse (distance formula) operation using this {@link Num} as <i>x</i> and the given
      * {@link Num} as <i>y</i>: <code>√(<i>x</i><sup>2</sup> + <i>y</i><sup>2</sup>)</code>.
      *
@@ -510,6 +633,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Hypotenuse">Wikipedia</a>
      */
     Num hypotenuse(Num y);
+
+    /**
+     * @see #average(Num)
+     */
+    default Num average(Number other) {
+        return average(numOf(other));
+    }
+
+    /**
+     * @see #average(Num)
+     */
+    default Num average(String other) {
+        return average(numOf(other));
+    }
 
     /**
      * Performs an average (mean) operation by dividing the sum of this {@link Num} and the given {@link Num} by two:
@@ -524,6 +661,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num average(Num other);
 
     /**
+     * @see #minimum(Num)
+     */
+    default Num minimum(Number other) {
+        return minimum(numOf(other));
+    }
+
+    /**
+     * @see #minimum(Num)
+     */
+    default Num minimum(String other) {
+        return minimum(numOf(other));
+    }
+
+    /**
      * Performs a minimum (minima extrema) operation by computing the lesser of this {@link Num} and the given
      * {@link Num}: <code>min(this, other)</code>.
      *
@@ -534,6 +685,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Maximum_and_minimum">Wikipedia</a>
      */
     Num minimum(Num other);
+
+    /**
+     * @see #maximum(Num)
+     */
+    default Num maximum(Number other) {
+        return maximum(numOf(other));
+    }
+
+    /**
+     * @see #maximum(Num)
+     */
+    default Num maximum(String other) {
+        return maximum(numOf(other));
+    }
 
     /**
      * Performs a maximum (maxima extrema) operation by computing the greater of this {@link Num} and the given
@@ -710,6 +875,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
+     * @see #isEqual(Num)
+     */
+    default boolean isEqual(Number other) {
+        return isEqual(numOf(other));
+    }
+
+    /**
+     * @see #isEqual(Num)
+     */
+    default boolean isEqual(String other) {
+        return isEqual(numOf(other));
+    }
+
+    /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is equal to the given {@link Num}:
      * <code>this == other</code>.
      *
@@ -721,6 +900,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
      */
     boolean isEqual(Num other);
+
+    /**
+     * @see #isNotEqual(Num)
+     */
+    default boolean isNotEqual(Number other) {
+        return isNotEqual(numOf(other));
+    }
+
+    /**
+     * @see #isNotEqual(Num)
+     */
+    default boolean isNotEqual(String other) {
+        return isNotEqual(numOf(other));
+    }
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is not equal to the given
@@ -738,6 +931,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
+     * @see #isLessThan(Num)
+     */
+    default boolean isLessThan(Number other) {
+        return isLessThan(numOf(other));
+    }
+
+    /**
+     * @see #isLessThan(Num)
+     */
+    default boolean isLessThan(String other) {
+        return isLessThan(numOf(other));
+    }
+
+    /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is less than the given
      * {@link Num}:
      * <code>this < other</code>.
@@ -750,6 +957,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      */
     boolean isLessThan(Num other);
+
+    /**
+     * @see #isLessThanOrEqual(Num)
+     */
+    default boolean isLessThanOrEqual(Number other) {
+        return isLessThanOrEqual(numOf(other));
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Num)
+     */
+    default boolean isLessThanOrEqual(String other) {
+        return isLessThanOrEqual(numOf(other));
+    }
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is less than or equal to the given
@@ -765,6 +986,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     boolean isLessThanOrEqual(Num other);
 
     /**
+     * @see #isGreaterThan(Num)
+     */
+    default boolean isGreaterThan(Number other) {
+        return isGreaterThan(numOf(other));
+    }
+
+    /**
+     * @see #isGreaterThan(Num)
+     */
+    default boolean isGreaterThan(String other) {
+        return isGreaterThan(numOf(other));
+    }
+
+    /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is greater than the given
      * {@link Num}: <code>this > other</code>.
      *
@@ -776,6 +1011,20 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      */
     boolean isGreaterThan(Num other);
+
+    /**
+     * @see #isGreaterThanOrEqual(Num)
+     */
+    default boolean isGreaterThanOrEqual(Number other) {
+        return isGreaterThanOrEqual(numOf(other));
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Num)
+     */
+    default boolean isGreaterThanOrEqual(String other) {
+        return isGreaterThanOrEqual(numOf(other));
+    }
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is greater than or equal to the

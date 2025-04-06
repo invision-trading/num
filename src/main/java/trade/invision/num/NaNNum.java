@@ -10,8 +10,9 @@ import static java.math.MathContext.DECIMAL64;
 
 /**
  * {@link NaNNum}, short for Not a Number (NaN), is a {@link Num} that represents an undefined and unrepresentable
- * numerical value. It is not equal to itself or any other value. It compares unordered with itself and all other
- * values. It is not negative, positive, or zero. It has no integer or {@link BigDecimal} representation.
+ * numerical value. All operations result in itself. It is not equal to itself or any other value. It compares unordered
+ * with itself and all other values. It is not negative, positive, or zero. It has no integer or {@link BigDecimal}
+ * representation.
  *
  * @see <a href="https://en.wikipedia.org/wiki/NaN">Wikipedia</a>
  * @see <a href="https://stackoverflow.com/a/1573715/4352701">Stack Overflow</a>
@@ -116,11 +117,6 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num power(int exponent) {
-        return this;
-    }
-
-    @Override
     public Num power(Num exponent) {
         return this;
     }
@@ -162,11 +158,6 @@ public final class NaNNum implements Num {
 
     @Override
     public Num logarithm() {
-        return this;
-    }
-
-    @Override
-    public Num logarithm(int base) {
         return this;
     }
 
@@ -426,13 +417,13 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public String toString() {
-        return "NaN";
+    public int hashCode() {
+        return 0;
     }
 
     @Override
-    public int hashCode() {
-        return 0;
+    public String toString() {
+        return "NaN";
     }
 
     @Override
