@@ -333,7 +333,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num precision(MathContext mathContext) {
+    public Num precision(MathContext context) {
         return this;
     }
 

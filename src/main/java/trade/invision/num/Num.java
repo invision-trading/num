@@ -16,7 +16,9 @@ import static java.math.RoundingMode.HALF_EVEN;
  * trends towards an increase in precision. For example, subtracting a {@link DecimalNum} from a {@link DoubleNum} will
  * result in a {@link DecimalNum}. Similarly, adding a {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of
  * <code>16</code> to a {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>32</code> will result in a
- * {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>32</code>.
+ * {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>32</code>. Mathematical operations that result
+ * in <code>NaN</code>, <code>+Infinity</code>, <code>-Infinity</code>, or {@link ArithmeticException} will yield
+ * {@link NaNNum}.
  *
  * @see DoubleNum
  * @see DecimalNum
@@ -34,7 +36,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Number unwrap();
 
     /**
-     * The {@link NumFactory} to create {@link Num} instances with the same type as this {@link Num}.
+     * Gets the {@link NumFactory} to create {@link Num} instances with the same type as this {@link Num}.
      *
      * @return the {@link NumFactory}
      */
@@ -795,14 +797,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * {@link MathContext#getPrecision()}, without modifying the scale of this {@link Num}, and rounding excess
      * significant figures according to {@link MathContext#getRoundingMode()}.
      *
-     * @param mathContext the {@link MathContext}
+     * @param context the {@link MathContext}
      *
      * @return the precise {@link Num}
      *
      * @see MathContext
      * @see <a href="https://en.wikipedia.org/wiki/Significant_figures">Wikipedia</a>
      */
-    Num precision(MathContext mathContext);
+    Num precision(MathContext context);
 
     /**
      * Performs a signum operation on this {@link Num}, yielding <code>-1</code> for negative numbers, <code>1</code>
