@@ -41,10 +41,7 @@ public final class DoubleNum implements Num {
      */
     public static Num doubleNum(Number number) {
         final double aDouble = number.doubleValue();
-        if (!isFinite(aDouble)) {
-            return NaN;
-        }
-        return new DoubleNum(aDouble);
+        return !isFinite(aDouble) ? NaN : new DoubleNum(aDouble);
     }
 
     /**
@@ -81,10 +78,7 @@ public final class DoubleNum implements Num {
      */
     public static Num doubleNum(String string) {
         final double aDouble = parseDouble(string);
-        if (!isFinite(aDouble)) {
-            return NaN;
-        }
-        return new DoubleNum(aDouble);
+        return !isFinite(aDouble) ? NaN : new DoubleNum(aDouble);
     }
 
     /**
@@ -269,11 +263,7 @@ public final class DoubleNum implements Num {
             return decimalNum.factory().of(this).divide(decimalNum);
         } else {
             final double quotient = wrapped * ((DoubleNum) divisor).wrapped;
-            if (!isFinite(quotient)) {
-                return NaN;
-            } else {
-                return new DoubleNum(quotient);
-            }
+            return !isFinite(quotient) ? NaN : new DoubleNum(quotient);
         }
     }
 
@@ -285,11 +275,7 @@ public final class DoubleNum implements Num {
             return decimalNum.factory().of(this).remainder(decimalNum);
         } else {
             final double remainder = wrapped % ((DoubleNum) divisor).wrapped;
-            if (!isFinite(remainder)) {
-                return NaN;
-            } else {
-                return new DoubleNum(remainder);
-            }
+            return !isFinite(remainder) ? NaN : new DoubleNum(remainder);
         }
     }
 
@@ -301,11 +287,7 @@ public final class DoubleNum implements Num {
             return decimalNum.factory().of(this).power(decimalNum);
         } else {
             final double power = Math.pow(wrapped, ((DoubleNum) exponent).wrapped);
-            if (!isFinite(power)) {
-                return NaN;
-            } else {
-                return new DoubleNum(power);
-            }
+            return !isFinite(power) ? NaN : new DoubleNum(power);
         }
     }
 
@@ -332,61 +314,38 @@ public final class DoubleNum implements Num {
             return decimalNum.factory().of(this).nthRoot(decimalNum);
         } else {
             final double nthRoot = Math.pow(wrapped, 1.0 / ((DoubleNum) degree).wrapped);
-            if (!isFinite(nthRoot)) {
-                return NaN;
-            } else {
-                return new DoubleNum(nthRoot);
-            }
+            return !isFinite(nthRoot) ? NaN : new DoubleNum(nthRoot);
         }
     }
 
     @Override
     public Num squareRoot() {
         final double squareRoot = Math.sqrt(wrapped);
-        if (!isFinite(squareRoot)) {
-            return NaN;
-        } else {
-            return new DoubleNum(squareRoot);
-        }
+        return !isFinite(squareRoot) ? NaN : new DoubleNum(squareRoot);
     }
 
     @Override
     public Num cubeRoot() {
         final double cubeRoot = Math.cbrt(wrapped);
-        if (!isFinite(cubeRoot)) {
-            return NaN;
-        } else {
-            return new DoubleNum(cubeRoot);
-        }
+        return !isFinite(cubeRoot) ? NaN : new DoubleNum(cubeRoot);
     }
 
     @Override
     public Num naturalLogarithm() {
         final double naturalLogarithm = Math.log(wrapped);
-        if (!isFinite(naturalLogarithm)) {
-            return NaN;
-        } else {
-            return new DoubleNum(naturalLogarithm);
-        }
+        return !isFinite(naturalLogarithm) ? NaN : new DoubleNum(naturalLogarithm);
     }
 
     @Override
     public Num commonLogarithm() {
         final double commonLogarithm = Math.log10(wrapped);
-        if (!isFinite(commonLogarithm)) {
-            return NaN;
-        } else {
-            return new DoubleNum(commonLogarithm);
-        }
+        return !isFinite(commonLogarithm) ? NaN : new DoubleNum(commonLogarithm);
     }
 
     @Override
     public Num binaryLogarithm() {
         final double numerator = Math.log(wrapped);
-        if (!isFinite(numerator)) {
-            return NaN;
-        }
-        return new DoubleNum(numerator / NATURAL_LOGARITHM_OF_2);
+        return !isFinite(numerator) ? NaN : new DoubleNum(numerator / NATURAL_LOGARITHM_OF_2);
     }
 
     @Override
@@ -421,11 +380,7 @@ public final class DoubleNum implements Num {
     @Override
     public Num reciprocal() {
         final double reciprocal = 1.0 / wrapped;
-        if (!isFinite(reciprocal)) {
-            return NaN;
-        } else {
-            return new DoubleNum(reciprocal);
-        }
+        return !isFinite(reciprocal) ? NaN : new DoubleNum(reciprocal);
     }
 
     @Override
@@ -451,61 +406,37 @@ public final class DoubleNum implements Num {
     @Override
     public Num sine() {
         final double sine = Math.sin(wrapped);
-        if (!isFinite(sine)) {
-            return NaN;
-        } else {
-            return new DoubleNum(sine);
-        }
+        return !isFinite(sine) ? NaN : new DoubleNum(sine);
     }
 
     @Override
     public Num cosine() {
         final double cosine = Math.cos(wrapped);
-        if (!isFinite(cosine)) {
-            return NaN;
-        } else {
-            return new DoubleNum(cosine);
-        }
+        return !isFinite(cosine) ? NaN : new DoubleNum(cosine);
     }
 
     @Override
     public Num tangent() {
         final double tangent = Math.tan(wrapped);
-        if (!isFinite(tangent)) {
-            return NaN;
-        } else {
-            return new DoubleNum(tangent);
-        }
+        return !isFinite(tangent) ? NaN : new DoubleNum(tangent);
     }
 
     @Override
     public Num inverseSine() {
         final double inverseSine = Math.asin(wrapped);
-        if (!isFinite(inverseSine)) {
-            return NaN;
-        } else {
-            return new DoubleNum(inverseSine);
-        }
+        return !isFinite(inverseSine) ? NaN : new DoubleNum(inverseSine);
     }
 
     @Override
     public Num inverseCosine() {
         final double inverseCosine = Math.acos(wrapped);
-        if (!isFinite(inverseCosine)) {
-            return NaN;
-        } else {
-            return new DoubleNum(inverseCosine);
-        }
+        return !isFinite(inverseCosine) ? NaN : new DoubleNum(inverseCosine);
     }
 
     @Override
     public Num inverseTangent() {
         final double inverseTangent = Math.atan(wrapped);
-        if (!isFinite(inverseTangent)) {
-            return NaN;
-        } else {
-            return new DoubleNum(inverseTangent);
-        }
+        return !isFinite(inverseTangent) ? NaN : new DoubleNum(inverseTangent);
     }
 
     @Override
@@ -516,72 +447,44 @@ public final class DoubleNum implements Num {
             return decimalNum.factory().of(this).inverseTangent2(decimalNum);
         } else {
             final double inverseTangent2 = Math.atan2(wrapped, ((DoubleNum) x).wrapped);
-            if (!isFinite(inverseTangent2)) {
-                return NaN;
-            } else {
-                return new DoubleNum(inverseTangent2);
-            }
+            return !isFinite(inverseTangent2) ? NaN : new DoubleNum(inverseTangent2);
         }
     }
 
     @Override
     public Num hyperbolicSine() {
         final double hyperbolicSine = Math.sinh(wrapped);
-        if (!isFinite(hyperbolicSine)) {
-            return NaN;
-        } else {
-            return new DoubleNum(hyperbolicSine);
-        }
+        return !isFinite(hyperbolicSine) ? NaN : new DoubleNum(hyperbolicSine);
     }
 
     @Override
     public Num hyperbolicCosine() {
         final double hyperbolicCosine = Math.cosh(wrapped);
-        if (!isFinite(hyperbolicCosine)) {
-            return NaN;
-        } else {
-            return new DoubleNum(hyperbolicCosine);
-        }
+        return !isFinite(hyperbolicCosine) ? NaN : new DoubleNum(hyperbolicCosine);
     }
 
     @Override
     public Num hyperbolicTangent() {
         final double hyperbolicTangent = Math.tanh(wrapped);
-        if (!isFinite(hyperbolicTangent)) {
-            return NaN;
-        } else {
-            return new DoubleNum(hyperbolicTangent);
-        }
+        return !isFinite(hyperbolicTangent) ? NaN : new DoubleNum(hyperbolicTangent);
     }
 
     @Override
     public Num inverseHyperbolicSine() {
         final double inverseHyperbolicSine = Math.log(wrapped + Math.sqrt(wrapped * wrapped + 1.0));
-        if (!isFinite(inverseHyperbolicSine)) {
-            return NaN;
-        } else {
-            return new DoubleNum(inverseHyperbolicSine);
-        }
+        return !isFinite(inverseHyperbolicSine) ? NaN : new DoubleNum(inverseHyperbolicSine);
     }
 
     @Override
     public Num inverseHyperbolicCosine() {
         final double inverseHyperbolicCosine = Math.log(wrapped + Math.sqrt(wrapped * wrapped - 1.0));
-        if (!isFinite(inverseHyperbolicCosine)) {
-            return NaN;
-        } else {
-            return new DoubleNum(inverseHyperbolicCosine);
-        }
+        return !isFinite(inverseHyperbolicCosine) ? NaN : new DoubleNum(inverseHyperbolicCosine);
     }
 
     @Override
     public Num inverseHyperbolicTangent() {
         final double inverseHyperbolicTangent = 0.5 * Math.log((1.0 + wrapped) / (1.0 - wrapped));
-        if (!isFinite(inverseHyperbolicTangent)) {
-            return NaN;
-        } else {
-            return new DoubleNum(inverseHyperbolicTangent);
-        }
+        return !isFinite(inverseHyperbolicTangent) ? NaN : new DoubleNum(inverseHyperbolicTangent);
     }
 
     @Override
@@ -592,11 +495,7 @@ public final class DoubleNum implements Num {
             return decimalNum.factory().of(this).hypotenuse(decimalNum);
         } else {
             final double hypotenuse = Math.hypot(wrapped, ((DoubleNum) y).wrapped);
-            if (!isFinite(hypotenuse)) {
-                return NaN;
-            } else {
-                return new DoubleNum(hypotenuse);
-            }
+            return !isFinite(hypotenuse) ? NaN : new DoubleNum(hypotenuse);
         }
     }
 
