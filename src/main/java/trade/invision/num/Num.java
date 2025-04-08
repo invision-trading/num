@@ -272,24 +272,24 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num exponential();
 
     /**
-     * @see #root(Num)
+     * @see #nthRoot(Num)
      */
-    default Num root(Number degree) {
-        return root(factory().of(degree));
+    default Num nthRoot(Number degree) {
+        return nthRoot(factory().of(degree));
     }
 
     /**
-     * @see #root(Num)
+     * @see #nthRoot(Num)
      */
-    default Num root(BigDecimal degree) {
-        return root(factory().of(degree));
+    default Num nthRoot(BigDecimal degree) {
+        return nthRoot(factory().of(degree));
     }
 
     /**
-     * @see #root(Num)
+     * @see #nthRoot(Num)
      */
-    default Num root(String degree) {
-        return root(factory().of(degree));
+    default Num nthRoot(String degree) {
+        return nthRoot(factory().of(degree));
     }
 
     /**
@@ -302,7 +302,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @see <a href="https://en.wikipedia.org/wiki/Nth_root">Wikipedia</a>
      */
-    Num root(Num degree);
+    Num nthRoot(Num degree);
 
     /**
      * Performs a square root (root two) operation using this {@link Num} as the radicand and <code>2</code> as the
@@ -337,13 +337,23 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a common logarithm (logarithm with a base of ten) operation using this {@link Num} as the anti-logarithm
-     * and <code>10</code> as the base: <code>log<sub>10</sub>this</code> or <code>log(this)</code>.
+     * and <code>10</code> as the base: <code>log<sub>10</sub>this</code> or <code>log10(this)</code>.
      *
      * @return the common logarithm {@link Num}
      *
      * @see <a href="https://en.wikipedia.org/wiki/Common_logarithm">Wikipedia</a>
      */
     Num commonLogarithm();
+
+    /**
+     * Performs a binary logarithm (logarithm with a base of two) operation using this {@link Num} as the anti-logarithm
+     * and <code>2</code> as the base: <code>log<sub>2</sub>this</code> or <code>log2(this)</code>.
+     *
+     * @return the binary logarithm {@link Num}
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Binary_logarithm">Wikipedia</a>
+     */
+    Num binaryLogarithm();
 
     /**
      * @see #logarithm(Num)

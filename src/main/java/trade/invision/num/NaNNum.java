@@ -173,7 +173,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num root(Num degree) {
+    public Num nthRoot(Num degree) {
         return this;
     }
 
@@ -194,6 +194,11 @@ public final class NaNNum implements Num {
 
     @Override
     public Num commonLogarithm() {
+        return this;
+    }
+
+    @Override
+    public Num binaryLogarithm() {
         return this;
     }
 
