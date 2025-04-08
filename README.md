@@ -32,8 +32,8 @@ desirable and the tradeoff of worse accuracy and lower precision is worth it. Us
 another approach, but it can be unintuitive to work with and is still subject to
 [precision loss](https://news.ycombinator.com/item?id=15811730). The side effects of using floating-point numbers for
 currency may be negligible in certain contexts, such as working with relatively low precision numbers (like stock
-prices) or measurements (like technical indicators). So, using floating-point numbers for currency isn't _always_ a bad
-idea. Even Microsoft Excel, a program widely used in finance,
+prices) or measurements (like technical indicators). So, using floating-point numbers for currency values isn't _always_
+a bad idea. Even Microsoft Excel, a program widely used in finance,
 [uses floating-point numbers](https://learn.microsoft.com/en-us/office/troubleshoot/excel/floating-point-arithmetic-inaccurate-result).
 You can really go back-and-forth on the tradeoffs between floating-point, fixed-point, and arbitrary-precision numbers.
 Enter, the `Num` interface: an intuitive interface that allows you to focus on using currency values in your application
@@ -62,12 +62,13 @@ Mathematical operations that result in `NaN`, `+Infinity`, `-Infinity`, or `Arit
 ## Usage
 
 Add the dependency to your project:
+
 // TODO
 
 To create a `DoubleNum`, use one of the static methods, such as `DoubleNum.valueOf()` or `DoubleNum.doubleNum()`. Your
 code may look cleaner if you use the `doubleNum()` static import instead of `DoubleNum.valueOf()`. Creating a
 `DecimalNum` is the same as `DoubleNum`, but requires you to specify a precision and rounding mode. Use
-`DecimalNum.decimalNum(Num, MathContext)` or use one of the convenience methods, such as `decimalNum64()`, as it
+`DecimalNum.decimalNum(Num, MathContext)` or use one of the convenience methods, such as `decimalNum64()` which
 provides approximately the same precision as `double`, allowing up to 16 significant figures of precision, and the same
 [rounding policy](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/RoundingMode.html#HALF_EVEN) as
 `double`.

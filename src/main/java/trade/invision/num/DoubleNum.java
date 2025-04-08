@@ -116,6 +116,7 @@ public final class DoubleNum implements Num {
     private static final Num ONE = doubleNum(1);
     private static final Num TWO = doubleNum(2);
     private static final Num THREE = doubleNum(3);
+    private static final Num HALF = doubleNum(0.5);
     private static final Num TENTH = doubleNum(0.1);
     private static final Num HUNDREDTH = doubleNum(0.01);
     private static final Num THOUSANDTH = doubleNum(0.001);
@@ -168,6 +169,11 @@ public final class DoubleNum implements Num {
         @Override
         public Num three() {
             return THREE;
+        }
+
+        @Override
+        public Num half() {
+            return HALF;
         }
 
         @Override

@@ -658,6 +658,7 @@ public final class DecimalNum implements Num {
     private static final Num ONE = decimalNum(1, 1);
     private static final Num TWO = decimalNum(2, 1);
     private static final Num THREE = decimalNum(3, 1);
+    private static final Num HALF = decimalNum("0.5", 1);
     private static final Num TENTH = decimalNum("0.1", 1);
     private static final Num HUNDREDTH = decimalNum("0.01", 1);
     private static final Num THOUSANDTH = decimalNum("0.001", 1);
@@ -716,6 +717,11 @@ public final class DecimalNum implements Num {
         @Override
         public Num three() {
             return THREE;
+        }
+
+        @Override
+        public Num half() {
+            return HALF;
         }
 
         @Override

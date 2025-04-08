@@ -81,6 +81,13 @@ public interface NumFactory {
     Num three();
 
     /**
+     * @return the {@link Num} of <code>0.5</code>
+     *
+     * @see #of(String)
+     */
+    Num half();
+
+    /**
      * @return the {@link Num} of <code>0.1</code>
      *
      * @see #of(String)

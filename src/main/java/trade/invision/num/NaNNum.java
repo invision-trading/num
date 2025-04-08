@@ -80,6 +80,11 @@ public final class NaNNum implements Num {
         }
 
         @Override
+        public Num half() {
+            return NaN;
+        }
+
+        @Override
         public Num tenth() {
             return NaN;
         }
