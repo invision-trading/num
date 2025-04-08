@@ -328,7 +328,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num integralPart() {
+    public Num integerPart() {
         return this;
     }
 

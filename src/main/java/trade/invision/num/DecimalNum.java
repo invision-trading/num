@@ -1125,17 +1125,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num minimum(Num other) {
-        return isLessThan(other) ? this : other; // 'NaN' check not necessary when 'other' is on RHS
-    }
-
-    @Override
-    public Num maximum(Num other) {
-        return isGreaterThan(other) ? this : other; // 'NaN' check not necessary when 'other' is on RHS
-    }
-
-    @Override
-    public Num integralPart() {
+    public Num integerPart() {
         return new DecimalNum(BigDecimalMath.integralPart(wrapped), context);
     }
 

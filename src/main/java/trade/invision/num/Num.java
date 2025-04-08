@@ -697,7 +697,9 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @see <a href="https://en.wikipedia.org/wiki/Maximum_and_minimum">Wikipedia</a>
      */
-    Num minimum(Num other);
+    default Num minimum(Num other) {
+        return isLessThan(other) ? this : other; // 'NaN' check not necessary when 'other' is on RHS
+    }
 
     /**
      * @see #maximum(Num)
@@ -730,20 +732,22 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @see <a href="https://en.wikipedia.org/wiki/Maximum_and_minimum">Wikipedia</a>
      */
-    Num maximum(Num other);
+    default Num maximum(Num other) {
+        return isGreaterThan(other) ? this : other; // 'NaN' check not necessary when 'other' is on RHS
+    }
 
     /**
-     * Performs a truncation operation by removing the fractional (digits to the right of the decimal point) part of
+     * Performs a truncation operation by removing the fractional part (digits to the right of the decimal point) of
      * this {@link Num}: <code>int(this)</code>.
      *
-     * @return the integral part {@link Num}
+     * @return the integer part {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/Integral_part">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/w/index.php?title=Integer_part&redirect=no">Wikipedia</a>
      */
-    Num integralPart();
+    Num integerPart();
 
     /**
-     * Performs a truncation operation by removing the integral (digits to the left of the decimal point) part of this
+     * Performs a truncation operation by removing the integer part (digits to the left of the decimal point) of this
      * {@link Num}: <code>frac(this)</code>.
      *
      * @return the fractional part {@link Num}
@@ -1000,6 +1004,27 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
+     * @see #isEqual(Num, Num)
+     */
+    default boolean isEqual(Num other, Number epsilon) {
+        return isEqual(other, factory().of(epsilon));
+    }
+
+    /**
+     * @see #isEqual(Num, Num)
+     */
+    default boolean isEqual(Num other, BigDecimal epsilon) {
+        return isEqual(other, factory().of(epsilon));
+    }
+
+    /**
+     * @see #isEqual(Num, Num)
+     */
+    default boolean isEqual(Num other, String epsilon) {
+        return isEqual(other, factory().of(epsilon));
+    }
+
+    /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly equal to the given
      * {@link Num}: <code>|this - other| <= epsilon</code>.
      *
@@ -1167,6 +1192,27 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
+     * @see #isLessThanOrEqual(Num, Num)
+     */
+    default boolean isLessThanOrEqual(Num other, Number epsilon) {
+        return isLessThanOrEqual(other, factory().of(epsilon));
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Num, Num)
+     */
+    default boolean isLessThanOrEqual(Num other, BigDecimal epsilon) {
+        return isLessThanOrEqual(other, factory().of(epsilon));
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Num, Num)
+     */
+    default boolean isLessThanOrEqual(Num other, String epsilon) {
+        return isLessThanOrEqual(other, factory().of(epsilon));
+    }
+
+    /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly less than or equal to
      * the given {@link Num}: <code>other - this >= -epsilon</code> or <code>other - this ≥ -epsilon</code>.
      *
@@ -1331,6 +1377,27 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      */
     default boolean isGreaterThanOrEqual(String other, Num epsilon) {
         return isGreaterThanOrEqual(factory().of(other), epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Num, Num)
+     */
+    default boolean isGreaterThanOrEqual(Num other, Number epsilon) {
+        return isGreaterThanOrEqual(other, factory().of(epsilon));
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Num, Num)
+     */
+    default boolean isGreaterThanOrEqual(Num other, BigDecimal epsilon) {
+        return isGreaterThanOrEqual(other, factory().of(epsilon));
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Num, Num)
+     */
+    default boolean isGreaterThanOrEqual(Num other, String epsilon) {
+        return isGreaterThanOrEqual(other, factory().of(epsilon));
     }
 
     /**
