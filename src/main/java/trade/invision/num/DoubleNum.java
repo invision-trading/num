@@ -4,10 +4,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.math.RoundingMode;
 
 import static java.lang.Double.isFinite;
 import static java.lang.Double.parseDouble;
 import static java.math.MathContext.DECIMAL64;
+import static java.math.RoundingMode.HALF_EVEN;
+import static java.math.RoundingMode.HALF_UP;
 import static trade.invision.num.NaNNum.NaN;
 
 /**
@@ -207,6 +210,8 @@ public final class DoubleNum implements Num {
         }
     };
 
+    private static final double NATURAL_LOGARITHM_OF_2 = Math.log(2.0);
+
     private final double wrapped;
 
     private DoubleNum(double aDouble) {
@@ -223,7 +228,543 @@ public final class DoubleNum implements Num {
         return FACTORY;
     }
 
-    // TODO
+    @Override
+    public Num add(Num addend) {
+        if (addend.isNaN()) {
+            return NaN;
+        } else if (addend instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).add(decimalNum);
+        } else {
+            return new DoubleNum(wrapped + ((DoubleNum) addend).wrapped);
+        }
+    }
+
+    @Override
+    public Num subtract(Num subtrahend) {
+        if (subtrahend.isNaN()) {
+            return NaN;
+        } else if (subtrahend instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).subtract(decimalNum);
+        } else {
+            return new DoubleNum(wrapped - ((DoubleNum) subtrahend).wrapped);
+        }
+    }
+
+    @Override
+    public Num multiply(Num multiplicand) {
+        if (multiplicand.isNaN()) {
+            return NaN;
+        } else if (multiplicand instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).multiply(decimalNum);
+        } else {
+            return new DoubleNum(wrapped * ((DoubleNum) multiplicand).wrapped);
+        }
+    }
+
+    @Override
+    public Num divide(Num divisor) {
+        if (divisor.isNaN()) {
+            return NaN;
+        } else if (divisor instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).divide(decimalNum);
+        } else {
+            final double quotient = wrapped * ((DoubleNum) divisor).wrapped;
+            if (!isFinite(quotient)) {
+                return NaN;
+            } else {
+                return new DoubleNum(quotient);
+            }
+        }
+    }
+
+    @Override
+    public Num remainder(Num divisor) {
+        if (divisor.isNaN()) {
+            return NaN;
+        } else if (divisor instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).remainder(decimalNum);
+        } else {
+            final double remainder = wrapped % ((DoubleNum) divisor).wrapped;
+            if (!isFinite(remainder)) {
+                return NaN;
+            } else {
+                return new DoubleNum(remainder);
+            }
+        }
+    }
+
+    @Override
+    public Num power(Num exponent) {
+        if (exponent.isNaN()) {
+            return NaN;
+        } else if (exponent instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).power(decimalNum);
+        } else {
+            final double power = Math.pow(wrapped, ((DoubleNum) exponent).wrapped);
+            if (!isFinite(power)) {
+                return NaN;
+            } else {
+                return new DoubleNum(power);
+            }
+        }
+    }
+
+    @Override
+    public Num square() {
+        return new DoubleNum(wrapped * wrapped);
+    }
+
+    @Override
+    public Num cube() {
+        return new DoubleNum(wrapped * wrapped * wrapped);
+    }
+
+    @Override
+    public Num exponential() {
+        return new DoubleNum(Math.exp(wrapped));
+    }
+
+    @Override
+    public Num nthRoot(Num degree) {
+        if (degree.isNaN()) {
+            return NaN;
+        } else if (degree instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).nthRoot(decimalNum);
+        } else {
+            final double nthRoot = Math.pow(wrapped, 1.0 / ((DoubleNum) degree).wrapped);
+            if (!isFinite(nthRoot)) {
+                return NaN;
+            } else {
+                return new DoubleNum(nthRoot);
+            }
+        }
+    }
+
+    @Override
+    public Num squareRoot() {
+        final double squareRoot = Math.sqrt(wrapped);
+        if (!isFinite(squareRoot)) {
+            return NaN;
+        } else {
+            return new DoubleNum(squareRoot);
+        }
+    }
+
+    @Override
+    public Num cubeRoot() {
+        final double cubeRoot = Math.cbrt(wrapped);
+        if (!isFinite(cubeRoot)) {
+            return NaN;
+        } else {
+            return new DoubleNum(cubeRoot);
+        }
+    }
+
+    @Override
+    public Num naturalLogarithm() {
+        final double naturalLogarithm = Math.log(wrapped);
+        if (!isFinite(naturalLogarithm)) {
+            return NaN;
+        } else {
+            return new DoubleNum(naturalLogarithm);
+        }
+    }
+
+    @Override
+    public Num commonLogarithm() {
+        final double commonLogarithm = Math.log10(wrapped);
+        if (!isFinite(commonLogarithm)) {
+            return NaN;
+        } else {
+            return new DoubleNum(commonLogarithm);
+        }
+    }
+
+    @Override
+    public Num binaryLogarithm() {
+        final double numerator = Math.log(wrapped);
+        if (!isFinite(numerator)) {
+            return NaN;
+        }
+        return new DoubleNum(numerator / NATURAL_LOGARITHM_OF_2);
+    }
+
+    @Override
+    public Num logarithm(Num base) {
+        if (base.isNaN()) {
+            return NaN;
+        } else if (base instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).logarithm(decimalNum);
+        } else {
+            final double numerator = Math.log(wrapped);
+            if (!isFinite(numerator)) {
+                return NaN;
+            }
+            final double denominator = Math.log(((DoubleNum) base).wrapped);
+            if (!isFinite(denominator)) {
+                return NaN;
+            }
+            return new DoubleNum(numerator / denominator);
+        }
+    }
+
+    @Override
+    public Num absoluteValue() {
+        return new DoubleNum(Math.abs(wrapped));
+    }
+
+    @Override
+    public Num negate() {
+        return new DoubleNum(-wrapped);
+    }
+
+    @Override
+    public Num reciprocal() {
+        final double reciprocal = 1.0 / wrapped;
+        if (!isFinite(reciprocal)) {
+            return NaN;
+        } else {
+            return new DoubleNum(reciprocal);
+        }
+    }
+
+    @Override
+    public Num floor() {
+        return new DoubleNum(Math.floor(wrapped));
+    }
+
+    @Override
+    public Num ceil() {
+        return new DoubleNum(Math.ceil(wrapped));
+    }
+
+    @Override
+    public Num degrees() {
+        return new DoubleNum(Math.toDegrees(wrapped));
+    }
+
+    @Override
+    public Num radians() {
+        return new DoubleNum(Math.toRadians(wrapped));
+    }
+
+    @Override
+    public Num sine() {
+        final double sine = Math.sin(wrapped);
+        if (!isFinite(sine)) {
+            return NaN;
+        } else {
+            return new DoubleNum(sine);
+        }
+    }
+
+    @Override
+    public Num cosine() {
+        final double cosine = Math.cos(wrapped);
+        if (!isFinite(cosine)) {
+            return NaN;
+        } else {
+            return new DoubleNum(cosine);
+        }
+    }
+
+    @Override
+    public Num tangent() {
+        final double tangent = Math.tan(wrapped);
+        if (!isFinite(tangent)) {
+            return NaN;
+        } else {
+            return new DoubleNum(tangent);
+        }
+    }
+
+    @Override
+    public Num inverseSine() {
+        final double inverseSine = Math.asin(wrapped);
+        if (!isFinite(inverseSine)) {
+            return NaN;
+        } else {
+            return new DoubleNum(inverseSine);
+        }
+    }
+
+    @Override
+    public Num inverseCosine() {
+        final double inverseCosine = Math.acos(wrapped);
+        if (!isFinite(inverseCosine)) {
+            return NaN;
+        } else {
+            return new DoubleNum(inverseCosine);
+        }
+    }
+
+    @Override
+    public Num inverseTangent() {
+        final double inverseTangent = Math.atan(wrapped);
+        if (!isFinite(inverseTangent)) {
+            return NaN;
+        } else {
+            return new DoubleNum(inverseTangent);
+        }
+    }
+
+    @Override
+    public Num inverseTangent2(Num x) {
+        if (x.isNaN()) {
+            return NaN;
+        } else if (x instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).inverseTangent2(decimalNum);
+        } else {
+            final double inverseTangent2 = Math.atan2(wrapped, ((DoubleNum) x).wrapped);
+            if (!isFinite(inverseTangent2)) {
+                return NaN;
+            } else {
+                return new DoubleNum(inverseTangent2);
+            }
+        }
+    }
+
+    @Override
+    public Num hyperbolicSine() {
+        final double hyperbolicSine = Math.sinh(wrapped);
+        if (!isFinite(hyperbolicSine)) {
+            return NaN;
+        } else {
+            return new DoubleNum(hyperbolicSine);
+        }
+    }
+
+    @Override
+    public Num hyperbolicCosine() {
+        final double hyperbolicCosine = Math.cosh(wrapped);
+        if (!isFinite(hyperbolicCosine)) {
+            return NaN;
+        } else {
+            return new DoubleNum(hyperbolicCosine);
+        }
+    }
+
+    @Override
+    public Num hyperbolicTangent() {
+        final double hyperbolicTangent = Math.tanh(wrapped);
+        if (!isFinite(hyperbolicTangent)) {
+            return NaN;
+        } else {
+            return new DoubleNum(hyperbolicTangent);
+        }
+    }
+
+    @Override
+    public Num inverseHyperbolicSine() {
+        final double inverseHyperbolicSine = Math.log(wrapped + Math.sqrt(wrapped * wrapped + 1.0));
+        if (!isFinite(inverseHyperbolicSine)) {
+            return NaN;
+        } else {
+            return new DoubleNum(inverseHyperbolicSine);
+        }
+    }
+
+    @Override
+    public Num inverseHyperbolicCosine() {
+        final double inverseHyperbolicCosine = Math.log(wrapped + Math.sqrt(wrapped * wrapped - 1.0));
+        if (!isFinite(inverseHyperbolicCosine)) {
+            return NaN;
+        } else {
+            return new DoubleNum(inverseHyperbolicCosine);
+        }
+    }
+
+    @Override
+    public Num inverseHyperbolicTangent() {
+        final double inverseHyperbolicTangent = 0.5 * Math.log((1.0 + wrapped) / (1.0 - wrapped));
+        if (!isFinite(inverseHyperbolicTangent)) {
+            return NaN;
+        } else {
+            return new DoubleNum(inverseHyperbolicTangent);
+        }
+    }
+
+    @Override
+    public Num hypotenuse(Num y) {
+        if (y.isNaN()) {
+            return NaN;
+        } else if (y instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).hypotenuse(decimalNum);
+        } else {
+            final double hypotenuse = Math.hypot(wrapped, ((DoubleNum) y).wrapped);
+            if (!isFinite(hypotenuse)) {
+                return NaN;
+            } else {
+                return new DoubleNum(hypotenuse);
+            }
+        }
+    }
+
+    @Override
+    public Num average(Num other) {
+        if (other.isNaN()) {
+            return NaN;
+        } else if (other instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).average(decimalNum);
+        } else {
+            return new DoubleNum((wrapped + ((DoubleNum) other).wrapped) * 0.5);
+        }
+    }
+
+    @Override
+    public Num integerPart() {
+        return new DoubleNum((int) wrapped);
+    }
+
+    @Override
+    public Num fractionalPart() {
+        return new DoubleNum(wrapped - ((int) wrapped));
+    }
+
+    @Override
+    public Num round(int scale, RoundingMode roundingMode) {
+        if (roundingMode == HALF_UP || roundingMode == HALF_EVEN) {
+            if (scale == 0) {
+                return new DoubleNum(roundingMode == HALF_UP ? Math.round(wrapped) : Math.rint(wrapped));
+            } else {
+                final double multiplier = switch (scale) {
+                    case 1 -> 10.0;
+                    case 2 -> 100.0;
+                    case 3 -> 1000.0;
+                    case 4 -> 10000.0;
+                    case 8 -> 100000000.0;
+                    default -> Math.pow(10, scale);
+                };
+                final double toRound = wrapped * multiplier;
+                return new DoubleNum((roundingMode == HALF_UP ? Math.rint(toRound) : Math.round(toRound)) / multiplier);
+            }
+        } else {
+            return new DoubleNum(asBigDecimal().setScale(scale, roundingMode).doubleValue());
+        }
+    }
+
+    @Override
+    public Num precision(MathContext context) {
+        return new DoubleNum(asBigDecimal().round(context).doubleValue());
+    }
+
+    @Override
+    public int signum() {
+        return (int) Math.signum(wrapped);
+    }
+
+    @Override
+    public boolean isNegative() {
+        return wrapped < 0;
+    }
+
+    @Override
+    public boolean isNegativeOrZero() {
+        return wrapped <= 0;
+    }
+
+    @Override
+    public boolean isPositive() {
+        return wrapped > 0;
+    }
+
+    @Override
+    public boolean isPositiveOrZero() {
+        return wrapped >= 0;
+    }
+
+    @Override
+    public boolean isZero() {
+        return wrapped == 0;
+    }
+
+    @Override
+    public boolean isEqual(Num other) {
+        if (other.isNaN()) {
+            return false;
+        } else if (other instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).isEqual(decimalNum);
+        } else {
+            return wrapped == ((DoubleNum) other).wrapped;
+        }
+    }
+
+    @Override
+    public boolean isEqual(Num other, Num epsilon) {
+        if (other.isNaN() || epsilon.isNaN()) {
+            return false;
+        } else if (other instanceof DecimalNum || epsilon instanceof DecimalNum) {
+            return other.factory().of(this).isEqual(other, epsilon);
+        } else {
+            return Math.abs(wrapped - ((DoubleNum) other).wrapped) <= ((DoubleNum) epsilon).wrapped;
+        }
+    }
+
+    @Override
+    public boolean isLessThan(Num other) {
+        if (other.isNaN()) {
+            return false;
+        } else if (other instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).isLessThan(decimalNum);
+        } else {
+            return wrapped < ((DoubleNum) other).wrapped;
+        }
+    }
+
+    @Override
+    public boolean isLessThanOrEqual(Num other) {
+        if (other.isNaN()) {
+            return false;
+        } else if (other instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).isLessThanOrEqual(decimalNum);
+        } else {
+            return wrapped <= ((DoubleNum) other).wrapped;
+        }
+    }
+
+    @Override
+    public boolean isLessThanOrEqual(Num other, Num epsilon) {
+        if (other.isNaN() || epsilon.isNaN()) {
+            return false;
+        } else if (other instanceof DecimalNum || epsilon instanceof DecimalNum) {
+            return other.factory().of(this).isLessThanOrEqual(other, epsilon);
+        } else {
+            return ((DoubleNum) other).wrapped - wrapped >= -((DoubleNum) epsilon).wrapped;
+        }
+    }
+
+    @Override
+    public boolean isGreaterThan(Num other) {
+        if (other.isNaN()) {
+            return false;
+        } else if (other instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).isGreaterThan(decimalNum);
+        } else {
+            return wrapped > ((DoubleNum) other).wrapped;
+        }
+    }
+
+    @Override
+    public boolean isGreaterThanOrEqual(Num other) {
+        if (other.isNaN()) {
+            return false;
+        } else if (other instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).isGreaterThanOrEqual(decimalNum);
+        } else {
+            return wrapped >= ((DoubleNum) other).wrapped;
+        }
+    }
+
+    @Override
+    public boolean isGreaterThanOrEqual(Num other, Num epsilon) {
+        if (other.isNaN() || epsilon.isNaN()) {
+            return false;
+        } else if (other instanceof DecimalNum || epsilon instanceof DecimalNum) {
+            return other.factory().of(this).isGreaterThanOrEqual(other, epsilon);
+        } else {
+            return wrapped - ((DoubleNum) other).wrapped >= -((DoubleNum) epsilon).wrapped;
+        }
+    }
 
     @Override
     public boolean isNaN() {
