@@ -11,11 +11,13 @@ import static java.math.MathContext.DECIMAL64;
 import static trade.invision.num.NaNNum.NaN;
 
 /**
- * {@link DoubleNum} is a {@link Num} implementation using floating-point binary numbers via {@link Double}.
+ * {@link DoubleNum} is a {@link Num} implementation using floating-point binary-represented numbers via {@link Double}.
+ * The <code>double</code> primitive type is used where possible in order to avoid the {@link Double} boxed type.
  *
  * @see Num
  * @see Double
  * @see Math
+ * @see <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic">Wikipedia</a>
  * @see <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">Wikipedia</a>
  */
 public final class DoubleNum implements Num {

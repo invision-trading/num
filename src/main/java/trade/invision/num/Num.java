@@ -7,18 +7,18 @@ import java.math.RoundingMode;
 import static java.math.RoundingMode.HALF_EVEN;
 
 /**
- * {@link Num}, short for "number", is an interface for performing mathematical operations on real numbers in decimal.
- * Implementations wrap a {@link Number} instance so that performing mathematical operations on floating-point binary
- * numbers ({@link Double} via {@link DoubleNum}) or arbitrary-precision decimal numbers ({@link BigDecimal} via
- * {@link DecimalNum}) is trivial. Object instances of this interface are immutable. All methods in this interface
- * return non-<code>null</code> values or throw a {@link RuntimeException}. All implementations of this interface are
- * interoperable with each other. Operations involving different implementations will result in a {@link Num} that
- * trends towards an increase in precision. For example, subtracting a {@link DecimalNum} from a {@link DoubleNum} will
- * result in a {@link DecimalNum}. Similarly, adding a {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of
- * <code>16</code> to a {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>32</code> will result in a
- * {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>32</code>. Mathematical operations that result
- * in <code>NaN</code>, <code>+Infinity</code>, <code>-Infinity</code>, or {@link ArithmeticException} will yield
- * {@link NaNNum}.
+ * {@link Num}, short for "number", is an interface for performing mathematical operations on real decimal numbers.
+ * Implementations wrap a {@link Number} instance so that performing mathematical operations on floating-point
+ * binary-represented numbers ({@link Double} via {@link DoubleNum}) or arbitrary-precision decimal-represented numbers
+ * ({@link BigDecimal} via {@link DecimalNum}) is simple. Object instances of this interface are immutable. All methods
+ * in this interface return non-<code>null</code> values or throw a {@link RuntimeException} (usually an
+ * {@link ArithmeticException}). All implementations of this interface are interoperable with each other. Operations
+ * involving different implementations will result in a {@link Num} that trends towards an increase in precision. For
+ * example, subtracting a {@link DecimalNum} from a {@link DoubleNum} will result in a {@link DecimalNum}. Similarly,
+ * adding a {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>16</code> to a {@link DecimalNum} with
+ * a {@link DecimalNum#getPrecision()} of <code>32</code> will result in a {@link DecimalNum} with a
+ * {@link DecimalNum#getPrecision()} of <code>32</code>. Mathematical operations that result in <code>NaN</code>,
+ * <code>+Infinity</code>, <code>-Infinity</code>, or {@link ArithmeticException} will yield {@link NaNNum}.
  *
  * @see DoubleNum
  * @see DecimalNum
@@ -343,7 +343,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @see <a href="https://en.wikipedia.org/wiki/Common_logarithm">Wikipedia</a>
      */
-    Num logarithm();
+    Num commonLogarithm();
 
     /**
      * @see #logarithm(Num)

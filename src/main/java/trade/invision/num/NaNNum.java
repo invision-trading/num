@@ -188,7 +188,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num logarithm() {
+    public Num commonLogarithm() {
         return this;
     }
 
