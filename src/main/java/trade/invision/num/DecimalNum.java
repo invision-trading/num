@@ -10,6 +10,8 @@ import java.math.RoundingMode;
 import static java.math.MathContext.DECIMAL128;
 import static java.math.MathContext.DECIMAL32;
 import static java.math.MathContext.DECIMAL64;
+import static java.math.RoundingMode.CEILING;
+import static java.math.RoundingMode.FLOOR;
 import static java.math.RoundingMode.HALF_EVEN;
 import static trade.invision.num.NaNNum.NaN;
 
@@ -653,18 +655,18 @@ public final class DecimalNum implements Num {
         return new Factory(context);
     }
 
-    private static final Num NEGATIVE_ONE = decimalNum(-1, 1);
-    private static final Num ZERO = decimalNum(0, 1);
-    private static final Num ONE = decimalNum(1, 1);
-    private static final Num TWO = decimalNum(2, 1);
-    private static final Num THREE = decimalNum(3, 1);
-    private static final Num HALF = decimalNum("0.5", 1);
-    private static final Num TENTH = decimalNum("0.1", 1);
-    private static final Num HUNDREDTH = decimalNum("0.01", 1);
-    private static final Num THOUSANDTH = decimalNum("0.001", 1);
-    private static final Num TEN = decimalNum(10, 1);
-    private static final Num HUNDRED = decimalNum(100, 1);
-    private static final Num THOUSAND = decimalNum(1000, 1);
+    private static final DecimalNum NEGATIVE_ONE = (DecimalNum) decimalNum(-1, 1);
+    private static final DecimalNum ZERO = (DecimalNum) decimalNum(0, 1);
+    private static final DecimalNum ONE = (DecimalNum) decimalNum(1, 1);
+    private static final DecimalNum TWO = (DecimalNum) decimalNum(2, 1);
+    private static final DecimalNum THREE = (DecimalNum) decimalNum(3, 1);
+    private static final DecimalNum HALF = (DecimalNum) decimalNum("0.5", 1);
+    private static final DecimalNum TENTH = (DecimalNum) decimalNum("0.1", 1);
+    private static final DecimalNum HUNDREDTH = (DecimalNum) decimalNum("0.01", 1);
+    private static final DecimalNum THOUSANDTH = (DecimalNum) decimalNum("0.001", 1);
+    private static final DecimalNum TEN = (DecimalNum) decimalNum(10, 1);
+    private static final DecimalNum HUNDRED = (DecimalNum) decimalNum(100, 1);
+    private static final DecimalNum THOUSAND = (DecimalNum) decimalNum(1000, 1);
 
     private static class Factory implements NumFactory {
 
@@ -777,7 +779,468 @@ public final class DecimalNum implements Num {
         return factory;
     }
 
-    // TODO
+    @Override
+    public Num add(Num addend) {
+        if (addend.isNaN()) {
+            return NaN;
+        }
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(addend);
+        final MathContext context = highestPrecisionContext(this, decimalNum);
+        return new DecimalNum(wrapped.add(decimalNum.wrapped, context), context);
+    }
+
+    @Override
+    public Num subtract(Num subtrahend) {
+        if (subtrahend.isNaN()) {
+            return NaN;
+        }
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(subtrahend);
+        final MathContext context = highestPrecisionContext(this, decimalNum);
+        return new DecimalNum(wrapped.subtract(decimalNum.wrapped, context), context);
+    }
+
+    @Override
+    public Num multiply(Num multiplicand) {
+        if (multiplicand.isNaN()) {
+            return NaN;
+        }
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(multiplicand);
+        final MathContext context = highestPrecisionContext(this, decimalNum);
+        return new DecimalNum(wrapped.multiply(decimalNum.wrapped, context), context);
+    }
+
+    @Override
+    public Num divide(Num divisor) {
+        if (divisor.isNaN()) {
+            return NaN;
+        }
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(divisor);
+        final MathContext context = highestPrecisionContext(this, decimalNum);
+        try {
+            return new DecimalNum(wrapped.divide(decimalNum.wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num remainder(Num divisor) {
+        if (divisor.isNaN()) {
+            return NaN;
+        }
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(divisor);
+        final MathContext context = highestPrecisionContext(this, decimalNum);
+        try {
+            return new DecimalNum(wrapped.remainder(decimalNum.wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num power(Num exponent) {
+        if (exponent.isNaN()) {
+            return NaN;
+        }
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(exponent);
+        final MathContext context = highestPrecisionContext(this, decimalNum);
+        try {
+            return new DecimalNum(BigDecimalMath.pow(wrapped, decimalNum.wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num square() {
+        return new DecimalNum(wrapped.multiply(wrapped, context), context);
+    }
+
+    @Override
+    public Num cube() {
+        return new DecimalNum(wrapped.multiply(wrapped, context).multiply(wrapped, context), context);
+    }
+
+    @Override
+    public Num exponential() {
+        return new DecimalNum(BigDecimalMath.exp(wrapped, context), context);
+    }
+
+    @Override
+    public Num nthRoot(Num degree) {
+        if (degree.isNaN()) {
+            return NaN;
+        }
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(degree);
+        final MathContext context = highestPrecisionContext(this, decimalNum);
+        try {
+            return new DecimalNum(BigDecimalMath.root(wrapped, decimalNum.wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num squareRoot() {
+        try {
+            return new DecimalNum(BigDecimalMath.sqrt(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num cubeRoot() {
+        try {
+            return new DecimalNum(BigDecimalMath.root(wrapped, THREE.wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num naturalLogarithm() {
+        try {
+            return new DecimalNum(BigDecimalMath.log(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num commonLogarithm() {
+        try {
+            return new DecimalNum(BigDecimalMath.log10(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num binaryLogarithm() {
+        try {
+            return new DecimalNum(BigDecimalMath.log2(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num logarithm(Num base) {
+        if (base.isNaN()) {
+            return NaN;
+        }
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(base);
+        final MathContext context = highestPrecisionContext(this, decimalNum);
+        try {
+            final BigDecimal numerator = BigDecimalMath.log(wrapped, context);
+            final BigDecimal denominator = BigDecimalMath.log(decimalNum.wrapped, context);
+            return new DecimalNum(numerator.divide(denominator, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num absoluteValue() {
+        return new DecimalNum(wrapped.abs(), context);
+    }
+
+    @Override
+    public Num negate() {
+        return new DecimalNum(wrapped.negate(), context);
+    }
+
+    @Override
+    public Num reciprocal() {
+        try {
+            return new DecimalNum(BigDecimalMath.reciprocal(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num floor() {
+        return new DecimalNum(wrapped.setScale(0, FLOOR), context);
+    }
+
+    @Override
+    public Num ceil() {
+        return new DecimalNum(wrapped.setScale(0, CEILING), context);
+    }
+
+    @Override
+    public Num degrees() {
+        return new DecimalNum(BigDecimalMath.toDegrees(wrapped, context), context);
+    }
+
+    @Override
+    public Num radians() {
+        return new DecimalNum(BigDecimalMath.toRadians(wrapped, context), context);
+    }
+
+    @Override
+    public Num sine() {
+        try {
+            return new DecimalNum(BigDecimalMath.sin(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num cosine() {
+        try {
+            return new DecimalNum(BigDecimalMath.cos(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num tangent() {
+        try {
+            return new DecimalNum(BigDecimalMath.tan(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num inverseSine() {
+        try {
+            return new DecimalNum(BigDecimalMath.asin(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num inverseCosine() {
+        try {
+            return new DecimalNum(BigDecimalMath.acos(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num inverseTangent() {
+        try {
+            return new DecimalNum(BigDecimalMath.atan(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num inverseTangent2(Num x) {
+        if (x.isNaN()) {
+            return NaN;
+        }
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(x);
+        final MathContext context = highestPrecisionContext(this, decimalNum);
+        try {
+            return new DecimalNum(BigDecimalMath.atan2(wrapped, decimalNum.wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num hyperbolicSine() {
+        try {
+            return new DecimalNum(BigDecimalMath.sinh(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num hyperbolicCosine() {
+        try {
+            return new DecimalNum(BigDecimalMath.cosh(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num hyperbolicTangent() {
+        try {
+            return new DecimalNum(BigDecimalMath.tanh(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num inverseHyperbolicSine() {
+        try {
+            return new DecimalNum(BigDecimalMath.asinh(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num inverseHyperbolicCosine() {
+        try {
+            return new DecimalNum(BigDecimalMath.acosh(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num inverseHyperbolicTangent() {
+        try {
+            return new DecimalNum(BigDecimalMath.atanh(wrapped, context), context);
+        } catch (ArithmeticException arithmeticException) {
+            return NaN;
+        }
+    }
+
+    @Override
+    public Num hypotenuse(Num y) {
+        if (y.isNaN()) {
+            return NaN;
+        }
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(y);
+        final MathContext context = highestPrecisionContext(this, decimalNum);
+        final BigDecimal xSquared = wrapped.multiply(wrapped, context);
+        final BigDecimal ySquared = decimalNum.wrapped.multiply(decimalNum.wrapped, context);
+        return new DecimalNum(BigDecimalMath.sqrt(xSquared.add(ySquared, context), context), context);
+    }
+
+    @Override
+    public Num average(Num other) {
+        if (other.isNaN()) {
+            return NaN;
+        }
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(other);
+        final MathContext context = highestPrecisionContext(this, decimalNum);
+        return new DecimalNum(wrapped.add(decimalNum.wrapped, context).multiply(HALF.wrapped, context), context);
+    }
+
+    @Override
+    public Num minimum(Num other) {
+        return isLessThan(other) ? this : other; // 'NaN' check not necessary when 'other' is on RHS
+    }
+
+    @Override
+    public Num maximum(Num other) {
+        return isGreaterThan(other) ? this : other; // 'NaN' check not necessary when 'other' is on RHS
+    }
+
+    @Override
+    public Num integralPart() {
+        return new DecimalNum(BigDecimalMath.integralPart(wrapped), context);
+    }
+
+    @Override
+    public Num fractionalPart() {
+        return new DecimalNum(BigDecimalMath.fractionalPart(wrapped), context);
+    }
+
+    @Override
+    public Num round(int scale, RoundingMode roundingMode) {
+        return new DecimalNum(wrapped.setScale(scale, roundingMode), context);
+    }
+
+    @Override
+    public Num precision(MathContext context) {
+        return new DecimalNum(wrapped.round(context), context);
+    }
+
+    @Override
+    public int signum() {
+        return wrapped.signum();
+    }
+
+    @Override
+    public boolean isNegative() {
+        return signum() < 0;
+    }
+
+    @Override
+    public boolean isNegativeOrZero() {
+        return signum() <= 0;
+    }
+
+    @Override
+    public boolean isPositive() {
+        return signum() > 0;
+    }
+
+    @Override
+    public boolean isPositiveOrZero() {
+        return signum() >= 0;
+    }
+
+    @Override
+    public boolean isZero() {
+        return signum() == 0;
+    }
+
+    @Override
+    public boolean isEqual(Num other) {
+        return !other.isNaN() && wrapped.compareTo(toDecimalNumAsNeeded(other).wrapped) == 0;
+    }
+
+    @Override
+    public boolean isEqual(Num other, Num epsilon) {
+        if (other.isNaN() || epsilon.isNaN()) {
+            return false;
+        }
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(other);
+        final MathContext context = highestPrecisionContext(this, decimalNum);
+        return wrapped.subtract(decimalNum.wrapped, context).abs()
+                .compareTo(toDecimalNumAsNeeded(epsilon).wrapped) <= 0;
+    }
+
+    @Override
+    public boolean isLessThan(Num other) {
+        return !other.isNaN() && wrapped.compareTo(toDecimalNumAsNeeded(other).wrapped) < 0;
+    }
+
+    @Override
+    public boolean isLessThanOrEqual(Num other) {
+        return !other.isNaN() && wrapped.compareTo(toDecimalNumAsNeeded(other).wrapped) <= 0;
+    }
+
+    @Override
+    public boolean isLessThanOrEqual(Num other, Num epsilon) {
+        if (other.isNaN() || epsilon.isNaN()) {
+            return false;
+        }
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(other);
+        final MathContext context = highestPrecisionContext(this, decimalNum);
+        return decimalNum.wrapped.subtract(wrapped, context)
+                .compareTo(toDecimalNumAsNeeded(epsilon).wrapped.negate()) >= 0;
+    }
+
+    @Override
+    public boolean isGreaterThan(Num other) {
+        return !other.isNaN() && wrapped.compareTo(toDecimalNumAsNeeded(other).wrapped) > 0;
+    }
+
+    @Override
+    public boolean isGreaterThanOrEqual(Num other) {
+        return !other.isNaN() && wrapped.compareTo(toDecimalNumAsNeeded(other).wrapped) >= 0;
+    }
+
+    @Override
+    public boolean isGreaterThanOrEqual(Num other, Num epsilon) {
+        if (other.isNaN() || epsilon.isNaN()) {
+            return false;
+        }
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(other);
+        final MathContext context = highestPrecisionContext(this, decimalNum);
+        return wrapped.subtract(decimalNum.wrapped, context)
+                .compareTo(toDecimalNumAsNeeded(epsilon).wrapped.negate()) >= 0;
+    }
 
     @Override
     public boolean isNaN() {
@@ -812,7 +1275,14 @@ public final class DecimalNum implements Num {
 
     @Override
     public int compareTo(@NotNull Num o) {
-        return o.isNaN() ? 0 : wrapped
-                .compareTo(((DecimalNum) (o instanceof DoubleNum oDoubleNum ? factory().of(oDoubleNum) : o)).wrapped);
+        return o.isNaN() ? 0 : wrapped.compareTo(toDecimalNumAsNeeded(o).wrapped);
+    }
+
+    private DecimalNum toDecimalNumAsNeeded(Num num) {
+        return (DecimalNum) (num instanceof DoubleNum doubleNum ? factory().of(doubleNum) : num);
+    }
+
+    private MathContext highestPrecisionContext(DecimalNum first, DecimalNum second) {
+        return first.context.getPrecision() > second.context.getPrecision() ? first.context : second.context;
     }
 }

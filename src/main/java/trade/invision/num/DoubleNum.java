@@ -111,18 +111,18 @@ public final class DoubleNum implements Num {
         return FACTORY;
     }
 
-    private static final Num NEGATIVE_ONE = doubleNum(-1);
-    private static final Num ZERO = doubleNum(0);
-    private static final Num ONE = doubleNum(1);
-    private static final Num TWO = doubleNum(2);
-    private static final Num THREE = doubleNum(3);
-    private static final Num HALF = doubleNum(0.5);
-    private static final Num TENTH = doubleNum(0.1);
-    private static final Num HUNDREDTH = doubleNum(0.01);
-    private static final Num THOUSANDTH = doubleNum(0.001);
-    private static final Num TEN = doubleNum(10);
-    private static final Num HUNDRED = doubleNum(100);
-    private static final Num THOUSAND = doubleNum(1000);
+    private static final DoubleNum NEGATIVE_ONE = (DoubleNum) doubleNum(-1);
+    private static final DoubleNum ZERO = (DoubleNum) doubleNum(0);
+    private static final DoubleNum ONE = (DoubleNum) doubleNum(1);
+    private static final DoubleNum TWO = (DoubleNum) doubleNum(2);
+    private static final DoubleNum THREE = (DoubleNum) doubleNum(3);
+    private static final DoubleNum HALF = (DoubleNum) doubleNum(0.5);
+    private static final DoubleNum TENTH = (DoubleNum) doubleNum(0.1);
+    private static final DoubleNum HUNDREDTH = (DoubleNum) doubleNum(0.01);
+    private static final DoubleNum THOUSANDTH = (DoubleNum) doubleNum(0.001);
+    private static final DoubleNum TEN = (DoubleNum) doubleNum(10);
+    private static final DoubleNum HUNDRED = (DoubleNum) doubleNum(100);
+    private static final DoubleNum THOUSAND = (DoubleNum) doubleNum(1000);
 
     private static final NumFactory FACTORY = new NumFactory() {
 
