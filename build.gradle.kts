@@ -81,6 +81,7 @@ jreleaser {
         armored = true
     }
     deploy {
+        active = NEVER
         maven {
             mavenCentral {
                 create("sonatype") {

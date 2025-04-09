@@ -1,5 +1,9 @@
 # num
 
+[![Maven Central Version](https://img.shields.io/maven-central/v/trade.invision/num)](https://central.sonatype.com/artifact/trade.invision/num)
+[![javadoc](https://javadoc.io/badge2/trade.invision/num/javadoc.svg)](https://javadoc.io/doc/trade.invision/num)
+[![GitHub License](https://img.shields.io/github/license/invision-trading/num)](https://github.com/invision-trading/num/blob/main/LICENSE.txt)
+
 A Java library that abstracts the mathematical operations on real decimal numbers represented in computer memory as
 floating-point binary numbers
 ([`Double`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Double.html)) or arbitrary-precision
@@ -61,9 +65,30 @@ Mathematical operations that result in `NaN`, `+Infinity`, `-Infinity`, or `Arit
 
 ## Usage
 
-Add the dependency to your project:
+First, add the dependency to your project.
 
-// TODO
+For `build.gradle.kts`:
+
+```kotlin
+implementation("trade.invision", "num", "1.0.0")
+```
+
+For `build.gradle`:
+
+```groovy
+implementation group: 'trade.invision', name: 'num', version: '1.0.0'
+```
+
+For `pom.xml`:
+
+```xml
+
+<dependency>
+    <groupId>trade.invision</groupId>
+    <artifactId>num</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
 
 To create a `DoubleNum`, use one of the static methods, such as `DoubleNum.valueOf()` or `DoubleNum.doubleNum()`. Your
 code may look cleaner if you use the `doubleNum()` static import instead of `DoubleNum.valueOf()`. Creating a
@@ -72,6 +97,8 @@ code may look cleaner if you use the `doubleNum()` static import instead of `Dou
 provides approximately the same precision as `double`, allowing up to 16 significant figures of precision, and the same
 [rounding policy](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/RoundingMode.html#HALF_EVEN) as
 `double`.
+
+Check out the [Javadoc](https://javadoc.io/doc/trade.invision/num) for all classes and method signatures.
 
 ## Acknowledgement
 
