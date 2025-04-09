@@ -81,13 +81,15 @@ jreleaser {
         armored = true
     }
     deploy {
-        active = NEVER
         maven {
             mavenCentral {
                 create("sonatype") {
                     active = ALWAYS
                     url = "https://central.sonatype.com/api/v1/publisher"
                     stagingRepository("build/staging-deploy")
+                    // Timeout of 1 hour.
+                    maxRetries = 60
+                    retryDelay = 60
                 }
             }
         }

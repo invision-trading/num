@@ -65,7 +65,7 @@ Mathematical operations that result in `NaN`, `+Infinity`, `-Infinity`, or `Arit
 
 ## Usage
 
-First, add the dependency to your project.
+First, add the dependency to your project:
 
 For `build.gradle.kts`:
 
