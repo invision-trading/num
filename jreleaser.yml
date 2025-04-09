@@ -1,0 +1,11 @@
+signing:
+  active: ALWAYS
+  armored: true
+deploy:
+  maven:
+    mavenCentral:
+      sonatype:
+        active: ALWAYS
+        url: https://central.sonatype.com/api/v1/publisher
+        stagingRepositories:
+          - build/staging-deploy/
