@@ -1,6 +1,10 @@
+import org.jreleaser.model.Active.ALWAYS
+import org.jreleaser.model.Active.NEVER
+
 plugins {
     `java-library`
     `maven-publish`
+    id("org.jreleaser") version "1.17.0"
 }
 
 group = "trade.invision"
@@ -67,6 +71,29 @@ publishing {
     repositories {
         maven {
             url = uri(layout.buildDirectory.dir("staging-deploy"))
+        }
+    }
+}
+
+jreleaser {
+    signing {
+        active = ALWAYS
+        armored = true
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                create("sonatype") {
+                    active = ALWAYS
+                    url = "https://central.sonatype.com/api/v1/publisher"
+                    stagingRepository("build/staging-deploy")
+                }
+            }
+        }
+    }
+    release {
+        github {
+            uploadAssets = NEVER
         }
     }
 }
