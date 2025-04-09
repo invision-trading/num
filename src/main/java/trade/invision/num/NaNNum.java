@@ -363,6 +363,11 @@ public final class NaNNum implements Num {
     }
 
     @Override
+    public boolean isNegativeOrZero(Num epsilon) {
+        return false;
+    }
+
+    @Override
     public boolean isPositive() {
         return false;
     }
@@ -373,7 +378,17 @@ public final class NaNNum implements Num {
     }
 
     @Override
+    public boolean isPositiveOrZero(Num epsilon) {
+        return false;
+    }
+
+    @Override
     public boolean isZero() {
+        return false;
+    }
+
+    @Override
+    public boolean isZero(Num epsilon) {
         return false;
     }
 

@@ -853,6 +853,42 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     boolean isNegativeOrZero();
 
     /**
+     * @see #isNegativeOrZero(Num)
+     */
+    default boolean isNegativeOrZero(Number epsilon) {
+        return isNegativeOrZero(factory().of(epsilon));
+    }
+
+    /**
+     * @see #isNegativeOrZero(Num)
+     */
+    default boolean isNegativeOrZero(BigDecimal epsilon) {
+        return isNegativeOrZero(factory().of(epsilon));
+    }
+
+    /**
+     * @see #isNegativeOrZero(Num)
+     */
+    default boolean isNegativeOrZero(String epsilon) {
+        return isNegativeOrZero(factory().of(epsilon));
+    }
+
+    /**
+     * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly less than or equal to
+     * zero: <code>this &lt;= epsilon</code> or <code>this ≤ epsilon</code>.
+     *
+     * @param epsilon the epsilon (tolerance) {@link Num}
+     *
+     * @return <code>true</code> if this {@link Num} is tolerantly less than or equal to zero, <code>false</code>
+     * otherwise
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Negative_number">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
+     */
+    boolean isNegativeOrZero(Num epsilon);
+
+    /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is greater than zero: <code>this
      * &gt; 0</code>.
      *
@@ -875,6 +911,42 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     boolean isPositiveOrZero();
 
     /**
+     * @see #isPositiveOrZero(Num)
+     */
+    default boolean isPositiveOrZero(Number epsilon) {
+        return isPositiveOrZero(factory().of(epsilon));
+    }
+
+    /**
+     * @see #isPositiveOrZero(Num)
+     */
+    default boolean isPositiveOrZero(BigDecimal epsilon) {
+        return isPositiveOrZero(factory().of(epsilon));
+    }
+
+    /**
+     * @see #isPositiveOrZero(Num)
+     */
+    default boolean isPositiveOrZero(String epsilon) {
+        return isPositiveOrZero(factory().of(epsilon));
+    }
+
+    /**
+     * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly greater than or equal
+     * to zero: <code>this &gt;= -epsilon</code> or <code>this ≥ -epsilon</code>.
+     *
+     * @param epsilon the epsilon (tolerance) {@link Num}
+     *
+     * @return <code>true</code> if this {@link Num} is tolerantly greater than or equal to zero, <code>false</code>
+     * otherwise
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Positive_number">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
+     */
+    boolean isPositiveOrZero(Num epsilon);
+
+    /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is equal to zero:
      * <code>this == 0</code>.
      *
@@ -884,6 +956,41 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
      */
     boolean isZero();
+
+    /**
+     * @see #isZero(Num)
+     */
+    default boolean isZero(Number epsilon) {
+        return isZero(factory().of(epsilon));
+    }
+
+    /**
+     * @see #isZero(Num)
+     */
+    default boolean isZero(BigDecimal epsilon) {
+        return isZero(factory().of(epsilon));
+    }
+
+    /**
+     * @see #isZero(Num)
+     */
+    default boolean isZero(String epsilon) {
+        return isZero(factory().of(epsilon));
+    }
+
+    /**
+     * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly equal to zero:
+     * <code>|this| &lt;= epsilon</code> or <code>|this| ≤ epsilon</code>.
+     *
+     * @param epsilon the epsilon (tolerance) {@link Num}
+     *
+     * @return <code>true</code> if this {@link Num} is tolerantly equal to zero, <code>false</code> otherwise
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/0">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
+     */
+    boolean isZero(Num epsilon);
 
     /**
      * @see #isEqual(Num)

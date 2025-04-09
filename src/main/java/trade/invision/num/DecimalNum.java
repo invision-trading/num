@@ -1160,6 +1160,11 @@ public final class DecimalNum implements Num {
     }
 
     @Override
+    public boolean isNegativeOrZero(Num epsilon) {
+        return !epsilon.isNaN() && wrapped.compareTo(toDecimalNumAsNeeded(epsilon).wrapped) <= 0;
+    }
+
+    @Override
     public boolean isPositive() {
         return signum() > 0;
     }
@@ -1170,8 +1175,18 @@ public final class DecimalNum implements Num {
     }
 
     @Override
+    public boolean isPositiveOrZero(Num epsilon) {
+        return !epsilon.isNaN() && wrapped.compareTo(toDecimalNumAsNeeded(epsilon).wrapped.negate()) >= 0;
+    }
+
+    @Override
     public boolean isZero() {
         return signum() == 0;
+    }
+
+    @Override
+    public boolean isZero(Num epsilon) {
+        return !epsilon.isNaN() && wrapped.abs().compareTo(toDecimalNumAsNeeded(epsilon).wrapped) <= 0;
     }
 
     @Override

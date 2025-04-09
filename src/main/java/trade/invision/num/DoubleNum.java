@@ -563,6 +563,17 @@ public final class DoubleNum implements Num {
     }
 
     @Override
+    public boolean isNegativeOrZero(Num epsilon) {
+        if (epsilon.isNaN()) {
+            return false;
+        } else if (epsilon instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).isNegativeOrZero(decimalNum);
+        } else {
+            return wrapped <= ((DoubleNum) epsilon).wrapped;
+        }
+    }
+
+    @Override
     public boolean isPositive() {
         return wrapped > 0;
     }
@@ -573,8 +584,30 @@ public final class DoubleNum implements Num {
     }
 
     @Override
+    public boolean isPositiveOrZero(Num epsilon) {
+        if (epsilon.isNaN()) {
+            return false;
+        } else if (epsilon instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).isPositiveOrZero(decimalNum);
+        } else {
+            return wrapped >= -((DoubleNum) epsilon).wrapped;
+        }
+    }
+
+    @Override
     public boolean isZero() {
         return wrapped == 0;
+    }
+
+    @Override
+    public boolean isZero(Num epsilon) {
+        if (epsilon.isNaN()) {
+            return false;
+        } else if (epsilon instanceof DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).isZero(decimalNum);
+        } else {
+            return Math.abs(wrapped) <= ((DoubleNum) epsilon).wrapped;
+        }
     }
 
     @Override
