@@ -831,7 +831,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     int signum();
 
     /**
-     * Performs a mathematical comparison operation to determine if this {@link Num} is less than zero: <code>this <
+     * Performs a mathematical comparison operation to determine if this {@link Num} is less than zero: <code>this &lt;
      * 0</code>.
      *
      * @return <code>true</code> if this {@link Num} is less than zero, <code>false</code> otherwise
@@ -843,7 +843,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is less than or equal to zero:
-     * <code>this <= 0</code> or <code>this ≤ 0</code>.
+     * <code>this &lt;= 0</code> or <code>this ≤ 0</code>.
      *
      * @return <code>true</code> if this {@link Num} is less than or equal to zero, <code>false</code> otherwise
      *
@@ -853,8 +853,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     boolean isNegativeOrZero();
 
     /**
-     * Performs a mathematical comparison operation to determine if this {@link Num} is greater than zero: <code>this >
-     * 0</code>.
+     * Performs a mathematical comparison operation to determine if this {@link Num} is greater than zero: <code>this
+     * &gt; 0</code>.
      *
      * @return <code>true</code> if this {@link Num} is greater than zero, <code>false</code> otherwise
      *
@@ -865,7 +865,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is greater than or equal to zero:
-     * <code>this >= 0</code> or <code>this ≥ 0</code>.
+     * <code>this &gt;= 0</code> or <code>this ≥ 0</code>.
      *
      * @return <code>true</code> if this {@link Num} is greater than or equal to zero, <code>false</code> otherwise
      *
@@ -1026,7 +1026,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly equal to the given
-     * {@link Num}: <code>|this - other| <= epsilon</code>.
+     * {@link Num}: <code>|this - other| &lt;= epsilon</code>.
      *
      * @param other   the other {@link Num}
      * @param epsilon the epsilon (tolerance) {@link Num}
@@ -1062,7 +1062,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is less than the given {@link Num}:
-     * <code>this < other</code>.
+     * <code>this &lt; other</code>.
      *
      * @param other the other {@link Num}
      *
@@ -1096,7 +1096,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is less than or equal to the given
-     * {@link Num}: <code>this <= other</code> or <code>this ≤ other</code>.
+     * {@link Num}: <code>this &lt;= other</code> or <code>this ≤ other</code>.
      *
      * @param other the other {@link Num}
      *
@@ -1214,7 +1214,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly less than or equal to
-     * the given {@link Num}: <code>other - this >= -epsilon</code> or <code>other - this ≥ -epsilon</code>.
+     * the given {@link Num}: <code>other - this &gt;= -epsilon</code> or <code>other - this ≥ -epsilon</code>.
      *
      * @param other   the other {@link Num}
      * @param epsilon the epsilon (tolerance) {@link Num}
@@ -1250,7 +1250,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is greater than the given
-     * {@link Num}: <code>this > other</code>.
+     * {@link Num}: <code>this &gt; other</code>.
      *
      * @param other the other {@link Num}
      *
@@ -1284,7 +1284,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is greater than or equal to the
-     * given {@link Num}: <code>this >= other</code> or <code>this ≥ other</code>.
+     * given {@link Num}: <code>this &gt;= other</code> or <code>this ≥ other</code>.
      *
      * @param other the other {@link Num}
      *
@@ -1402,7 +1402,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly greater than or equal
-     * to the given {@link Num}: <code>this - other >= -epsilon</code> or <code>this - other ≥ -epsilon</code>.
+     * to the given {@link Num}: <code>this - other &gt;= -epsilon</code> or <code>this - other ≥ -epsilon</code>.
      *
      * @param other   the other {@link Num}
      * @param epsilon the epsilon (tolerance) {@link Num}

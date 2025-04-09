@@ -80,11 +80,15 @@ library. There are several improvements and additions that this library's `Num` 
 
 - Interoperability between `DoubleNum` and `DecimalNum`.
 - `reciprocal()`, `root(base)`, `logarithm(base)`, `average()`, `precision()`, `round()`, etc.
-- Trigonometry functions via `Math` in `DoubleNum` and via `big-math` in `DecimalNum`.
+- Trigonometry functions via [Math](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html) in
+  `DoubleNum` and via [`big-math`](https://github.com/eobermuhlner/big-math) in `DecimalNum`.
 - No default precision for `DecimalNum` (see [issue](https://github.com/ta4j/ta4j/issues/1086)).
 - Configurable epsilon for tolerant comparison operations (see [ta4j
   `DoubleNum`](https://github.com/ta4j/ta4j/blob/1101dbe059cda92d7dd1f86e755b0466782911d5/ta4j-core/src/main/java/org/ta4j/core/num/DoubleNum.java#L53)).
 - `Number` used instead of primitive overloads.
 - Documentation improvements.
+
+Big thanks to [Eric Obermühlner](https://github.com/eobermuhlner) for the excellent
+[`big-math`](https://github.com/eobermuhlner/big-math) library.
 
 This project is sponsored by [Invision](https://invision.trade).
