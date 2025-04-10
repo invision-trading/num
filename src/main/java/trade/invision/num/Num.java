@@ -1633,21 +1633,21 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @see #precision(int)
      */
-    default Num setContext(int significantFigures) {
+    default Num withContext(int significantFigures) {
         return precision(significantFigures);
     }
 
     /**
      * @see #precision(int, RoundingMode)
      */
-    default Num setContext(int significantFigures, RoundingMode roundingMode) {
+    default Num withContext(int significantFigures, RoundingMode roundingMode) {
         return precision(significantFigures, roundingMode);
     }
 
     /**
      * @see #precision(MathContext)
      */
-    default Num setContext(MathContext context) {
+    default Num withContext(MathContext context) {
         return precision(context);
     }
 
