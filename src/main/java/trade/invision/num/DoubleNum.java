@@ -531,7 +531,11 @@ public final class DoubleNum implements Num {
                     case 2 -> 100.0;
                     case 3 -> 1000.0;
                     case 4 -> 10000.0;
+                    case 5 -> 100000.0;
+                    case 6 -> 1000000.0;
+                    case 7 -> 10000000.0;
                     case 8 -> 100000000.0;
+                    case 9 -> 1000000000.0;
                     default -> Math.pow(10, scale);
                 };
                 final double toRound = wrapped * multiplier;
