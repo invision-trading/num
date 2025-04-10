@@ -14,8 +14,8 @@ import static java.math.RoundingMode.HALF_UP;
 import static trade.invision.num.NaNNum.NaN;
 
 /**
- * {@link DoubleNum} is a {@link Num} implementation using floating-point binary-represented numbers via {@link Double}.
- * The <code>double</code> primitive type is used where possible in order to avoid the {@link Double} boxed type.
+ * {@link DoubleNum} is a {@link Num} implementation using floating-point binary numbers via {@link Double}. The
+ * <code>double</code> primitive type is used where possible in order to avoid the {@link Double} boxed type.
  *
  * @see Num
  * @see Double
@@ -558,12 +558,12 @@ public final class DoubleNum implements Num {
 
     @Override
     public boolean isNegative() {
-        return wrapped < 0;
+        return wrapped < 0.0;
     }
 
     @Override
     public boolean isNegativeOrZero() {
-        return wrapped <= 0;
+        return wrapped <= 0.0;
     }
 
     @Override
@@ -579,12 +579,12 @@ public final class DoubleNum implements Num {
 
     @Override
     public boolean isPositive() {
-        return wrapped > 0;
+        return wrapped > 0.0;
     }
 
     @Override
     public boolean isPositiveOrZero() {
-        return wrapped >= 0;
+        return wrapped >= 0.0;
     }
 
     @Override
@@ -600,7 +600,7 @@ public final class DoubleNum implements Num {
 
     @Override
     public boolean isZero() {
-        return wrapped == 0;
+        return wrapped == 0.0;
     }
 
     @Override

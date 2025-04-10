@@ -12,11 +12,11 @@ decimal numbers
 
 ## Motivation
 
-[IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) floating-point binary-represented numbers [cannot accurately
-represent](https://en.wikipedia.org/wiki/Floating-point_arithmetic#Accuracy_problems) non-integer real decimal numbers
-in computer memory and [FPUs](https://en.wikipedia.org/wiki/Floating-point_unit). In applications that require
-accurate mathematical operations with non-integer (fractional) decimal numbers, such as finance programs involving
-money transactions and currency, using
+[IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) floating-point binary numbers
+[cannot accurately represent](https://en.wikipedia.org/wiki/Floating-point_arithmetic#Accuracy_problems)
+non-integer real decimal numbers in computer memory and [FPUs](https://en.wikipedia.org/wiki/Floating-point_unit). In
+applications that require accurate mathematical operations with non-integer (fractional) decimal numbers, such as
+finance programs involving money transactions and currency, using
 [arbitrary-precision](https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic) decimal numbers is best practice.
 Using floating-point numbers (e.g. `float` or `double`) to represent currency can lead to undesirable
 [inequality calculations](https://0.30000000000000004.com/),
@@ -49,9 +49,9 @@ at runtime.
 [`Num`](src/main/java/trade/invision/num/Num.java), short for "number", is an interface for performing mathematical
 operations on real decimal numbers. Implementations wrap a
 [`Number`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Number.html) instance so that
-performing mathematical operations on floating-point binary-represented numbers
+performing mathematical operations on floating-point binary numbers
 ([`Double`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Double.html) via
-[`DoubleNum`](src/main/java/trade/invision/num/DoubleNum.java)) or arbitrary-precision decimal-represented numbers
+[`DoubleNum`](src/main/java/trade/invision/num/DoubleNum.java)) or arbitrary-precision decimal numbers
 ([`BigDecimal`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/BigDecimal.html) via
 [`DecimalNum`](src/main/java/trade/invision/num/DecimalNum.java)) is simple. Object instances of this interface are
 immutable. All methods in this interface return non-`null` values or throw a `RuntimeException` (usually an [

@@ -16,8 +16,7 @@ import static java.math.RoundingMode.HALF_EVEN;
 import static trade.invision.num.NaNNum.NaN;
 
 /**
- * {@link DecimalNum} is a {@link Num} implementation using arbitrary-precision decimal-represented numbers via
- * {@link BigDecimal}.
+ * {@link DecimalNum} is a {@link Num} implementation using arbitrary-precision decimal numbers via {@link BigDecimal}.
  *
  * @see Num
  * @see BigDecimal
