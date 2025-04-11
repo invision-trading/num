@@ -17,7 +17,7 @@ jobs:
           distribution: corretto
           cache: gradle
       - name: Gradle Clean Build Publish JRelease
-        run: ./gradlew clean build publish jreleaserFullRelease
+        run: ./gradlew clean build publish jreleaserFullRelease --no-daemon
         env:
           JRELEASER_GPG_PASSPHRASE: ${{ secrets.JRELEASER_GPG_PASSPHRASE }}
           JRELEASER_GPG_PUBLIC_KEY: ${{ secrets.JRELEASER_GPG_PUBLIC_KEY }}
