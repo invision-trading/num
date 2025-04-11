@@ -70,13 +70,13 @@ First, add the dependency to your project:
 For `build.gradle.kts`:
 
 ```kotlin
-implementation("trade.invision", "num", "1.1.0")
+implementation("trade.invision", "num", "1.2.0")
 ```
 
 For `build.gradle`:
 
 ```groovy
-implementation group: 'trade.invision', name: 'num', version: '1.1.0'
+implementation group: 'trade.invision', name: 'num', version: '1.2.0'
 ```
 
 For `pom.xml`:
@@ -86,7 +86,7 @@ For `pom.xml`:
 <dependency>
     <groupId>trade.invision</groupId>
     <artifactId>num</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 
@@ -108,7 +108,7 @@ library. There are several improvements and additions that this library's `Num` 
 - Interoperability between `DoubleNum` and `DecimalNum`.
 - `reciprocal()`, `root(base)`, `logarithm(base)`, `average()`, `precision()`, `round()`, etc.
 - Trigonometry functions via [Math](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html) in
-  `DoubleNum` and via [`big-math`](https://github.com/eobermuhlner/big-math) in `DecimalNum`.
+  `DoubleNum` and via [big-math](https://github.com/eobermuhlner/big-math) in `DecimalNum`.
 - No default precision for `DecimalNum` (see [issue](https://github.com/ta4j/ta4j/issues/1086)).
 - Configurable epsilon for tolerant comparison operations (see [ta4j
   `DoubleNum`](https://github.com/ta4j/ta4j/blob/1101dbe059cda92d7dd1f86e755b0466782911d5/ta4j-core/src/main/java/org/ta4j/core/num/DoubleNum.java#L53)).
@@ -116,6 +116,6 @@ library. There are several improvements and additions that this library's `Num` 
 - Documentation improvements.
 
 Big thanks to [Eric Obermühlner](https://github.com/eobermuhlner) for the excellent
-[`big-math`](https://github.com/eobermuhlner/big-math) library.
+[big-math](https://github.com/eobermuhlner/big-math) library.
 
 This project is sponsored by [Invision](https://invision.trade).
