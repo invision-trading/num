@@ -422,6 +422,16 @@ public final class DoubleNum implements Num {
     }
 
     @Override
+    public Num increment() {
+        return new DoubleNum(wrapped + 1.0);
+    }
+
+    @Override
+    public Num decrement() {
+        return new DoubleNum(wrapped - 1.0);
+    }
+
+    @Override
     public Num floor() {
         return new DoubleNum(Math.floor(wrapped));
     }

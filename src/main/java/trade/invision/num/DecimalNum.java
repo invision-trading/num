@@ -996,6 +996,16 @@ public final class DecimalNum implements Num {
     }
 
     @Override
+    public Num increment() {
+        return new DecimalNum(wrapped.add(ONE.wrapped, context), context);
+    }
+
+    @Override
+    public Num decrement() {
+        return new DecimalNum(wrapped.subtract(ONE.wrapped, context), context);
+    }
+
+    @Override
     public Num floor() {
         return new DecimalNum(wrapped.setScale(0, FLOOR), context);
     }

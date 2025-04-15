@@ -417,6 +417,24 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num reciprocal();
 
     /**
+     * Performs an increment operation by adding one to this {@link Num}: <code>this + 1</code>.
+     *
+     * @return the incremented {@link Num}
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Increment_and_decrement_operators">Wikipedia</a>
+     */
+    Num increment();
+
+    /**
+     * Performs a decrement operation by subtracting one from this {@link Num}: <code>this - 1</code>.
+     *
+     * @return the decremented {@link Num}
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Increment_and_decrement_operators">Wikipedia</a>
+     */
+    Num decrement();
+
+    /**
      * Performs a floor operation by computing the largest (closest to positive infinity) integer that is less than or
      * equal to this {@link Num}: <code>⌊this⌋</code>.
      *

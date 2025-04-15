@@ -254,6 +254,16 @@ public final class NaNNum implements Num {
     }
 
     @Override
+    public Num increment() {
+        return this;
+    }
+
+    @Override
+    public Num decrement() {
+        return this;
+    }
+
+    @Override
     public Num floor() {
         return this;
     }
