@@ -1016,6 +1016,16 @@ public final class DecimalNum implements Num {
     }
 
     @Override
+    public Num pi() {
+        return new DecimalNum(BigDecimalMath.pi(context), context);
+    }
+
+    @Override
+    public Num e() {
+        return new DecimalNum(BigDecimalMath.e(context), context);
+    }
+
+    @Override
     public Num sine() {
         try {
             return new DecimalNum(BigDecimalMath.sin(wrapped, context), context);

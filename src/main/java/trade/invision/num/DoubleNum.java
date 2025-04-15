@@ -241,6 +241,8 @@ public final class DoubleNum implements Num {
     };
 
     private static final double NATURAL_LOGARITHM_OF_2 = Math.log(2.0);
+    private static final Num PI = doubleNum(Math.PI);
+    private static final Num E = doubleNum(Math.E);
 
     private final double wrapped;
 
@@ -437,6 +439,16 @@ public final class DoubleNum implements Num {
     @Override
     public Num radians() {
         return new DoubleNum(Math.toRadians(wrapped));
+    }
+
+    @Override
+    public Num pi() {
+        return PI;
+    }
+
+    @Override
+    public Num e() {
+        return E;
     }
 
     @Override
