@@ -659,13 +659,19 @@ public final class DecimalNum implements Num {
     private static final DecimalNum ONE = (DecimalNum) decimalNum(1, 1);
     private static final DecimalNum TWO = (DecimalNum) decimalNum(2, 1);
     private static final DecimalNum THREE = (DecimalNum) decimalNum(3, 1);
-    private static final DecimalNum HALF = (DecimalNum) decimalNum("0.5", 1);
-    private static final DecimalNum TENTH = (DecimalNum) decimalNum("0.1", 1);
-    private static final DecimalNum HUNDREDTH = (DecimalNum) decimalNum("0.01", 1);
-    private static final DecimalNum THOUSANDTH = (DecimalNum) decimalNum("0.001", 1);
+    private static final DecimalNum FOUR = (DecimalNum) decimalNum(4, 1);
+    private static final DecimalNum FIVE = (DecimalNum) decimalNum(5, 1);
+    private static final DecimalNum SIX = (DecimalNum) decimalNum(6, 1);
+    private static final DecimalNum SEVEN = (DecimalNum) decimalNum(7, 1);
+    private static final DecimalNum EIGHT = (DecimalNum) decimalNum(8, 1);
+    private static final DecimalNum NINE = (DecimalNum) decimalNum(9, 1);
     private static final DecimalNum TEN = (DecimalNum) decimalNum(10, 1);
     private static final DecimalNum HUNDRED = (DecimalNum) decimalNum(100, 1);
     private static final DecimalNum THOUSAND = (DecimalNum) decimalNum(1000, 1);
+    private static final DecimalNum TENTH = (DecimalNum) decimalNum("0.1", 1);
+    private static final DecimalNum HUNDREDTH = (DecimalNum) decimalNum("0.01", 1);
+    private static final DecimalNum THOUSANDTH = (DecimalNum) decimalNum("0.001", 1);
+    private static final DecimalNum HALF = (DecimalNum) decimalNum("0.5", 1);
 
     private static class Factory implements NumFactory {
 
@@ -721,8 +727,48 @@ public final class DecimalNum implements Num {
         }
 
         @Override
-        public Num half() {
-            return HALF;
+        public Num four() {
+            return FOUR;
+        }
+
+        @Override
+        public Num five() {
+            return FIVE;
+        }
+
+        @Override
+        public Num six() {
+            return SIX;
+        }
+
+        @Override
+        public Num seven() {
+            return SEVEN;
+        }
+
+        @Override
+        public Num eight() {
+            return EIGHT;
+        }
+
+        @Override
+        public Num nine() {
+            return NINE;
+        }
+
+        @Override
+        public Num ten() {
+            return TEN;
+        }
+
+        @Override
+        public Num hundred() {
+            return HUNDRED;
+        }
+
+        @Override
+        public Num thousand() {
+            return THOUSAND;
         }
 
         @Override
@@ -741,18 +787,8 @@ public final class DecimalNum implements Num {
         }
 
         @Override
-        public Num ten() {
-            return TEN;
-        }
-
-        @Override
-        public Num hundred() {
-            return HUNDRED;
-        }
-
-        @Override
-        public Num thousand() {
-            return THOUSAND;
+        public Num half() {
+            return HALF;
         }
     }
 

@@ -113,13 +113,19 @@ public final class DoubleNum implements Num {
     private static final DoubleNum ONE = (DoubleNum) doubleNum(1);
     private static final DoubleNum TWO = (DoubleNum) doubleNum(2);
     private static final DoubleNum THREE = (DoubleNum) doubleNum(3);
-    private static final DoubleNum HALF = (DoubleNum) doubleNum(0.5);
-    private static final DoubleNum TENTH = (DoubleNum) doubleNum(0.1);
-    private static final DoubleNum HUNDREDTH = (DoubleNum) doubleNum(0.01);
-    private static final DoubleNum THOUSANDTH = (DoubleNum) doubleNum(0.001);
+    private static final DoubleNum FOUR = (DoubleNum) doubleNum(4);
+    private static final DoubleNum FIVE = (DoubleNum) doubleNum(5);
+    private static final DoubleNum SIX = (DoubleNum) doubleNum(6);
+    private static final DoubleNum SEVEN = (DoubleNum) doubleNum(7);
+    private static final DoubleNum EIGHT = (DoubleNum) doubleNum(8);
+    private static final DoubleNum NINE = (DoubleNum) doubleNum(9);
     private static final DoubleNum TEN = (DoubleNum) doubleNum(10);
     private static final DoubleNum HUNDRED = (DoubleNum) doubleNum(100);
     private static final DoubleNum THOUSAND = (DoubleNum) doubleNum(1000);
+    private static final DoubleNum TENTH = (DoubleNum) doubleNum(0.1);
+    private static final DoubleNum HUNDREDTH = (DoubleNum) doubleNum(0.01);
+    private static final DoubleNum THOUSANDTH = (DoubleNum) doubleNum(0.001);
+    private static final DoubleNum HALF = (DoubleNum) doubleNum(0.5);
 
     private static final NumFactory FACTORY = new NumFactory() {
 
@@ -169,8 +175,48 @@ public final class DoubleNum implements Num {
         }
 
         @Override
-        public Num half() {
-            return HALF;
+        public Num four() {
+            return FOUR;
+        }
+
+        @Override
+        public Num five() {
+            return FIVE;
+        }
+
+        @Override
+        public Num six() {
+            return SIX;
+        }
+
+        @Override
+        public Num seven() {
+            return SEVEN;
+        }
+
+        @Override
+        public Num eight() {
+            return EIGHT;
+        }
+
+        @Override
+        public Num nine() {
+            return NINE;
+        }
+
+        @Override
+        public Num ten() {
+            return TEN;
+        }
+
+        @Override
+        public Num hundred() {
+            return HUNDRED;
+        }
+
+        @Override
+        public Num thousand() {
+            return THOUSAND;
         }
 
         @Override
@@ -189,18 +235,8 @@ public final class DoubleNum implements Num {
         }
 
         @Override
-        public Num ten() {
-            return TEN;
-        }
-
-        @Override
-        public Num hundred() {
-            return HUNDRED;
-        }
-
-        @Override
-        public Num thousand() {
-            return THOUSAND;
+        public Num half() {
+            return HALF;
         }
     };
 

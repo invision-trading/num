@@ -34,6 +34,7 @@ public final class NaNNum implements Num {
     }
 
     private static final NumFactory FACTORY = new NumFactory() {
+
         @Override
         public Num of(Number number) {
             return NaN;
@@ -80,7 +81,47 @@ public final class NaNNum implements Num {
         }
 
         @Override
-        public Num half() {
+        public Num four() {
+            return NaN;
+        }
+
+        @Override
+        public Num five() {
+            return NaN;
+        }
+
+        @Override
+        public Num six() {
+            return NaN;
+        }
+
+        @Override
+        public Num seven() {
+            return NaN;
+        }
+
+        @Override
+        public Num eight() {
+            return NaN;
+        }
+
+        @Override
+        public Num nine() {
+            return NaN;
+        }
+
+        @Override
+        public Num ten() {
+            return NaN;
+        }
+
+        @Override
+        public Num hundred() {
+            return NaN;
+        }
+
+        @Override
+        public Num thousand() {
             return NaN;
         }
 
@@ -100,17 +141,7 @@ public final class NaNNum implements Num {
         }
 
         @Override
-        public Num ten() {
-            return NaN;
-        }
-
-        @Override
-        public Num hundred() {
-            return NaN;
-        }
-
-        @Override
-        public Num thousand() {
+        public Num half() {
             return NaN;
         }
     };

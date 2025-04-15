@@ -81,11 +81,67 @@ public interface NumFactory {
     Num three();
 
     /**
-     * @return the {@link Num} of <code>0.5</code>
+     * @return the {@link Num} of <code>4</code>
      *
-     * @see #of(String)
+     * @see #of(Number)
      */
-    Num half();
+    Num four();
+
+    /**
+     * @return the {@link Num} of <code>5</code>
+     *
+     * @see #of(Number)
+     */
+    Num five();
+
+    /**
+     * @return the {@link Num} of <code>6</code>
+     *
+     * @see #of(Number)
+     */
+    Num six();
+
+    /**
+     * @return the {@link Num} of <code>7</code>
+     *
+     * @see #of(Number)
+     */
+    Num seven();
+
+    /**
+     * @return the {@link Num} of <code>8</code>
+     *
+     * @see #of(Number)
+     */
+    Num eight();
+
+    /**
+     * @return the {@link Num} of <code>9</code>
+     *
+     * @see #of(Number)
+     */
+    Num nine();
+
+    /**
+     * @return the {@link Num} of <code>10</code>
+     *
+     * @see #of(Number)
+     */
+    Num ten();
+
+    /**
+     * @return the {@link Num} of <code>100</code>
+     *
+     * @see #of(Number)
+     */
+    Num hundred();
+
+    /**
+     * @return the {@link Num} of <code>1000</code>
+     *
+     * @see #of(Number)
+     */
+    Num thousand();
 
     /**
      * @return the {@link Num} of <code>0.1</code>
@@ -109,23 +165,9 @@ public interface NumFactory {
     Num thousandth();
 
     /**
-     * @return the {@link Num} of <code>10</code>
+     * @return the {@link Num} of <code>0.5</code>
      *
-     * @see #of(Number)
+     * @see #of(String)
      */
-    Num ten();
-
-    /**
-     * @return the {@link Num} of <code>100</code>
-     *
-     * @see #of(Number)
-     */
-    Num hundred();
-
-    /**
-     * @return the {@link Num} of <code>1000</code>
-     *
-     * @see #of(Number)
-     */
-    Num thousand();
+    Num half();
 }
