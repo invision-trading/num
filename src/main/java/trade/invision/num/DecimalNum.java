@@ -1273,6 +1273,11 @@ public final class DecimalNum implements Num {
     }
 
     @Override
+    public Num ifNaN(Num replacement) {
+        return this;
+    }
+
+    @Override
     public BigDecimal asBigDecimal() {
         return wrapped;
     }

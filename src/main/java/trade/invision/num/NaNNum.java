@@ -438,6 +438,11 @@ public final class NaNNum implements Num {
     }
 
     @Override
+    public Num ifNaN(Num replacement) {
+        return replacement;
+    }
+
+    @Override
     public byte asByte() {
         throw new ArithmeticException("No NaN representation for 'byte'!");
     }

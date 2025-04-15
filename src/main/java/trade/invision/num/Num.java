@@ -1168,7 +1168,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
-     * Performs a mathematical comparison operation to determine if this {@link Num} is less than the given {@link Num}:
+     * Performs a mathematical comparison operation to determine if this {@link Num} is less than the given
+     * {@link Num}:
      * <code>this &lt; other</code>.
      *
      * @param other the other {@link Num}
@@ -1528,6 +1529,16 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return <code>true</code> if {@link NaNNum#NaN}, <code>false</code> otherwise
      */
     boolean isNaN();
+
+    /**
+     * Returns the <code>replacement</code> {@link Num} if this {@link Num} is {@link NaNNum#NaN}, otherwise, returns
+     * this {@link Num}.
+     *
+     * @param replacement the replacement {@link Num}
+     *
+     * @return the {@link Num}
+     */
+    Num ifNaN(Num replacement);
 
     /**
      * Converts this {@link Num} to a <code>byte</code>.
