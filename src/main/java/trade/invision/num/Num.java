@@ -773,6 +773,126 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(Number minimum, Number maximum) {
+        return clamp(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(Number minimum, BigDecimal maximum) {
+        return clamp(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(Number minimum, String maximum) {
+        return clamp(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(Number minimum, Num maximum) {
+        return clamp(factory().of(minimum), maximum);
+    }
+
+    /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(BigDecimal minimum, Number maximum) {
+        return clamp(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(BigDecimal minimum, BigDecimal maximum) {
+        return clamp(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(BigDecimal minimum, String maximum) {
+        return clamp(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(BigDecimal minimum, Num maximum) {
+        return clamp(factory().of(minimum), maximum);
+    }
+
+    /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(String minimum, Number maximum) {
+        return clamp(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(String minimum, BigDecimal maximum) {
+        return clamp(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(String minimum, String maximum) {
+        return clamp(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(String minimum, Num maximum) {
+        return clamp(factory().of(minimum), maximum);
+    }
+
+    /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(Num minimum, Number maximum) {
+        return clamp(minimum, factory().of(maximum));
+    }
+
+    /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(Num minimum, BigDecimal maximum) {
+        return clamp(minimum, factory().of(maximum));
+    }
+
+    /**
+     * @see #clamp(Num, Num)
+     */
+    default Num clamp(Num minimum, String maximum) {
+        return clamp(minimum, factory().of(maximum));
+    }
+
+    /**
+     * Performs a clamp operation by limiting this value to the range between the given <code>minimum</code> {@link Num}
+     * and <code>maximum</code> {@link Num}: <code>max(minimum, min(this, maximum))</code>.
+     *
+     * @param minimum the minimum {@link Num}
+     * @param maximum the maximum {@link Num}
+     *
+     * @return the maximum {@link Num}
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Clamp_(function)">Wikipedia</a>
+     */
+    default Num clamp(Num minimum, Num maximum) {
+        return maximum.minimum(maximum(minimum));
+    }
+
+    /**
      * Performs a truncation operation by removing the fractional part (digits to the right of the decimal point) of
      * this {@link Num}: <code>int(this)</code>.
      *
