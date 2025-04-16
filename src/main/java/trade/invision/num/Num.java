@@ -111,35 +111,35 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @see #multiply(Num)
      */
-    default Num multiply(Number multiplicand) {
-        return multiply(factory().of(multiplicand));
+    default Num multiply(Number multiplier) {
+        return multiply(factory().of(multiplier));
     }
 
     /**
      * @see #multiply(Num)
      */
-    default Num multiply(BigDecimal multiplicand) {
-        return multiply(factory().of(multiplicand));
+    default Num multiply(BigDecimal multiplier) {
+        return multiply(factory().of(multiplier));
     }
 
     /**
      * @see #multiply(Num)
      */
-    default Num multiply(String multiplicand) {
-        return multiply(factory().of(multiplicand));
+    default Num multiply(String multiplier) {
+        return multiply(factory().of(multiplier));
     }
 
     /**
      * Performs a multiplication (times) operation by multiplying this {@link Num} by the given {@link Num}: <code>this
-     * * multiplicand</code>.
+     * * multiplier</code>.
      *
-     * @param multiplicand the {@link Num} to multiply by
+     * @param multiplier the {@link Num} to multiply by
      *
      * @return the product {@link Num}
      *
      * @see <a href="https://en.wikipedia.org/wiki/Multiplication">Wikipedia</a>
      */
-    Num multiply(Num multiplicand);
+    Num multiply(Num multiplier);
 
     /**
      * @see #divide(Num)
