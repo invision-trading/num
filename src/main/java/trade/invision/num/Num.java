@@ -878,8 +878,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
-     * Performs a clamp operation by limiting this value to the range between the given <code>minimum</code> {@link Num}
-     * and <code>maximum</code> {@link Num}: <code>max(minimum, min(this, maximum))</code>.
+     * Performs a clamp operation by limiting this value to the range between the given <code>minimum</code> and
+     * <code>maximum</code>: <code>min(maximum, max(this, minimum))</code>.
      *
      * @param minimum the minimum {@link Num}
      * @param maximum the maximum {@link Num}
@@ -1175,8 +1175,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @param other the other {@link Num}
      *
-     * @return <code>true</code> if this {@link Num} is equal to the <code>other</code> {@link Num}, <code>false</code>
-     * otherwise
+     * @return <code>true</code> if this {@link Num} is equal to <code>other</code>, <code>false</code> otherwise
      *
      * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
      */
@@ -1294,8 +1293,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @param other   the other {@link Num}
      * @param epsilon the epsilon (tolerance) {@link Num}
      *
-     * @return <code>true</code> if this {@link Num} is tolerantly equal to the <code>other</code> {@link Num},
-     * <code>false</code> otherwise
+     * @return <code>true</code> if this {@link Num} is tolerantly equal to <code>other</code>, <code>false</code>
+     * otherwise
      *
      * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
      * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
@@ -1329,8 +1328,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @param other the other {@link Num}
      *
-     * @return <code>true</code> if this {@link Num} is less than the <code>other</code> {@link Num}, <code>false</code>
-     * otherwise
+     * @return <code>true</code> if this {@link Num} is less than <code>other</code>, <code>false</code> otherwise
      *
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      */
@@ -1363,8 +1361,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @param other the other {@link Num}
      *
-     * @return <code>true</code> if this {@link Num} is less than or equal to the <code>other</code> {@link Num},
-     * <code>false</code> otherwise
+     * @return <code>true</code> if this {@link Num} is less than or equal to <code>other</code>, <code>false</code>
+     * otherwise
      *
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      */
@@ -1482,8 +1480,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @param other   the other {@link Num}
      * @param epsilon the epsilon (tolerance) {@link Num}
      *
-     * @return <code>true</code> if this {@link Num} is tolerantly less than or equal to the <code>other</code>
-     * {@link Num}, <code>false</code> otherwise
+     * @return <code>true</code> if this {@link Num} is tolerantly less than or equal to <code>other</code>,
+     * <code>false</code> otherwise
      *
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
@@ -1517,8 +1515,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @param other the other {@link Num}
      *
-     * @return <code>true</code> if this {@link Num} is greater than the <code>other</code> {@link Num},
-     * <code>false</code> otherwise
+     * @return <code>true</code> if this {@link Num} is greater than <code>other</code>, <code>false</code> otherwise
      *
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      */
@@ -1551,8 +1548,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @param other the other {@link Num}
      *
-     * @return <code>true</code> if this {@link Num} is greater than or equal to the <code>other</code> {@link Num},
-     * <code>false</code> otherwise
+     * @return <code>true</code> if this {@link Num} is greater than or equal to <code>other</code>, <code>false</code>
+     * otherwise
      *
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      */
@@ -1670,13 +1667,134 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @param other   the other {@link Num}
      * @param epsilon the epsilon (tolerance) {@link Num}
      *
-     * @return <code>true</code> if this {@link Num} is tolerantly greater than or equal to the <code>other</code>
-     * {@link Num}, <code>false</code> otherwise
+     * @return <code>true</code> if this {@link Num} is tolerantly greater than or equal to <code>other</code>,
+     * <code>false</code> otherwise
      *
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
      */
     boolean isGreaterThanOrEqual(Num other, Num epsilon);
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(Number minimum, Number maximum) {
+        return isBetween(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(Number minimum, BigDecimal maximum) {
+        return isBetween(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(Number minimum, String maximum) {
+        return isBetween(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(Number minimum, Num maximum) {
+        return isBetween(factory().of(minimum), maximum);
+    }
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(BigDecimal minimum, Number maximum) {
+        return isBetween(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(BigDecimal minimum, BigDecimal maximum) {
+        return isBetween(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(BigDecimal minimum, String maximum) {
+        return isBetween(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(BigDecimal minimum, Num maximum) {
+        return isBetween(factory().of(minimum), maximum);
+    }
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(String minimum, Number maximum) {
+        return isBetween(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(String minimum, BigDecimal maximum) {
+        return isBetween(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(String minimum, String maximum) {
+        return isBetween(factory().of(minimum), factory().of(maximum));
+    }
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(String minimum, Num maximum) {
+        return isBetween(factory().of(minimum), maximum);
+    }
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(Num minimum, Number maximum) {
+        return isBetween(minimum, factory().of(maximum));
+    }
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(Num minimum, BigDecimal maximum) {
+        return isBetween(minimum, factory().of(maximum));
+    }
+
+    /**
+     * @see #isBetween(Num, Num)
+     */
+    default boolean isBetween(Num minimum, String maximum) {
+        return isBetween(minimum, factory().of(maximum));
+    }
+
+    /**
+     * Performs a mathematical comparison operation to determine if this {@link Num} is exclusively between the given
+     * <code>minimum</code> and <code>maximum</code>: <code>this &gt; minimum &amp; this &lt; maximum</code>.
+     *
+     * @param minimum the minimum {@link Num} (exclusive)
+     * @param maximum the maximum {@link Num} (exclusive)
+     *
+     * @return <code>true</code> if this {@link Num} is exclusively between <code>minimum</code> and
+     * <code>maximum</code>, <code>false</code> otherwise
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Interval_(mathematics)">Wikipedia</a>
+     */
+    default boolean isBetween(Num minimum, Num maximum) {
+        return isGreaterThan(minimum) && isLessThan(maximum);
+    }
 
     /**
      * Checks if this {@link Num} is {@link NaNNum#NaN}.
@@ -1707,8 +1825,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
-     * Returns the <code>replacement</code> {@link Num} if this {@link Num} is {@link NaNNum#NaN}, otherwise, returns
-     * this {@link Num}.
+     * Returns <code>replacement</code> if this {@link Num} is {@link NaNNum#NaN}, otherwise, returns this {@link Num}.
      *
      * @param replacement the replacement {@link Num}
      *
