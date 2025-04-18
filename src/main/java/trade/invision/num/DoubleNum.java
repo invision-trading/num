@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static java.lang.Double.isFinite;
 import static java.lang.Double.parseDouble;
@@ -238,9 +239,14 @@ public final class DoubleNum implements Num {
         public Num half() {
             return HALF;
         }
+
+        @Override
+        public Num random() {
+            return of(ThreadLocalRandom.current().nextDouble());
+        }
     };
 
-    private static final double NATURAL_LOGARITHM_OF_2 = Math.log(2.0);
+    private static final double NATURAL_LOGARITHM_OF_2 = 0.6931471805599453;
     private static final Num PI = doubleNum(Math.PI);
     private static final Num E = doubleNum(Math.E);
 

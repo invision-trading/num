@@ -144,6 +144,11 @@ public final class NaNNum implements Num {
         public Num half() {
             return NaN;
         }
+
+        @Override
+        public Num random() {
+            return NaN;
+        }
     };
 
     private NaNNum() {}

@@ -47,127 +47,98 @@ public interface NumFactory {
 
     /**
      * @return the {@link Num} of <code>-1</code>
-     *
-     * @see #of(Number)
      */
     Num negativeOne();
 
     /**
      * @return the {@link Num} of <code>0</code>
-     *
-     * @see #of(Number)
      */
     Num zero();
 
     /**
      * @return the {@link Num} of <code>1</code>
-     *
-     * @see #of(Number)
      */
     Num one();
 
     /**
      * @return the {@link Num} of <code>2</code>
-     *
-     * @see #of(Number)
      */
     Num two();
 
     /**
      * @return the {@link Num} of <code>3</code>
-     *
-     * @see #of(Number)
      */
     Num three();
 
     /**
      * @return the {@link Num} of <code>4</code>
-     *
-     * @see #of(Number)
      */
     Num four();
 
     /**
      * @return the {@link Num} of <code>5</code>
-     *
-     * @see #of(Number)
      */
     Num five();
 
     /**
      * @return the {@link Num} of <code>6</code>
-     *
-     * @see #of(Number)
      */
     Num six();
 
     /**
      * @return the {@link Num} of <code>7</code>
-     *
-     * @see #of(Number)
      */
     Num seven();
 
     /**
      * @return the {@link Num} of <code>8</code>
-     *
-     * @see #of(Number)
      */
     Num eight();
 
     /**
      * @return the {@link Num} of <code>9</code>
-     *
-     * @see #of(Number)
      */
     Num nine();
 
     /**
      * @return the {@link Num} of <code>10</code>
-     *
-     * @see #of(Number)
      */
     Num ten();
 
     /**
      * @return the {@link Num} of <code>100</code>
-     *
-     * @see #of(Number)
      */
     Num hundred();
 
     /**
      * @return the {@link Num} of <code>1000</code>
-     *
-     * @see #of(Number)
      */
     Num thousand();
 
     /**
      * @return the {@link Num} of <code>0.1</code>
-     *
-     * @see #of(String)
      */
     Num tenth();
 
     /**
      * @return the {@link Num} of <code>0.01</code>
-     *
-     * @see #of(String)
      */
     Num hundredth();
 
     /**
      * @return the {@link Num} of <code>0.001</code>
-     *
-     * @see #of(String)
      */
     Num thousandth();
 
     /**
      * @return the {@link Num} of <code>0.5</code>
-     *
-     * @see #of(String)
      */
     Num half();
+
+    /**
+     * Generates a random number between <code>0</code> (inclusive) and <code>1</code> (exclusive).
+     *
+     * @return the random {@link Num}
+     */
+    Num random();
 }

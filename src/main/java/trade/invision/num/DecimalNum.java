@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static java.math.MathContext.DECIMAL128;
 import static java.math.MathContext.DECIMAL32;
@@ -789,6 +790,16 @@ public final class DecimalNum implements Num {
         @Override
         public Num half() {
             return HALF;
+        }
+
+        @Override
+        public Num random() {
+            // https://gist.github.com/Petersoj/749b4ac7906054242ea2a2089a2e5b2d
+            final StringBuilder stringBuilder = new StringBuilder("0.");
+            for (int digitIndex = 0; digitIndex < context.getPrecision(); digitIndex++) {
+                stringBuilder.append(ThreadLocalRandom.current().nextInt(10));
+            }
+            return decimalNum(stringBuilder.toString(), context);
         }
     }
 
