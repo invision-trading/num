@@ -70,13 +70,13 @@ First, add the dependency to your project:
 For `build.gradle.kts`:
 
 ```kotlin
-implementation("trade.invision", "num", "1.7.0")
+implementation("trade.invision", "num", "1.7.1")
 ```
 
 For `build.gradle`:
 
 ```groovy
-implementation group: 'trade.invision', name: 'num', version: '1.7.0'
+implementation group: 'trade.invision', name: 'num', version: '1.7.1'
 ```
 
 For `pom.xml`:
@@ -86,7 +86,7 @@ For `pom.xml`:
 <dependency>
     <groupId>trade.invision</groupId>
     <artifactId>num</artifactId>
-    <version>1.7.0</version>
+    <version>1.7.1</version>
 </dependency>
 ```
 
