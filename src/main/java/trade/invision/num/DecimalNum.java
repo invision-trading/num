@@ -2,12 +2,14 @@ package trade.invision.num;
 
 import ch.obermuhlner.math.big.BigDecimalMath;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static java.math.BigDecimal.ONE;
 import static java.math.MathContext.DECIMAL128;
 import static java.math.MathContext.DECIMAL32;
 import static java.math.MathContext.DECIMAL64;
@@ -655,28 +657,27 @@ public final class DecimalNum implements Num {
         return new Factory(context);
     }
 
-    private static final DecimalNum NEGATIVE_ONE = (DecimalNum) decimalNum(-1, 1);
-    private static final DecimalNum ZERO = (DecimalNum) decimalNum(0, 1);
-    private static final DecimalNum ONE = (DecimalNum) decimalNum(1, 1);
-    private static final DecimalNum TWO = (DecimalNum) decimalNum(2, 1);
-    private static final DecimalNum THREE = (DecimalNum) decimalNum(3, 1);
-    private static final DecimalNum FOUR = (DecimalNum) decimalNum(4, 1);
-    private static final DecimalNum FIVE = (DecimalNum) decimalNum(5, 1);
-    private static final DecimalNum SIX = (DecimalNum) decimalNum(6, 1);
-    private static final DecimalNum SEVEN = (DecimalNum) decimalNum(7, 1);
-    private static final DecimalNum EIGHT = (DecimalNum) decimalNum(8, 1);
-    private static final DecimalNum NINE = (DecimalNum) decimalNum(9, 1);
-    private static final DecimalNum TEN = (DecimalNum) decimalNum(10, 1);
-    private static final DecimalNum HUNDRED = (DecimalNum) decimalNum(100, 1);
-    private static final DecimalNum THOUSAND = (DecimalNum) decimalNum(1000, 1);
-    private static final DecimalNum TENTH = (DecimalNum) decimalNum("0.1", 1);
-    private static final DecimalNum HUNDREDTH = (DecimalNum) decimalNum("0.01", 1);
-    private static final DecimalNum THOUSANDTH = (DecimalNum) decimalNum("0.001", 1);
-    private static final DecimalNum HALF = (DecimalNum) decimalNum("0.5", 1);
-
     private static class Factory implements NumFactory {
 
         private final MathContext context;
+        private @Nullable Num negativeOne;
+        private @Nullable Num zero;
+        private @Nullable Num one;
+        private @Nullable Num two;
+        private @Nullable Num three;
+        private @Nullable Num four;
+        private @Nullable Num five;
+        private @Nullable Num six;
+        private @Nullable Num seven;
+        private @Nullable Num eight;
+        private @Nullable Num nine;
+        private @Nullable Num ten;
+        private @Nullable Num hundred;
+        private @Nullable Num thousand;
+        private @Nullable Num tenth;
+        private @Nullable Num hundredth;
+        private @Nullable Num thousandth;
+        private @Nullable Num half;
 
         private Factory(MathContext context) {
             this.context = context;
@@ -704,92 +705,146 @@ public final class DecimalNum implements Num {
 
         @Override
         public Num negativeOne() {
-            return NEGATIVE_ONE;
+            if (negativeOne == null) {
+                negativeOne = decimalNum(-1, context);
+            }
+            return negativeOne;
         }
 
         @Override
         public Num zero() {
-            return ZERO;
+            if (zero == null) {
+                zero = decimalNum(0, context);
+            }
+            return zero;
         }
 
         @Override
         public Num one() {
-            return ONE;
+            if (one == null) {
+                one = decimalNum(1, context);
+            }
+            return one;
         }
 
         @Override
         public Num two() {
-            return TWO;
+            if (two == null) {
+                two = decimalNum(2, context);
+            }
+            return two;
         }
 
         @Override
         public Num three() {
-            return THREE;
+            if (three == null) {
+                three = decimalNum(3, context);
+            }
+            return three;
         }
 
         @Override
         public Num four() {
-            return FOUR;
+            if (four == null) {
+                four = decimalNum(4, context);
+            }
+            return four;
         }
 
         @Override
         public Num five() {
-            return FIVE;
+            if (five == null) {
+                five = decimalNum(5, context);
+            }
+            return five;
         }
 
         @Override
         public Num six() {
-            return SIX;
+            if (six == null) {
+                six = decimalNum(6, context);
+            }
+            return six;
         }
 
         @Override
         public Num seven() {
-            return SEVEN;
+            if (seven == null) {
+                seven = decimalNum(7, context);
+            }
+            return seven;
         }
 
         @Override
         public Num eight() {
-            return EIGHT;
+            if (eight == null) {
+                eight = decimalNum(8, context);
+            }
+            return eight;
         }
 
         @Override
         public Num nine() {
-            return NINE;
+            if (nine == null) {
+                nine = decimalNum(9, context);
+            }
+            return nine;
         }
 
         @Override
         public Num ten() {
-            return TEN;
+            if (ten == null) {
+                ten = decimalNum(10, context);
+            }
+            return ten;
         }
 
         @Override
         public Num hundred() {
-            return HUNDRED;
+            if (hundred == null) {
+                hundred = decimalNum(100, context);
+            }
+            return hundred;
         }
 
         @Override
         public Num thousand() {
-            return THOUSAND;
+            if (thousand == null) {
+                thousand = decimalNum(1000, context);
+            }
+            return thousand;
         }
 
         @Override
         public Num tenth() {
-            return TENTH;
+            if (tenth == null) {
+                tenth = decimalNum("0.1", context);
+            }
+            return tenth;
         }
 
         @Override
         public Num hundredth() {
-            return HUNDREDTH;
+            if (hundredth == null) {
+                hundredth = decimalNum("0.01", context);
+            }
+            return hundredth;
         }
 
         @Override
         public Num thousandth() {
-            return THOUSANDTH;
+            if (thousandth == null) {
+                thousandth = decimalNum("0.001", context);
+            }
+            return thousandth;
         }
 
         @Override
         public Num half() {
-            return HALF;
+            if (half == null) {
+                half = decimalNum("0.5", context);
+            }
+            return half;
         }
 
         @Override
@@ -802,6 +857,9 @@ public final class DecimalNum implements Num {
             return decimalNum(stringBuilder.toString(), context);
         }
     }
+
+    private static final BigDecimal THREE = new BigDecimal(3);
+    private static final BigDecimal HALF = new BigDecimal("0.5");
 
     private final BigDecimal wrapped;
     private final MathContext context;
@@ -938,7 +996,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num cubeRoot() {
         try {
-            return new DecimalNum(BigDecimalMath.root(wrapped, THREE.wrapped, context), context);
+            return new DecimalNum(BigDecimalMath.root(wrapped, THREE, context), context);
         } catch (ArithmeticException arithmeticException) {
             return NaN;
         }
@@ -1008,12 +1066,12 @@ public final class DecimalNum implements Num {
 
     @Override
     public Num increment() {
-        return new DecimalNum(wrapped.add(ONE.wrapped, context), context);
+        return new DecimalNum(wrapped.add(ONE, context), context);
     }
 
     @Override
     public Num decrement() {
-        return new DecimalNum(wrapped.subtract(ONE.wrapped, context), context);
+        return new DecimalNum(wrapped.subtract(ONE, context), context);
     }
 
     @Override
@@ -1187,7 +1245,7 @@ public final class DecimalNum implements Num {
         }
         final DecimalNum decimalNum = toDecimalNumAsNeeded(other);
         final MathContext context = highestPrecisionContext(this, decimalNum);
-        return new DecimalNum(wrapped.add(decimalNum.wrapped, context).multiply(HALF.wrapped, context), context);
+        return new DecimalNum(wrapped.add(decimalNum.wrapped, context).multiply(HALF, context), context);
     }
 
     @Override
