@@ -306,7 +306,7 @@ public final class DoubleNum implements Num {
         } else if (divisor instanceof DecimalNum decimalNum) {
             return decimalNum.factory().of(this).divide(decimalNum);
         } else {
-            final double quotient = wrapped * ((DoubleNum) divisor).wrapped;
+            final double quotient = wrapped / ((DoubleNum) divisor).wrapped;
             return !isFinite(quotient) ? NaN : new DoubleNum(quotient);
         }
     }
