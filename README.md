@@ -162,7 +162,6 @@ quick reference:
 - [`isLessThanOrEqual`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#isLessThanOrEqual(trade.invision.num.Num))
 - [`isGreaterThan`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#isGreaterThan(trade.invision.num.Num))
 - [`isGreaterThanOrEqual`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#isGreaterThanOrEqual(trade.invision.num.Num))
-- [`isBetween`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#isBetween(trade.invision.num.Num,trade.invision.num.Num))
 - [`isNaN`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#isNaN())
 - [`ifNaN`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#ifNaN(trade.invision.num.Num))
 - [`asByte`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#asByte())
