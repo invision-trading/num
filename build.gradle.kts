@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "trade.invision"
-version = "1.7.2"
+version = "1.8.0"
 
 repositories {
     mavenCentral()
