@@ -36,6 +36,8 @@ tasks.javadoc.configure {
     }
 }
 
+val stagingDeployDirectory = file("build/staging-deploy")
+
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
@@ -70,7 +72,7 @@ publishing {
     }
     repositories {
         maven {
-            url = uri(layout.buildDirectory.dir("staging-deploy"))
+            url = uri(stagingDeployDirectory)
         }
     }
 }
@@ -86,7 +88,7 @@ jreleaser {
                 create("sonatype") {
                     active = ALWAYS
                     url = "https://central.sonatype.com/api/v1/publisher"
-                    stagingRepository("build/staging-deploy")
+                    stagingRepository(stagingDeployDirectory.path)
                     // Timeout of 1 hour.
                     maxRetries = 60
                     retryDelay = 60
@@ -100,3 +102,7 @@ jreleaser {
         }
     }
 }
+
+tasks.build { mustRunAfter(tasks.clean) }
+tasks.publish { mustRunAfter(tasks.build) }
+tasks.jreleaserFullRelease { dependsOn(tasks.clean, tasks.build, tasks.publish) }
