@@ -14,8 +14,8 @@ import static java.math.RoundingMode.HALF_EVEN;
  * non-<code>null</code> values or throw a {@link RuntimeException} (usually an {@link ArithmeticException}). All
  * implementations of this interface are interoperable with each other. Operations involving different implementations
  * will result in a {@link Num} that trends towards an increase in precision. For example, subtracting a
- * {@link DecimalNum} from a {@link DoubleNum} will result in a {@link DecimalNum}. Similarly, adding a
- * {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>16</code> to a {@link DecimalNum} with a
+ * {@link DecimalNum} from a {@link DoubleNum} will result in a {@link DecimalNum}. Similarly, subtracting a
+ * {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>16</code> from a {@link DecimalNum} with a
  * {@link DecimalNum#getPrecision()} of <code>32</code> will result in a {@link DecimalNum} with a
  * {@link DecimalNum#getPrecision()} of <code>32</code>. Mathematical operations that result in <code>NaN</code>,
  * <code>+Infinity</code>, <code>-Infinity</code>, or {@link ArithmeticException} will yield {@link NaNNum}.

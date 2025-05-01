@@ -58,8 +58,8 @@ immutable. All methods in this interface return non-`null` values or throw a `Ru
 `ArithmeticException`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ArithmeticException.html)).
 All implementations of this interface are interoperable with each other. Operations involving different
 implementations will result in a `Num` that trends towards an increase in precision. For example, subtracting a
-`DecimalNum` from a `DoubleNum` will result in a `DecimalNum`. Similarly, adding a `DecimalNum` with a `precision` of
-`16` to a `DecimalNum`  with a `precision` of `32` will result in a `DecimalNum`  with a `precision` of `32`.
+`DecimalNum` from a `DoubleNum` will result in a `DecimalNum`. Similarly, subtracting a `DecimalNum` with a `precision`
+of `16` from a `DecimalNum`  with a `precision` of `32` will result in a `DecimalNum`  with a `precision` of `32`.
 Mathematical operations that result in `NaN`, `+Infinity`, `-Infinity`, or `ArithmeticException` will yield
 [`NaNNum`](src/main/java/trade/invision/num/NaNNum.java).
 
@@ -189,7 +189,7 @@ library. There are several improvements and additions that this library's `Num` 
 - `reciprocal()`, `root(base)`, `logarithm(base)`, `average()`, `precision()`, `round()`, etc.
 - Trigonometry functions via [Math](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html) in
   `DoubleNum` and via [big-math](https://github.com/eobermuhlner/big-math) in `DecimalNum`.
-- No default precision for `DecimalNum` (see [issue](https://github.com/ta4j/ta4j/issues/1086)).
+- No default precision for `DecimalNum` (see [ta4j issue](https://github.com/ta4j/ta4j/issues/1086)).
 - Configurable epsilon for tolerant comparison operations (see [ta4j
   `DoubleNum`](https://github.com/ta4j/ta4j/blob/1101dbe059cda92d7dd1f86e755b0466782911d5/ta4j-core/src/main/java/org/ta4j/core/num/DoubleNum.java#L53)).
 - `Number` used instead of primitive overloads.
