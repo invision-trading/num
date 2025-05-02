@@ -82,7 +82,6 @@ implementation group: 'trade.invision', name: 'num', version: '1.8.0'
 For `pom.xml`:
 
 ```xml
-
 <dependency>
     <groupId>trade.invision</groupId>
     <artifactId>num</artifactId>
