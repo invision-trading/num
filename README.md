@@ -10,6 +10,30 @@ floating-point binary numbers
 decimal numbers
 ([`BigDecimal`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/BigDecimal.html)).
 
+## Installation
+
+For `build.gradle.kts`:
+
+```kotlin
+implementation("trade.invision", "num", "1.8.0")
+```
+
+For `build.gradle`:
+
+```groovy
+implementation group: 'trade.invision', name: 'num', version: '1.8.0'
+```
+
+For `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>trade.invision</groupId>
+    <artifactId>num</artifactId>
+    <version>1.8.0</version>
+</dependency>
+```
+
 ## Motivation
 
 [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) floating-point binary numbers
@@ -62,30 +86,6 @@ implementations will result in a `Num` that trends towards an increase in precis
 of `16` from a `DecimalNum`  with a `precision` of `32` will result in a `DecimalNum`  with a `precision` of `32`.
 Mathematical operations that result in `NaN`, `+Infinity`, `-Infinity`, or `ArithmeticException` will yield
 [`NaNNum`](src/main/java/trade/invision/num/NaNNum.java).
-
-## Installation
-
-For `build.gradle.kts`:
-
-```kotlin
-implementation("trade.invision", "num", "1.8.0")
-```
-
-For `build.gradle`:
-
-```groovy
-implementation group: 'trade.invision', name: 'num', version: '1.8.0'
-```
-
-For `pom.xml`:
-
-```xml
-<dependency>
-    <groupId>trade.invision</groupId>
-    <artifactId>num</artifactId>
-    <version>1.8.0</version>
-</dependency>
-```
 
 ## Usage
 
