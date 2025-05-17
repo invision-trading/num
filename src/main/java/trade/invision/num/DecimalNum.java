@@ -299,7 +299,8 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * Creates a new {@link DecimalNum} using the given {@link String} representing a number and {@link MathContext}.
+     * Creates a new {@link DecimalNum} using the given {@link String} representing a number and the given
+     * {@link MathContext}.
      *
      * @param string  the {@link String}
      * @param context the {@link MathContext}
@@ -307,7 +308,7 @@ public final class DecimalNum implements Num {
      * @return the {@link Num}
      */
     public static Num decimalNum(String string, MathContext context) {
-        return new DecimalNum(new BigDecimal(string, context), context);
+        return string.equals(NaN.toString()) ? NaN : new DecimalNum(new BigDecimal(string, context), context);
     }
 
     /**

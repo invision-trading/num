@@ -109,24 +109,24 @@ public final class DoubleNum implements Num {
         return FACTORY;
     }
 
-    private static final DoubleNum NEGATIVE_ONE = (DoubleNum) doubleNum(-1);
-    private static final DoubleNum ZERO = (DoubleNum) doubleNum(0);
-    private static final DoubleNum ONE = (DoubleNum) doubleNum(1);
-    private static final DoubleNum TWO = (DoubleNum) doubleNum(2);
-    private static final DoubleNum THREE = (DoubleNum) doubleNum(3);
-    private static final DoubleNum FOUR = (DoubleNum) doubleNum(4);
-    private static final DoubleNum FIVE = (DoubleNum) doubleNum(5);
-    private static final DoubleNum SIX = (DoubleNum) doubleNum(6);
-    private static final DoubleNum SEVEN = (DoubleNum) doubleNum(7);
-    private static final DoubleNum EIGHT = (DoubleNum) doubleNum(8);
-    private static final DoubleNum NINE = (DoubleNum) doubleNum(9);
-    private static final DoubleNum TEN = (DoubleNum) doubleNum(10);
-    private static final DoubleNum HUNDRED = (DoubleNum) doubleNum(100);
-    private static final DoubleNum THOUSAND = (DoubleNum) doubleNum(1000);
-    private static final DoubleNum TENTH = (DoubleNum) doubleNum(0.1);
-    private static final DoubleNum HUNDREDTH = (DoubleNum) doubleNum(0.01);
-    private static final DoubleNum THOUSANDTH = (DoubleNum) doubleNum(0.001);
-    private static final DoubleNum HALF = (DoubleNum) doubleNum(0.5);
+    private static final Num NEGATIVE_ONE = doubleNum(-1);
+    private static final Num ZERO = doubleNum(0);
+    private static final Num ONE = doubleNum(1);
+    private static final Num TWO = doubleNum(2);
+    private static final Num THREE = doubleNum(3);
+    private static final Num FOUR = doubleNum(4);
+    private static final Num FIVE = doubleNum(5);
+    private static final Num SIX = doubleNum(6);
+    private static final Num SEVEN = doubleNum(7);
+    private static final Num EIGHT = doubleNum(8);
+    private static final Num NINE = doubleNum(9);
+    private static final Num TEN = doubleNum(10);
+    private static final Num HUNDRED = doubleNum(100);
+    private static final Num THOUSAND = doubleNum(1000);
+    private static final Num TENTH = doubleNum(0.1);
+    private static final Num HUNDREDTH = doubleNum(0.01);
+    private static final Num THOUSANDTH = doubleNum(0.001);
+    private static final Num HALF = doubleNum(0.5);
 
     private static final NumFactory FACTORY = new NumFactory() {
 
