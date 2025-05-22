@@ -289,13 +289,13 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public Num multiply(Num multiplicand) {
-        if (multiplicand.isNaN()) {
+    public Num multiply(Num multiplier) {
+        if (multiplier.isNaN()) {
             return NaN;
-        } else if (multiplicand instanceof DecimalNum decimalNum) {
+        } else if (multiplier instanceof DecimalNum decimalNum) {
             return decimalNum.factory().of(this).multiply(decimalNum);
         } else {
-            return new DoubleNum(wrapped * ((DoubleNum) multiplicand).wrapped);
+            return new DoubleNum(wrapped * ((DoubleNum) multiplier).wrapped);
         }
     }
 

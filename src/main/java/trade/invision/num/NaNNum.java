@@ -174,7 +174,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num multiply(Num multiplicand) {
+    public Num multiply(Num multiplier) {
         return this;
     }
 

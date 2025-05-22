@@ -905,11 +905,11 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num multiply(Num multiplicand) {
-        if (multiplicand.isNaN()) {
+    public Num multiply(Num multiplier) {
+        if (multiplier.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(multiplicand);
+        final DecimalNum decimalNum = toDecimalNumAsNeeded(multiplier);
         final MathContext context = highestPrecisionContext(this, decimalNum);
         return new DecimalNum(wrapped.multiply(decimalNum.wrapped, context), context);
     }
