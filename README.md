@@ -15,13 +15,13 @@ decimal numbers
 For `build.gradle.kts`:
 
 ```kotlin
-implementation("trade.invision", "num", "1.8.2")
+implementation("trade.invision", "num", "1.9.0")
 ```
 
 For `build.gradle`:
 
 ```groovy
-implementation group: 'trade.invision', name: 'num', version: '1.8.2'
+implementation group: 'trade.invision', name: 'num', version: '1.9.0'
 ```
 
 For `pom.xml`:
@@ -30,7 +30,7 @@ For `pom.xml`:
 <dependency>
     <groupId>trade.invision</groupId>
     <artifactId>num</artifactId>
-    <version>1.8.2</version>
+    <version>1.9.0</version>
 </dependency>
 ```
 
