@@ -187,6 +187,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num divide(Num divisor);
 
     /**
+     * @see #remainder(Number)
+     */
+    default Num mod(Number divisor) {
+        return remainder(divisor);
+    }
+
+    /**
+     * @see #remainder(BigDecimal)
+     */
+    default Num mod(BigDecimal divisor) {
+        return remainder(divisor);
+    }
+
+    /**
+     * @see #remainder(String)
+     */
+    default Num mod(String divisor) {
+        return remainder(divisor);
+    }
+
+    /**
+     * @see #remainder(Num)
+     */
+    default Num mod(Num divisor) {
+        return remainder(divisor);
+    }
+
+    /**
      * @see #remainder(Num)
      * @see NumFactory#of(Number)
      */
@@ -221,6 +249,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Remainder">Wikipedia</a>
      */
     Num remainder(Num divisor);
+
+    /**
+     * @see #power(Number)
+     */
+    default Num pow(Number exponent) {
+        return power(exponent);
+    }
+
+    /**
+     * @see #power(BigDecimal)
+     */
+    default Num pow(BigDecimal exponent) {
+        return power(exponent);
+    }
+
+    /**
+     * @see #power(String)
+     */
+    default Num pow(String exponent) {
+        return power(exponent);
+    }
+
+    /**
+     * @see #power(Num)
+     */
+    default Num pow(Num exponent) {
+        return power(exponent);
+    }
 
     /**
      * @see #power(Num)
@@ -279,6 +335,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num cube();
 
     /**
+     * @see #exponential()
+     */
+    default Num exp() {
+        return exponential();
+    }
+
+    /**
      * Performs an exponential (<code>e</code> raised to the power of) operation by raising <a
      * href="https://en.wikipedia.org/wiki/Euler%27s_number"><i>e</i> (Euler's number)</a> to this {@link Num}:
      * <code><i>e</i> ^ this</code> or <code>e<sup>this</sup></code>.
@@ -326,6 +389,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num nthRoot(Num degree);
 
     /**
+     * @see #squareRoot()
+     */
+    default Num sqrt() {
+        return squareRoot();
+    }
+
+    /**
      * Performs a square root (root two) operation using this {@link Num} as the radicand and <code>2</code> as the
      * degree in the radical: <code><sup>2</sup>√this</code>.
      *
@@ -336,6 +406,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num squareRoot();
 
     /**
+     * @see #cubeRoot()
+     */
+    default Num cbrt() {
+        return cubeRoot();
+    }
+
+    /**
      * Performs a cube root (root three) operation using this {@link Num} as the radicand and <code>3</code> as the
      * degree in the radical: <code><sup>3</sup>√this</code>.
      *
@@ -344,6 +421,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Cube_root">Wikipedia</a>
      */
     Num cubeRoot();
+
+    /**
+     * @see #naturalLogarithm()
+     */
+    default Num ln() {
+        return naturalLogarithm();
+    }
 
     /**
      * Performs a natural logarithm (logarithm with a base of <i>e</i>) operation using this {@link Num} as the
@@ -357,6 +441,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num naturalLogarithm();
 
     /**
+     * @see #commonLogarithm()
+     */
+    default Num log10() {
+        return commonLogarithm();
+    }
+
+    /**
      * Performs a common logarithm (logarithm with a base of ten) operation using this {@link Num} as the anti-logarithm
      * and <code>10</code> as the base: <code>log<sub>10</sub>this</code> or <code>log10(this)</code>.
      *
@@ -367,6 +458,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num commonLogarithm();
 
     /**
+     * @see #binaryLogarithm()
+     */
+    default Num log2() {
+        return binaryLogarithm();
+    }
+
+    /**
      * Performs a binary logarithm (logarithm with a base of two) operation using this {@link Num} as the anti-logarithm
      * and <code>2</code> as the base: <code>log<sub>2</sub>this</code> or <code>log2(this)</code>.
      *
@@ -375,6 +473,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Binary_logarithm">Wikipedia</a>
      */
     Num binaryLogarithm();
+
+    /**
+     * @see #logarithm(Number)
+     */
+    default Num log(Number base) {
+        return logarithm(base);
+    }
+
+    /**
+     * @see #logarithm(BigDecimal)
+     */
+    default Num log(BigDecimal base) {
+        return logarithm(base);
+    }
+
+    /**
+     * @see #logarithm(String)
+     */
+    default Num log(String base) {
+        return logarithm(base);
+    }
+
+    /**
+     * @see #logarithm(Num)
+     */
+    default Num log(Num base) {
+        return logarithm(base);
+    }
 
     /**
      * @see #logarithm(Num)
@@ -409,6 +535,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Logarithm">Wikipedia</a>
      */
     Num logarithm(Num base);
+
+    /**
+     * @see #absoluteValue()
+     */
+    default Num abs() {
+        return absoluteValue();
+    }
 
     /**
      * Performs an absolute value (abs) operation by computing the non-negative value of this {@link Num}:
@@ -479,6 +612,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num ceil();
 
     /**
+     * @see #degrees()
+     */
+    default Num deg() {
+        return degrees();
+    }
+
+    /**
      * Performs a trigonometric angle conversion operation by converting this {@link Num} in radians to degrees:
      * <code>this°</code>.
      *
@@ -487,6 +627,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Degree_(angle)">Wikipedia</a>
      */
     Num degrees();
+
+    /**
+     * @see #radians()
+     */
+    default Num rad() {
+        return radians();
+    }
 
     /**
      * Performs a trigonometric angle conversion operation by converting this {@link Num} in degrees to radians:
@@ -517,6 +664,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num e();
 
     /**
+     * @see #sine()
+     */
+    default Num sin() {
+        return sine();
+    }
+
+    /**
      * Performs a trigonometric sine operation of this {@link Num} in radians: <code>sin(this)</code>.
      *
      * @return the sine {@link Num}
@@ -524,6 +678,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Trigonometric_functions">Wikipedia</a>
      */
     Num sine();
+
+    /**
+     * @see #cosine()
+     */
+    default Num cos() {
+        return cosine();
+    }
 
     /**
      * Performs a trigonometric cosine operation of this {@link Num} in radians: <code>cos(this)</code>.
@@ -535,6 +696,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num cosine();
 
     /**
+     * @see #tangent()
+     */
+    default Num tan() {
+        return tangent();
+    }
+
+    /**
      * Performs a trigonometric tangent operation of this {@link Num} in radians: <code>tan(this)</code>.
      *
      * @return the tangent {@link Num}
@@ -542,6 +710,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Trigonometric_functions">Wikipedia</a>
      */
     Num tangent();
+
+    /**
+     * @see #inverseSine()
+     */
+    default Num asin() {
+        return inverseSine();
+    }
 
     /**
      * Performs a trigonometric inverse sine operation of this {@link Num} in radians: <code>asin(this)</code>.
@@ -553,6 +728,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num inverseSine();
 
     /**
+     * @see #inverseCosine()
+     */
+    default Num acos() {
+        return inverseCosine();
+    }
+
+    /**
      * Performs a trigonometric inverse cosine operation of this {@link Num} in radians: <code>acos(this)</code>.
      *
      * @return the inverse cosine {@link Num}
@@ -562,6 +744,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num inverseCosine();
 
     /**
+     * @see #inverseTangent()
+     */
+    default Num atan() {
+        return inverseTangent();
+    }
+
+    /**
      * Performs a trigonometric inverse tangent operation of this {@link Num} in radians: <code>atan(this)</code>.
      *
      * @return the inverse tangent {@link Num}
@@ -569,6 +758,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions">Wikipedia</a>
      */
     Num inverseTangent();
+
+    /**
+     * @see #inverseTangent2(Number)
+     */
+    default Num atan2(Number x) {
+        return inverseTangent2(x);
+    }
+
+    /**
+     * @see #inverseTangent2(BigDecimal)
+     */
+    default Num atan2(BigDecimal x) {
+        return inverseTangent2(x);
+    }
+
+    /**
+     * @see #inverseTangent2(String)
+     */
+    default Num atan2(String x) {
+        return inverseTangent2(x);
+    }
+
+    /**
+     * @see #inverseTangent2(Num)
+     */
+    default Num atan2(Num x) {
+        return inverseTangent2(x);
+    }
 
     /**
      * @see #inverseTangent2(Num)
@@ -607,6 +824,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num inverseTangent2(Num x);
 
     /**
+     * @see #hyperbolicSine()
+     */
+    default Num sinh() {
+        return hyperbolicSine();
+    }
+
+    /**
      * Performs a trigonometric hyperbolic sine operation of this {@link Num} in radians: <code>sinh(this)</code>.
      *
      * @return the hyperbolic sine {@link Num}
@@ -614,6 +838,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Hyperbolic_functions">Wikipedia</a>
      */
     Num hyperbolicSine();
+
+    /**
+     * @see #hyperbolicCosine()
+     */
+    default Num cosh() {
+        return hyperbolicCosine();
+    }
 
     /**
      * Performs a trigonometric hyperbolic cosine operation of this {@link Num} in radians: <code>cosh(this)</code>.
@@ -625,6 +856,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num hyperbolicCosine();
 
     /**
+     * @see #hyperbolicTangent()
+     */
+    default Num tanh() {
+        return hyperbolicTangent();
+    }
+
+    /**
      * Performs a trigonometric hyperbolic tangent operation of this {@link Num} in radians: <code>tanh(this)</code>.
      *
      * @return the hyperbolic tangent {@link Num}
@@ -632,6 +870,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Hyperbolic_functions">Wikipedia</a>
      */
     Num hyperbolicTangent();
+
+    /**
+     * @see #inverseHyperbolicSine()
+     */
+    default Num asinh() {
+        return inverseHyperbolicSine();
+    }
 
     /**
      * Performs a trigonometric inverse hyperbolic sine operation of this {@link Num} in radians:
@@ -644,6 +889,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num inverseHyperbolicSine();
 
     /**
+     * @see #inverseHyperbolicCosine()
+     */
+    default Num acosh() {
+        return inverseHyperbolicCosine();
+    }
+
+    /**
      * Performs a trigonometric inverse hyperbolic cosine operation of this {@link Num} in radians:
      * <code>acosh(this)</code>.
      *
@@ -654,6 +906,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num inverseHyperbolicCosine();
 
     /**
+     * @see #inverseHyperbolicTangent()
+     */
+    default Num atanh() {
+        return inverseHyperbolicTangent();
+    }
+
+    /**
      * Performs a trigonometric inverse hyperbolic tangent operation of this {@link Num} in radians:
      * <code>atanh(this)</code>.
      *
@@ -662,6 +921,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions">Wikipedia</a>
      */
     Num inverseHyperbolicTangent();
+
+    /**
+     * @see #hypotenuse(Number)
+     */
+    default Num hypot(Number y) {
+        return hypotenuse(y);
+    }
+
+    /**
+     * @see #hypotenuse(BigDecimal)
+     */
+    default Num hypot(BigDecimal y) {
+        return hypotenuse(y);
+    }
+
+    /**
+     * @see #hypotenuse(String)
+     */
+    default Num hypot(String y) {
+        return hypotenuse(y);
+    }
+
+    /**
+     * @see #hypotenuse(Num)
+     */
+    default Num hypot(Num y) {
+        return hypotenuse(y);
+    }
 
     /**
      * @see #hypotenuse(Num)
@@ -700,6 +987,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num hypotenuse(Num y);
 
     /**
+     * @see #average(Number)
+     */
+    default Num avg(Number other) {
+        return average(other);
+    }
+
+    /**
+     * @see #average(BigDecimal)
+     */
+    default Num avg(BigDecimal other) {
+        return average(other);
+    }
+
+    /**
+     * @see #average(String)
+     */
+    default Num avg(String other) {
+        return average(other);
+    }
+
+    /**
+     * @see #average(Num)
+     */
+    default Num avg(Num other) {
+        return average(other);
+    }
+
+    /**
      * @see #average(Num)
      * @see NumFactory#of(Number)
      */
@@ -734,6 +1049,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Mean">Wikipedia</a>
      */
     Num average(Num other);
+
+    /**
+     * @see #minimum(Number)
+     */
+    default Num min(Number other) {
+        return minimum(other);
+    }
+
+    /**
+     * @see #minimum(BigDecimal)
+     */
+    default Num min(BigDecimal other) {
+        return minimum(other);
+    }
+
+    /**
+     * @see #minimum(String)
+     */
+    default Num min(String other) {
+        return minimum(other);
+    }
+
+    /**
+     * @see #minimum(Num)
+     */
+    default Num min(Num other) {
+        return minimum(other);
+    }
 
     /**
      * @see #minimum(Num)
@@ -771,6 +1114,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      */
     default Num minimum(Num other) {
         return isLessThan(other) ? this : other; // 'NaN' check not necessary when 'other' is on RHS
+    }
+
+    /**
+     * @see #maximum(Number)
+     */
+    default Num max(Number other) {
+        return maximum(other);
+    }
+
+    /**
+     * @see #maximum(BigDecimal)
+     */
+    default Num max(BigDecimal other) {
+        return maximum(other);
+    }
+
+    /**
+     * @see #maximum(String)
+     */
+    default Num max(String other) {
+        return maximum(other);
+    }
+
+    /**
+     * @see #maximum(Num)
+     */
+    default Num max(Num other) {
+        return maximum(other);
     }
 
     /**
