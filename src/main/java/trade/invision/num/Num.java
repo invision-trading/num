@@ -315,6 +315,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num power(Num exponent);
 
     /**
+     * @see #square()
+     */
+    default Num sq() {
+        return square();
+    }
+
+    /**
      * Performs a square (raise to the power of two) operation by multiplying this {@link Num} by itself: <code>this *
      * this</code> or <code>this ^ 2</code> or <code>this<sup>2</sup></code>.
      *
@@ -323,6 +330,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Square_(algebra)">Wikipedia</a>
      */
     Num square();
+
+    /**
+     * @see #cube()
+     */
+    default Num cb() {
+        return cube();
+    }
 
     /**
      * Performs a cube (raise to the power of three) operation by multiplying three instances of this {@link Num}
@@ -351,6 +365,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Exponential_function">Wikipedia</a>
      */
     Num exponential();
+
+    /**
+     * @see #nthRoot(Number)
+     */
+    default Num rt(Number degree) {
+        return nthRoot(degree);
+    }
+
+    /**
+     * @see #nthRoot(BigDecimal)
+     */
+    default Num rt(BigDecimal degree) {
+        return nthRoot(degree);
+    }
+
+    /**
+     * @see #nthRoot(String)
+     */
+    default Num rt(String degree) {
+        return nthRoot(degree);
+    }
+
+    /**
+     * @see #nthRoot(Num)
+     */
+    default Num rt(Num degree) {
+        return nthRoot(degree);
+    }
 
     /**
      * @see #nthRoot(Num)

@@ -182,6 +182,9 @@ quick reference:
 - [`hashCode`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#hashCode())
 - [`toString`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#toString())
 
+For mathematical operations that have well-known abbreviations, such as `log` for `logarithm` or `atanh` for
+`inverseHyperbolicTangent`, the `Num` interface provides methods for such abbreviations.
+
 ## Acknowledgement
 
 This library's `Num` interface was inspired by the `Num` interface of the excellent [ta4j](https://github.com/ta4j/ta4j)
