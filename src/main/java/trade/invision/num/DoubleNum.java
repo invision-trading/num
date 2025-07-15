@@ -603,7 +603,7 @@ public final class DoubleNum implements Num {
                     default -> Math.pow(10, scale);
                 };
                 final double toRound = wrapped * multiplier;
-                return new DoubleNum((roundingMode == HALF_UP ? Math.rint(toRound) : Math.round(toRound)) / multiplier);
+                return new DoubleNum((roundingMode == HALF_UP ? Math.round(toRound) : Math.rint(toRound)) / multiplier);
             }
         } else {
             return new DoubleNum(asBigDecimal().setScale(scale, roundingMode).doubleValue());
