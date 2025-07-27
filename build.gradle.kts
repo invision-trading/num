@@ -4,7 +4,7 @@ import org.jreleaser.model.Active.NEVER
 plugins {
     `java-library`
     `maven-publish`
-    id("org.jreleaser") version "1.17.0"
+    id("org.jreleaser") version "1.19.0"
 }
 
 group = "trade.invision"
@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
     // Jetbrains Annotations
-    implementation("org.jetbrains", "annotations", "24.1.0")
+    implementation("org.jetbrains", "annotations", "26.0.2")
 
     // big-math
     implementation("ch.obermuhlner", "big-math", "2.3.2")
