@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static java.math.BigDecimal.ONE;
@@ -707,7 +708,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num negativeOne() {
             if (negativeOne == null) {
-                negativeOne = decimalNum(-1, context);
+                negativeOne = of(-1);
             }
             return negativeOne;
         }
@@ -715,7 +716,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num zero() {
             if (zero == null) {
-                zero = decimalNum(0, context);
+                zero = of(0);
             }
             return zero;
         }
@@ -723,7 +724,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num one() {
             if (one == null) {
-                one = decimalNum(1, context);
+                one = of(1);
             }
             return one;
         }
@@ -731,7 +732,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num two() {
             if (two == null) {
-                two = decimalNum(2, context);
+                two = of(2);
             }
             return two;
         }
@@ -739,7 +740,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num three() {
             if (three == null) {
-                three = decimalNum(3, context);
+                three = of(3);
             }
             return three;
         }
@@ -747,7 +748,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num four() {
             if (four == null) {
-                four = decimalNum(4, context);
+                four = of(4);
             }
             return four;
         }
@@ -755,7 +756,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num five() {
             if (five == null) {
-                five = decimalNum(5, context);
+                five = of(5);
             }
             return five;
         }
@@ -763,7 +764,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num six() {
             if (six == null) {
-                six = decimalNum(6, context);
+                six = of(6);
             }
             return six;
         }
@@ -771,7 +772,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num seven() {
             if (seven == null) {
-                seven = decimalNum(7, context);
+                seven = of(7);
             }
             return seven;
         }
@@ -779,7 +780,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num eight() {
             if (eight == null) {
-                eight = decimalNum(8, context);
+                eight = of(8);
             }
             return eight;
         }
@@ -787,7 +788,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num nine() {
             if (nine == null) {
-                nine = decimalNum(9, context);
+                nine = of(9);
             }
             return nine;
         }
@@ -795,7 +796,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num ten() {
             if (ten == null) {
-                ten = decimalNum(10, context);
+                ten = of(10);
             }
             return ten;
         }
@@ -803,7 +804,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num hundred() {
             if (hundred == null) {
-                hundred = decimalNum(100, context);
+                hundred = of(100);
             }
             return hundred;
         }
@@ -811,7 +812,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num thousand() {
             if (thousand == null) {
-                thousand = decimalNum(1000, context);
+                thousand = of(1000);
             }
             return thousand;
         }
@@ -819,7 +820,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num tenth() {
             if (tenth == null) {
-                tenth = decimalNum("0.1", context);
+                tenth = of("0.1");
             }
             return tenth;
         }
@@ -827,7 +828,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num hundredth() {
             if (hundredth == null) {
-                hundredth = decimalNum("0.01", context);
+                hundredth = of("0.01");
             }
             return hundredth;
         }
@@ -835,7 +836,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num thousandth() {
             if (thousandth == null) {
-                thousandth = decimalNum("0.001", context);
+                thousandth = of("0.001");
             }
             return thousandth;
         }
@@ -843,7 +844,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num half() {
             if (half == null) {
-                half = decimalNum("0.5", context);
+                half = of("0.5");
             }
             return half;
         }
@@ -855,7 +856,7 @@ public final class DecimalNum implements Num {
             for (int digitIndex = 0; digitIndex < context.getPrecision(); digitIndex++) {
                 stringBuilder.append(ThreadLocalRandom.current().nextInt(10));
             }
-            return decimalNum(stringBuilder.toString(), context);
+            return of(stringBuilder.toString());
         }
     }
 
@@ -864,7 +865,7 @@ public final class DecimalNum implements Num {
 
     private final BigDecimal wrapped;
     private final MathContext context;
-    private NumFactory factory;
+    private @Nullable NumFactory factory;
 
     private DecimalNum(BigDecimal bigDecimal, MathContext context) {
         wrapped = bigDecimal;
@@ -1421,7 +1422,7 @@ public final class DecimalNum implements Num {
 
     @Override
     public int hashCode() {
-        return wrapped.hashCode();
+        return Objects.hash(wrapped, context);
     }
 
     @Override
