@@ -24,7 +24,6 @@ import static java.math.RoundingMode.HALF_EVEN;
  * @see DecimalNum
  * @see NaNNum
  * @see <a href="https://en.wikipedia.org/wiki/Computer_algebra">Wikipedia</a>
- * @see <a href="https://github.com/ta4j/ta4j">ta4j GitHub</a>
  */
 public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNum, NaNNum {
 
@@ -1369,6 +1368,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
+     * @see #integerPart()
+     */
+    default Num intPart() {
+        return integerPart();
+    }
+
+    /**
      * Performs a truncation operation by removing the fractional part (digits to the right of the decimal point) of
      * this {@link Num}: <code>int(this)</code>.
      *
@@ -1377,6 +1383,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/w/index.php?title=Integer_part&redirect=no">Wikipedia</a>
      */
     Num integerPart();
+
+    /**
+     * @see #fractionalPart()
+     */
+    default Num fracPart() {
+        return fractionalPart();
+    }
 
     /**
      * Performs a truncation operation by removing the integer part (digits to the left of the decimal point) of this
