@@ -2389,27 +2389,6 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
-     * @see #precision(int)
-     */
-    default Num withContext(int significantFigures) {
-        return precision(significantFigures);
-    }
-
-    /**
-     * @see #precision(int, RoundingMode)
-     */
-    default Num withContext(int significantFigures, RoundingMode roundingMode) {
-        return precision(significantFigures, roundingMode);
-    }
-
-    /**
-     * @see #precision(MathContext)
-     */
-    default Num withContext(MathContext context) {
-        return precision(context);
-    }
-
-    /**
      * Performs an {@link Object} equivalence operation. To perform a numerical equivalence operation, use
      * {@link #isEqual(Num)} instead of this method.
      *

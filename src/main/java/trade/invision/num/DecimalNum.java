@@ -1267,7 +1267,7 @@ public final class DecimalNum implements Num {
 
     @Override
     public Num precision(MathContext context) {
-        return new DecimalNum(wrapped.round(context), context);
+        return new DecimalNum(wrapped.round(context), highestPrecisionContext(this.context, context));
     }
 
     @Override
@@ -1440,6 +1440,10 @@ public final class DecimalNum implements Num {
     }
 
     private MathContext highestPrecisionContext(DecimalNum first, DecimalNum second) {
-        return first.context.getPrecision() > second.context.getPrecision() ? first.context : second.context;
+        return highestPrecisionContext(first.context, second.context);
+    }
+
+    private MathContext highestPrecisionContext(MathContext first, MathContext second) {
+        return first.getPrecision() > second.getPrecision() ? first : second;
     }
 }

@@ -78,8 +78,8 @@ performing mathematical operations on floating-point binary numbers
 [`DoubleNum`](src/main/java/trade/invision/num/DoubleNum.java)) or arbitrary-precision decimal numbers
 ([`BigDecimal`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/BigDecimal.html) via
 [`DecimalNum`](src/main/java/trade/invision/num/DecimalNum.java)) is simple. Object instances of this interface are
-immutable. All methods in this interface return non-`null` values or throw a `RuntimeException` (usually an [
-`ArithmeticException`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ArithmeticException.html)).
+immutable. All methods in this interface return non-`null` values or throw a `RuntimeException` (usually an
+[`ArithmeticException`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ArithmeticException.html)).
 All implementations of this interface are interoperable with each other. Operations involving different
 implementations will result in a `Num` that trends towards an increase in precision. For example, subtracting a
 `DecimalNum` from a `DoubleNum` will result in a `DecimalNum`. Similarly, subtracting a `DecimalNum` with a `precision`
@@ -90,19 +90,22 @@ Mathematical operations that result in `NaN`, `+Infinity`, `-Infinity`, or `Arit
 ## Usage
 
 To create a `DoubleNum`, use one of the static methods, such as `DoubleNum.valueOf()` or `DoubleNum.doubleNum()`. Your
-code may look cleaner if you use the `doubleNum()` static import instead of `DoubleNum.valueOf()`. Creating a
-`DecimalNum` is the same as `DoubleNum`, but requires you to specify a precision and rounding mode. Use
+code may look cleaner if you use the `doubleNum()` static import instead of using `DoubleNum.valueOf()`. Creating a
+`DecimalNum` is similar to `DoubleNum`, but requires you to specify a precision and rounding mode. Use
 `DecimalNum.decimalNum(Num, MathContext)` or use one of the convenience methods, such as `decimalNum64()` which
 provides approximately the same precision as `double`, allowing up to 16 significant figures of precision, and the same
 [rounding policy](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/RoundingMode.html#HALF_EVEN) as
-`double`. You can create a [`NumFactory`](src/main/java/trade/invision/num/NumFactory.java) instance to abstract the
-`Num` creation process by using one of the `NumFactory` creation methods available in `DoubleNum` or `DecimalNum` (e.g.
+`double`.
+
+You can create a [`NumFactory`](src/main/java/trade/invision/num/NumFactory.java) instance to abstract the `Num`
+creation process by using one of the `NumFactory` creation methods available in `DoubleNum` or `DecimalNum` (e.g.
 `DecimalNum.decimalNum64Factory()`). The `NumFactory` defines the underlying number representation for new `Num`
 instances, so you can create a `Num` from an existing `Number`, `BigDecimal`, `String`, or `Num` by simply using
 `NumFactory.of(...)`.
 
 Check out the [Javadoc](https://javadoc.io/doc/trade.invision/num) for all classes and method signatures, but here's a
 quick reference:
+
 - [`unwrap`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#unwrap())
 - [`factory`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#factory())
 - [`add`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#add(trade.invision.num.Num))
