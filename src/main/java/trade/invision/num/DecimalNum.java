@@ -1404,7 +1404,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public BigDecimal asBigDecimal() {
+    public BigDecimal toBigDecimal() {
         return wrapped;
     }
 

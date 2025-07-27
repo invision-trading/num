@@ -2295,7 +2295,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #unwrap()
      * @see Number#byteValue()
      */
-    default byte asByte() {
+    default byte toByte() {
         return unwrap().byteValue();
     }
 
@@ -2307,7 +2307,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #unwrap()
      * @see Number#shortValue()
      */
-    default short asShort() {
+    default short toShort() {
         return unwrap().shortValue();
     }
 
@@ -2319,7 +2319,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #unwrap()
      * @see Number#intValue()
      */
-    default int asInt() {
+    default int toInt() {
         return unwrap().intValue();
     }
 
@@ -2331,7 +2331,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #unwrap()
      * @see Number#longValue()
      */
-    default long asLong() {
+    default long toLong() {
         return unwrap().longValue();
     }
 
@@ -2343,7 +2343,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #unwrap()
      * @see Number#floatValue()
      */
-    default float asFloat() {
+    default float toFloat() {
         return unwrap().floatValue();
     }
 
@@ -2355,7 +2355,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see #unwrap()
      * @see Number#doubleValue()
      */
-    default double asDouble() {
+    default double toDouble() {
         return unwrap().doubleValue();
     }
 
@@ -2364,7 +2364,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the {@link BigDecimal}
      */
-    BigDecimal asBigDecimal();
+    BigDecimal toBigDecimal();
 
     /**
      * Gets the {@link MathContext} representing the <code>precision</code> and {@link RoundingMode} used by

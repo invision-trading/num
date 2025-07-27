@@ -613,13 +613,13 @@ public final class DoubleNum implements Num {
                 return new DoubleNum(Math.rint(wrapped * multiplier) / multiplier);
             }
         } else {
-            return new DoubleNum(asBigDecimal().setScale(scale, roundingMode).doubleValue());
+            return new DoubleNum(toBigDecimal().setScale(scale, roundingMode).doubleValue());
         }
     }
 
     @Override
     public Num precision(MathContext context) {
-        return new DoubleNum(asBigDecimal().round(context).doubleValue());
+        return new DoubleNum(toBigDecimal().round(context).doubleValue());
     }
 
     @Override
@@ -796,7 +796,7 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public BigDecimal asBigDecimal() {
+    public BigDecimal toBigDecimal() {
         return new BigDecimal(toString(), getContext());
     }
 

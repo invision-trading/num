@@ -499,37 +499,37 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public byte asByte() {
+    public byte toByte() {
         throw new ArithmeticException("No NaN representation for 'byte'!");
     }
 
     @Override
-    public short asShort() {
+    public short toShort() {
         throw new ArithmeticException("No NaN representation for 'short'!");
     }
 
     @Override
-    public int asInt() {
+    public int toInt() {
         throw new ArithmeticException("No NaN representation for 'int'!");
     }
 
     @Override
-    public long asLong() {
+    public long toLong() {
         throw new ArithmeticException("No NaN representation for 'long'!");
     }
 
     @Override
-    public float asFloat() {
+    public float toFloat() {
         return Float.NaN;
     }
 
     @Override
-    public double asDouble() {
+    public double toDouble() {
         return Double.NaN;
     }
 
     @Override
-    public BigDecimal asBigDecimal() {
+    public BigDecimal toBigDecimal() {
         throw new ArithmeticException("No NaN representation for 'BigDecimal'!");
     }
 
