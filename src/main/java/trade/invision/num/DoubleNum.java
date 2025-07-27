@@ -10,7 +10,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import static java.lang.Double.isFinite;
 import static java.lang.Double.parseDouble;
 import static java.math.MathContext.DECIMAL64;
-import static java.math.RoundingMode.HALF_EVEN;
 import static java.math.RoundingMode.HALF_UP;
 import static trade.invision.num.NaNNum.NaN;
 
@@ -586,11 +585,20 @@ public final class DoubleNum implements Num {
 
     @Override
     public Num round(int scale, RoundingMode roundingMode) {
-        if (roundingMode == HALF_UP || roundingMode == HALF_EVEN) {
+        if (roundingMode == HALF_UP) {
             if (scale == 0) {
-                return new DoubleNum(roundingMode == HALF_UP ? Math.round(wrapped) : Math.rint(wrapped));
+                return new DoubleNum(Math.rint(wrapped));
             } else {
                 final double multiplier = switch (scale) {
+                    case -9 -> 0.000000001;
+                    case -8 -> 0.00000001;
+                    case -7 -> 0.0000001;
+                    case -6 -> 0.000001;
+                    case -5 -> 0.00001;
+                    case -4 -> 0.0001;
+                    case -3 -> 0.001;
+                    case -2 -> 0.01;
+                    case -1 -> 0.1;
                     case 1 -> 10.0;
                     case 2 -> 100.0;
                     case 3 -> 1000.0;
@@ -602,8 +610,7 @@ public final class DoubleNum implements Num {
                     case 9 -> 1000000000.0;
                     default -> Math.pow(10, scale);
                 };
-                final double toRound = wrapped * multiplier;
-                return new DoubleNum((roundingMode == HALF_UP ? Math.round(toRound) : Math.rint(toRound)) / multiplier);
+                return new DoubleNum(Math.rint(wrapped * multiplier) / multiplier);
             }
         } else {
             return new DoubleNum(asBigDecimal().setScale(scale, roundingMode).doubleValue());
