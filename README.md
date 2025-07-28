@@ -157,6 +157,8 @@ quick reference:
 - [`fractionalPart`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#fractionalPart())
 - [`round`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#round())
 - [`significantFigures`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#significantFigures())
+- [`mantissa`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#mantissa())
+- [`exponent`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#exponent())
 - [`signum`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#signum())
 - [`isNegative`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#isNegative())
 - [`isNegativeOrZero`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#isNegativeOrZero())

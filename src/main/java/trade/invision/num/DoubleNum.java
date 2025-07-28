@@ -11,6 +11,7 @@ import static java.lang.Double.isFinite;
 import static java.lang.Double.parseDouble;
 import static java.math.MathContext.DECIMAL64;
 import static java.math.RoundingMode.HALF_UP;
+import static trade.invision.num.DecimalNum.decimalNum;
 import static trade.invision.num.NaNNum.NaN;
 
 /**
@@ -613,18 +614,28 @@ public final class DoubleNum implements Num {
                 return new DoubleNum(Math.rint(wrapped * multiplier) / multiplier);
             }
         } else {
-            return new DoubleNum(toBigDecimal().setScale(scale, roundingMode).doubleValue());
+            return new DoubleNum(decimalNum(this, getContext()).round(scale, roundingMode).toDouble());
         }
     }
 
     @Override
     public Num significantFigures(MathContext context) {
-        return new DoubleNum(toBigDecimal().round(context).doubleValue());
+        return new DoubleNum(decimalNum(this, getContext()).significantFigures(context).toDouble());
     }
 
     @Override
     public int significantFigures() {
-        return toBigDecimal().stripTrailingZeros().precision();
+        return decimalNum(this, getContext()).significantFigures();
+    }
+
+    @Override
+    public Num mantissa() {
+        return new DoubleNum(decimalNum(this, getContext()).mantissa().toDouble());
+    }
+
+    @Override
+    public int exponent() {
+        return decimalNum(this, getContext()).exponent();
     }
 
     @Override

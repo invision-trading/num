@@ -1276,6 +1276,16 @@ public final class DecimalNum implements Num {
     }
 
     @Override
+    public Num mantissa() {
+        return new DecimalNum(BigDecimalMath.mantissa(wrapped), context);
+    }
+
+    @Override
+    public int exponent() {
+        return BigDecimalMath.exponent(wrapped);
+    }
+
+    @Override
     public int signum() {
         return wrapped.signum();
     }

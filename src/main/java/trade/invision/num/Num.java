@@ -1481,7 +1481,6 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the precision-modified {@link Num}
      *
-     * @see MathContext
      * @see <a href="https://en.wikipedia.org/wiki/Significant_figures">Wikipedia</a>
      */
     Num significantFigures(MathContext context);
@@ -1501,6 +1500,28 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Significant_figures">Wikipedia</a>
      */
     int significantFigures();
+
+    /**
+     * Performs a mantissa retrieval operation by computing the <code>mantissa</code> of this {@link Num} as defined by
+     * the scientific notation: <code>mantissa * 10<sup>exponent</sup></code>.
+     *
+     * @return the mantissa {@link Num}
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Scientific_notation">Wikipedia</a>
+     * @see #exponent()
+     */
+    Num mantissa();
+
+    /**
+     * Performs an exponent retrieval operation by computing the <code>exponent</code> of this {@link Num} as defined by
+     * the scientific notation: <code>mantissa * 10<sup>exponent</sup></code>.
+     *
+     * @return the exponent <code>int</code>
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Scientific_notation">Wikipedia</a>
+     * @see #mantissa()
+     */
+    int exponent();
 
     /**
      * Performs a signum operation on this {@link Num}, yielding <code>-1</code> for negative numbers, <code>1</code>

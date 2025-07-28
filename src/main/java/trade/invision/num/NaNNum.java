@@ -409,6 +409,16 @@ public final class NaNNum implements Num {
     }
 
     @Override
+    public Num mantissa() {
+        return this;
+    }
+
+    @Override
+    public int exponent() {
+        throw new ArithmeticException("NaN has no exponent!");
+    }
+
+    @Override
     public int signum() {
         return 0;
     }
