@@ -399,8 +399,13 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num precision(MathContext context) {
+    public Num significantFigures(MathContext context) {
         return this;
+    }
+
+    @Override
+    public int significantFigures() {
+        return 0;
     }
 
     @Override

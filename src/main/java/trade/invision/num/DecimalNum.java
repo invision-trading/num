@@ -1266,8 +1266,13 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num precision(MathContext context) {
+    public Num significantFigures(MathContext context) {
         return new DecimalNum(wrapped.round(context), highestPrecisionContext(this.context, context));
+    }
+
+    @Override
+    public int significantFigures() {
+        return wrapped.stripTrailingZeros().precision();
     }
 
     @Override

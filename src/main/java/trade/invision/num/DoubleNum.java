@@ -618,8 +618,13 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public Num precision(MathContext context) {
+    public Num significantFigures(MathContext context) {
         return new DoubleNum(toBigDecimal().round(context).doubleValue());
+    }
+
+    @Override
+    public int significantFigures() {
+        return toBigDecimal().stripTrailingZeros().precision();
     }
 
     @Override

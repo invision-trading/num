@@ -92,7 +92,7 @@ context precision of `32`. Mathematical operations that result in `NaN`, `+Infin
 To create a `DoubleNum`, use one of the static methods, such as `DoubleNum.valueOf()` or `DoubleNum.doubleNum()`. Your
 code may look cleaner if you use the `doubleNum()` static import instead of using `DoubleNum.valueOf()`. Creating a
 `DecimalNum` is similar to `DoubleNum`, but requires you to specify a precision and rounding mode. Use
-`DecimalNum.decimalNum(Num, MathContext)` or use one of the convenience methods, such as `decimalNum64()` which
+`DecimalNum.decimalNum(String, MathContext)` or use one of the convenience methods, such as `decimalNum64()` which
 provides approximately the same precision as `double`, allowing up to 16 significant figures of precision, and the same
 [rounding policy](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/RoundingMode.html#HALF_EVEN) as
 `double`.
@@ -156,7 +156,7 @@ quick reference:
 - [`integerPart`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#integerPart())
 - [`fractionalPart`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#fractionalPart())
 - [`round`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#round())
-- [`precision`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#precision(int))
+- [`significantFigures`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#significantFigures())
 - [`signum`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#signum())
 - [`isNegative`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#isNegative())
 - [`isNegativeOrZero`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#isNegativeOrZero())
@@ -178,8 +178,8 @@ quick reference:
 - [`toDouble`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#toDouble())
 - [`toBigDecimal`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#toBigDecimal())
 - [`getContext`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#getContext())
-- [`getPrecision`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#getPrecision())
-- [`getRoundingMode`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#getRoundingMode())
+- [`getContextPrecision`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#getContextPrecision())
+- [`getContextRoundingMode`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#getContextRoundingMode())
 - [`withContext`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#withContext(int))
 - [`equals`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#equals(java.lang.Object))
 - [`hashCode`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#hashCode())

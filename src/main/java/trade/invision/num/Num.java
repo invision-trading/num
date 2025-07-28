@@ -1376,11 +1376,11 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a truncation operation by removing the fractional part (digits to the right of the decimal point) of
-     * this {@link Num}: <code>int(this)</code>.
+     * this {@link Num} and returning the integer part: <code>int(this)</code>.
      *
      * @return the integer part {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/w/index.php?title=Integer_part&redirect=no">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Integer_part">Wikipedia</a>
      */
     Num integerPart();
 
@@ -1393,7 +1393,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a truncation operation by removing the integer part (digits to the left of the decimal point) of this
-     * {@link Num}: <code>frac(this)</code>.
+     * {@link Num} and returning the fractional part: <code>frac(this)</code>.
      *
      * @return the fractional part {@link Num}
      *
@@ -1436,34 +1436,71 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num round(int scale, RoundingMode roundingMode);
 
     /**
-     * Calls {@link #precision(int, RoundingMode)} with <code>roundingMode</code> set to
-     * {@link RoundingMode#HALF_EVEN}.
+     * @see #significantFigures(int)
      */
-    default Num precision(int significantFigures) {
-        return precision(significantFigures, HALF_EVEN);
+    default Num sigFigs(int significantFigures) {
+        return significantFigures(significantFigures);
     }
 
     /**
-     * Calls {@link #precision(MathContext)} with {@link MathContext#getPrecision()} set to
+     * @see #significantFigures(int, RoundingMode)
+     */
+    default Num sigFigs(int significantFigures, RoundingMode roundingMode) {
+        return significantFigures(significantFigures, roundingMode);
+    }
+
+    /**
+     * @see #significantFigures(MathContext)
+     */
+    default Num sigFigs(MathContext context) {
+        return significantFigures(context);
+    }
+
+    /**
+     * Calls {@link #significantFigures(int, RoundingMode)} with <code>roundingMode</code> set to
+     * {@link RoundingMode#HALF_EVEN}.
+     */
+    default Num significantFigures(int significantFigures) {
+        return significantFigures(significantFigures, HALF_EVEN);
+    }
+
+    /**
+     * Calls {@link #significantFigures(MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
      */
-    default Num precision(int significantFigures, RoundingMode roundingMode) {
-        return precision(new MathContext(significantFigures, roundingMode));
+    default Num significantFigures(int significantFigures, RoundingMode roundingMode) {
+        return significantFigures(new MathContext(significantFigures, roundingMode));
     }
 
     /**
      * Performs a precision modification operation by setting the number of significant figures in this {@link Num} to
-     * {@link MathContext#getPrecision()}, without modifying the scale of this {@link Num}, and rounding excess
-     * significant figures according to {@link MathContext#getRoundingMode()}.
+     * the given {@link MathContext#getPrecision()} and rounding excess significant figures according to the given
+     * {@link MathContext#getRoundingMode()}.
      *
      * @param context the {@link MathContext}
      *
-     * @return the precise {@link Num}
+     * @return the precision-modified {@link Num}
      *
      * @see MathContext
      * @see <a href="https://en.wikipedia.org/wiki/Significant_figures">Wikipedia</a>
      */
-    Num precision(MathContext context);
+    Num significantFigures(MathContext context);
+
+    /**
+     * @see #significantFigures()
+     */
+    default int sigFigs() {
+        return significantFigures();
+    }
+
+    /**
+     * Performs a significant figures (sig figs) count operation on this {@link Num}.
+     *
+     * @return the significant figures count <code>int</code>
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Significant_figures">Wikipedia</a>
+     */
+    int significantFigures();
 
     /**
      * Performs a signum operation on this {@link Num}, yielding <code>-1</code> for negative numbers, <code>1</code>
