@@ -1534,6 +1534,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     int signum();
 
     /**
+     * @see #isNegative()
+     */
+    default boolean lt0() {
+        return isNegative();
+    }
+
+    /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is less than zero: <code>this &lt;
      * 0</code>.
      *
@@ -1545,6 +1552,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     boolean isNegative();
 
     /**
+     * @see #isNegativeOrZero()
+     */
+    default boolean le0() {
+        return isNegativeOrZero();
+    }
+
+    /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is less than or equal to zero:
      * <code>this &lt;= 0</code> or <code>this ≤ 0</code>.
      *
@@ -1554,6 +1568,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      */
     boolean isNegativeOrZero();
+
+    /**
+     * @see #isNegativeOrZero(Number)
+     */
+    default boolean le0(Number epsilon) {
+        return isNegativeOrZero(epsilon);
+    }
+
+    /**
+     * @see #isNegativeOrZero(BigDecimal)
+     */
+    default boolean le0(BigDecimal epsilon) {
+        return isNegativeOrZero(epsilon);
+    }
+
+    /**
+     * @see #isNegativeOrZero(String)
+     */
+    default boolean le0(String epsilon) {
+        return isNegativeOrZero(epsilon);
+    }
+
+    /**
+     * @see #isNegativeOrZero(Num)
+     */
+    default boolean le0(Num epsilon) {
+        return isNegativeOrZero(epsilon);
+    }
 
     /**
      * @see #isNegativeOrZero(Num)
@@ -1595,6 +1637,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     boolean isNegativeOrZero(Num epsilon);
 
     /**
+     * @see #isPositive()
+     */
+    default boolean gt0() {
+        return isPositive();
+    }
+
+    /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is greater than zero: <code>this
      * &gt; 0</code>.
      *
@@ -1606,6 +1655,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     boolean isPositive();
 
     /**
+     * @see #isPositiveOrZero()
+     */
+    default boolean ge0() {
+        return isPositiveOrZero();
+    }
+
+    /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is greater than or equal to zero:
      * <code>this &gt;= 0</code> or <code>this ≥ 0</code>.
      *
@@ -1615,6 +1671,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      */
     boolean isPositiveOrZero();
+
+    /**
+     * @see #isPositiveOrZero(Number)
+     */
+    default boolean ge0(Number epsilon) {
+        return isPositiveOrZero(epsilon);
+    }
+
+    /**
+     * @see #isPositiveOrZero(BigDecimal)
+     */
+    default boolean ge0(BigDecimal epsilon) {
+        return isPositiveOrZero(epsilon);
+    }
+
+    /**
+     * @see #isPositiveOrZero(String)
+     */
+    default boolean ge0(String epsilon) {
+        return isPositiveOrZero(epsilon);
+    }
+
+    /**
+     * @see #isPositiveOrZero(Num)
+     */
+    default boolean ge0(Num epsilon) {
+        return isPositiveOrZero(epsilon);
+    }
 
     /**
      * @see #isPositiveOrZero(Num)
@@ -1656,6 +1740,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     boolean isPositiveOrZero(Num epsilon);
 
     /**
+     * @see #isZero()
+     */
+    default boolean eq0() {
+        return isZero();
+    }
+
+    /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is equal to zero:
      * <code>this == 0</code>.
      *
@@ -1665,6 +1756,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
      */
     boolean isZero();
+
+    /**
+     * @see #isZero(Number)
+     */
+    default boolean eq0(Number epsilon) {
+        return isZero(epsilon);
+    }
+
+    /**
+     * @see #isZero(BigDecimal)
+     */
+    default boolean eq0(BigDecimal epsilon) {
+        return isZero(epsilon);
+    }
+
+    /**
+     * @see #isZero(String)
+     */
+    default boolean eq0(String epsilon) {
+        return isZero(epsilon);
+    }
+
+    /**
+     * @see #isZero(Num)
+     */
+    default boolean eq0(Num epsilon) {
+        return isZero(epsilon);
+    }
 
     /**
      * @see #isZero(Num)
@@ -1705,6 +1824,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     boolean isZero(Num epsilon);
 
     /**
+     * @see #isEqual(Number)
+     */
+    default boolean eq(Number other) {
+        return isEqual(other);
+    }
+
+    /**
+     * @see #isEqual(BigDecimal)
+     */
+    default boolean eq(BigDecimal other) {
+        return isEqual(other);
+    }
+
+    /**
+     * @see #isEqual(String)
+     */
+    default boolean eq(String other) {
+        return isEqual(other);
+    }
+
+    /**
+     * @see #isEqual(Num)
+     */
+    default boolean eq(Num other) {
+        return isEqual(other);
+    }
+
+    /**
      * @see #isEqual(Num)
      * @see NumFactory#of(Number)
      */
@@ -1739,6 +1886,118 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
      */
     boolean isEqual(Num other);
+
+    /**
+     * @see #isEqual(Number, Number)
+     */
+    default boolean eq(Number other, Number epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(Number, BigDecimal)
+     */
+    default boolean eq(Number other, BigDecimal epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(Number, String)
+     */
+    default boolean eq(Number other, String epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(Number, Num)
+     */
+    default boolean eq(Number other, Num epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(BigDecimal, Number)
+     */
+    default boolean eq(BigDecimal other, Number epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(BigDecimal, BigDecimal)
+     */
+    default boolean eq(BigDecimal other, BigDecimal epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(BigDecimal, String)
+     */
+    default boolean eq(BigDecimal other, String epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(BigDecimal, Num)
+     */
+    default boolean eq(BigDecimal other, Num epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(String, Number)
+     */
+    default boolean eq(String other, Number epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(String, BigDecimal)
+     */
+    default boolean eq(String other, BigDecimal epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(String, String)
+     */
+    default boolean eq(String other, String epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(String, Num)
+     */
+    default boolean eq(String other, Num epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(Num, Number)
+     */
+    default boolean eq(Num other, Number epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(Num, BigDecimal)
+     */
+    default boolean eq(Num other, BigDecimal epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(Num, String)
+     */
+    default boolean eq(Num other, String epsilon) {
+        return isEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isEqual(Num, Num)
+     */
+    default boolean eq(Num other, Num epsilon) {
+        return isEqual(other, epsilon);
+    }
 
     /**
      * @see #isEqual(Num, Num)
@@ -1885,6 +2144,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     boolean isEqual(Num other, Num epsilon);
 
     /**
+     * @see #isLessThan(Number)
+     */
+    default boolean lt(Number other) {
+        return isLessThan(other);
+    }
+
+    /**
+     * @see #isLessThan(BigDecimal)
+     */
+    default boolean lt(BigDecimal other) {
+        return isLessThan(other);
+    }
+
+    /**
+     * @see #isLessThan(String)
+     */
+    default boolean lt(String other) {
+        return isLessThan(other);
+    }
+
+    /**
+     * @see #isLessThan(Num)
+     */
+    default boolean lt(Num other) {
+        return isLessThan(other);
+    }
+
+    /**
      * @see #isLessThan(Num)
      * @see NumFactory#of(Number)
      */
@@ -1919,6 +2206,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      */
     boolean isLessThan(Num other);
+
+    /**
+     * @see #isLessThanOrEqual(Number)
+     */
+    default boolean le(Number other) {
+        return isLessThanOrEqual(other);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(BigDecimal)
+     */
+    default boolean le(BigDecimal other) {
+        return isLessThanOrEqual(other);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(String)
+     */
+    default boolean le(String other) {
+        return isLessThanOrEqual(other);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Num)
+     */
+    default boolean le(Num other) {
+        return isLessThanOrEqual(other);
+    }
 
     /**
      * @see #isLessThanOrEqual(Num)
@@ -1956,6 +2271,118 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      */
     boolean isLessThanOrEqual(Num other);
+
+    /**
+     * @see #isLessThanOrEqual(Number, Number)
+     */
+    default boolean le(Number other, Number epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Number, BigDecimal)
+     */
+    default boolean le(Number other, BigDecimal epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Number, String)
+     */
+    default boolean le(Number other, String epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Number, Num)
+     */
+    default boolean le(Number other, Num epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(BigDecimal, Number)
+     */
+    default boolean le(BigDecimal other, Number epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(BigDecimal, BigDecimal)
+     */
+    default boolean le(BigDecimal other, BigDecimal epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(BigDecimal, String)
+     */
+    default boolean le(BigDecimal other, String epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(BigDecimal, Num)
+     */
+    default boolean le(BigDecimal other, Num epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(String, Number)
+     */
+    default boolean le(String other, Number epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(String, BigDecimal)
+     */
+    default boolean le(String other, BigDecimal epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(String, String)
+     */
+    default boolean le(String other, String epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(String, Num)
+     */
+    default boolean le(String other, Num epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Num, Number)
+     */
+    default boolean le(Num other, Number epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Num, BigDecimal)
+     */
+    default boolean le(Num other, BigDecimal epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Num, String)
+     */
+    default boolean le(Num other, String epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isLessThanOrEqual(Num, Num)
+     */
+    default boolean le(Num other, Num epsilon) {
+        return isLessThanOrEqual(other, epsilon);
+    }
 
     /**
      * @see #isLessThanOrEqual(Num, Num)
@@ -2102,6 +2529,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     boolean isLessThanOrEqual(Num other, Num epsilon);
 
     /**
+     * @see #isGreaterThan(Number)
+     */
+    default boolean gt(Number other) {
+        return isGreaterThan(other);
+    }
+
+    /**
+     * @see #isGreaterThan(BigDecimal)
+     */
+    default boolean gt(BigDecimal other) {
+        return isGreaterThan(other);
+    }
+
+    /**
+     * @see #isGreaterThan(String)
+     */
+    default boolean gt(String other) {
+        return isGreaterThan(other);
+    }
+
+    /**
+     * @see #isGreaterThan(Num)
+     */
+    default boolean gt(Num other) {
+        return isGreaterThan(other);
+    }
+
+    /**
      * @see #isGreaterThan(Num)
      * @see NumFactory#of(Number)
      */
@@ -2136,6 +2591,34 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      */
     boolean isGreaterThan(Num other);
+
+    /**
+     * @see #isGreaterThanOrEqual(Number)
+     */
+    default boolean ge(Number other) {
+        return isGreaterThanOrEqual(other);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(BigDecimal)
+     */
+    default boolean ge(BigDecimal other) {
+        return isGreaterThanOrEqual(other);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(String)
+     */
+    default boolean ge(String other) {
+        return isGreaterThanOrEqual(other);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Num)
+     */
+    default boolean ge(Num other) {
+        return isGreaterThanOrEqual(other);
+    }
 
     /**
      * @see #isGreaterThanOrEqual(Num)
@@ -2173,6 +2656,118 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
      */
     boolean isGreaterThanOrEqual(Num other);
+
+    /**
+     * @see #isGreaterThanOrEqual(Number, Number)
+     */
+    default boolean ge(Number other, Number epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Number, BigDecimal)
+     */
+    default boolean ge(Number other, BigDecimal epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Number, String)
+     */
+    default boolean ge(Number other, String epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Number, Num)
+     */
+    default boolean ge(Number other, Num epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(BigDecimal, Number)
+     */
+    default boolean ge(BigDecimal other, Number epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(BigDecimal, BigDecimal)
+     */
+    default boolean ge(BigDecimal other, BigDecimal epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(BigDecimal, String)
+     */
+    default boolean ge(BigDecimal other, String epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(BigDecimal, Num)
+     */
+    default boolean ge(BigDecimal other, Num epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(String, Number)
+     */
+    default boolean ge(String other, Number epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(String, BigDecimal)
+     */
+    default boolean ge(String other, BigDecimal epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(String, String)
+     */
+    default boolean ge(String other, String epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(String, Num)
+     */
+    default boolean ge(String other, Num epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Num, Number)
+     */
+    default boolean ge(Num other, Number epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Num, BigDecimal)
+     */
+    default boolean ge(Num other, BigDecimal epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Num, String)
+     */
+    default boolean ge(Num other, String epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
+
+    /**
+     * @see #isGreaterThanOrEqual(Num, Num)
+     */
+    default boolean ge(Num other, Num epsilon) {
+        return isGreaterThanOrEqual(other, epsilon);
+    }
 
     /**
      * @see #isGreaterThanOrEqual(Num, Num)
