@@ -14,10 +14,10 @@ import static java.math.RoundingMode.HALF_EVEN;
  * non-<code>null</code> values or throw a {@link RuntimeException} (usually an {@link ArithmeticException}). All
  * implementations of this interface are interoperable with each other. Operations involving different implementations
  * will result in a {@link Num} that trends towards an increase in precision. For example, subtracting a
- * {@link DecimalNum} from a {@link DoubleNum} will result in a {@link DecimalNum}. Similarly, subtracting a
- * {@link DecimalNum} with a {@link DecimalNum#getPrecision()} of <code>16</code> from a {@link DecimalNum} with a
- * {@link DecimalNum#getPrecision()} of <code>32</code> will result in a {@link DecimalNum} with a
- * {@link DecimalNum#getPrecision()} of <code>32</code>. Mathematical operations that result in <code>NaN</code>,
+ * {@link DecimalNum} from a {@link DoubleNum} will result in a {@link DecimalNum}. For another example, subtracting a
+ * {@link DecimalNum} with a {@link DecimalNum#getContextPrecision()} of <code>16</code> from a {@link DecimalNum} with
+ * a {@link DecimalNum#getContextPrecision()} of <code>32</code> will result in a {@link DecimalNum} with a
+ * {@link DecimalNum#getContextPrecision()} of <code>32</code>. Mathematical operations that result in <code>NaN</code>,
  * <code>+Infinity</code>, <code>-Infinity</code>, or {@link ArithmeticException} will yield {@link NaNNum}.
  *
  * @see DoubleNum
@@ -687,7 +687,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num radians();
 
     /**
-     * Returns the π (pi) mathematical constant with a precision of {@link #getPrecision()}.
+     * Returns the π (pi) mathematical constant with a precision of {@link #getContextPrecision()}.
      *
      * @return the pi {@link Num}
      *
@@ -696,7 +696,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num pi();
 
     /**
-     * Returns the <i>e</i> (Euler's number) mathematical constant with a precision of {@link #getPrecision()}.
+     * Returns the <i>e</i> (Euler's number) mathematical constant with a precision of {@link #getContextPrecision()}.
      *
      * @return the <i>e</i> {@link Num}
      *
@@ -2390,14 +2390,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Returns {@link MathContext#getPrecision()} from {@link #getContext()}.
      */
-    default int getPrecision() {
+    default int getContextPrecision() {
         return getContext().getPrecision();
     }
 
     /**
      * Returns {@link MathContext#getRoundingMode()} from {@link #getContext()}.
      */
-    default RoundingMode getRoundingMode() {
+    default RoundingMode getContextRoundingMode() {
         return getContext().getRoundingMode();
     }
 

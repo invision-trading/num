@@ -82,10 +82,10 @@ immutable. All methods in this interface return non-`null` values or throw a `Ru
 [`ArithmeticException`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ArithmeticException.html)).
 All implementations of this interface are interoperable with each other. Operations involving different
 implementations will result in a `Num` that trends towards an increase in precision. For example, subtracting a
-`DecimalNum` from a `DoubleNum` will result in a `DecimalNum`. Similarly, subtracting a `DecimalNum` with a `precision`
-of `16` from a `DecimalNum`  with a `precision` of `32` will result in a `DecimalNum`  with a `precision` of `32`.
-Mathematical operations that result in `NaN`, `+Infinity`, `-Infinity`, or `ArithmeticException` will yield
-[`NaNNum`](src/main/java/trade/invision/num/NaNNum.java).
+`DecimalNum` from a `DoubleNum` will result in a `DecimalNum`. For another example, subtracting a `DecimalNum` with a
+context precision of `16` from a `DecimalNum` with a context precision of `32` will result in a `DecimalNum` with a
+context precision of `32`. Mathematical operations that result in `NaN`, `+Infinity`, `-Infinity`, or
+`ArithmeticException` will yield [`NaNNum`](src/main/java/trade/invision/num/NaNNum.java).
 
 ## Usage
 
