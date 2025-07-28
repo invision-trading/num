@@ -595,6 +595,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num absoluteValue();
 
     /**
+     * @see #negate()
+     */
+    default Num neg() {
+        return negate();
+    }
+
+    /**
      * Performs a negation (additive inverse) operation by multiplying this {@link Num} by negative one:
      * <code>this * -1</code> or <code>-this</code>.
      *
@@ -603,6 +610,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Additive_inverse">Wikipedia</a>
      */
     Num negate();
+
+    /**
+     * @see #reciprocal()
+     */
+    default Num recip() {
+        return reciprocal();
+    }
 
     /**
      * Performs a reciprocal (multiplicative inverse) operation by dividing one by this {@link Num}:
@@ -615,6 +629,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num reciprocal();
 
     /**
+     * @see #increment()
+     */
+    default Num inc() {
+        return increment();
+    }
+
+    /**
      * Performs an increment operation by adding one to this {@link Num}: <code>this + 1</code>.
      *
      * @return the incremented {@link Num}
@@ -622,6 +643,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Increment_and_decrement_operators">Wikipedia</a>
      */
     Num increment();
+
+    /**
+     * @see #decrement()
+     */
+    default Num dec() {
+        return decrement();
+    }
 
     /**
      * Performs a decrement operation by subtracting one from this {@link Num}: <code>this - 1</code>.
