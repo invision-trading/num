@@ -27,13 +27,6 @@ import static trade.invision.num.NaNNum.NaN;
 public final class DoubleNum implements Num {
 
     /**
-     * @see #doubleNum(Number)
-     */
-    public static Num valueOf(Number number) {
-        return doubleNum(number);
-    }
-
-    /**
      * Creates a new {@link DoubleNum} from the given {@link Number}.
      *
      * @param number the {@link Number}
@@ -43,13 +36,6 @@ public final class DoubleNum implements Num {
     public static Num doubleNum(Number number) {
         final double aDouble = number.doubleValue();
         return !isFinite(aDouble) ? NaN : new DoubleNum(aDouble);
-    }
-
-    /**
-     * @see #doubleNum(BigDecimal)
-     */
-    public static Num valueOf(BigDecimal bigDecimal) {
-        return doubleNum(bigDecimal);
     }
 
     /**
@@ -64,13 +50,6 @@ public final class DoubleNum implements Num {
     }
 
     /**
-     * @see #doubleNum(String)
-     */
-    public static Num valueOf(String string) {
-        return doubleNum(string);
-    }
-
-    /**
      * Creates a new {@link DoubleNum} from the given {@link String} representing a number.
      *
      * @param string the {@link String}
@@ -80,13 +59,6 @@ public final class DoubleNum implements Num {
     public static Num doubleNum(String string) {
         final double aDouble = parseDouble(string);
         return !isFinite(aDouble) ? NaN : new DoubleNum(aDouble);
-    }
-
-    /**
-     * @see #doubleNum(Num)
-     */
-    public static Num valueOf(Num num) {
-        return doubleNum(num);
     }
 
     /**

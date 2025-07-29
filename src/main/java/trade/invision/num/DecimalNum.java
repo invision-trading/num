@@ -31,24 +31,10 @@ import static trade.invision.num.NaNNum.NaN;
 public final class DecimalNum implements Num {
 
     /**
-     * @see #decimalNum32(Number)
-     */
-    public static Num valueOf32(Number number) {
-        return decimalNum32(number);
-    }
-
-    /**
      * Calls {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}.
      */
     public static Num decimalNum32(Number number) {
         return decimalNum(number, DECIMAL32);
-    }
-
-    /**
-     * @see #decimalNum32(Number, RoundingMode)
-     */
-    public static Num valueOf32(Number number, RoundingMode roundingMode) {
-        return decimalNum32(number, roundingMode);
     }
 
     /**
@@ -60,24 +46,10 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum64(Number)
-     */
-    public static Num valueOf64(Number number) {
-        return decimalNum64(number);
-    }
-
-    /**
      * Calls {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}.
      */
     public static Num decimalNum64(Number number) {
         return decimalNum(number, DECIMAL64);
-    }
-
-    /**
-     * @see #decimalNum64(Number, RoundingMode)
-     */
-    public static Num valueOf64(Number number, RoundingMode roundingMode) {
-        return decimalNum64(number, roundingMode);
     }
 
     /**
@@ -89,24 +61,10 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum128(Number)
-     */
-    public static Num valueOf128(Number number) {
-        return decimalNum128(number);
-    }
-
-    /**
      * Calls {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}.
      */
     public static Num decimalNum128(Number number) {
         return decimalNum(number, DECIMAL128);
-    }
-
-    /**
-     * @see #decimalNum128(Number, RoundingMode)
-     */
-    public static Num valueOf128(Number number, RoundingMode roundingMode) {
-        return decimalNum128(number, roundingMode);
     }
 
     /**
@@ -118,13 +76,6 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum(Number, int)
-     */
-    public static Num valueOf(Number number, int significantFigures) {
-        return decimalNum(number, significantFigures);
-    }
-
-    /**
      * Calls {@link #decimalNum(Number, int, RoundingMode)} with <code>roundingMode</code> set to
      * {@link RoundingMode#HALF_EVEN}.
      */
@@ -133,25 +84,11 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum(Number, int, RoundingMode)
-     */
-    public static Num valueOf(Number number, int significantFigures, RoundingMode roundingMode) {
-        return decimalNum(number, significantFigures, roundingMode);
-    }
-
-    /**
      * Calls {@link #decimalNum(Number, MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
      */
     public static Num decimalNum(Number number, int significantFigures, RoundingMode roundingMode) {
         return decimalNum(number, new MathContext(significantFigures, roundingMode));
-    }
-
-    /**
-     * @see #decimalNum(Number, MathContext)
-     */
-    public static Num valueOf(Number number, MathContext context) {
-        return decimalNum(number, context);
     }
 
     /**
@@ -176,24 +113,10 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum32(String)
-     */
-    public static Num valueOf32(String string) {
-        return decimalNum32(string);
-    }
-
-    /**
      * Calls {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}.
      */
     public static Num decimalNum32(String string) {
         return decimalNum(string, DECIMAL32);
-    }
-
-    /**
-     * @see #decimalNum32(String, RoundingMode)
-     */
-    public static Num valueOf32(String string, RoundingMode roundingMode) {
-        return decimalNum32(string, roundingMode);
     }
 
     /**
@@ -205,24 +128,10 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum64(String)
-     */
-    public static Num valueOf64(String string) {
-        return decimalNum64(string);
-    }
-
-    /**
      * Calls {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}.
      */
     public static Num decimalNum64(String string) {
         return decimalNum(string, DECIMAL64);
-    }
-
-    /**
-     * @see #decimalNum64(String, RoundingMode)
-     */
-    public static Num valueOf64(String string, RoundingMode roundingMode) {
-        return decimalNum64(string, roundingMode);
     }
 
     /**
@@ -234,24 +143,10 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum128(String)
-     */
-    public static Num valueOf128(String string) {
-        return decimalNum128(string);
-    }
-
-    /**
      * Calls {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}.
      */
     public static Num decimalNum128(String string) {
         return decimalNum(string, DECIMAL128);
-    }
-
-    /**
-     * @see #decimalNum128(String, RoundingMode)
-     */
-    public static Num valueOf128(String string, RoundingMode roundingMode) {
-        return decimalNum128(string, roundingMode);
     }
 
     /**
@@ -263,13 +158,6 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum(String, int)
-     */
-    public static Num valueOf(String string, int significantFigures) {
-        return decimalNum(string, significantFigures);
-    }
-
-    /**
      * Calls {@link #decimalNum(String, int, RoundingMode)} with <code>roundingMode</code> set to
      * {@link RoundingMode#HALF_EVEN}.
      */
@@ -278,25 +166,11 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum(String, int, RoundingMode)
-     */
-    public static Num valueOf(String string, int significantFigures, RoundingMode roundingMode) {
-        return decimalNum(string, significantFigures, roundingMode);
-    }
-
-    /**
      * Calls {@link #decimalNum(String, MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
      */
     public static Num decimalNum(String string, int significantFigures, RoundingMode roundingMode) {
         return decimalNum(string, new MathContext(significantFigures, roundingMode));
-    }
-
-    /**
-     * @see #decimalNum(String, MathContext)
-     */
-    public static Num valueOf(String string, MathContext context) {
-        return decimalNum(string, context);
     }
 
     /**
@@ -313,25 +187,11 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum32(BigDecimal)
-     */
-    public static Num valueOf32(BigDecimal bigDecimal) {
-        return decimalNum32(bigDecimal);
-    }
-
-    /**
      * Calls {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
      * {@link MathContext#DECIMAL32}.
      */
     public static Num decimalNum32(BigDecimal bigDecimal) {
         return decimalNum(bigDecimal, DECIMAL32);
-    }
-
-    /**
-     * @see #decimalNum32(BigDecimal, RoundingMode)
-     */
-    public static Num valueOf32(BigDecimal bigDecimal, RoundingMode roundingMode) {
-        return decimalNum32(bigDecimal, roundingMode);
     }
 
     /**
@@ -343,25 +203,11 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum64(BigDecimal)
-     */
-    public static Num valueOf64(BigDecimal bigDecimal) {
-        return decimalNum64(bigDecimal);
-    }
-
-    /**
      * Calls {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
      * {@link MathContext#DECIMAL64}.
      */
     public static Num decimalNum64(BigDecimal bigDecimal) {
         return decimalNum(bigDecimal, DECIMAL64);
-    }
-
-    /**
-     * @see #decimalNum64(BigDecimal, RoundingMode)
-     */
-    public static Num valueOf64(BigDecimal bigDecimal, RoundingMode roundingMode) {
-        return decimalNum64(bigDecimal, roundingMode);
     }
 
     /**
@@ -373,25 +219,11 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum128(BigDecimal)
-     */
-    public static Num valueOf128(BigDecimal bigDecimal) {
-        return decimalNum128(bigDecimal);
-    }
-
-    /**
      * Calls {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
      * {@link MathContext#DECIMAL128}.
      */
     public static Num decimalNum128(BigDecimal bigDecimal) {
         return decimalNum(bigDecimal, DECIMAL128);
-    }
-
-    /**
-     * @see #decimalNum128(BigDecimal, RoundingMode)
-     */
-    public static Num valueOf128(BigDecimal bigDecimal, RoundingMode roundingMode) {
-        return decimalNum128(bigDecimal, roundingMode);
     }
 
     /**
@@ -403,13 +235,6 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum(BigDecimal, int)
-     */
-    public static Num valueOf(BigDecimal bigDecimal, int significantFigures) {
-        return decimalNum(bigDecimal, significantFigures);
-    }
-
-    /**
      * Calls {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>roundingMode</code> set to
      * {@link RoundingMode#HALF_EVEN}.
      */
@@ -418,25 +243,11 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum(BigDecimal, int, RoundingMode)
-     */
-    public static Num valueOf(BigDecimal bigDecimal, int significantFigures, RoundingMode roundingMode) {
-        return decimalNum(bigDecimal, significantFigures, roundingMode);
-    }
-
-    /**
      * Calls {@link #decimalNum(BigDecimal, MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
      */
     public static Num decimalNum(BigDecimal bigDecimal, int significantFigures, RoundingMode roundingMode) {
         return decimalNum(bigDecimal, new MathContext(significantFigures, roundingMode));
-    }
-
-    /**
-     * @see #decimalNum(BigDecimal, MathContext)
-     */
-    public static Num valueOf(BigDecimal bigDecimal, MathContext context) {
-        return decimalNum(bigDecimal, context);
     }
 
     /**
@@ -452,24 +263,10 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum32(Num)
-     */
-    public static Num valueOf32(Num num) {
-        return decimalNum32(num);
-    }
-
-    /**
      * Calls {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}.
      */
     public static Num decimalNum32(Num num) {
         return decimalNum(num, DECIMAL32);
-    }
-
-    /**
-     * @see #decimalNum32(Num, RoundingMode)
-     */
-    public static Num valueOf32(Num num, RoundingMode roundingMode) {
-        return decimalNum32(num, roundingMode);
     }
 
     /**
@@ -481,24 +278,10 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum64(Num)
-     */
-    public static Num valueOf64(Num num) {
-        return decimalNum64(num);
-    }
-
-    /**
      * Calls {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}.
      */
     public static Num decimalNum64(Num num) {
         return decimalNum(num, DECIMAL64);
-    }
-
-    /**
-     * @see #decimalNum64(Num, RoundingMode)
-     */
-    public static Num valueOf64(Num num, RoundingMode roundingMode) {
-        return decimalNum64(num, roundingMode);
     }
 
     /**
@@ -510,24 +293,10 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum128(Num)
-     */
-    public static Num valueOf128(Num num) {
-        return decimalNum128(num);
-    }
-
-    /**
      * Calls {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}.
      */
     public static Num decimalNum128(Num num) {
         return decimalNum(num, DECIMAL128);
-    }
-
-    /**
-     * @see #decimalNum128(Num, RoundingMode)
-     */
-    public static Num valueOf128(Num num, RoundingMode roundingMode) {
-        return decimalNum128(num, roundingMode);
     }
 
     /**
@@ -539,13 +308,6 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum(Num, int)
-     */
-    public static Num valueOf(Num num, int significantFigures) {
-        return decimalNum(num, significantFigures);
-    }
-
-    /**
      * Calls {@link #decimalNum(Num, int, RoundingMode)} with <code>roundingMode</code> set to
      * {@link RoundingMode#HALF_EVEN}.
      */
@@ -554,25 +316,11 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * @see #decimalNum(Num, int, RoundingMode)
-     */
-    public static Num valueOf(Num num, int significantFigures, RoundingMode roundingMode) {
-        return decimalNum(num, significantFigures, roundingMode);
-    }
-
-    /**
      * Calls {@link #decimalNum(Num, MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
      */
     public static Num decimalNum(Num num, int significantFigures, RoundingMode roundingMode) {
         return decimalNum(num, new MathContext(significantFigures, roundingMode));
-    }
-
-    /**
-     * @see #decimalNum(Num, MathContext)
-     */
-    public static Num valueOf(Num num, MathContext context) {
-        return decimalNum(num, context);
     }
 
     /**

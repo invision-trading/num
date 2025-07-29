@@ -89,13 +89,15 @@ context precision of `32`. Mathematical operations that result in `NaN`, `+Infin
 
 ## Usage
 
-To create a `DoubleNum`, use one of the static methods, such as `DoubleNum.valueOf()` or `DoubleNum.doubleNum()`. Your
-code may look cleaner if you use the `doubleNum()` static import instead of using `DoubleNum.valueOf()`. Creating a
-`DecimalNum` is similar to `DoubleNum`, but requires you to specify a precision and rounding mode. Use
+To create a `DoubleNum`, provide an existing `Number` (`byte`, `double`, `float`, `int`, `long`, `short`), `BigDecimal`,
+`String`, or `Num` to the `DoubleNum.doubleNum()` static method. Statically importing `doubleNum()` is preferred as your
+code will likely look cleaner. Creating a `DecimalNum` is similar to `DoubleNum`, but requires you to specify a
+precision and rounding mode via
+[`MathContext`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/MathContext.html). Use
 `DecimalNum.decimalNum(String, MathContext)` or use one of the convenience methods, such as `decimalNum64()` which
-provides approximately the same precision as `double`, allowing up to 16 significant figures of precision, and the same
+provides approximately the same precision as `double`, allowing up to 16 significant figures of precision and the same
 [rounding policy](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/RoundingMode.html#HALF_EVEN) as
-`double`.
+`double`. Again, statically importing `decimalNum()` is preferred as your code will likely look cleaner.
 
 You can create a [`NumFactory`](src/main/java/trade/invision/num/NumFactory.java) instance to abstract the `Num`
 creation process by using one of the `NumFactory` creation methods available in `DoubleNum` or `DecimalNum` (e.g.
@@ -105,7 +107,8 @@ instances, so you can create a `Num` from an existing `Number`, `BigDecimal`, `S
 
 For mathematical operations that have well-known abbreviations, such as `log` for `logarithm` or `atanh` for
 `inverseHyperbolicTangent`, the `Num` interface provides methods for such abbreviations, also known as shorthand
-methods. Using the shorthand methods is the preferred usage.
+methods. The shorthand methods should be preferred to the full name of the mathematical operation; the full name
+exists for completeness and as a reference for the shorthand.
 
 Check out the [Javadoc](https://javadoc.io/doc/trade.invision/num) for all classes and method signatures, but here's a
 quick reference:
@@ -196,9 +199,9 @@ This library's `Num` interface was inspired by the `Num` interface of the excell
 library. There are several improvements and additions that this library's `Num` interface provides:
 
 - Interoperability between `DoubleNum` and `DecimalNum`.
-- `reciprocal()`, `root(base)`, `logarithm(base)`, `average()`, `precision()`, `round()`, etc.
-- Trigonometry functions via [Math](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html) in
-  `DoubleNum` and via [big-math](https://github.com/eobermuhlner/big-math) in `DecimalNum`.
+- Several more mathematical operations (e.g. trigonometry functions) via
+  [Math](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html) in `DoubleNum` and via
+  [big-math](https://github.com/eobermuhlner/big-math) in `DecimalNum`.
 - No default precision for `DecimalNum` (see [ta4j issue](https://github.com/ta4j/ta4j/issues/1086)).
 - Configurable epsilon for tolerant comparison operations (see [ta4j
   `DoubleNum`](https://github.com/ta4j/ta4j/blob/1101dbe059cda92d7dd1f86e755b0466782911d5/ta4j-core/src/main/java/org/ta4j/core/num/DoubleNum.java#L53)).
