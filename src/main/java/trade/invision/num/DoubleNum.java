@@ -371,15 +371,11 @@ public final class DoubleNum implements Num {
         } else if (base instanceof DecimalNum decimalNum) {
             return decimalNum.factory().of(this).logarithm(decimalNum);
         } else {
-            final double numerator = Math.log(wrapped);
-            if (!isFinite(numerator)) {
+            final double logarithm = Math.log(wrapped) / Math.log(((DoubleNum) base).wrapped);
+            if (!isFinite(logarithm)) {
                 return NaN;
             }
-            final double denominator = Math.log(((DoubleNum) base).wrapped);
-            if (!isFinite(denominator)) {
-                return NaN;
-            }
-            return new DoubleNum(numerator / denominator);
+            return new DoubleNum(logarithm);
         }
     }
 
