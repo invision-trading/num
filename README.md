@@ -89,7 +89,7 @@ context precision of `32`. Mathematical operations that result in `NaN`, `+Infin
 
 ## Usage
 
-To create a `DoubleNum`, provide an existing `Number` (`byte`, `double`, `float`, `int`, `long`, `short`), `BigDecimal`,
+To create a `DoubleNum`, provide an existing `Number` (`byte`, `short`, `int`, `long`, `float`, `double`), `BigDecimal`,
 `String`, or `Num` to the `DoubleNum.doubleNum()` static method. Statically importing `doubleNum()` is preferred as your
 code will likely look cleaner. Creating a `DecimalNum` is similar to `DoubleNum`, but requires you to specify a
 precision and rounding mode via
@@ -160,8 +160,8 @@ quick reference:
 - [`minimum`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#minimum(trade.invision.num.Num)) (shorthand: `min`)
 - [`maximum`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#maximum(trade.invision.num.Num)) (shorthand: `max`)
 - [`clamp`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#clamp(trade.invision.num.Num,trade.invision.num.Num))
-- [`integerPart`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#integerPart()) (shorthand: `int`)
-- [`fractionalPart`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#fractionalPart()) (shorthand: `frac`)
+- [`integerPart`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#integerPart()) (shorthand: `intPart`)
+- [`fractionalPart`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#fractionalPart()) (shorthand: `fracPart`)
 - [`round`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#round())
 - [`significantFigures`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#significantFigures()) (shorthand: `sigFigs`)
 - [`mantissa`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#mantissa())
