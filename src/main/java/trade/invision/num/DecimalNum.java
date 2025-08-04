@@ -638,8 +638,8 @@ public final class DecimalNum implements Num {
         if (addend.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(addend);
-        final MathContext context = highestPrecisionContext(this, decimalNum);
+        final DecimalNum decimalNum = asDecimalNum(addend);
+        final MathContext context = precisestContext(decimalNum.context);
         return new DecimalNum(wrapped.add(decimalNum.wrapped, context), context);
     }
 
@@ -648,8 +648,8 @@ public final class DecimalNum implements Num {
         if (subtrahend.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(subtrahend);
-        final MathContext context = highestPrecisionContext(this, decimalNum);
+        final DecimalNum decimalNum = asDecimalNum(subtrahend);
+        final MathContext context = precisestContext(decimalNum.context);
         return new DecimalNum(wrapped.subtract(decimalNum.wrapped, context), context);
     }
 
@@ -658,8 +658,8 @@ public final class DecimalNum implements Num {
         if (multiplier.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(multiplier);
-        final MathContext context = highestPrecisionContext(this, decimalNum);
+        final DecimalNum decimalNum = asDecimalNum(multiplier);
+        final MathContext context = precisestContext(decimalNum.context);
         return new DecimalNum(wrapped.multiply(decimalNum.wrapped, context), context);
     }
 
@@ -668,8 +668,8 @@ public final class DecimalNum implements Num {
         if (divisor.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(divisor);
-        final MathContext context = highestPrecisionContext(this, decimalNum);
+        final DecimalNum decimalNum = asDecimalNum(divisor);
+        final MathContext context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(wrapped.divide(decimalNum.wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -682,8 +682,8 @@ public final class DecimalNum implements Num {
         if (divisor.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(divisor);
-        final MathContext context = highestPrecisionContext(this, decimalNum);
+        final DecimalNum decimalNum = asDecimalNum(divisor);
+        final MathContext context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(wrapped.remainder(decimalNum.wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -696,8 +696,8 @@ public final class DecimalNum implements Num {
         if (exponent.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(exponent);
-        final MathContext context = highestPrecisionContext(this, decimalNum);
+        final DecimalNum decimalNum = asDecimalNum(exponent);
+        final MathContext context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(BigDecimalMath.pow(wrapped, decimalNum.wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -725,8 +725,8 @@ public final class DecimalNum implements Num {
         if (degree.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(degree);
-        final MathContext context = highestPrecisionContext(this, decimalNum);
+        final DecimalNum decimalNum = asDecimalNum(degree);
+        final MathContext context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(BigDecimalMath.root(wrapped, decimalNum.wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -784,8 +784,8 @@ public final class DecimalNum implements Num {
         if (base.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(base);
-        final MathContext context = highestPrecisionContext(this, decimalNum);
+        final DecimalNum decimalNum = asDecimalNum(base);
+        final MathContext context = precisestContext(decimalNum.context);
         try {
             final BigDecimal numerator = BigDecimalMath.log(wrapped, context);
             final BigDecimal denominator = BigDecimalMath.log(decimalNum.wrapped, context);
@@ -913,8 +913,8 @@ public final class DecimalNum implements Num {
         if (x.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(x);
-        final MathContext context = highestPrecisionContext(this, decimalNum);
+        final DecimalNum decimalNum = asDecimalNum(x);
+        final MathContext context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(BigDecimalMath.atan2(wrapped, decimalNum.wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -981,8 +981,8 @@ public final class DecimalNum implements Num {
         if (y.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(y);
-        final MathContext context = highestPrecisionContext(this, decimalNum);
+        final DecimalNum decimalNum = asDecimalNum(y);
+        final MathContext context = precisestContext(decimalNum.context);
         final BigDecimal xSquared = wrapped.multiply(wrapped, context);
         final BigDecimal ySquared = decimalNum.wrapped.multiply(decimalNum.wrapped, context);
         return new DecimalNum(BigDecimalMath.sqrt(xSquared.add(ySquared, context), context), context);
@@ -993,8 +993,8 @@ public final class DecimalNum implements Num {
         if (other.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(other);
-        final MathContext context = highestPrecisionContext(this, decimalNum);
+        final DecimalNum decimalNum = asDecimalNum(other);
+        final MathContext context = precisestContext(decimalNum.context);
         return new DecimalNum(wrapped.add(decimalNum.wrapped, context).multiply(HALF, context), context);
     }
 
@@ -1015,7 +1015,7 @@ public final class DecimalNum implements Num {
 
     @Override
     public Num significantFigures(MathContext context) {
-        return new DecimalNum(wrapped.round(context), highestPrecisionContext(this.context, context));
+        return new DecimalNum(wrapped.round(context), precisestContext(context));
     }
 
     @Override
@@ -1053,7 +1053,7 @@ public final class DecimalNum implements Num {
         if (epsilon.isZero()) {
             return isNegativeOrZero();
         } else {
-            return !epsilon.isNaN() && wrapped.compareTo(toDecimalNumAsNeeded(epsilon).wrapped) <= 0;
+            return !epsilon.isNaN() && wrapped.compareTo(asDecimalNum(epsilon).wrapped) <= 0;
         }
     }
 
@@ -1072,7 +1072,7 @@ public final class DecimalNum implements Num {
         if (epsilon.isZero()) {
             return isPositiveOrZero();
         } else {
-            return !epsilon.isNaN() && wrapped.compareTo(toDecimalNumAsNeeded(epsilon).wrapped.negate()) >= 0;
+            return !epsilon.isNaN() && wrapped.compareTo(asDecimalNum(epsilon).wrapped.negate()) >= 0;
         }
     }
 
@@ -1086,13 +1086,13 @@ public final class DecimalNum implements Num {
         if (epsilon.isZero()) {
             return isZero();
         } else {
-            return !epsilon.isNaN() && wrapped.abs().compareTo(toDecimalNumAsNeeded(epsilon).wrapped) <= 0;
+            return !epsilon.isNaN() && wrapped.abs().compareTo(asDecimalNum(epsilon).wrapped) <= 0;
         }
     }
 
     @Override
     public boolean isEqual(Num other) {
-        return !other.isNaN() && wrapped.compareTo(toDecimalNumAsNeeded(other).wrapped) == 0;
+        return !other.isNaN() && wrapped.compareTo(asDecimalNum(other).wrapped) == 0;
     }
 
     @Override
@@ -1103,20 +1103,19 @@ public final class DecimalNum implements Num {
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(other);
-        final MathContext context = highestPrecisionContext(this, decimalNum);
-        return wrapped.subtract(decimalNum.wrapped, context).abs()
-                .compareTo(toDecimalNumAsNeeded(epsilon).wrapped) <= 0;
+        final DecimalNum decimalNum = asDecimalNum(other);
+        return wrapped.subtract(decimalNum.wrapped, precisestContext(decimalNum.context)).abs()
+                .compareTo(asDecimalNum(epsilon).wrapped) <= 0;
     }
 
     @Override
     public boolean isLessThan(Num other) {
-        return !other.isNaN() && wrapped.compareTo(toDecimalNumAsNeeded(other).wrapped) < 0;
+        return !other.isNaN() && wrapped.compareTo(asDecimalNum(other).wrapped) < 0;
     }
 
     @Override
     public boolean isLessThanOrEqual(Num other) {
-        return !other.isNaN() && wrapped.compareTo(toDecimalNumAsNeeded(other).wrapped) <= 0;
+        return !other.isNaN() && wrapped.compareTo(asDecimalNum(other).wrapped) <= 0;
     }
 
     @Override
@@ -1127,20 +1126,19 @@ public final class DecimalNum implements Num {
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(other);
-        final MathContext context = highestPrecisionContext(this, decimalNum);
-        return decimalNum.wrapped.subtract(wrapped, context)
-                .compareTo(toDecimalNumAsNeeded(epsilon).wrapped.negate()) >= 0;
+        final DecimalNum decimalNum = asDecimalNum(other);
+        return decimalNum.wrapped.subtract(wrapped, precisestContext(decimalNum.context))
+                .compareTo(asDecimalNum(epsilon).wrapped.negate()) >= 0;
     }
 
     @Override
     public boolean isGreaterThan(Num other) {
-        return !other.isNaN() && wrapped.compareTo(toDecimalNumAsNeeded(other).wrapped) > 0;
+        return !other.isNaN() && wrapped.compareTo(asDecimalNum(other).wrapped) > 0;
     }
 
     @Override
     public boolean isGreaterThanOrEqual(Num other) {
-        return !other.isNaN() && wrapped.compareTo(toDecimalNumAsNeeded(other).wrapped) >= 0;
+        return !other.isNaN() && wrapped.compareTo(asDecimalNum(other).wrapped) >= 0;
     }
 
     @Override
@@ -1151,10 +1149,9 @@ public final class DecimalNum implements Num {
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
-        final DecimalNum decimalNum = toDecimalNumAsNeeded(other);
-        final MathContext context = highestPrecisionContext(this, decimalNum);
-        return wrapped.subtract(decimalNum.wrapped, context)
-                .compareTo(toDecimalNumAsNeeded(epsilon).wrapped.negate()) >= 0;
+        final DecimalNum decimalNum = asDecimalNum(other);
+        return wrapped.subtract(decimalNum.wrapped, precisestContext(decimalNum.context))
+                .compareTo(asDecimalNum(epsilon).wrapped.negate()) >= 0;
     }
 
     @Override
@@ -1195,18 +1192,14 @@ public final class DecimalNum implements Num {
 
     @Override
     public int compareTo(@NotNull Num o) {
-        return o.isNaN() ? 0 : wrapped.compareTo(toDecimalNumAsNeeded(o).wrapped);
+        return o.isNaN() ? 0 : wrapped.compareTo(asDecimalNum(o).wrapped);
     }
 
-    private DecimalNum toDecimalNumAsNeeded(Num num) {
+    private DecimalNum asDecimalNum(Num num) {
         return (DecimalNum) (num instanceof DoubleNum doubleNum ? factory().of(doubleNum) : num);
     }
 
-    private MathContext highestPrecisionContext(DecimalNum first, DecimalNum second) {
-        return highestPrecisionContext(first.context, second.context);
-    }
-
-    private MathContext highestPrecisionContext(MathContext first, MathContext second) {
-        return first.getPrecision() > second.getPrecision() ? first : second;
+    private MathContext precisestContext(MathContext other) {
+        return context.getPrecision() > other.getPrecision() ? context : other;
     }
 }
