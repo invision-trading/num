@@ -240,6 +240,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a modulo (remainder of) operation by dividing this {@link Num} by the given {@link Num} and yielding the
      * remainder: <code>this % divisor</code>.
+     * <br>
+     * Shorthand method: {@link #mod(Num)}
      *
      * @param divisor the {@link Num} to divide by
      *
@@ -304,6 +306,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs an exponentiation (power) operation by raising this {@link Num} to the given {@link Num}: <code>this ^
      * exponent</code> or <code>this<sup>exponent</sup></code>.
+     * <br>
+     * Shorthand method: {@link #pow(Num)}
      *
      * @param exponent the {@link Num} to raise to
      *
@@ -323,6 +327,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a square (raise to the power of two) operation by multiplying this {@link Num} by itself: <code>this *
      * this</code> or <code>this ^ 2</code> or <code>this<sup>2</sup></code>.
+     * <br>
+     * Shorthand method: {@link #sq()}
      *
      * @return the squared {@link Num}
      *
@@ -340,6 +346,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a cube (raise to the power of three) operation by multiplying three instances of this {@link Num}
      * together: <code>this * this * this</code> or <code>this ^ 3</code> or <code>this<sup>3</sup></code>.
+     * <br>
+     * Shorthand method: {@link #cb()}
      *
      * @return the cubed {@link Num}
      *
@@ -358,6 +366,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * Performs an exponential (<code>e</code> raised to the power of) operation by raising <a
      * href="https://en.wikipedia.org/wiki/Euler%27s_number"><i>e</i> (Euler's number)</a> to this {@link Num}:
      * <code><i>e</i> ^ this</code> or <code>e<sup>this</sup></code>.
+     * <br>
+     * Shorthand method: {@link #exp()}
      *
      * @return the exponential {@link Num}
      *
@@ -420,6 +430,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs an <i>n</i>th root (radical) operation using this {@link Num} as the radicand and the given {@link Num}
      * as the degree in the radical: <code><sup>n</sup>√this</code>.
+     * <br>
+     * Shorthand method: {@link #rt(Num)}
      *
      * @param degree the {@link Num} to use for <i>n</i>
      *
@@ -439,6 +451,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a square root (root two) operation using this {@link Num} as the radicand and <code>2</code> as the
      * degree in the radical: <code><sup>2</sup>√this</code>.
+     * <br>
+     * Shorthand method: {@link #sqrt()}
      *
      * @return the square root {@link Num}
      *
@@ -456,6 +470,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a cube root (root three) operation using this {@link Num} as the radicand and <code>3</code> as the
      * degree in the radical: <code><sup>3</sup>√this</code>.
+     * <br>
+     * Shorthand method: {@link #cbrt()}
      *
      * @return the cube root {@link Num}
      *
@@ -474,6 +490,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * Performs a natural logarithm (logarithm with a base of <i>e</i>) operation using this {@link Num} as the
      * anti-logarithm and <a href="https://en.wikipedia.org/wiki/Euler%27s_number"><i>e</i> (Euler's number)</a> as the
      * base: <code>log<sub>e</sub>this</code> or <code>ln(this)</code>.
+     * <br>
+     * Shorthand method: {@link #ln()}
      *
      * @return the natural logarithm {@link Num}
      *
@@ -491,6 +509,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a common logarithm (logarithm with a base of ten) operation using this {@link Num} as the anti-logarithm
      * and <code>10</code> as the base: <code>log<sub>10</sub>this</code> or <code>log10(this)</code>.
+     * <br>
+     * Shorthand method: {@link #log10()}
      *
      * @return the common logarithm {@link Num}
      *
@@ -508,6 +528,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a binary logarithm (logarithm with a base of two) operation using this {@link Num} as the anti-logarithm
      * and <code>2</code> as the base: <code>log<sub>2</sub>this</code> or <code>log2(this)</code>.
+     * <br>
+     * Shorthand method: {@link #log2()}
      *
      * @return the binary logarithm {@link Num}
      *
@@ -570,6 +592,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a logarithm (log) operation using this {@link Num} as the anti-logarithm and the given {@link Num} as
      * the base: <code>log<sub>base</sub>this</code>.
+     * <br>
+     * Shorthand method: {@link #log(Num)}
      *
      * @return the logarithm {@link Num}
      *
@@ -587,6 +611,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs an absolute value (abs) operation by computing the non-negative value of this {@link Num}:
      * <code>|this|</code>.
+     * <br>
+     * Shorthand method: {@link #abs()}
      *
      * @return the absolute value {@link Num}
      *
@@ -604,6 +630,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a negation (additive inverse) operation by multiplying this {@link Num} by negative one:
      * <code>this * -1</code> or <code>-this</code>.
+     * <br>
+     * Shorthand method: {@link #neg()}
      *
      * @return the negated {@link Num}
      *
@@ -621,6 +649,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a reciprocal (multiplicative inverse) operation by dividing one by this {@link Num}:
      * <code>1 / this</code> or <code>this<sup>-1</sup></code>.
+     * <br>
+     * Shorthand method: {@link #recip()}
      *
      * @return the reciprocal {@link Num}
      *
@@ -637,6 +667,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs an increment operation by adding one to this {@link Num}: <code>this + 1</code>.
+     * <br>
+     * Shorthand method: {@link #inc()}
      *
      * @return the incremented {@link Num}
      *
@@ -653,6 +685,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a decrement operation by subtracting one from this {@link Num}: <code>this - 1</code>.
+     * <br>
+     * Shorthand method: {@link #dec()}
      *
      * @return the decremented {@link Num}
      *
@@ -690,6 +724,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a trigonometric angle conversion operation by converting this {@link Num} in radians to degrees:
      * <code>this°</code>.
+     * <br>
+     * Shorthand method: {@link #deg()}
      *
      * @return the degrees {@link Num}
      *
@@ -707,6 +743,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a trigonometric angle conversion operation by converting this {@link Num} in degrees to radians:
      * <code>this <i>rad</i></code>.
+     * <br>
+     * Shorthand method: {@link #rad()}
      *
      * @return the radians {@link Num}
      *
@@ -741,6 +779,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a trigonometric sine operation of this {@link Num} in radians: <code>sin(this)</code>.
+     * <br>
+     * Shorthand method: {@link #sin()}
      *
      * @return the sine {@link Num}
      *
@@ -757,6 +797,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a trigonometric cosine operation of this {@link Num} in radians: <code>cos(this)</code>.
+     * <br>
+     * Shorthand method: {@link #cos()}
      *
      * @return the cosine {@link Num}
      *
@@ -773,6 +815,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a trigonometric tangent operation of this {@link Num} in radians: <code>tan(this)</code>.
+     * <br>
+     * Shorthand method: {@link #tan()}
      *
      * @return the tangent {@link Num}
      *
@@ -789,6 +833,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a trigonometric inverse sine operation of this {@link Num} in radians: <code>asin(this)</code>.
+     * <br>
+     * Shorthand method: {@link #asin()}
      *
      * @return the inverse sine {@link Num}
      *
@@ -805,6 +851,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a trigonometric inverse cosine operation of this {@link Num} in radians: <code>acos(this)</code>.
+     * <br>
+     * Shorthand method: {@link #acos()}
      *
      * @return the inverse cosine {@link Num}
      *
@@ -821,6 +869,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a trigonometric inverse tangent operation of this {@link Num} in radians: <code>atan(this)</code>.
+     * <br>
+     * Shorthand method: {@link #atan()}
      *
      * @return the inverse tangent {@link Num}
      *
@@ -883,6 +933,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a trigonometric 2-argument inverse tangent operation using this {@link Num} in radians as <i>y</i> and
      * the given {@link Num} in radians as <i>x</i>: <code>atan2(y,x)</code>.
+     * <br>
+     * Shorthand method: {@link #atan2(Num)}
      *
      * @param x the {@link Num} to use for <i>x</i>
      *
@@ -901,6 +953,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a trigonometric hyperbolic sine operation of this {@link Num} in radians: <code>sinh(this)</code>.
+     * <br>
+     * Shorthand method: {@link #sinh()}
      *
      * @return the hyperbolic sine {@link Num}
      *
@@ -917,6 +971,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a trigonometric hyperbolic cosine operation of this {@link Num} in radians: <code>cosh(this)</code>.
+     * <br>
+     * Shorthand method: {@link #cosh()}
      *
      * @return the hyperbolic cosine {@link Num}
      *
@@ -933,6 +989,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a trigonometric hyperbolic tangent operation of this {@link Num} in radians: <code>tanh(this)</code>.
+     * <br>
+     * Shorthand method: {@link #tanh()}
      *
      * @return the hyperbolic tangent {@link Num}
      *
@@ -950,6 +1008,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a trigonometric inverse hyperbolic sine operation of this {@link Num} in radians:
      * <code>asinh(this)</code>.
+     * <br>
+     * Shorthand method: {@link #asinh()}
      *
      * @return the inverse hyperbolic sine {@link Num}
      *
@@ -967,6 +1027,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a trigonometric inverse hyperbolic cosine operation of this {@link Num} in radians:
      * <code>acosh(this)</code>.
+     * <br>
+     * Shorthand method: {@link #acosh()}
      *
      * @return the inverse hyperbolic cosine {@link Num}
      *
@@ -984,6 +1046,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a trigonometric inverse hyperbolic tangent operation of this {@link Num} in radians:
      * <code>atanh(this)</code>.
+     * <br>
+     * Shorthand method: {@link #atanh()}
      *
      * @return the inverse hyperbolic tangent {@link Num}
      *
@@ -1046,6 +1110,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a trigonometric hypotenuse (distance formula) operation using this {@link Num} as <i>x</i> and the given
      * {@link Num} as <i>y</i>: <code>√(<i>x</i><sup>2</sup> + <i>y</i><sup>2</sup>)</code>.
+     * <br>
+     * Shorthand method: {@link #hypot(Num)}
      *
      * @param y the {@link Num} to use for <i>y</i>
      *
@@ -1110,6 +1176,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs an average (mean) operation by dividing the sum of this {@link Num} and the given {@link Num} by two:
      * <code>(this + other) / 2</code>.
+     * <br>
+     * Shorthand method: {@link #avg(Num)}
      *
      * @param other the other {@link Num}
      *
@@ -1174,6 +1242,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a minimum (minima extrema) operation by computing the lesser of this {@link Num} and the given
      * {@link Num}: <code>min(this, other)</code>.
+     * <br>
+     * Shorthand method: {@link #min(Num)}
      *
      * @param other the other {@link Num}
      *
@@ -1240,6 +1310,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a maximum (maxima extrema) operation by computing the greater of this {@link Num} and the given
      * {@link Num}: <code>max(this, other)</code>.
+     * <br>
+     * Shorthand method: {@link #max(Num)}
      *
      * @param other the other {@link Num}
      *
@@ -1405,6 +1477,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a truncation operation by removing the fractional part (digits to the right of the decimal point) of
      * this {@link Num} and returning the integer part: <code>int(this)</code>.
+     * <br>
+     * Shorthand method: {@link #intPart()}
      *
      * @return the integer part {@link Num}
      *
@@ -1422,6 +1496,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a truncation operation by removing the integer part (digits to the left of the decimal point) of this
      * {@link Num} and returning the fractional part: <code>frac(this)</code>.
+     * <br>
+     * Shorthand method: {@link #fracPart()}
      *
      * @return the fractional part {@link Num}
      *
@@ -1504,6 +1580,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * Performs a precision modification operation by setting the number of significant figures in this {@link Num} to
      * the given {@link MathContext#getPrecision()} and rounding excess significant figures according to the given
      * {@link MathContext#getRoundingMode()}.
+     * <br>
+     * Shorthand method: {@link #sigFigs(MathContext)}
      *
      * @param context the {@link MathContext}
      *
@@ -1522,6 +1600,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a significant figures (sig figs) count operation on this {@link Num}.
+     * <br>
+     * Shorthand method: {@link #sigFigs()}
      *
      * @return the significant figures count <code>int</code>
      *
@@ -1571,6 +1651,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is less than zero: <code>this &lt;
      * 0</code>.
+     * <br>
+     * Shorthand method: {@link #lt0()}
      *
      * @return <code>true</code> if this {@link Num} is less than zero, <code>false</code> otherwise
      *
@@ -1589,6 +1671,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is less than or equal to zero:
      * <code>this &lt;= 0</code> or <code>this ≤ 0</code>.
+     * <br>
+     * Shorthand method: {@link #le0()}
      *
      * @return <code>true</code> if this {@link Num} is less than or equal to zero, <code>false</code> otherwise
      *
@@ -1652,6 +1736,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly less than or equal to
      * zero: <code>this &lt;= epsilon</code> or <code>this ≤ epsilon</code>.
+     * <br>
+     * Shorthand method: {@link #le0(Num)}
      *
      * @param epsilon the epsilon (tolerance) {@link Num}
      *
@@ -1674,6 +1760,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is greater than zero: <code>this
      * &gt; 0</code>.
+     * <br>
+     * Shorthand method: {@link #gt0()}
      *
      * @return <code>true</code> if this {@link Num} is greater than zero, <code>false</code> otherwise
      *
@@ -1692,6 +1780,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is greater than or equal to zero:
      * <code>this &gt;= 0</code> or <code>this ≥ 0</code>.
+     * <br>
+     * Shorthand method: {@link #ge0()}
      *
      * @return <code>true</code> if this {@link Num} is greater than or equal to zero, <code>false</code> otherwise
      *
@@ -1755,6 +1845,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly greater than or equal
      * to zero: <code>this &gt;= -epsilon</code> or <code>this ≥ -epsilon</code>.
+     * <br>
+     * Shorthand method: {@link #ge0(Num)}
      *
      * @param epsilon the epsilon (tolerance) {@link Num}
      *
@@ -1777,6 +1869,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is equal to zero:
      * <code>this == 0</code>.
+     * <br>
+     * Shorthand method: {@link #eq0()}
      *
      * @return <code>true</code> if this {@link Num} is equal to zero, <code>false</code> otherwise
      *
@@ -1840,6 +1934,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly equal to zero:
      * <code>|this| &lt;= epsilon</code> or <code>|this| ≤ epsilon</code>.
+     * <br>
+     * Shorthand method: {@link #eq0(Num)}
      *
      * @param epsilon the epsilon (tolerance) {@link Num}
      *
@@ -1906,6 +2002,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is equal to the given {@link Num}:
      * <code>this == other</code>.
+     * <br>
+     * Shorthand method: {@link #eq(Num)}
      *
      * @param other the other {@link Num}
      *
@@ -2159,6 +2257,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly equal to the given
      * {@link Num}: <code>|this - other| &lt;= epsilon</code>.
+     * <br>
+     * Shorthand method: {@link #eq(Num, Num)}
      *
      * @param other   the other {@link Num}
      * @param epsilon the epsilon (tolerance) {@link Num}
@@ -2226,6 +2326,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is less than the given {@link Num}:
      * <code>this &lt; other</code>.
+     * <br>
+     * Shorthand method: {@link #lt(Num)}
      *
      * @param other the other {@link Num}
      *
@@ -2290,6 +2392,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is less than or equal to the given
      * {@link Num}: <code>this &lt;= other</code> or <code>this ≤ other</code>.
+     * <br>
+     * Shorthand method: {@link #le(Num)}
      *
      * @param other the other {@link Num}
      *
@@ -2544,6 +2648,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly less than or equal to
      * the given {@link Num}: <code>other - this &gt;= -epsilon</code> or <code>other - this ≥ -epsilon</code>.
+     * <br>
+     * Shorthand method: {@link #le(Num, Num)}
      *
      * @param other   the other {@link Num}
      * @param epsilon the epsilon (tolerance) {@link Num}
@@ -2611,6 +2717,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is greater than the given
      * {@link Num}: <code>this &gt; other</code>.
+     * <br>
+     * Shorthand method: {@link #gt(Num)}
      *
      * @param other the other {@link Num}
      *
@@ -2675,6 +2783,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is greater than or equal to the
      * given {@link Num}: <code>this &gt;= other</code> or <code>this ≥ other</code>.
+     * <br>
+     * Shorthand method: {@link #ge(Num)}
      *
      * @param other the other {@link Num}
      *
@@ -2929,6 +3039,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is tolerantly greater than or equal
      * to the given {@link Num}: <code>this - other &gt;= -epsilon</code> or <code>this - other ≥ -epsilon</code>.
+     * <br>
+     * Shorthand method: {@link #ge(Num, Num)}
      *
      * @param other   the other {@link Num}
      * @param epsilon the epsilon (tolerance) {@link Num}
