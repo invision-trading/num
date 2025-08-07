@@ -113,8 +113,6 @@ exists for completeness and as a reference for the shorthand.
 Check out the [Javadoc](https://javadoc.io/doc/trade.invision/num) for all classes and method signatures, but here's a
 quick reference:
 
-- [`unwrap`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#unwrap())
-- [`factory`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#factory())
 - [`add`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#add(trade.invision.num.Num))
 - [`subtract`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#subtract(trade.invision.num.Num))
 - [`multiply`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#multiply(trade.invision.num.Num))
@@ -179,6 +177,7 @@ quick reference:
 - [`isGreaterThanOrEqual`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#isGreaterThanOrEqual(trade.invision.num.Num)) (shorthand: `ge`)
 - [`isNaN`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#isNaN())
 - [`ifNaN`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#ifNaN(trade.invision.num.Num))
+- [`unwrap`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#unwrap())
 - [`toByte`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#toByte())
 - [`toShort`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#toShort())
 - [`toInt`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#toInt())
@@ -189,6 +188,7 @@ quick reference:
 - [`getContext`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#getContext())
 - [`getContextPrecision`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#getContextPrecision())
 - [`getContextRoundingMode`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#getContextRoundingMode())
+- [`factory`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#factory())
 - [`equals`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#equals(java.lang.Object))
 - [`hashCode`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#hashCode())
 - [`toString`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#toString())

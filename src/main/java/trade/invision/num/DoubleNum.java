@@ -229,16 +229,6 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public Number unwrap() {
-        return wrapped;
-    }
-
-    @Override
-    public NumFactory factory() {
-        return FACTORY;
-    }
-
-    @Override
     public Num add(Num addend) {
         if (addend.isNaN()) {
             return NaN;
@@ -780,6 +770,11 @@ public final class DoubleNum implements Num {
     }
 
     @Override
+    public Number unwrap() {
+        return wrapped;
+    }
+
+    @Override
     public BigDecimal toBigDecimal() {
         return new BigDecimal(toString(), getContext());
     }
@@ -787,6 +782,11 @@ public final class DoubleNum implements Num {
     @Override
     public MathContext getContext() {
         return DECIMAL64;
+    }
+
+    @Override
+    public NumFactory factory() {
+        return FACTORY;
     }
 
     @Override

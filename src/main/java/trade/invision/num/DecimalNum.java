@@ -621,19 +621,6 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Number unwrap() {
-        return wrapped;
-    }
-
-    @Override
-    public NumFactory factory() {
-        if (factory == null) {
-            factory = new Factory(context);
-        }
-        return factory;
-    }
-
-    @Override
     public Num add(Num addend) {
         if (addend.isNaN()) {
             return NaN;
@@ -1165,6 +1152,11 @@ public final class DecimalNum implements Num {
     }
 
     @Override
+    public Number unwrap() {
+        return wrapped;
+    }
+
+    @Override
     public BigDecimal toBigDecimal() {
         return wrapped;
     }
@@ -1172,6 +1164,14 @@ public final class DecimalNum implements Num {
     @Override
     public MathContext getContext() {
         return context;
+    }
+
+    @Override
+    public NumFactory factory() {
+        if (factory == null) {
+            factory = new Factory(context);
+        }
+        return factory;
     }
 
     @Override

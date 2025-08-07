@@ -28,20 +28,6 @@ import static java.math.RoundingMode.HALF_EVEN;
 public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNum, NaNNum {
 
     /**
-     * Gets the wrapped {@link Number} value of this {@link Num}.
-     *
-     * @return the {@link Number}
-     */
-    Number unwrap();
-
-    /**
-     * Gets the {@link NumFactory} to create {@link Num} instances with the same type as this {@link Num}.
-     *
-     * @return the {@link NumFactory}
-     */
-    NumFactory factory();
-
-    /**
      * @see #add(Num)
      * @see NumFactory#of(Number)
      */
@@ -3094,6 +3080,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num ifNaN(Num replacement);
 
     /**
+     * Gets the wrapped {@link Number} value of this {@link Num}.
+     *
+     * @return the {@link Number}
+     */
+    Number unwrap();
+
+    /**
      * Converts this {@link Num} to a <code>byte</code>.
      *
      * @return the <code>byte</code>
@@ -3193,6 +3186,13 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     default RoundingMode getContextRoundingMode() {
         return getContext().getRoundingMode();
     }
+
+    /**
+     * Gets the {@link NumFactory} to create {@link Num} instances with the same type as this {@link Num}.
+     *
+     * @return the {@link NumFactory}
+     */
+    NumFactory factory();
 
     /**
      * Performs an {@link Object} equivalence operation. To perform a numerical equivalence operation, use

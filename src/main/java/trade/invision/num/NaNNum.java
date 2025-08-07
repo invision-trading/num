@@ -154,16 +154,6 @@ public final class NaNNum implements Num {
     private NaNNum() {}
 
     @Override
-    public Number unwrap() {
-        return Double.NaN;
-    }
-
-    @Override
-    public NumFactory factory() {
-        return FACTORY;
-    }
-
-    @Override
     public Num add(Num addend) {
         return this;
     }
@@ -514,6 +504,11 @@ public final class NaNNum implements Num {
     }
 
     @Override
+    public Number unwrap() {
+        return Double.NaN;
+    }
+
+    @Override
     public byte toByte() {
         throw new ArithmeticException("No NaN representation for 'byte'!");
     }
@@ -551,6 +546,11 @@ public final class NaNNum implements Num {
     @Override
     public MathContext getContext() {
         return DECIMAL64;
+    }
+
+    @Override
+    public NumFactory factory() {
+        return FACTORY;
     }
 
     @Override
