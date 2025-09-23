@@ -1,5 +1,6 @@
 import org.jreleaser.model.Active.ALWAYS
 import org.jreleaser.model.Active.NEVER
+import java.time.Duration.ofHours
 
 plugins {
     `java-library`
@@ -15,16 +16,13 @@ repositories {
 }
 
 dependencies {
-    // Jetbrains Annotations
     implementation("org.jetbrains", "annotations", "26.0.2")
-
-    // big-math
     implementation("ch.obermuhlner", "big-math", "2.3.2")
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
     withJavadocJar()
     withSourcesJar()
 }
@@ -32,7 +30,8 @@ java {
 tasks.javadoc.configure {
     options {
         (this as CoreJavadocOptions).addBooleanOption("Xdoclint:none", true)
-        addStringOption("link", "https://docs.oracle.com/en/java/javase/21/docs/api/")
+        addStringOption("link",
+                "https://docs.oracle.com/en/java/javase/${java.targetCompatibility.majorVersion}/docs/api/")
     }
 }
 
@@ -89,9 +88,8 @@ jreleaser {
                     active = ALWAYS
                     url = "https://central.sonatype.com/api/v1/publisher"
                     stagingRepository(stagingDeployDirectory.path)
-                    // Timeout of 1 hour.
-                    maxRetries = 60
-                    retryDelay = 60
+                    maxRetries = ofHours(1).toSeconds().toInt()
+                    retryDelay = ofHours(1).toSeconds().toInt()
                 }
             }
         }
