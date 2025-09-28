@@ -211,4 +211,8 @@ library. There are several improvements and additions that this library's `Num` 
 Big thanks to [Eric Obermühlner](https://github.com/eobermuhlner) for the excellent
 [big-math](https://github.com/eobermuhlner/big-math) library.
 
-This project is sponsored by [Invision](https://invision.trade).
+## Maintained by Invision
+
+This project is maintained by [Invision](https://invision.trade). Invision enables you to automate and test your
+investment and trading strategies across billions of data points in seconds using quantitative finance and algorithmic
+trading programs you build on our code or no-code platform.
