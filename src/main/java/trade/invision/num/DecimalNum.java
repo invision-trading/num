@@ -600,7 +600,9 @@ public final class DecimalNum implements Num {
         @Override
         public Num random() {
             // https://gist.github.com/Petersoj/749b4ac7906054242ea2a2089a2e5b2d
-            final StringBuilder stringBuilder = new StringBuilder("0.");
+            final String prefix = "0.";
+            final StringBuilder stringBuilder = new StringBuilder(prefix.length() + context.getPrecision());
+            stringBuilder.append(prefix);
             for (int digitIndex = 0; digitIndex < context.getPrecision(); digitIndex++) {
                 stringBuilder.append(ThreadLocalRandom.current().nextInt(10));
             }
