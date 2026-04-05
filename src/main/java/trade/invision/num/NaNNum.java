@@ -405,7 +405,7 @@ public final class NaNNum implements Num {
 
     @Override
     public int exponent() {
-        throw new ArithmeticException("NaN has no exponent!");
+        throw new ArithmeticException("NaN has no exponent");
     }
 
     @Override
@@ -510,22 +510,22 @@ public final class NaNNum implements Num {
 
     @Override
     public byte toByte() {
-        throw new ArithmeticException("No NaN representation for 'byte'!");
+        throw new ArithmeticException("No NaN representation for `byte`");
     }
 
     @Override
     public short toShort() {
-        throw new ArithmeticException("No NaN representation for 'short'!");
+        throw new ArithmeticException("No NaN representation for `short`");
     }
 
     @Override
     public int toInt() {
-        throw new ArithmeticException("No NaN representation for 'int'!");
+        throw new ArithmeticException("No NaN representation for `int`");
     }
 
     @Override
     public long toLong() {
-        throw new ArithmeticException("No NaN representation for 'long'!");
+        throw new ArithmeticException("No NaN representation for `long`");
     }
 
     @Override
@@ -540,7 +540,7 @@ public final class NaNNum implements Num {
 
     @Override
     public BigDecimal toBigDecimal() {
-        throw new ArithmeticException("No NaN representation for 'BigDecimal'!");
+        throw new ArithmeticException("No NaN representation for `BigDecimal`");
     }
 
     @Override

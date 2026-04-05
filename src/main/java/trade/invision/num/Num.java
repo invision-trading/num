@@ -1238,7 +1238,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Maximum_and_minimum">Wikipedia</a>
      */
     default Num minimum(Num other) {
-        return isLessThan(other) ? this : other; // 'NaN' check not necessary when 'other' is on RHS
+        return isLessThan(other) ? this : other; // NaN check not necessary when `other` is on RHS
     }
 
     /**
@@ -1306,7 +1306,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Maximum_and_minimum">Wikipedia</a>
      */
     default Num maximum(Num other) {
-        return isGreaterThan(other) ? this : other; // 'NaN' check not necessary when 'other' is on RHS
+        return isGreaterThan(other) ? this : other; // NaN check not necessary when `other` is on RHS
     }
 
     /**
