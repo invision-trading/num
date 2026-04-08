@@ -176,6 +176,7 @@ quick reference:
 - [`isGreaterThanOrEqual`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#isGreaterThanOrEqual(trade.invision.num.Num)) (shorthand: `ge`)
 - [`isNaN`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#isNaN())
 - [`ifNaN`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#ifNaN(trade.invision.num.Num))
+- [`ifNaNThrow`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#ifNaNThrow())
 - [`unwrap`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#unwrap())
 - [`toByte`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#toByte())
 - [`toShort`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#toShort())

@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.function.Supplier;
 
 import static java.math.MathContext.DECIMAL64;
 
@@ -500,6 +501,21 @@ public final class NaNNum implements Num {
     @Override
     public Num ifNaN(Num replacement) {
         return replacement;
+    }
+
+    @Override
+    public Num ifNaNThrow() {
+        throw new ArithmeticException(toString());
+    }
+
+    @Override
+    public Num ifNaNThrow(Supplier<RuntimeException> runtimeException) {
+        throw runtimeException.get();
+    }
+
+    @Override
+    public Num ifNaNThrow(RuntimeException runtimeException) {
+        throw runtimeException;
     }
 
     @Override

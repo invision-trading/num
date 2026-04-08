@@ -3,6 +3,7 @@ package trade.invision.num;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.function.Supplier;
 
 import static java.math.RoundingMode.HALF_EVEN;
 
@@ -1619,7 +1620,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * Performs a signum operation on this {@link Num}, yielding <code>-1</code> for negative numbers, <code>1</code>
-     * for positive numbers, and <code>0</code> for all other values (<code>0</code> or <code>NaN</code>).
+     * for positive numbers, and <code>0</code> for <code>0</code> or <code>NaN</code>.
      *
      * @return the signum <code>int</code>
      *
@@ -3071,13 +3072,39 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
-     * Returns <code>replacement</code> if this {@link Num} is {@link NaNNum#NaN}, otherwise, returns this {@link Num}.
+     * Returns <code>replacement</code> if {@link #isNaN()}, otherwise returns this {@link Num}.
      *
      * @param replacement the replacement {@link Num}
      *
      * @return the {@link Num}
      */
     Num ifNaN(Num replacement);
+
+    /**
+     * Throws an {@link ArithmeticException} if {@link #isNaN()}, otherwise returns this {@link Num}.
+     *
+     * @throws ArithmeticException the {@link ArithmeticException}
+     */
+    Num ifNaNThrow() throws ArithmeticException;
+
+    /**
+     * Throws the given {@link RuntimeException} from {@link Supplier#get()} if {@link #isNaN()}, otherwise returns this
+     * {@link Num}.
+     *
+     * @param runtimeException the {@link RuntimeException} {@link Supplier}
+     *
+     * @throws RuntimeException the given {@link RuntimeException}
+     */
+    Num ifNaNThrow(Supplier<RuntimeException> runtimeException) throws RuntimeException;
+
+    /**
+     * Throws the given {@link RuntimeException} if {@link #isNaN()}, otherwise returns this {@link Num}.
+     *
+     * @param runtimeException the {@link RuntimeException}
+     *
+     * @throws RuntimeException the given {@link RuntimeException}
+     */
+    Num ifNaNThrow(RuntimeException runtimeException) throws RuntimeException;
 
     /**
      * Gets the wrapped {@link Number} value of this {@link Num}.

@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Supplier;
 
 import static java.lang.Double.isFinite;
 import static java.lang.Double.parseDouble;
@@ -781,6 +782,21 @@ public final class DoubleNum implements Num {
 
     @Override
     public Num ifNaN(Num replacement) {
+        return this;
+    }
+
+    @Override
+    public Num ifNaNThrow() {
+        return this;
+    }
+
+    @Override
+    public Num ifNaNThrow(Supplier<RuntimeException> runtimeException) {
+        return this;
+    }
+
+    @Override
+    public Num ifNaNThrow(RuntimeException runtimeException) {
         return this;
     }
 
