@@ -77,15 +77,14 @@ performing mathematical operations on floating-point binary numbers
 ([`Double`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Double.html) via
 [`DoubleNum`](src/main/java/trade/invision/num/DoubleNum.java)) or arbitrary-precision decimal numbers
 ([`BigDecimal`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/BigDecimal.html) via
-[`DecimalNum`](src/main/java/trade/invision/num/DecimalNum.java)) is simple. Object instances of this interface are
-immutable. All methods in this interface return non-`null` values or throw a `RuntimeException` (usually an
-[`ArithmeticException`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ArithmeticException.html)).
-All implementations of this interface are interoperable with each other. Operations involving different
-implementations will result in a `Num` that trends towards an increase in precision. For example, subtracting a
-`DecimalNum` from a `DoubleNum` will result in a `DecimalNum`. For another example, subtracting a `DecimalNum` with a
-context precision of `16` from a `DecimalNum` with a context precision of `32` will result in a `DecimalNum` with a
-context precision of `32`. Mathematical operations that result in `NaN`, `+Infinity`, `-Infinity`, or
-`ArithmeticException` will yield [`NaNNum`](src/main/java/trade/invision/num/NaNNum.java).
+[`DecimalNum`](src/main/java/trade/invision/num/DecimalNum.java)) is simple. Implementations of this interface are
+immutable. All methods return non-`null` values. All implementations of this interface are interoperable with each
+other. Operations involving different implementations will result in a `Num` that trends towards an increase in
+precision. For example, subtracting a `DecimalNum` from a `DoubleNum` will result in a `DecimalNum`. For another
+example, subtracting a `DecimalNum` with a context precision of `16` from a `DecimalNum` with a context precision of
+`32` will result in a `DecimalNum` with a context precision of `32`. Mathematical operations that result in `NaN`,
+`+Infinity`, `-Infinity`, or throw an `ArithmeticException` will yield
+[`NaNNum.NaN`](src/main/java/trade/invision/num/NaNNum.java).
 
 ## Usage
 

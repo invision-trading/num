@@ -10,15 +10,15 @@ import static java.math.RoundingMode.HALF_EVEN;
  * {@link Num}, short for "number", is an interface for performing mathematical operations on real decimal numbers.
  * Implementations wrap a {@link Number} instance so that performing mathematical operations on floating-point binary
  * numbers ({@link Double} via {@link DoubleNum}) or arbitrary-precision decimal numbers ({@link BigDecimal} via
- * {@link DecimalNum}) is simple. Object instances of this interface are immutable. All methods in this interface return
- * non-<code>null</code> values or throw a {@link RuntimeException} (usually an {@link ArithmeticException}). All
- * implementations of this interface are interoperable with each other. Operations involving different implementations
- * will result in a {@link Num} that trends towards an increase in precision. For example, subtracting a
- * {@link DecimalNum} from a {@link DoubleNum} will result in a {@link DecimalNum}. For another example, subtracting a
- * {@link DecimalNum} with a {@link DecimalNum#getContextPrecision()} of <code>16</code> from a {@link DecimalNum} with
- * a {@link DecimalNum#getContextPrecision()} of <code>32</code> will result in a {@link DecimalNum} with a
- * {@link DecimalNum#getContextPrecision()} of <code>32</code>. Mathematical operations that result in <code>NaN</code>,
- * <code>+Infinity</code>, <code>-Infinity</code>, or {@link ArithmeticException} will yield {@link NaNNum}.
+ * {@link DecimalNum}) is simple. Implementations of this interface are immutable. All methods return
+ * non-<code>null</code> values. All implementations of this interface are interoperable with each other. Operations
+ * involving different implementations will result in a {@link Num} that trends towards an increase in precision. For
+ * example, subtracting a {@link DecimalNum} from a {@link DoubleNum} will result in a {@link DecimalNum}. For another
+ * example, subtracting a {@link DecimalNum} with a {@link DecimalNum#getContextPrecision()} of <code>16</code> from a
+ * {@link DecimalNum} with a {@link DecimalNum#getContextPrecision()} of <code>32</code> will result in a
+ * {@link DecimalNum} with a {@link DecimalNum#getContextPrecision()} of <code>32</code>. Mathematical operations that
+ * result in <code>NaN</code>, <code>+Infinity</code>, <code>-Infinity</code>, or throw an {@link ArithmeticException}
+ * will yield {@link NaNNum#NaN}.
  *
  * @see DoubleNum
  * @see DecimalNum

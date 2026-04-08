@@ -10,9 +10,8 @@ import static java.math.MathContext.DECIMAL64;
 
 /**
  * {@link NaNNum}, short for "Not a Number" (NaN), is a {@link Num} that represents an undefined and unrepresentable
- * numerical value. All operations result in itself. It is not equal to itself or any other value. It compares unordered
- * with itself and all other values. It is not negative, positive, or zero. It has no integer or {@link BigDecimal}
- * representation.
+ * numerical value. All operations result in itself or <code>0</code>. It is not equal to itself or any other value. It
+ * compares unordered with itself and all other values. It is not negative, positive, or zero.
  *
  * @see <a href="https://en.wikipedia.org/wiki/NaN">Wikipedia</a>
  * @see <a href="https://stackoverflow.com/a/1573715/4352701">Stack Overflow</a>
@@ -405,7 +404,7 @@ public final class NaNNum implements Num {
 
     @Override
     public int exponent() {
-        throw new ArithmeticException("NaN has no exponent");
+        return 0;
     }
 
     @Override
@@ -509,38 +508,8 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public byte toByte() {
-        throw new ArithmeticException("No NaN representation for `byte`");
-    }
-
-    @Override
-    public short toShort() {
-        throw new ArithmeticException("No NaN representation for `short`");
-    }
-
-    @Override
-    public int toInt() {
-        throw new ArithmeticException("No NaN representation for `int`");
-    }
-
-    @Override
-    public long toLong() {
-        throw new ArithmeticException("No NaN representation for `long`");
-    }
-
-    @Override
-    public float toFloat() {
-        return Float.NaN;
-    }
-
-    @Override
-    public double toDouble() {
-        return Double.NaN;
-    }
-
-    @Override
     public BigDecimal toBigDecimal() {
-        throw new ArithmeticException("No NaN representation for `BigDecimal`");
+        return new BigDecimal(0);
     }
 
     @Override
