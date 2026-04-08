@@ -1149,6 +1149,21 @@ public final class DecimalNum implements Num {
     }
 
     @Override
+    public Num ifNaN(Number replacement) {
+        return this;
+    }
+
+    @Override
+    public Num ifNaN(BigDecimal replacement) {
+        return this;
+    }
+
+    @Override
+    public Num ifNaN(String replacement) {
+        return this;
+    }
+
+    @Override
     public Num ifNaN(Num replacement) {
         return this;
     }
