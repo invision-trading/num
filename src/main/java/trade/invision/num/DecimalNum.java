@@ -575,7 +575,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num tenth() {
             if (tenth == null) {
-                tenth = of("0.1");
+                tenth = of(0.1);
             }
             return tenth;
         }
@@ -583,7 +583,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num hundredth() {
             if (hundredth == null) {
-                hundredth = of("0.01");
+                hundredth = of(0.01);
             }
             return hundredth;
         }
@@ -591,7 +591,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num thousandth() {
             if (thousandth == null) {
-                thousandth = of("0.001");
+                thousandth = of(0.001);
             }
             return thousandth;
         }
@@ -599,7 +599,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num half() {
             if (half == null) {
-                half = of("0.5");
+                half = of(0.5);
             }
             return half;
         }
@@ -621,7 +621,7 @@ public final class DecimalNum implements Num {
     private static final Factory FACTORY_DECIMAL64 = new Factory(DECIMAL64);
     private static final Factory FACTORY_DECIMAL128 = new Factory(DECIMAL128);
     private static final BigDecimal THREE = new BigDecimal(3);
-    private static final BigDecimal HALF = new BigDecimal("0.5");
+    private static final BigDecimal HALF = BigDecimal.valueOf(0.5);
 
     private final BigDecimal wrapped;
     private final @SuppressWarnings("Immutable") MathContext context;
