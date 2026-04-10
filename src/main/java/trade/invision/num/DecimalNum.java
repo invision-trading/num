@@ -614,6 +614,9 @@ public final class DecimalNum implements Num {
         }
     }
 
+    private static final Factory FACTORY_DECIMAL32 = new Factory(DECIMAL32);
+    private static final Factory FACTORY_DECIMAL64 = new Factory(DECIMAL64);
+    private static final Factory FACTORY_DECIMAL128 = new Factory(DECIMAL128);
     private static final BigDecimal THREE = new BigDecimal(3);
     private static final BigDecimal HALF = new BigDecimal("0.5");
 
@@ -621,8 +624,8 @@ public final class DecimalNum implements Num {
     private final @SuppressWarnings("Immutable") MathContext context;
     private @LazyInit @Nullable NumFactory factory;
 
-    private DecimalNum(final BigDecimal bigDecimal, final MathContext context) {
-        wrapped = bigDecimal;
+    private DecimalNum(final BigDecimal wrapped, final MathContext context) {
+        this.wrapped = wrapped;
         this.context = context;
     }
 
@@ -1202,10 +1205,20 @@ public final class DecimalNum implements Num {
         return context;
     }
 
+    @SuppressWarnings("ReferenceEquality")
     @Override
     public NumFactory factory() {
         if (factory == null) {
-            factory = new Factory(context);
+            // Use reference equality instead of object equality for performance.
+            if (context == DECIMAL32) {
+                factory = FACTORY_DECIMAL32;
+            } else if (context == DECIMAL64) {
+                factory = FACTORY_DECIMAL64;
+            } else if (context == DECIMAL128) {
+                factory = FACTORY_DECIMAL128;
+            } else {
+                factory = new Factory(context);
+            }
         }
         return factory;
     }
