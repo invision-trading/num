@@ -1232,7 +1232,9 @@ public final class DecimalNum implements Num {
 
     @Override
     public int hashCode() {
-        return Objects.hash(wrapped, context);
+        var result = wrapped.hashCode();
+        result = 31 * result + context.hashCode();
+        return result;
     }
 
     @Override
