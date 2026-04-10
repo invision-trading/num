@@ -1,8 +1,9 @@
 package trade.invision.num;
 
 import ch.obermuhlner.math.big.BigDecimalMath;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.google.errorprone.annotations.concurrent.LazyInit;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -29,12 +30,13 @@ import static trade.invision.num.NaNNum.NaN;
  * @see <a href="https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic">Wikipedia</a>
  * @see <a href="https://github.com/eobermuhlner/big-math">big-math GitHub</a>
  */
+@NullMarked
 public final class DecimalNum implements Num {
 
     /**
      * Calls {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}.
      */
-    public static Num decimalNum32(Number number) {
+    public static Num decimalNum32(final Number number) {
         return decimalNum(number, DECIMAL32);
     }
 
@@ -42,14 +44,14 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(Number, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}.
      */
-    public static Num decimalNum32(Number number, RoundingMode roundingMode) {
+    public static Num decimalNum32(final Number number, final RoundingMode roundingMode) {
         return decimalNum(number, DECIMAL32.getPrecision(), roundingMode);
     }
 
     /**
      * Calls {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}.
      */
-    public static Num decimalNum64(Number number) {
+    public static Num decimalNum64(final Number number) {
         return decimalNum(number, DECIMAL64);
     }
 
@@ -57,14 +59,14 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(Number, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}.
      */
-    public static Num decimalNum64(Number number, RoundingMode roundingMode) {
+    public static Num decimalNum64(final Number number, final RoundingMode roundingMode) {
         return decimalNum(number, DECIMAL64.getPrecision(), roundingMode);
     }
 
     /**
      * Calls {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}.
      */
-    public static Num decimalNum128(Number number) {
+    public static Num decimalNum128(final Number number) {
         return decimalNum(number, DECIMAL128);
     }
 
@@ -72,7 +74,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(Number, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}.
      */
-    public static Num decimalNum128(Number number, RoundingMode roundingMode) {
+    public static Num decimalNum128(final Number number, final RoundingMode roundingMode) {
         return decimalNum(number, DECIMAL128.getPrecision(), roundingMode);
     }
 
@@ -80,7 +82,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(Number, int, RoundingMode)} with <code>roundingMode</code> set to
      * {@link RoundingMode#HALF_EVEN}.
      */
-    public static Num decimalNum(Number number, int significantFigures) {
+    public static Num decimalNum(final Number number, final int significantFigures) {
         return decimalNum(number, significantFigures, HALF_EVEN);
     }
 
@@ -88,7 +90,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(Number, MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
      */
-    public static Num decimalNum(Number number, int significantFigures, RoundingMode roundingMode) {
+    public static Num decimalNum(final Number number, final int significantFigures, final RoundingMode roundingMode) {
         return decimalNum(number, new MathContext(significantFigures, roundingMode));
     }
 
@@ -100,15 +102,15 @@ public final class DecimalNum implements Num {
      *
      * @return the {@link Num}
      */
-    public static Num decimalNum(Number number, MathContext context) {
+    public static Num decimalNum(final Number number, final MathContext context) {
         return switch (number) {
-            case Integer aInt -> new DecimalNum(new BigDecimal(aInt, context), context);
-            case Long aLong -> new DecimalNum(new BigDecimal(aLong, context), context);
-            case Float aFloat -> !Float.isFinite(aFloat) ? NaN :
+            case final Integer aInt -> new DecimalNum(new BigDecimal(aInt, context), context);
+            case final Long aLong -> new DecimalNum(new BigDecimal(aLong, context), context);
+            case final Float aFloat -> !Float.isFinite(aFloat) ? NaN :
                     new DecimalNum(new BigDecimal(aFloat.toString(), context), context);
-            case Double aDouble -> !Double.isFinite(aDouble) ? NaN :
+            case final Double aDouble -> !Double.isFinite(aDouble) ? NaN :
                     new DecimalNum(new BigDecimal(aDouble.toString(), context), context);
-            case BigDecimal bigDecimal -> decimalNum(bigDecimal, context);
+            case final BigDecimal bigDecimal -> decimalNum(bigDecimal, context);
             default -> new DecimalNum(new BigDecimal(number.toString(), context), context);
         };
     }
@@ -116,7 +118,7 @@ public final class DecimalNum implements Num {
     /**
      * Calls {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}.
      */
-    public static Num decimalNum32(String string) {
+    public static Num decimalNum32(final String string) {
         return decimalNum(string, DECIMAL32);
     }
 
@@ -124,14 +126,14 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(String, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}.
      */
-    public static Num decimalNum32(String string, RoundingMode roundingMode) {
+    public static Num decimalNum32(final String string, final RoundingMode roundingMode) {
         return decimalNum(string, DECIMAL32.getPrecision(), roundingMode);
     }
 
     /**
      * Calls {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}.
      */
-    public static Num decimalNum64(String string) {
+    public static Num decimalNum64(final String string) {
         return decimalNum(string, DECIMAL64);
     }
 
@@ -139,14 +141,14 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(String, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}.
      */
-    public static Num decimalNum64(String string, RoundingMode roundingMode) {
+    public static Num decimalNum64(final String string, final RoundingMode roundingMode) {
         return decimalNum(string, DECIMAL64.getPrecision(), roundingMode);
     }
 
     /**
      * Calls {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}.
      */
-    public static Num decimalNum128(String string) {
+    public static Num decimalNum128(final String string) {
         return decimalNum(string, DECIMAL128);
     }
 
@@ -154,7 +156,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(String, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}.
      */
-    public static Num decimalNum128(String string, RoundingMode roundingMode) {
+    public static Num decimalNum128(final String string, final RoundingMode roundingMode) {
         return decimalNum(string, DECIMAL128.getPrecision(), roundingMode);
     }
 
@@ -162,7 +164,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(String, int, RoundingMode)} with <code>roundingMode</code> set to
      * {@link RoundingMode#HALF_EVEN}.
      */
-    public static Num decimalNum(String string, int significantFigures) {
+    public static Num decimalNum(final String string, final int significantFigures) {
         return decimalNum(string, significantFigures, HALF_EVEN);
     }
 
@@ -170,7 +172,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(String, MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
      */
-    public static Num decimalNum(String string, int significantFigures, RoundingMode roundingMode) {
+    public static Num decimalNum(final String string, final int significantFigures, final RoundingMode roundingMode) {
         return decimalNum(string, new MathContext(significantFigures, roundingMode));
     }
 
@@ -183,7 +185,7 @@ public final class DecimalNum implements Num {
      *
      * @return the {@link Num}
      */
-    public static Num decimalNum(String string, MathContext context) {
+    public static Num decimalNum(final String string, final MathContext context) {
         return string.equals(NaN.toString()) ? NaN : new DecimalNum(new BigDecimal(string, context), context);
     }
 
@@ -191,7 +193,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
      * {@link MathContext#DECIMAL32}.
      */
-    public static Num decimalNum32(BigDecimal bigDecimal) {
+    public static Num decimalNum32(final BigDecimal bigDecimal) {
         return decimalNum(bigDecimal, DECIMAL32);
     }
 
@@ -199,7 +201,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}.
      */
-    public static Num decimalNum32(BigDecimal bigDecimal, RoundingMode roundingMode) {
+    public static Num decimalNum32(final BigDecimal bigDecimal, final RoundingMode roundingMode) {
         return decimalNum(bigDecimal, DECIMAL32.getPrecision(), roundingMode);
     }
 
@@ -207,7 +209,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
      * {@link MathContext#DECIMAL64}.
      */
-    public static Num decimalNum64(BigDecimal bigDecimal) {
+    public static Num decimalNum64(final BigDecimal bigDecimal) {
         return decimalNum(bigDecimal, DECIMAL64);
     }
 
@@ -215,7 +217,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}.
      */
-    public static Num decimalNum64(BigDecimal bigDecimal, RoundingMode roundingMode) {
+    public static Num decimalNum64(final BigDecimal bigDecimal, final RoundingMode roundingMode) {
         return decimalNum(bigDecimal, DECIMAL64.getPrecision(), roundingMode);
     }
 
@@ -223,7 +225,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
      * {@link MathContext#DECIMAL128}.
      */
-    public static Num decimalNum128(BigDecimal bigDecimal) {
+    public static Num decimalNum128(final BigDecimal bigDecimal) {
         return decimalNum(bigDecimal, DECIMAL128);
     }
 
@@ -231,7 +233,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}.
      */
-    public static Num decimalNum128(BigDecimal bigDecimal, RoundingMode roundingMode) {
+    public static Num decimalNum128(final BigDecimal bigDecimal, final RoundingMode roundingMode) {
         return decimalNum(bigDecimal, DECIMAL128.getPrecision(), roundingMode);
     }
 
@@ -239,7 +241,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>roundingMode</code> set to
      * {@link RoundingMode#HALF_EVEN}.
      */
-    public static Num decimalNum(BigDecimal bigDecimal, int significantFigures) {
+    public static Num decimalNum(final BigDecimal bigDecimal, final int significantFigures) {
         return decimalNum(bigDecimal, significantFigures, HALF_EVEN);
     }
 
@@ -247,7 +249,8 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(BigDecimal, MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
      */
-    public static Num decimalNum(BigDecimal bigDecimal, int significantFigures, RoundingMode roundingMode) {
+    public static Num decimalNum(final BigDecimal bigDecimal, final int significantFigures,
+            final RoundingMode roundingMode) {
         return decimalNum(bigDecimal, new MathContext(significantFigures, roundingMode));
     }
 
@@ -259,14 +262,14 @@ public final class DecimalNum implements Num {
      *
      * @return the {@link Num}
      */
-    public static Num decimalNum(BigDecimal bigDecimal, MathContext context) {
+    public static Num decimalNum(final BigDecimal bigDecimal, final MathContext context) {
         return new DecimalNum(bigDecimal.round(context), context);
     }
 
     /**
      * Calls {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}.
      */
-    public static Num decimalNum32(Num num) {
+    public static Num decimalNum32(final Num num) {
         return decimalNum(num, DECIMAL32);
     }
 
@@ -274,14 +277,14 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(Num, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}.
      */
-    public static Num decimalNum32(Num num, RoundingMode roundingMode) {
+    public static Num decimalNum32(final Num num, final RoundingMode roundingMode) {
         return decimalNum(num, DECIMAL32.getPrecision(), roundingMode);
     }
 
     /**
      * Calls {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}.
      */
-    public static Num decimalNum64(Num num) {
+    public static Num decimalNum64(final Num num) {
         return decimalNum(num, DECIMAL64);
     }
 
@@ -289,14 +292,14 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(Num, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}.
      */
-    public static Num decimalNum64(Num num, RoundingMode roundingMode) {
+    public static Num decimalNum64(final Num num, final RoundingMode roundingMode) {
         return decimalNum(num, DECIMAL64.getPrecision(), roundingMode);
     }
 
     /**
      * Calls {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}.
      */
-    public static Num decimalNum128(Num num) {
+    public static Num decimalNum128(final Num num) {
         return decimalNum(num, DECIMAL128);
     }
 
@@ -304,7 +307,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(Num, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}.
      */
-    public static Num decimalNum128(Num num, RoundingMode roundingMode) {
+    public static Num decimalNum128(final Num num, final RoundingMode roundingMode) {
         return decimalNum(num, DECIMAL128.getPrecision(), roundingMode);
     }
 
@@ -312,7 +315,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(Num, int, RoundingMode)} with <code>roundingMode</code> set to
      * {@link RoundingMode#HALF_EVEN}.
      */
-    public static Num decimalNum(Num num, int significantFigures) {
+    public static Num decimalNum(final Num num, final int significantFigures) {
         return decimalNum(num, significantFigures, HALF_EVEN);
     }
 
@@ -320,7 +323,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNum(Num, MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
      */
-    public static Num decimalNum(Num num, int significantFigures, RoundingMode roundingMode) {
+    public static Num decimalNum(final Num num, final int significantFigures, final RoundingMode roundingMode) {
         return decimalNum(num, new MathContext(significantFigures, roundingMode));
     }
 
@@ -332,7 +335,7 @@ public final class DecimalNum implements Num {
      *
      * @return the {@link Num}
      */
-    public static Num decimalNum(Num num, MathContext context) {
+    public static Num decimalNum(final Num num, final MathContext context) {
         return decimalNum(num.unwrap(), context);
     }
 
@@ -347,7 +350,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}.
      */
-    public static NumFactory decimalNum32Factory(RoundingMode roundingMode) {
+    public static NumFactory decimalNum32Factory(final RoundingMode roundingMode) {
         return decimalNumFactory(DECIMAL32.getPrecision(), roundingMode);
     }
 
@@ -362,7 +365,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}.
      */
-    public static NumFactory decimalNum64Factory(RoundingMode roundingMode) {
+    public static NumFactory decimalNum64Factory(final RoundingMode roundingMode) {
         return decimalNumFactory(DECIMAL64.getPrecision(), roundingMode);
     }
 
@@ -377,7 +380,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}.
      */
-    public static NumFactory decimalNum128Factory(RoundingMode roundingMode) {
+    public static NumFactory decimalNum128Factory(final RoundingMode roundingMode) {
         return decimalNumFactory(DECIMAL128.getPrecision(), roundingMode);
     }
 
@@ -385,7 +388,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNumFactory(int, RoundingMode)} with <code>roundingMode</code> set to
      * {@link RoundingMode#HALF_EVEN}.
      */
-    public static NumFactory decimalNumFactory(int significantFigures) {
+    public static NumFactory decimalNumFactory(final int significantFigures) {
         return decimalNumFactory(significantFigures, HALF_EVEN);
     }
 
@@ -393,7 +396,7 @@ public final class DecimalNum implements Num {
      * Calls {@link #decimalNumFactory(MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
      */
-    public static NumFactory decimalNumFactory(int significantFigures, RoundingMode roundingMode) {
+    public static NumFactory decimalNumFactory(final int significantFigures, final RoundingMode roundingMode) {
         return decimalNumFactory(new MathContext(significantFigures, roundingMode));
     }
 
@@ -404,53 +407,53 @@ public final class DecimalNum implements Num {
      *
      * @return the {@link DecimalNum} {@link NumFactory}
      */
-    public static NumFactory decimalNumFactory(MathContext context) {
+    public static NumFactory decimalNumFactory(final MathContext context) {
         return new Factory(context);
     }
 
     private static class Factory implements NumFactory {
 
-        private final MathContext context;
-        private @Nullable Num negativeOne;
-        private @Nullable Num zero;
-        private @Nullable Num one;
-        private @Nullable Num two;
-        private @Nullable Num three;
-        private @Nullable Num four;
-        private @Nullable Num five;
-        private @Nullable Num six;
-        private @Nullable Num seven;
-        private @Nullable Num eight;
-        private @Nullable Num nine;
-        private @Nullable Num ten;
-        private @Nullable Num hundred;
-        private @Nullable Num thousand;
-        private @Nullable Num tenth;
-        private @Nullable Num hundredth;
-        private @Nullable Num thousandth;
-        private @Nullable Num half;
+        private final @SuppressWarnings("Immutable") MathContext context;
+        private @LazyInit @Nullable Num negativeOne;
+        private @LazyInit @Nullable Num zero;
+        private @LazyInit @Nullable Num one;
+        private @LazyInit @Nullable Num two;
+        private @LazyInit @Nullable Num three;
+        private @LazyInit @Nullable Num four;
+        private @LazyInit @Nullable Num five;
+        private @LazyInit @Nullable Num six;
+        private @LazyInit @Nullable Num seven;
+        private @LazyInit @Nullable Num eight;
+        private @LazyInit @Nullable Num nine;
+        private @LazyInit @Nullable Num ten;
+        private @LazyInit @Nullable Num hundred;
+        private @LazyInit @Nullable Num thousand;
+        private @LazyInit @Nullable Num tenth;
+        private @LazyInit @Nullable Num hundredth;
+        private @LazyInit @Nullable Num thousandth;
+        private @LazyInit @Nullable Num half;
 
-        private Factory(MathContext context) {
+        private Factory(final MathContext context) {
             this.context = context;
         }
 
         @Override
-        public Num of(Number number) {
+        public Num of(final Number number) {
             return decimalNum(number, context);
         }
 
         @Override
-        public Num of(BigDecimal bigDecimal) {
+        public Num of(final BigDecimal bigDecimal) {
             return decimalNum(bigDecimal, context);
         }
 
         @Override
-        public Num of(String string) {
+        public Num of(final String string) {
             return decimalNum(string, context);
         }
 
         @Override
-        public Num of(Num num) {
+        public Num of(final Num num) {
             return decimalNum(num, context);
         }
 
@@ -601,10 +604,10 @@ public final class DecimalNum implements Num {
         @Override
         public Num random() {
             // https://gist.github.com/Petersoj/749b4ac7906054242ea2a2089a2e5b2d
-            final String prefix = "0.";
-            final StringBuilder stringBuilder = new StringBuilder(prefix.length() + context.getPrecision());
+            final var prefix = "0.";
+            final var stringBuilder = new StringBuilder(prefix.length() + context.getPrecision());
             stringBuilder.append(prefix);
-            for (int digitIndex = 0; digitIndex < context.getPrecision(); digitIndex++) {
+            for (var digitIndex = 0; digitIndex < context.getPrecision(); digitIndex++) {
                 stringBuilder.append(ThreadLocalRandom.current().nextInt(10));
             }
             return of(stringBuilder.toString());
@@ -615,82 +618,82 @@ public final class DecimalNum implements Num {
     private static final BigDecimal HALF = new BigDecimal("0.5");
 
     private final BigDecimal wrapped;
-    private final MathContext context;
-    private @Nullable NumFactory factory;
+    private final @SuppressWarnings("Immutable") MathContext context;
+    private @LazyInit @Nullable NumFactory factory;
 
-    private DecimalNum(BigDecimal bigDecimal, MathContext context) {
+    private DecimalNum(final BigDecimal bigDecimal, final MathContext context) {
         wrapped = bigDecimal;
         this.context = context;
     }
 
     @Override
-    public Num add(Num addend) {
+    public Num add(final Num addend) {
         if (addend.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = asDecimalNum(addend);
-        final MathContext context = precisestContext(decimalNum.context);
+        final var decimalNum = asDecimalNum(addend);
+        final var context = precisestContext(decimalNum.context);
         return new DecimalNum(wrapped.add(decimalNum.wrapped, context), context);
     }
 
     @Override
-    public Num subtract(Num subtrahend) {
+    public Num subtract(final Num subtrahend) {
         if (subtrahend.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = asDecimalNum(subtrahend);
-        final MathContext context = precisestContext(decimalNum.context);
+        final var decimalNum = asDecimalNum(subtrahend);
+        final var context = precisestContext(decimalNum.context);
         return new DecimalNum(wrapped.subtract(decimalNum.wrapped, context), context);
     }
 
     @Override
-    public Num multiply(Num multiplier) {
+    public Num multiply(final Num multiplier) {
         if (multiplier.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = asDecimalNum(multiplier);
-        final MathContext context = precisestContext(decimalNum.context);
+        final var decimalNum = asDecimalNum(multiplier);
+        final var context = precisestContext(decimalNum.context);
         return new DecimalNum(wrapped.multiply(decimalNum.wrapped, context), context);
     }
 
     @Override
-    public Num divide(Num divisor) {
+    public Num divide(final Num divisor) {
         if (divisor.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = asDecimalNum(divisor);
-        final MathContext context = precisestContext(decimalNum.context);
+        final var decimalNum = asDecimalNum(divisor);
+        final var context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(wrapped.divide(decimalNum.wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
 
     @Override
-    public Num remainder(Num divisor) {
+    public Num remainder(final Num divisor) {
         if (divisor.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = asDecimalNum(divisor);
-        final MathContext context = precisestContext(decimalNum.context);
+        final var decimalNum = asDecimalNum(divisor);
+        final var context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(wrapped.remainder(decimalNum.wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
 
     @Override
-    public Num power(Num exponent) {
+    public Num power(final Num exponent) {
         if (exponent.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = asDecimalNum(exponent);
-        final MathContext context = precisestContext(decimalNum.context);
+        final var decimalNum = asDecimalNum(exponent);
+        final var context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(BigDecimalMath.pow(wrapped, decimalNum.wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -711,15 +714,15 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num nthRoot(Num degree) {
+    public Num nthRoot(final Num degree) {
         if (degree.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = asDecimalNum(degree);
-        final MathContext context = precisestContext(decimalNum.context);
+        final var decimalNum = asDecimalNum(degree);
+        final var context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(BigDecimalMath.root(wrapped, decimalNum.wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -728,7 +731,7 @@ public final class DecimalNum implements Num {
     public Num squareRoot() {
         try {
             return new DecimalNum(BigDecimalMath.sqrt(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -737,7 +740,7 @@ public final class DecimalNum implements Num {
     public Num cubeRoot() {
         try {
             return new DecimalNum(BigDecimalMath.root(wrapped, THREE, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -746,7 +749,7 @@ public final class DecimalNum implements Num {
     public Num naturalLog() {
         try {
             return new DecimalNum(BigDecimalMath.log(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -755,7 +758,7 @@ public final class DecimalNum implements Num {
     public Num commonLog() {
         try {
             return new DecimalNum(BigDecimalMath.log10(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -764,23 +767,23 @@ public final class DecimalNum implements Num {
     public Num binaryLog() {
         try {
             return new DecimalNum(BigDecimalMath.log2(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
 
     @Override
-    public Num log(Num base) {
+    public Num log(final Num base) {
         if (base.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = asDecimalNum(base);
-        final MathContext context = precisestContext(decimalNum.context);
+        final var decimalNum = asDecimalNum(base);
+        final var context = precisestContext(decimalNum.context);
         try {
-            final BigDecimal numerator = BigDecimalMath.log(wrapped, context);
-            final BigDecimal denominator = BigDecimalMath.log(decimalNum.wrapped, context);
+            final var numerator = BigDecimalMath.log(wrapped, context);
+            final var denominator = BigDecimalMath.log(decimalNum.wrapped, context);
             return new DecimalNum(numerator.divide(denominator, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -799,7 +802,7 @@ public final class DecimalNum implements Num {
     public Num reciprocal() {
         try {
             return new DecimalNum(BigDecimalMath.reciprocal(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -848,7 +851,7 @@ public final class DecimalNum implements Num {
     public Num sin() {
         try {
             return new DecimalNum(BigDecimalMath.sin(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -857,7 +860,7 @@ public final class DecimalNum implements Num {
     public Num cos() {
         try {
             return new DecimalNum(BigDecimalMath.cos(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -866,7 +869,7 @@ public final class DecimalNum implements Num {
     public Num tan() {
         try {
             return new DecimalNum(BigDecimalMath.tan(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -875,7 +878,7 @@ public final class DecimalNum implements Num {
     public Num asin() {
         try {
             return new DecimalNum(BigDecimalMath.asin(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -884,7 +887,7 @@ public final class DecimalNum implements Num {
     public Num acos() {
         try {
             return new DecimalNum(BigDecimalMath.acos(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -893,21 +896,21 @@ public final class DecimalNum implements Num {
     public Num atan() {
         try {
             return new DecimalNum(BigDecimalMath.atan(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
 
     @Override
-    public Num atan2(Num x) {
+    public Num atan2(final Num x) {
         if (x.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = asDecimalNum(x);
-        final MathContext context = precisestContext(decimalNum.context);
+        final var decimalNum = asDecimalNum(x);
+        final var context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(BigDecimalMath.atan2(wrapped, decimalNum.wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -916,7 +919,7 @@ public final class DecimalNum implements Num {
     public Num sinh() {
         try {
             return new DecimalNum(BigDecimalMath.sinh(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -925,7 +928,7 @@ public final class DecimalNum implements Num {
     public Num cosh() {
         try {
             return new DecimalNum(BigDecimalMath.cosh(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -934,7 +937,7 @@ public final class DecimalNum implements Num {
     public Num tanh() {
         try {
             return new DecimalNum(BigDecimalMath.tanh(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -943,7 +946,7 @@ public final class DecimalNum implements Num {
     public Num asinh() {
         try {
             return new DecimalNum(BigDecimalMath.asinh(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -952,7 +955,7 @@ public final class DecimalNum implements Num {
     public Num acosh() {
         try {
             return new DecimalNum(BigDecimalMath.acosh(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
@@ -961,30 +964,30 @@ public final class DecimalNum implements Num {
     public Num atanh() {
         try {
             return new DecimalNum(BigDecimalMath.atanh(wrapped, context), context);
-        } catch (ArithmeticException arithmeticException) {
+        } catch (final ArithmeticException arithmeticException) {
             return NaN;
         }
     }
 
     @Override
-    public Num hypotenuse(Num y) {
+    public Num hypotenuse(final Num y) {
         if (y.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = asDecimalNum(y);
-        final MathContext context = precisestContext(decimalNum.context);
-        final BigDecimal xSquared = wrapped.multiply(wrapped, context);
-        final BigDecimal ySquared = decimalNum.wrapped.multiply(decimalNum.wrapped, context);
+        final var decimalNum = asDecimalNum(y);
+        final var context = precisestContext(decimalNum.context);
+        final var xSquared = wrapped.multiply(wrapped, context);
+        final var ySquared = decimalNum.wrapped.multiply(decimalNum.wrapped, context);
         return new DecimalNum(BigDecimalMath.sqrt(xSquared.add(ySquared, context), context), context);
     }
 
     @Override
-    public Num average(Num other) {
+    public Num average(final Num other) {
         if (other.isNaN()) {
             return NaN;
         }
-        final DecimalNum decimalNum = asDecimalNum(other);
-        final MathContext context = precisestContext(decimalNum.context);
+        final var decimalNum = asDecimalNum(other);
+        final var context = precisestContext(decimalNum.context);
         return new DecimalNum(wrapped.add(decimalNum.wrapped, context).multiply(HALF, context), context);
     }
 
@@ -999,12 +1002,12 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num round(int scale, RoundingMode roundingMode) {
+    public Num round(final int scale, final RoundingMode roundingMode) {
         return new DecimalNum(wrapped.setScale(scale, roundingMode), context);
     }
 
     @Override
-    public Num sigFigs(MathContext context) {
+    public Num sigFigs(final MathContext context) {
         return new DecimalNum(wrapped.round(context), precisestContext(context));
     }
 
@@ -1039,7 +1042,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public boolean isNegativeOrZero(Num epsilon) {
+    public boolean isNegativeOrZero(final Num epsilon) {
         if (epsilon.isZero()) {
             return isNegativeOrZero();
         } else {
@@ -1058,7 +1061,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public boolean isPositiveOrZero(Num epsilon) {
+    public boolean isPositiveOrZero(final Num epsilon) {
         if (epsilon.isZero()) {
             return isPositiveOrZero();
         } else {
@@ -1072,7 +1075,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public boolean isZero(Num epsilon) {
+    public boolean isZero(final Num epsilon) {
         if (epsilon.isZero()) {
             return isZero();
         } else {
@@ -1081,65 +1084,65 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public boolean isEqual(Num other) {
+    public boolean isEqual(final Num other) {
         return !other.isNaN() && wrapped.compareTo(asDecimalNum(other).wrapped) == 0;
     }
 
     @Override
-    public boolean isEqual(Num other, Num epsilon) {
+    public boolean isEqual(final Num other, final Num epsilon) {
         if (epsilon.isZero()) {
             return isEqual(other);
         }
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
-        final DecimalNum decimalNum = asDecimalNum(other);
+        final var decimalNum = asDecimalNum(other);
         return wrapped.subtract(decimalNum.wrapped, precisestContext(decimalNum.context)).abs()
                 .compareTo(asDecimalNum(epsilon).wrapped) <= 0;
     }
 
     @Override
-    public boolean isLessThan(Num other) {
+    public boolean isLessThan(final Num other) {
         return !other.isNaN() && wrapped.compareTo(asDecimalNum(other).wrapped) < 0;
     }
 
     @Override
-    public boolean isLessThanOrEqual(Num other) {
+    public boolean isLessThanOrEqual(final Num other) {
         return !other.isNaN() && wrapped.compareTo(asDecimalNum(other).wrapped) <= 0;
     }
 
     @Override
-    public boolean isLessThanOrEqual(Num other, Num epsilon) {
+    public boolean isLessThanOrEqual(final Num other, final Num epsilon) {
         if (epsilon.isZero()) {
             return isLessThanOrEqual(other);
         }
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
-        final DecimalNum decimalNum = asDecimalNum(other);
+        final var decimalNum = asDecimalNum(other);
         return decimalNum.wrapped.subtract(wrapped, precisestContext(decimalNum.context))
                 .compareTo(asDecimalNum(epsilon).wrapped.negate()) >= 0;
     }
 
     @Override
-    public boolean isGreaterThan(Num other) {
+    public boolean isGreaterThan(final Num other) {
         return !other.isNaN() && wrapped.compareTo(asDecimalNum(other).wrapped) > 0;
     }
 
     @Override
-    public boolean isGreaterThanOrEqual(Num other) {
+    public boolean isGreaterThanOrEqual(final Num other) {
         return !other.isNaN() && wrapped.compareTo(asDecimalNum(other).wrapped) >= 0;
     }
 
     @Override
-    public boolean isGreaterThanOrEqual(Num other, Num epsilon) {
+    public boolean isGreaterThanOrEqual(final Num other, final Num epsilon) {
         if (epsilon.isZero()) {
             return isGreaterThanOrEqual(other);
         }
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
-        final DecimalNum decimalNum = asDecimalNum(other);
+        final var decimalNum = asDecimalNum(other);
         return wrapped.subtract(decimalNum.wrapped, precisestContext(decimalNum.context))
                 .compareTo(asDecimalNum(epsilon).wrapped.negate()) >= 0;
     }
@@ -1150,22 +1153,22 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num ifNaN(Number replacement) {
+    public Num ifNaN(final Number replacement) {
         return this;
     }
 
     @Override
-    public Num ifNaN(BigDecimal replacement) {
+    public Num ifNaN(final BigDecimal replacement) {
         return this;
     }
 
     @Override
-    public Num ifNaN(String replacement) {
+    public Num ifNaN(final String replacement) {
         return this;
     }
 
     @Override
-    public Num ifNaN(Num replacement) {
+    public Num ifNaN(final Num replacement) {
         return this;
     }
 
@@ -1175,12 +1178,12 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num ifNaNThrow(Supplier<RuntimeException> runtimeException) {
+    public Num ifNaNThrow(final Supplier<RuntimeException> runtimeException) {
         return this;
     }
 
     @Override
-    public Num ifNaNThrow(RuntimeException runtimeException) {
+    public Num ifNaNThrow(final RuntimeException runtimeException) {
         return this;
     }
 
@@ -1208,8 +1211,9 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return obj instanceof DecimalNum decimalNum && wrapped.equals(decimalNum.wrapped) &&
+    public boolean equals(final Object obj) {
+        return obj instanceof final DecimalNum decimalNum &&
+                wrapped.equals(decimalNum.wrapped) &&
                 context.equals(decimalNum.context);
     }
 
@@ -1224,15 +1228,15 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public int compareTo(@NotNull Num o) {
+    public int compareTo(final Num o) {
         return o.isNaN() ? 0 : wrapped.compareTo(asDecimalNum(o).wrapped);
     }
 
-    private DecimalNum asDecimalNum(Num num) {
-        return (DecimalNum) (num instanceof DoubleNum doubleNum ? factory().of(doubleNum) : num);
+    private DecimalNum asDecimalNum(final Num num) {
+        return (DecimalNum) (num instanceof final DoubleNum doubleNum ? factory().of(doubleNum) : num);
     }
 
-    private MathContext precisestContext(MathContext other) {
+    private MathContext precisestContext(final MathContext other) {
         return context.getPrecision() > other.getPrecision() ? context : other;
     }
 }

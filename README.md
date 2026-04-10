@@ -78,13 +78,12 @@ performing mathematical operations on floating-point binary numbers
 ([`Double`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Double.html) via
 [`DoubleNum`](src/main/java/trade/invision/num/DoubleNum.java)) or arbitrary-precision decimal numbers
 ([`BigDecimal`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html) via
-[`DecimalNum`](src/main/java/trade/invision/num/DecimalNum.java)) is simple. Implementations of this interface are
-immutable. All methods return non-`null` values. All implementations of this interface are interoperable with each
-other. Operations involving different implementations will result in a `Num` that trends towards an increase in
-precision. For example, subtracting a `DecimalNum` from a `DoubleNum` will result in a `DecimalNum`. For another
-example, subtracting a `DecimalNum` with a context precision of `16` from a `DecimalNum` with a context precision of
-`32` will result in a `DecimalNum` with a context precision of `32`. Mathematical operations that result in `NaN`,
-`+Infinity`, `-Infinity`, or throw an `ArithmeticException` will yield
+[`DecimalNum`](src/main/java/trade/invision/num/DecimalNum.java)) is simple. All implementations of this interface are
+interoperable with each other. Operations involving different implementations will result in a `Num` that trends towards
+an increase in precision. For example, subtracting a `DecimalNum` from a `DoubleNum` will result in a `DecimalNum`. For
+another example, subtracting a `DecimalNum` with a context precision of `16` from a `DecimalNum` with a context
+precision of `32` will result in a `DecimalNum` with a context precision of `32`. Mathematical operations that result in
+`NaN`, `+Infinity`, `-Infinity`, or throw an `ArithmeticException` will yield
 [`NaNNum.NaN`](src/main/java/trade/invision/num/NaNNum.java).
 
 ## Usage

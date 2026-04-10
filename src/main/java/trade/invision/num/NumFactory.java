@@ -1,10 +1,15 @@
 package trade.invision.num;
 
+import com.google.errorprone.annotations.Immutable;
+import org.jspecify.annotations.NullMarked;
+
 import java.math.BigDecimal;
 
 /**
  * {@link NumFactory} is an interface for creating {@link Num} instances.
  */
+@NullMarked
+@Immutable
 public interface NumFactory {
 
     /**
@@ -16,7 +21,7 @@ public interface NumFactory {
      *
      * @return the {@link Num}
      */
-    Num of(Number number);
+    Num of(final Number number);
 
     /**
      * Creates a new {@link Num} with the value of the given {@link BigDecimal}.
@@ -25,7 +30,7 @@ public interface NumFactory {
      *
      * @return the {@link Num}
      */
-    Num of(BigDecimal bigDecimal);
+    Num of(final BigDecimal bigDecimal);
 
     /**
      * Creates a new {@link Num} with the value of the given {@link String} representing a number.
@@ -34,7 +39,7 @@ public interface NumFactory {
      *
      * @return the {@link Num}
      */
-    Num of(String string);
+    Num of(final String string);
 
     /**
      * Creates a new {@link Num} with the value of the given {@link Num}.
@@ -43,7 +48,7 @@ public interface NumFactory {
      *
      * @return the {@link Num}
      */
-    Num of(Num num);
+    Num of(final Num num);
 
     /**
      * @return the {@link Num} of <code>-1</code>

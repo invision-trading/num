@@ -1,6 +1,6 @@
 package trade.invision.num;
 
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NullMarked;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -14,14 +14,17 @@ import static java.math.MathContext.DECIMAL64;
  * numerical value. All operations result in itself or <code>0</code>. It is not equal to itself or any other value. It
  * compares unordered with itself and all other values. It is not negative, positive, or zero.
  *
+ * @see #NaN
  * @see <a href="https://en.wikipedia.org/wiki/NaN">Wikipedia</a>
  * @see <a href="https://stackoverflow.com/a/1573715/4352701">Stack Overflow</a>
  */
+@NullMarked
 public final class NaNNum implements Num {
 
     /**
      * Singleton instance of {@link NaNNum}.
      */
+    @SuppressWarnings("IdentifierName")
     public static final NaNNum NaN = new NaNNum();
 
     /**
@@ -36,22 +39,22 @@ public final class NaNNum implements Num {
     private static final NumFactory FACTORY = new NumFactory() {
 
         @Override
-        public Num of(Number number) {
+        public Num of(final Number number) {
             return NaN;
         }
 
         @Override
-        public Num of(BigDecimal bigDecimal) {
+        public Num of(final BigDecimal bigDecimal) {
             return NaN;
         }
 
         @Override
-        public Num of(String string) {
+        public Num of(final String string) {
             return NaN;
         }
 
         @Override
-        public Num of(Num num) {
+        public Num of(final Num num) {
             return NaN;
         }
 
@@ -154,32 +157,32 @@ public final class NaNNum implements Num {
     private NaNNum() {}
 
     @Override
-    public Num add(Num addend) {
+    public Num add(final Num addend) {
         return this;
     }
 
     @Override
-    public Num subtract(Num subtrahend) {
+    public Num subtract(final Num subtrahend) {
         return this;
     }
 
     @Override
-    public Num multiply(Num multiplier) {
+    public Num multiply(final Num multiplier) {
         return this;
     }
 
     @Override
-    public Num divide(Num divisor) {
+    public Num divide(final Num divisor) {
         return this;
     }
 
     @Override
-    public Num remainder(Num divisor) {
+    public Num remainder(final Num divisor) {
         return this;
     }
 
     @Override
-    public Num power(Num exponent) {
+    public Num power(final Num exponent) {
         return this;
     }
 
@@ -199,7 +202,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num nthRoot(Num degree) {
+    public Num nthRoot(final Num degree) {
         return this;
     }
 
@@ -229,7 +232,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num log(Num base) {
+    public Num log(final Num base) {
         return this;
     }
 
@@ -319,7 +322,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num atan2(Num x) {
+    public Num atan2(final Num x) {
         return this;
     }
 
@@ -354,22 +357,22 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num hypotenuse(Num y) {
+    public Num hypotenuse(final Num y) {
         return this;
     }
 
     @Override
-    public Num average(Num other) {
+    public Num average(final Num other) {
         return this;
     }
 
     @Override
-    public Num min(Num other) {
+    public Num min(final Num other) {
         return this;
     }
 
     @Override
-    public Num max(Num other) {
+    public Num max(final Num other) {
         return this;
     }
 
@@ -384,12 +387,12 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num round(int scale, RoundingMode roundingMode) {
+    public Num round(final int scale, final RoundingMode roundingMode) {
         return this;
     }
 
     @Override
-    public Num sigFigs(MathContext context) {
+    public Num sigFigs(final MathContext context) {
         return this;
     }
 
@@ -424,7 +427,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public boolean isNegativeOrZero(Num epsilon) {
+    public boolean isNegativeOrZero(final Num epsilon) {
         return false;
     }
 
@@ -439,7 +442,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public boolean isPositiveOrZero(Num epsilon) {
+    public boolean isPositiveOrZero(final Num epsilon) {
         return false;
     }
 
@@ -449,47 +452,47 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public boolean isZero(Num epsilon) {
+    public boolean isZero(final Num epsilon) {
         return false;
     }
 
     @Override
-    public boolean isEqual(Num other) {
+    public boolean isEqual(final Num other) {
         return false;
     }
 
     @Override
-    public boolean isEqual(Num other, Num epsilon) {
+    public boolean isEqual(final Num other, final Num epsilon) {
         return false;
     }
 
     @Override
-    public boolean isLessThan(Num other) {
+    public boolean isLessThan(final Num other) {
         return false;
     }
 
     @Override
-    public boolean isLessThanOrEqual(Num other) {
+    public boolean isLessThanOrEqual(final Num other) {
         return false;
     }
 
     @Override
-    public boolean isLessThanOrEqual(Num other, Num epsilon) {
+    public boolean isLessThanOrEqual(final Num other, final Num epsilon) {
         return false;
     }
 
     @Override
-    public boolean isGreaterThan(Num other) {
+    public boolean isGreaterThan(final Num other) {
         return false;
     }
 
     @Override
-    public boolean isGreaterThanOrEqual(Num other) {
+    public boolean isGreaterThanOrEqual(final Num other) {
         return false;
     }
 
     @Override
-    public boolean isGreaterThanOrEqual(Num other, Num epsilon) {
+    public boolean isGreaterThanOrEqual(final Num other, final Num epsilon) {
         return false;
     }
 
@@ -499,7 +502,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num ifNaN(Num replacement) {
+    public Num ifNaN(final Num replacement) {
         return replacement;
     }
 
@@ -509,12 +512,12 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num ifNaNThrow(Supplier<RuntimeException> runtimeException) {
+    public Num ifNaNThrow(final Supplier<RuntimeException> runtimeException) {
         throw runtimeException.get();
     }
 
     @Override
-    public Num ifNaNThrow(RuntimeException runtimeException) {
+    public Num ifNaNThrow(final RuntimeException runtimeException) {
         throw runtimeException;
     }
 
@@ -539,7 +542,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         return this == obj;
     }
 
@@ -554,7 +557,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public int compareTo(@NotNull Num o) {
+    public int compareTo(final Num o) {
         return 0;
     }
 }
