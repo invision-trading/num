@@ -8,7 +8,6 @@ import org.jspecify.annotations.Nullable;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
-import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Supplier;
 
@@ -107,9 +106,9 @@ public final class DecimalNum implements Num {
             case final Integer aInt -> new DecimalNum(new BigDecimal(aInt, context), context);
             case final Long aLong -> new DecimalNum(new BigDecimal(aLong, context), context);
             case final Float aFloat -> !Float.isFinite(aFloat) ? NaN :
-                    new DecimalNum(new BigDecimal(aFloat.toString(), context), context);
+                    new DecimalNum(BigDecimal.valueOf(aFloat).round(context), context);
             case final Double aDouble -> !Double.isFinite(aDouble) ? NaN :
-                    new DecimalNum(new BigDecimal(aDouble.toString(), context), context);
+                    new DecimalNum(BigDecimal.valueOf(aDouble).round(context), context);
             case final BigDecimal bigDecimal -> decimalNum(bigDecimal, context);
             default -> new DecimalNum(new BigDecimal(number.toString(), context), context);
         };
