@@ -57,8 +57,10 @@ public final class DoubleNum implements Num {
      * @param string the {@link String}
      *
      * @return the {@link Num}
+     *
+     * @throws NumberFormatException thrown for {@link NumberFormatException}s
      */
-    public static Num doubleNum(final String string) {
+    public static Num doubleNum(final String string) throws NumberFormatException {
         final var aDouble = parseDouble(string);
         return !isFinite(aDouble) ? NaN : new DoubleNum(aDouble);
     }

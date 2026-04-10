@@ -100,8 +100,10 @@ public final class DecimalNum implements Num {
      * @param context the {@link MathContext}
      *
      * @return the {@link Num}
+     *
+     * @throws NumberFormatException thrown for {@link NumberFormatException}s
      */
-    public static Num decimalNum(final Number number, final MathContext context) {
+    public static Num decimalNum(final Number number, final MathContext context) throws NumberFormatException {
         return switch (number) {
             case final Integer aInt -> new DecimalNum(new BigDecimal(aInt, context), context);
             case final Long aLong -> new DecimalNum(new BigDecimal(aLong, context), context);
@@ -183,8 +185,10 @@ public final class DecimalNum implements Num {
      * @param context the {@link MathContext}
      *
      * @return the {@link Num}
+     *
+     * @throws NumberFormatException thrown for {@link NumberFormatException}s
      */
-    public static Num decimalNum(final String string, final MathContext context) {
+    public static Num decimalNum(final String string, final MathContext context) throws NumberFormatException {
         return string.equals(NaN.toString()) ? NaN : new DecimalNum(new BigDecimal(string, context), context);
     }
 
