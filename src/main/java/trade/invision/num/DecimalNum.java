@@ -716,7 +716,11 @@ public final class DecimalNum implements Num {
 
     @Override
     public Num exponential() {
-        return new DecimalNum(BigDecimalMath.exp(wrapped, context), context);
+        try {
+            return new DecimalNum(BigDecimalMath.exp(wrapped, context), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
@@ -835,22 +839,38 @@ public final class DecimalNum implements Num {
 
     @Override
     public Num degrees() {
-        return new DecimalNum(BigDecimalMath.toDegrees(wrapped, context), context);
+        try {
+            return new DecimalNum(BigDecimalMath.toDegrees(wrapped, context), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
     public Num radians() {
-        return new DecimalNum(BigDecimalMath.toRadians(wrapped, context), context);
+        try {
+            return new DecimalNum(BigDecimalMath.toRadians(wrapped, context), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
     public Num pi() {
-        return new DecimalNum(BigDecimalMath.pi(context), context);
+        try {
+            return new DecimalNum(BigDecimalMath.pi(context), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
     public Num e() {
-        return new DecimalNum(BigDecimalMath.e(context), context);
+        try {
+            return new DecimalNum(BigDecimalMath.e(context), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
@@ -984,7 +1004,11 @@ public final class DecimalNum implements Num {
         final var context = precisestContext(decimalNum.context);
         final var xSquared = wrapped.multiply(wrapped, context);
         final var ySquared = decimalNum.wrapped.multiply(decimalNum.wrapped, context);
-        return new DecimalNum(BigDecimalMath.sqrt(xSquared.add(ySquared, context), context), context);
+        try {
+            return new DecimalNum(BigDecimalMath.sqrt(xSquared.add(ySquared, context), context), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
@@ -999,12 +1023,20 @@ public final class DecimalNum implements Num {
 
     @Override
     public Num integerPart() {
-        return new DecimalNum(BigDecimalMath.integralPart(wrapped), context);
+        try {
+            return new DecimalNum(BigDecimalMath.integralPart(wrapped), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
     public Num fractionalPart() {
-        return new DecimalNum(BigDecimalMath.fractionalPart(wrapped), context);
+        try {
+            return new DecimalNum(BigDecimalMath.fractionalPart(wrapped), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
@@ -1024,7 +1056,11 @@ public final class DecimalNum implements Num {
 
     @Override
     public Num mantissa() {
-        return new DecimalNum(BigDecimalMath.mantissa(wrapped), context);
+        try {
+            return new DecimalNum(BigDecimalMath.mantissa(wrapped), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
