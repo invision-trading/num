@@ -5,8 +5,8 @@ import org.jspecify.annotations.NullMarked;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Supplier;
+import java.util.random.RandomGenerator;
 
 import static java.lang.Double.isFinite;
 import static java.lang.Double.parseDouble;
@@ -217,8 +217,8 @@ public final class DoubleNum implements Num {
         }
 
         @Override
-        public Num random() {
-            return of(ThreadLocalRandom.current().nextDouble());
+        public Num random(final RandomGenerator randomGenerator) {
+            return of(randomGenerator.nextDouble());
         }
     };
 

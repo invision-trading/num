@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.function.Supplier;
+import java.util.random.RandomGenerator;
 
 import static java.math.MathContext.DECIMAL64;
 
@@ -149,7 +150,7 @@ public final class NaNNum implements Num {
         }
 
         @Override
-        public Num random() {
+        public Num random(final RandomGenerator randomGenerator) {
             return NaN;
         }
     };

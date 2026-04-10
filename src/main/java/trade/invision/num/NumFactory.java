@@ -4,6 +4,8 @@ import com.google.errorprone.annotations.Immutable;
 import org.jspecify.annotations.NullMarked;
 
 import java.math.BigDecimal;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.random.RandomGenerator;
 
 /**
  * {@link NumFactory} is an interface for getting {@link Num} instances.
@@ -139,9 +141,18 @@ public interface NumFactory {
     Num half();
 
     /**
+     * @return {@link #random(RandomGenerator)} {@link ThreadLocalRandom#current()}
+     */
+    default Num random() {
+        return random(ThreadLocalRandom.current());
+    }
+
+    /**
      * Generates a random number between <code>0</code> (inclusive) and <code>1</code> (exclusive).
+     *
+     * @param randomGenerator the {@link RandomGenerator}
      *
      * @return the random {@link Num}
      */
-    Num random();
+    Num random(final RandomGenerator randomGenerator);
 }

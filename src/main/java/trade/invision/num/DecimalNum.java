@@ -8,8 +8,8 @@ import org.jspecify.annotations.Nullable;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Supplier;
+import java.util.random.RandomGenerator;
 
 import static java.math.BigDecimal.ONE;
 import static java.math.MathContext.DECIMAL128;
@@ -605,13 +605,13 @@ public final class DecimalNum implements Num {
         }
 
         @Override
-        public Num random() {
+        public Num random(final RandomGenerator randomGenerator) {
             // https://gist.github.com/Petersoj/749b4ac7906054242ea2a2089a2e5b2d
             final var prefix = "0.";
             final var stringBuilder = new StringBuilder(prefix.length() + context.getPrecision());
             stringBuilder.append(prefix);
             for (var digitIndex = 0; digitIndex < context.getPrecision(); digitIndex++) {
-                stringBuilder.append(ThreadLocalRandom.current().nextInt(10));
+                stringBuilder.append(randomGenerator.nextInt(10));
             }
             return of(stringBuilder.toString());
         }
