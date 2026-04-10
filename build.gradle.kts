@@ -1,85 +1,120 @@
+import net.ltgt.gradle.errorprone.CheckSeverity.WARN
+import net.ltgt.gradle.errorprone.errorprone
+import org.gradle.api.JavaVersion.VERSION_25
 import org.jreleaser.model.Active.ALWAYS
 import org.jreleaser.model.Active.NEVER
-import java.time.Duration.ofHours
 
 plugins {
     `java-library`
+    id("net.ltgt.errorprone") version "5.1.0"
     `maven-publish`
-    id("org.jreleaser") version "1.19.0"
+    id("org.jreleaser") version "1.23.0"
 }
 
 group = "trade.invision"
 version = "1.11.0"
+
+java {
+    sourceCompatibility = VERSION_25
+    targetCompatibility = VERSION_25
+    withJavadocJar()
+    withSourcesJar()
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation("org.jetbrains", "annotations", "26.0.2")
-    implementation("ch.obermuhlner", "big-math", "2.3.2")
+    implementation("org.jspecify:jspecify:1.0.0")
+    implementation("com.google.guava:guava:33.5.0-jre")
+    implementation("ch.obermuhlner:big-math:2.3.2")
+
+    errorprone("com.google.errorprone:error_prone_core:2.48.0")
+    errorprone("com.uber.nullaway:nullaway:0.13.1")
+    errorprone("net.jacobpeterson:final-coat:1.2.1")
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_25
-    targetCompatibility = JavaVersion.VERSION_25
-    withJavadocJar()
-    withSourcesJar()
-}
+tasks.withType(JavaCompile::class) {
+    options.errorprone {
+        allErrorsAsWarnings = true
+        allSuggestionsAsWarnings = true
+        disableWarningsInGeneratedCode = true
 
-tasks.javadoc.configure {
-    options {
-        (this as CoreJavadocOptions).addBooleanOption("Xdoclint:none", true)
-        addStringOption("link",
-                "https://docs.oracle.com/en/java/javase/${java.targetCompatibility.majorVersion}/docs/api/")
+        disable("MissingSummary")
+        disable("NullableOptional")
+        check("Varifier", WARN)
+        check("IdentifierName", WARN)
+        check("MissingBraces", WARN)
+        check("FieldCanBeFinal", WARN)
+        check("MissingDefault", WARN)
+        check("SwitchDefault", WARN)
+        check("RedundantNullCheck", WARN)
+        check("FieldMissingNullable", WARN)
+        check("ParameterMissingNullable", WARN)
+        check("ReturnMissingNullable", WARN)
+
+        check("NullAway", WARN)
+        option("NullAway:OnlyNullMarked", true)
+        option("NullAway:JSpecifyMode", true)
+        check("RequireExplicitNullMarking", WARN)
+
+        check("FinalCoat", WARN)
     }
 }
 
-val stagingDeployDirectory = file("build/staging-deploy")
+tasks.withType(Javadoc::class) {
+    options {
+        (this as StandardJavadocDocletOptions).addBooleanOption("Xdoclint:none", true)
+        links = listOf(
+                "https://docs.oracle.com/en/java/javase/${java.targetCompatibility.majorVersion}/docs/api/",
+                "https://jspecify.dev/docs/api/",
+                "https://errorprone.info/api/latest/")
+    }
+}
+
+val jreleaserMavenRepositoryDirectory = rootProject.layout.buildDirectory.dir("jreleaser-staging")
 
 publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            artifactId = "num"
-            from(components["java"])
-            pom {
-                name = "num"
-                description = "A Java library that abstracts the mathematical operations on real decimal numbers " +
-                        "represented in computer memory as floating-point binary numbers or " +
-                        "arbitrary-precision decimal numbers."
-                url = "https://github.com/invision-trading/num"
-                inceptionYear = "2025"
-                licenses {
-                    license {
-                        name = "MIT License"
-                        url = "https://opensource.org/licenses/MIT"
-                    }
+    publications.create("jreleaser", MavenPublication::class) {
+        from(components["java"])
+        pom {
+            name = artifactId
+            description = "A Java library that abstracts the mathematical operations on real decimal numbers " +
+                    "represented in computer memory as floating-point binary numbers (`Double`) or " +
+                    "arbitrary-precision decimal numbers (`BigDecimal`)."
+            url = "https://github.com/invision-trading/num"
+            inceptionYear = "2025"
+            licenses {
+                license {
+                    name = "MIT License"
+                    url = "https://opensource.org/licenses/MIT"
                 }
-                developers {
-                    developer {
-                        id = "Petersoj"
-                        name = "Jacob Peterson"
-                    }
+            }
+            developers {
+                developer {
+                    id = "Petersoj"
+                    name = "Jacob Peterson"
                 }
-                scm {
-                    connection = "scm:git:https://github.com/invision-trading/num.git"
-                    developerConnection = "scm:git:ssh://github.com/invision-trading/num.git"
-                    url = "https://github.com/invision-trading/num"
-                }
+            }
+            scm {
+                connection = "scm:git:${pom.url}.git"
+                developerConnection = connection
+                url = pom.url
             }
         }
     }
-    repositories {
-        maven {
-            url = uri(stagingDeployDirectory)
-        }
+    repositories.maven {
+        url = uri(jreleaserMavenRepositoryDirectory)
     }
 }
 
 jreleaser {
     signing {
-        active = ALWAYS
-        armored = true
+        pgp {
+            active = ALWAYS
+            armored = true
+        }
     }
     deploy {
         maven {
@@ -87,9 +122,7 @@ jreleaser {
                 create("sonatype") {
                     active = ALWAYS
                     url = "https://central.sonatype.com/api/v1/publisher"
-                    stagingRepository(stagingDeployDirectory.path)
-                    maxRetries = ofHours(1).toSeconds().toInt()
-                    retryDelay = ofHours(1).toSeconds().toInt()
+                    stagingRepository(jreleaserMavenRepositoryDirectory.get())
                 }
             }
         }
@@ -100,7 +133,3 @@ jreleaser {
         }
     }
 }
-
-tasks.build { mustRunAfter(tasks.clean) }
-tasks.publish { mustRunAfter(tasks.build) }
-tasks.jreleaserFullRelease { dependsOn(tasks.clean, tasks.build, tasks.publish) }
