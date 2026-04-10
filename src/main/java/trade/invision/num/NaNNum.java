@@ -214,22 +214,22 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num naturalLogarithm() {
+    public Num naturalLog() {
         return this;
     }
 
     @Override
-    public Num commonLogarithm() {
+    public Num commonLog() {
         return this;
     }
 
     @Override
-    public Num binaryLogarithm() {
+    public Num binaryLog() {
         return this;
     }
 
     @Override
-    public Num logarithm(Num base) {
+    public Num log(Num base) {
         return this;
     }
 
@@ -289,67 +289,67 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num sine() {
+    public Num sin() {
         return this;
     }
 
     @Override
-    public Num cosine() {
+    public Num cos() {
         return this;
     }
 
     @Override
-    public Num tangent() {
+    public Num tan() {
         return this;
     }
 
     @Override
-    public Num inverseSine() {
+    public Num asin() {
         return this;
     }
 
     @Override
-    public Num inverseCosine() {
+    public Num acos() {
         return this;
     }
 
     @Override
-    public Num inverseTangent() {
+    public Num atan() {
         return this;
     }
 
     @Override
-    public Num inverseTangent2(Num x) {
+    public Num atan2(Num x) {
         return this;
     }
 
     @Override
-    public Num hyperbolicSine() {
+    public Num sinh() {
         return this;
     }
 
     @Override
-    public Num hyperbolicCosine() {
+    public Num cosh() {
         return this;
     }
 
     @Override
-    public Num hyperbolicTangent() {
+    public Num tanh() {
         return this;
     }
 
     @Override
-    public Num inverseHyperbolicSine() {
+    public Num asinh() {
         return this;
     }
 
     @Override
-    public Num inverseHyperbolicCosine() {
+    public Num acosh() {
         return this;
     }
 
     @Override
-    public Num inverseHyperbolicTangent() {
+    public Num atanh() {
         return this;
     }
 
@@ -364,12 +364,12 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num minimum(Num other) {
+    public Num min(Num other) {
         return this;
     }
 
     @Override
-    public Num maximum(Num other) {
+    public Num max(Num other) {
         return this;
     }
 
@@ -389,12 +389,12 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num significantFigures(MathContext context) {
+    public Num sigFigs(MathContext context) {
         return this;
     }
 
     @Override
-    public int significantFigures() {
+    public int sigFigs() {
         return 0;
     }
 

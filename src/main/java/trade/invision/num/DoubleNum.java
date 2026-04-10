@@ -338,35 +338,35 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public Num naturalLogarithm() {
-        final double naturalLogarithm = Math.log(wrapped);
-        return !isFinite(naturalLogarithm) ? NaN : new DoubleNum(naturalLogarithm);
+    public Num naturalLog() {
+        final double naturalLog = Math.log(wrapped);
+        return !isFinite(naturalLog) ? NaN : new DoubleNum(naturalLog);
     }
 
     @Override
-    public Num commonLogarithm() {
-        final double commonLogarithm = Math.log10(wrapped);
-        return !isFinite(commonLogarithm) ? NaN : new DoubleNum(commonLogarithm);
+    public Num commonLog() {
+        final double commonLog = Math.log10(wrapped);
+        return !isFinite(commonLog) ? NaN : new DoubleNum(commonLog);
     }
 
     @Override
-    public Num binaryLogarithm() {
+    public Num binaryLog() {
         final double numerator = Math.log(wrapped);
         return !isFinite(numerator) ? NaN : new DoubleNum(numerator / NATURAL_LOGARITHM_OF_2);
     }
 
     @Override
-    public Num logarithm(Num base) {
+    public Num log(Num base) {
         if (base.isNaN()) {
             return NaN;
         } else if (base instanceof DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).logarithm(decimalNum);
+            return decimalNum.factory().of(this).log(decimalNum);
         } else {
-            final double logarithm = Math.log(wrapped) / Math.log(((DoubleNum) base).wrapped);
-            if (!isFinite(logarithm)) {
+            final double log = Math.log(wrapped) / Math.log(((DoubleNum) base).wrapped);
+            if (!isFinite(log)) {
                 return NaN;
             }
-            return new DoubleNum(logarithm);
+            return new DoubleNum(log);
         }
     }
 
@@ -427,47 +427,47 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public Num sine() {
+    public Num sin() {
         final double sine = Math.sin(wrapped);
         return !isFinite(sine) ? NaN : new DoubleNum(sine);
     }
 
     @Override
-    public Num cosine() {
+    public Num cos() {
         final double cosine = Math.cos(wrapped);
         return !isFinite(cosine) ? NaN : new DoubleNum(cosine);
     }
 
     @Override
-    public Num tangent() {
+    public Num tan() {
         final double tangent = Math.tan(wrapped);
         return !isFinite(tangent) ? NaN : new DoubleNum(tangent);
     }
 
     @Override
-    public Num inverseSine() {
+    public Num asin() {
         final double inverseSine = Math.asin(wrapped);
         return !isFinite(inverseSine) ? NaN : new DoubleNum(inverseSine);
     }
 
     @Override
-    public Num inverseCosine() {
+    public Num acos() {
         final double inverseCosine = Math.acos(wrapped);
         return !isFinite(inverseCosine) ? NaN : new DoubleNum(inverseCosine);
     }
 
     @Override
-    public Num inverseTangent() {
+    public Num atan() {
         final double inverseTangent = Math.atan(wrapped);
         return !isFinite(inverseTangent) ? NaN : new DoubleNum(inverseTangent);
     }
 
     @Override
-    public Num inverseTangent2(Num x) {
+    public Num atan2(Num x) {
         if (x.isNaN()) {
             return NaN;
         } else if (x instanceof DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).inverseTangent2(decimalNum);
+            return decimalNum.factory().of(this).atan2(decimalNum);
         } else {
             final double inverseTangent2 = Math.atan2(wrapped, ((DoubleNum) x).wrapped);
             return !isFinite(inverseTangent2) ? NaN : new DoubleNum(inverseTangent2);
@@ -475,37 +475,37 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public Num hyperbolicSine() {
+    public Num sinh() {
         final double hyperbolicSine = Math.sinh(wrapped);
         return !isFinite(hyperbolicSine) ? NaN : new DoubleNum(hyperbolicSine);
     }
 
     @Override
-    public Num hyperbolicCosine() {
+    public Num cosh() {
         final double hyperbolicCosine = Math.cosh(wrapped);
         return !isFinite(hyperbolicCosine) ? NaN : new DoubleNum(hyperbolicCosine);
     }
 
     @Override
-    public Num hyperbolicTangent() {
+    public Num tanh() {
         final double hyperbolicTangent = Math.tanh(wrapped);
         return !isFinite(hyperbolicTangent) ? NaN : new DoubleNum(hyperbolicTangent);
     }
 
     @Override
-    public Num inverseHyperbolicSine() {
+    public Num asinh() {
         final double inverseHyperbolicSine = Math.log(wrapped + Math.sqrt(wrapped * wrapped + 1.0));
         return !isFinite(inverseHyperbolicSine) ? NaN : new DoubleNum(inverseHyperbolicSine);
     }
 
     @Override
-    public Num inverseHyperbolicCosine() {
+    public Num acosh() {
         final double inverseHyperbolicCosine = Math.log(wrapped + Math.sqrt(wrapped * wrapped - 1.0));
         return !isFinite(inverseHyperbolicCosine) ? NaN : new DoubleNum(inverseHyperbolicCosine);
     }
 
     @Override
-    public Num inverseHyperbolicTangent() {
+    public Num atanh() {
         final double inverseHyperbolicTangent = 0.5 * Math.log((1.0 + wrapped) / (1.0 - wrapped));
         return !isFinite(inverseHyperbolicTangent) ? NaN : new DoubleNum(inverseHyperbolicTangent);
     }
@@ -578,13 +578,13 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public Num significantFigures(MathContext context) {
-        return new DoubleNum(decimalNum(this, getContext()).significantFigures(context).toDouble());
+    public Num sigFigs(MathContext context) {
+        return new DoubleNum(decimalNum(this, getContext()).sigFigs(context).toDouble());
     }
 
     @Override
-    public int significantFigures() {
-        return decimalNum(this, getContext()).significantFigures();
+    public int sigFigs() {
+        return decimalNum(this, getContext()).sigFigs();
     }
 
     @Override

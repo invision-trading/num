@@ -743,7 +743,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num naturalLogarithm() {
+    public Num naturalLog() {
         try {
             return new DecimalNum(BigDecimalMath.log(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -752,7 +752,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num commonLogarithm() {
+    public Num commonLog() {
         try {
             return new DecimalNum(BigDecimalMath.log10(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -761,7 +761,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num binaryLogarithm() {
+    public Num binaryLog() {
         try {
             return new DecimalNum(BigDecimalMath.log2(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -770,7 +770,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num logarithm(Num base) {
+    public Num log(Num base) {
         if (base.isNaN()) {
             return NaN;
         }
@@ -845,7 +845,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num sine() {
+    public Num sin() {
         try {
             return new DecimalNum(BigDecimalMath.sin(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -854,7 +854,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num cosine() {
+    public Num cos() {
         try {
             return new DecimalNum(BigDecimalMath.cos(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -863,7 +863,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num tangent() {
+    public Num tan() {
         try {
             return new DecimalNum(BigDecimalMath.tan(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -872,7 +872,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num inverseSine() {
+    public Num asin() {
         try {
             return new DecimalNum(BigDecimalMath.asin(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -881,7 +881,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num inverseCosine() {
+    public Num acos() {
         try {
             return new DecimalNum(BigDecimalMath.acos(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -890,7 +890,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num inverseTangent() {
+    public Num atan() {
         try {
             return new DecimalNum(BigDecimalMath.atan(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -899,7 +899,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num inverseTangent2(Num x) {
+    public Num atan2(Num x) {
         if (x.isNaN()) {
             return NaN;
         }
@@ -913,7 +913,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num hyperbolicSine() {
+    public Num sinh() {
         try {
             return new DecimalNum(BigDecimalMath.sinh(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -922,7 +922,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num hyperbolicCosine() {
+    public Num cosh() {
         try {
             return new DecimalNum(BigDecimalMath.cosh(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -931,7 +931,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num hyperbolicTangent() {
+    public Num tanh() {
         try {
             return new DecimalNum(BigDecimalMath.tanh(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -940,7 +940,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num inverseHyperbolicSine() {
+    public Num asinh() {
         try {
             return new DecimalNum(BigDecimalMath.asinh(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -949,7 +949,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num inverseHyperbolicCosine() {
+    public Num acosh() {
         try {
             return new DecimalNum(BigDecimalMath.acosh(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -958,7 +958,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num inverseHyperbolicTangent() {
+    public Num atanh() {
         try {
             return new DecimalNum(BigDecimalMath.atanh(wrapped, context), context);
         } catch (ArithmeticException arithmeticException) {
@@ -1004,12 +1004,12 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num significantFigures(MathContext context) {
+    public Num sigFigs(MathContext context) {
         return new DecimalNum(wrapped.round(context), precisestContext(context));
     }
 
     @Override
-    public int significantFigures() {
+    public int sigFigs() {
         return wrapped.stripTrailingZeros().precision();
     }
 

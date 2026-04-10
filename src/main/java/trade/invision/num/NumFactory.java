@@ -9,7 +9,7 @@ public interface NumFactory {
 
     /**
      * Creates a new {@link Num} with the value of the given {@link Number}.
-     * <br>
+     * <p>
      * Do not use this method for non-integer decimal numbers. Use {@link #of(String)} instead.
      *
      * @param number the {@link Number}
