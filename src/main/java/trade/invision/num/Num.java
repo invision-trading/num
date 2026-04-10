@@ -806,8 +806,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see NumFactory#of(Number)
      * @see NumFactory#of(Number)
      */
-    default Num clamp(final Number minimum, final Number maximum) {
-        return clamp(factory().of(minimum), factory().of(maximum));
+    default Num clamp(final Number min, final Number max) {
+        return clamp(factory().of(min), factory().of(max));
     }
 
     /**
@@ -815,8 +815,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see NumFactory#of(Number)
      * @see NumFactory#of(BigDecimal)
      */
-    default Num clamp(final Number minimum, final BigDecimal maximum) {
-        return clamp(factory().of(minimum), factory().of(maximum));
+    default Num clamp(final Number min, final BigDecimal max) {
+        return clamp(factory().of(min), factory().of(max));
     }
 
     /**
@@ -824,16 +824,16 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see NumFactory#of(Number)
      * @see NumFactory#of(String)
      */
-    default Num clamp(final Number minimum, final String maximum) {
-        return clamp(factory().of(minimum), factory().of(maximum));
+    default Num clamp(final Number min, final String max) {
+        return clamp(factory().of(min), factory().of(max));
     }
 
     /**
      * @see #clamp(Num, Num)
      * @see NumFactory#of(Number)
      */
-    default Num clamp(final Number minimum, final Num maximum) {
-        return clamp(factory().of(minimum), maximum);
+    default Num clamp(final Number min, final Num max) {
+        return clamp(factory().of(min), max);
     }
 
     /**
@@ -841,8 +841,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see NumFactory#of(BigDecimal)
      * @see NumFactory#of(Number)
      */
-    default Num clamp(final BigDecimal minimum, final Number maximum) {
-        return clamp(factory().of(minimum), factory().of(maximum));
+    default Num clamp(final BigDecimal min, final Number max) {
+        return clamp(factory().of(min), factory().of(max));
     }
 
     /**
@@ -850,8 +850,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see NumFactory#of(BigDecimal)
      * @see NumFactory#of(BigDecimal)
      */
-    default Num clamp(final BigDecimal minimum, final BigDecimal maximum) {
-        return clamp(factory().of(minimum), factory().of(maximum));
+    default Num clamp(final BigDecimal min, final BigDecimal max) {
+        return clamp(factory().of(min), factory().of(max));
     }
 
     /**
@@ -859,16 +859,16 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see NumFactory#of(BigDecimal)
      * @see NumFactory#of(String)
      */
-    default Num clamp(final BigDecimal minimum, final String maximum) {
-        return clamp(factory().of(minimum), factory().of(maximum));
+    default Num clamp(final BigDecimal min, final String max) {
+        return clamp(factory().of(min), factory().of(max));
     }
 
     /**
      * @see #clamp(Num, Num)
      * @see NumFactory#of(BigDecimal)
      */
-    default Num clamp(final BigDecimal minimum, final Num maximum) {
-        return clamp(factory().of(minimum), maximum);
+    default Num clamp(final BigDecimal min, final Num max) {
+        return clamp(factory().of(min), max);
     }
 
     /**
@@ -876,8 +876,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see NumFactory#of(String)
      * @see NumFactory#of(Number)
      */
-    default Num clamp(final String minimum, final Number maximum) {
-        return clamp(factory().of(minimum), factory().of(maximum));
+    default Num clamp(final String min, final Number max) {
+        return clamp(factory().of(min), factory().of(max));
     }
 
     /**
@@ -885,8 +885,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see NumFactory#of(String)
      * @see NumFactory#of(BigDecimal)
      */
-    default Num clamp(final String minimum, final BigDecimal maximum) {
-        return clamp(factory().of(minimum), factory().of(maximum));
+    default Num clamp(final String min, final BigDecimal max) {
+        return clamp(factory().of(min), factory().of(max));
     }
 
     /**
@@ -894,55 +894,55 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see NumFactory#of(String)
      * @see NumFactory#of(String)
      */
-    default Num clamp(final String minimum, final String maximum) {
-        return clamp(factory().of(minimum), factory().of(maximum));
+    default Num clamp(final String min, final String max) {
+        return clamp(factory().of(min), factory().of(max));
     }
 
     /**
      * @see #clamp(Num, Num)
      * @see NumFactory#of(String)
      */
-    default Num clamp(final String minimum, final Num maximum) {
-        return clamp(factory().of(minimum), maximum);
+    default Num clamp(final String min, final Num max) {
+        return clamp(factory().of(min), max);
     }
 
     /**
      * @see #clamp(Num, Num)
      * @see NumFactory#of(Number)
      */
-    default Num clamp(final Num minimum, final Number maximum) {
-        return clamp(minimum, factory().of(maximum));
+    default Num clamp(final Num min, final Number max) {
+        return clamp(min, factory().of(max));
     }
 
     /**
      * @see #clamp(Num, Num)
      * @see NumFactory#of(BigDecimal)
      */
-    default Num clamp(final Num minimum, final BigDecimal maximum) {
-        return clamp(minimum, factory().of(maximum));
+    default Num clamp(final Num min, final BigDecimal max) {
+        return clamp(min, factory().of(max));
     }
 
     /**
      * @see #clamp(Num, Num)
      * @see NumFactory#of(String)
      */
-    default Num clamp(final Num minimum, final String maximum) {
-        return clamp(minimum, factory().of(maximum));
+    default Num clamp(final Num min, final String max) {
+        return clamp(min, factory().of(max));
     }
 
     /**
-     * Performs a clamp operation by limiting this value to the range between the given <code>minimum</code> and
-     * <code>maximum</code>: <code>min(maximum, max(this, minimum))</code>.
+     * Performs a clamp operation by limiting this value to the range between the given <code>min</code> and
+     * <code>max</code>: <code>min(max, max(this, min))</code>.
      *
-     * @param minimum the minimum {@link Num}
-     * @param maximum the maximum {@link Num}
+     * @param min the minimum {@link Num}
+     * @param max the maximum {@link Num}
      *
-     * @return the maximum {@link Num}
+     * @return the clamped {@link Num}
      *
      * @see <a href="https://en.wikipedia.org/wiki/Clamp_(function)">Wikipedia</a>
      */
-    default Num clamp(final Num minimum, final Num maximum) {
-        return maximum.min(max(minimum));
+    default Num clamp(final Num min, final Num max) {
+        return max.min(max(min));
     }
 
     /**
