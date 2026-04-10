@@ -33,61 +33,61 @@ import static trade.invision.num.NaNNum.NaN;
 public final class DecimalNum implements Num {
 
     /**
-     * Calls {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}.
+     * @return {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}
      */
     public static Num decimalNum32(final Number number) {
         return decimalNum(number, DECIMAL32);
     }
 
     /**
-     * Calls {@link #decimalNum(Number, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNum(Number, int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}
      */
     public static Num decimalNum32(final Number number, final RoundingMode roundingMode) {
         return decimalNum(number, DECIMAL32.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}.
+     * @return {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}
      */
     public static Num decimalNum64(final Number number) {
         return decimalNum(number, DECIMAL64);
     }
 
     /**
-     * Calls {@link #decimalNum(Number, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNum(Number, int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}
      */
     public static Num decimalNum64(final Number number, final RoundingMode roundingMode) {
         return decimalNum(number, DECIMAL64.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}.
+     * @return {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}
      */
     public static Num decimalNum128(final Number number) {
         return decimalNum(number, DECIMAL128);
     }
 
     /**
-     * Calls {@link #decimalNum(Number, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNum(Number, int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}
      */
     public static Num decimalNum128(final Number number, final RoundingMode roundingMode) {
         return decimalNum(number, DECIMAL128.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNum(Number, int, RoundingMode)} with <code>roundingMode</code> set to
-     * {@link RoundingMode#HALF_EVEN}.
+     * @return {@link #decimalNum(Number, int, RoundingMode)} with <code>roundingMode</code> set to
+     * {@link RoundingMode#HALF_EVEN}
      */
     public static Num decimalNum(final Number number, final int significantFigures) {
         return decimalNum(number, significantFigures, HALF_EVEN);
     }
 
     /**
-     * Calls {@link #decimalNum(Number, MathContext)} with {@link MathContext#getPrecision()} set to
-     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
+     * @return {@link #decimalNum(Number, MathContext)} with {@link MathContext#getPrecision()} set to
+     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
      */
     public static Num decimalNum(final Number number, final int significantFigures, final RoundingMode roundingMode) {
         return decimalNum(number, new MathContext(significantFigures, roundingMode));
@@ -117,61 +117,61 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * Calls {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}.
+     * @return {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}
      */
     public static Num decimalNum32(final String string) {
         return decimalNum(string, DECIMAL32);
     }
 
     /**
-     * Calls {@link #decimalNum(String, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNum(String, int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}
      */
     public static Num decimalNum32(final String string, final RoundingMode roundingMode) {
         return decimalNum(string, DECIMAL32.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}.
+     * @return {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}
      */
     public static Num decimalNum64(final String string) {
         return decimalNum(string, DECIMAL64);
     }
 
     /**
-     * Calls {@link #decimalNum(String, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNum(String, int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}
      */
     public static Num decimalNum64(final String string, final RoundingMode roundingMode) {
         return decimalNum(string, DECIMAL64.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}.
+     * @return {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}
      */
     public static Num decimalNum128(final String string) {
         return decimalNum(string, DECIMAL128);
     }
 
     /**
-     * Calls {@link #decimalNum(String, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNum(String, int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}
      */
     public static Num decimalNum128(final String string, final RoundingMode roundingMode) {
         return decimalNum(string, DECIMAL128.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNum(String, int, RoundingMode)} with <code>roundingMode</code> set to
-     * {@link RoundingMode#HALF_EVEN}.
+     * @return {@link #decimalNum(String, int, RoundingMode)} with <code>roundingMode</code> set to
+     * {@link RoundingMode#HALF_EVEN}
      */
     public static Num decimalNum(final String string, final int significantFigures) {
         return decimalNum(string, significantFigures, HALF_EVEN);
     }
 
     /**
-     * Calls {@link #decimalNum(String, MathContext)} with {@link MathContext#getPrecision()} set to
-     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
+     * @return {@link #decimalNum(String, MathContext)} with {@link MathContext#getPrecision()} set to
+     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
      */
     public static Num decimalNum(final String string, final int significantFigures, final RoundingMode roundingMode) {
         return decimalNum(string, new MathContext(significantFigures, roundingMode));
@@ -193,64 +193,64 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * Calls {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
-     * {@link MathContext#DECIMAL32}.
+     * @return {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
+     * {@link MathContext#DECIMAL32}
      */
     public static Num decimalNum32(final BigDecimal bigDecimal) {
         return decimalNum(bigDecimal, DECIMAL32);
     }
 
     /**
-     * Calls {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}
      */
     public static Num decimalNum32(final BigDecimal bigDecimal, final RoundingMode roundingMode) {
         return decimalNum(bigDecimal, DECIMAL32.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
-     * {@link MathContext#DECIMAL64}.
+     * @return {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
+     * {@link MathContext#DECIMAL64}
      */
     public static Num decimalNum64(final BigDecimal bigDecimal) {
         return decimalNum(bigDecimal, DECIMAL64);
     }
 
     /**
-     * Calls {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}
      */
     public static Num decimalNum64(final BigDecimal bigDecimal, final RoundingMode roundingMode) {
         return decimalNum(bigDecimal, DECIMAL64.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
-     * {@link MathContext#DECIMAL128}.
+     * @return {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
+     * {@link MathContext#DECIMAL128}
      */
     public static Num decimalNum128(final BigDecimal bigDecimal) {
         return decimalNum(bigDecimal, DECIMAL128);
     }
 
     /**
-     * Calls {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}
      */
     public static Num decimalNum128(final BigDecimal bigDecimal, final RoundingMode roundingMode) {
         return decimalNum(bigDecimal, DECIMAL128.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>roundingMode</code> set to
-     * {@link RoundingMode#HALF_EVEN}.
+     * @return {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>roundingMode</code> set to
+     * {@link RoundingMode#HALF_EVEN}
      */
     public static Num decimalNum(final BigDecimal bigDecimal, final int significantFigures) {
         return decimalNum(bigDecimal, significantFigures, HALF_EVEN);
     }
 
     /**
-     * Calls {@link #decimalNum(BigDecimal, MathContext)} with {@link MathContext#getPrecision()} set to
-     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
+     * @return {@link #decimalNum(BigDecimal, MathContext)} with {@link MathContext#getPrecision()} set to
+     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
      */
     public static Num decimalNum(final BigDecimal bigDecimal, final int significantFigures,
             final RoundingMode roundingMode) {
@@ -270,61 +270,61 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * Calls {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}.
+     * @return {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}
      */
     public static Num decimalNum32(final Num num) {
         return decimalNum(num, DECIMAL32);
     }
 
     /**
-     * Calls {@link #decimalNum(Num, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNum(Num, int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}
      */
     public static Num decimalNum32(final Num num, final RoundingMode roundingMode) {
         return decimalNum(num, DECIMAL32.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}.
+     * @return {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}
      */
     public static Num decimalNum64(final Num num) {
         return decimalNum(num, DECIMAL64);
     }
 
     /**
-     * Calls {@link #decimalNum(Num, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNum(Num, int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}
      */
     public static Num decimalNum64(final Num num, final RoundingMode roundingMode) {
         return decimalNum(num, DECIMAL64.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}.
+     * @return {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}
      */
     public static Num decimalNum128(final Num num) {
         return decimalNum(num, DECIMAL128);
     }
 
     /**
-     * Calls {@link #decimalNum(Num, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNum(Num, int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}
      */
     public static Num decimalNum128(final Num num, final RoundingMode roundingMode) {
         return decimalNum(num, DECIMAL128.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNum(Num, int, RoundingMode)} with <code>roundingMode</code> set to
-     * {@link RoundingMode#HALF_EVEN}.
+     * @return {@link #decimalNum(Num, int, RoundingMode)} with <code>roundingMode</code> set to
+     * {@link RoundingMode#HALF_EVEN}
      */
     public static Num decimalNum(final Num num, final int significantFigures) {
         return decimalNum(num, significantFigures, HALF_EVEN);
     }
 
     /**
-     * Calls {@link #decimalNum(Num, MathContext)} with {@link MathContext#getPrecision()} set to
-     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
+     * @return {@link #decimalNum(Num, MathContext)} with {@link MathContext#getPrecision()} set to
+     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
      */
     public static Num decimalNum(final Num num, final int significantFigures, final RoundingMode roundingMode) {
         return decimalNum(num, new MathContext(significantFigures, roundingMode));
@@ -343,61 +343,61 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * Calls {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}.
+     * @return {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}
      */
     public static NumFactory decimalNum32Factory() {
         return decimalNumFactory(DECIMAL32);
     }
 
     /**
-     * Calls {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}
      */
     public static NumFactory decimalNum32Factory(final RoundingMode roundingMode) {
         return decimalNumFactory(DECIMAL32.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}.
+     * @return {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}
      */
     public static NumFactory decimalNum64Factory() {
         return decimalNumFactory(DECIMAL64);
     }
 
     /**
-     * Calls {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}
      */
     public static NumFactory decimalNum64Factory(final RoundingMode roundingMode) {
         return decimalNumFactory(DECIMAL64.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}.
+     * @return {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}
      */
     public static NumFactory decimalNum128Factory() {
         return decimalNumFactory(DECIMAL128);
     }
 
     /**
-     * Calls {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}.
+     * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}
      */
     public static NumFactory decimalNum128Factory(final RoundingMode roundingMode) {
         return decimalNumFactory(DECIMAL128.getPrecision(), roundingMode);
     }
 
     /**
-     * Calls {@link #decimalNumFactory(int, RoundingMode)} with <code>roundingMode</code> set to
-     * {@link RoundingMode#HALF_EVEN}.
+     * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>roundingMode</code> set to
+     * {@link RoundingMode#HALF_EVEN}
      */
     public static NumFactory decimalNumFactory(final int significantFigures) {
         return decimalNumFactory(significantFigures, HALF_EVEN);
     }
 
     /**
-     * Calls {@link #decimalNumFactory(MathContext)} with {@link MathContext#getPrecision()} set to
-     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
+     * @return {@link #decimalNumFactory(MathContext)} with {@link MathContext#getPrecision()} set to
+     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
      */
     public static NumFactory decimalNumFactory(final int significantFigures, final RoundingMode roundingMode) {
         return decimalNumFactory(new MathContext(significantFigures, roundingMode));

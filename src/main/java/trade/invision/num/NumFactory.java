@@ -6,14 +6,14 @@ import org.jspecify.annotations.NullMarked;
 import java.math.BigDecimal;
 
 /**
- * {@link NumFactory} is an interface for creating {@link Num} instances.
+ * {@link NumFactory} is an interface for getting {@link Num} instances.
  */
 @NullMarked
 @Immutable
 public interface NumFactory {
 
     /**
-     * Creates a new {@link Num} with the value of the given {@link Number}.
+     * Gets a {@link Num} with the value of the given {@link Number}.
      *
      * @param number the {@link Number}
      *
@@ -22,7 +22,7 @@ public interface NumFactory {
     Num of(final Number number);
 
     /**
-     * Creates a new {@link Num} with the value of the given {@link BigDecimal}.
+     * Gets a {@link Num} with the value of the given {@link BigDecimal}.
      *
      * @param bigDecimal the {@link BigDecimal}
      *
@@ -31,16 +31,16 @@ public interface NumFactory {
     Num of(final BigDecimal bigDecimal);
 
     /**
-     * Creates a new {@link Num} with the value of the given {@link String} representing a number.
+     * Gets a {@link Num} with the value of the given number {@link String}.
      *
-     * @param string the {@link String} representing a number
+     * @param string the number {@link String}
      *
      * @return the {@link Num}
      */
     Num of(final String string);
 
     /**
-     * Creates a new {@link Num} with the value of the given {@link Num}.
+     * Gets a {@link Num} with the value of the given {@link Num}.
      *
      * @param num the {@link Num}
      *
