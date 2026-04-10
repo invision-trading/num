@@ -528,7 +528,7 @@ public final class NaNNum implements Num {
 
     @Override
     public BigDecimal toBigDecimal() {
-        return new BigDecimal(0);
+        return BigDecimal.ZERO;
     }
 
     @Override
