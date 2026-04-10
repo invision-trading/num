@@ -807,7 +807,7 @@ public final class DoubleNum implements Num {
 
     @Override
     public BigDecimal toBigDecimal() {
-        return new BigDecimal(toString(), getContext());
+        return BigDecimal.valueOf(wrapped);
     }
 
     @Override
