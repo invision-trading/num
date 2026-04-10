@@ -1,14 +1,15 @@
 # Num
 
-[![Maven Central Version](https://img.shields.io/maven-central/v/trade.invision/num)](https://central.sonatype.com/artifact/trade.invision/num)
-[![javadoc](https://javadoc.io/badge2/trade.invision/num/javadoc.svg)](https://javadoc.io/doc/trade.invision/num)
-[![GitHub License](https://img.shields.io/github/license/invision-trading/num)](https://github.com/invision-trading/num/blob/main/LICENSE.txt)
+[![Maven Central](https://img.shields.io/badge/Maven_Central-1.11.0-blue?logo=apachemaven)](https://central.sonatype.com/artifact/trade.invision/num)
+[![Javadoc](https://img.shields.io/badge/javadoc-1.11.0-brightgreen)](https://javadoc.io/doc/trade.invision/num)
+[![Java Version](https://img.shields.io/badge/Java_Version-25-orange?logo=java)](https://openjdk.org/projects/jdk/25)
+[![GitHub License](https://img.shields.io/github/license/Petersoj/jet)](https://github.com/Petersoj/jet/blob/main/LICENSE.txt)
 
 A Java library that abstracts the mathematical operations on real decimal numbers represented in computer memory as
 floating-point binary numbers
-([`Double`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Double.html)) or arbitrary-precision
+([`Double`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Double.html)) or arbitrary-precision
 decimal numbers
-([`BigDecimal`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/BigDecimal.html)).
+([`BigDecimal`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html)).
 
 ## Installation
 
@@ -46,11 +47,11 @@ Using floating-point numbers (e.g. `float` or `double`) to represent currency ca
 [inequality calculations](https://0.30000000000000004.com/),
 [rounding errors](https://stackoverflow.com/a/3730040/4352701), and
 [precision loss](https://ta4j.github.io/ta4j-wiki/Num.html#choosing-the-right-num-implementation). Thankfully, Java
-provides the [`BigDecimal`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/BigDecimal.html)
+provides the [`BigDecimal`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html)
 class for working with arbitrary-precision decimal numbers, though it has some
 [quirks](https://blogs.oracle.com/javamagazine/post/four-common-pitfalls-of-the-bigdecimal-class-and-how-to-avoid-them)
 and doesn't provide many of the functions that the
-[Math](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html) class has for `float` and
+[Math](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Math.html) class has for `float` and
 `double` types. Additionally, mathematical operations on `BigDecimal` objects can be
 [significantly slower](http://blog.vanillajava.blog/2024/11/overview-many-developers-consider.html) than the equivalent
 mathematical operations on floating-point numbers. This can be problematic in applications such as quantitative finance
@@ -65,18 +66,18 @@ a bad idea. Even Microsoft Excel, a program widely used in finance,
 [uses floating-point numbers](https://learn.microsoft.com/en-us/office/troubleshoot/excel/floating-point-arithmetic-inaccurate-result).
 You can really go back-and-forth on the tradeoffs between floating-point, fixed-point, and arbitrary-precision numbers.
 Enter, the `Num` interface: an intuitive interface that allows you to focus on using currency values in your application
-without worrying about the underlying number representation and easily switch between various number representations
-at runtime.
+without constantly worrying about the underlying number representation and easily switch between various number
+representations at runtime.
 
 ## The `Num` Interface
 
 [`Num`](src/main/java/trade/invision/num/Num.java), short for "number", is an interface for performing mathematical
 operations on real decimal numbers. Implementations wrap a
-[`Number`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Number.html) instance so that
+[`Number`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Number.html) instance so that
 performing mathematical operations on floating-point binary numbers
-([`Double`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Double.html) via
+([`Double`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Double.html) via
 [`DoubleNum`](src/main/java/trade/invision/num/DoubleNum.java)) or arbitrary-precision decimal numbers
-([`BigDecimal`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/BigDecimal.html) via
+([`BigDecimal`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html) via
 [`DecimalNum`](src/main/java/trade/invision/num/DecimalNum.java)) is simple. Implementations of this interface are
 immutable. All methods return non-`null` values. All implementations of this interface are interoperable with each
 other. Operations involving different implementations will result in a `Num` that trends towards an increase in
@@ -92,10 +93,10 @@ To create a `DoubleNum`, provide an existing `Number` (`byte`, `short`, `int`, `
 `String`, or `Num` to the `DoubleNum.doubleNum()` static method. Statically importing `doubleNum()` is preferred as your
 code will likely look cleaner. Creating a `DecimalNum` is similar to `DoubleNum`, but requires you to specify a
 precision and rounding mode via
-[`MathContext`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/MathContext.html). Use
+[`MathContext`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/MathContext.html). Use
 `DecimalNum.decimalNum(String, MathContext)` or use one of the convenience methods, such as `decimalNum64()` which
 provides approximately the same precision as `double`, allowing up to 16 significant figures of precision and the same
-[rounding policy](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/RoundingMode.html#HALF_EVEN) as
+[rounding policy](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/RoundingMode.html#HALF_EVEN) as
 `double`. Again, statically importing `decimalNum()` is preferred as your code will likely look cleaner.
 
 You can create a [`NumFactory`](src/main/java/trade/invision/num/NumFactory.java) instance to abstract the `Num`
@@ -200,7 +201,7 @@ library. There are several improvements and additions that this library's `Num` 
 
 - Interoperability between `DoubleNum` and `DecimalNum`.
 - Several more mathematical operations (e.g. trigonometry functions) via
-  [Math](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html) in `DoubleNum` and via
+  [Math](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Math.html) in `DoubleNum` and via
   [big-math](https://github.com/eobermuhlner/big-math) in `DecimalNum`.
 - No default precision for `DecimalNum` (see [ta4j issue](https://github.com/ta4j/ta4j/issues/1086)).
 - Configurable epsilon for tolerant comparison operations (see [ta4j
