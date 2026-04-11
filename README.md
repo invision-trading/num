@@ -16,13 +16,13 @@ decimal numbers
 For `build.gradle.kts`:
 
 ```kotlin
-implementation("trade.invision", "num", "1.11.0")
+implementation("trade.invision:num:1.11.0")
 ```
 
 For `build.gradle`:
 
 ```groovy
-implementation group: 'trade.invision', name: 'num', version: '1.11.0'
+implementation 'trade.invision:num:1.11.0'
 ```
 
 For `pom.xml`:
@@ -89,8 +89,8 @@ precision of `32` will result in a `DecimalNum` with a context precision of `32`
 ## Usage
 
 To create a `DoubleNum`, provide an existing `Number` (`byte`, `short`, `int`, `long`, `float`, `double`), `BigDecimal`,
-`String`, or `Num` to the `DoubleNum.doubleNum()` static method. Statically importing `doubleNum()` is preferred as your
-code will likely look cleaner.
+`String`, `NumFactory` lambda, or `Num` to the `DoubleNum.doubleNum()` static method. Statically importing `doubleNum()`
+is preferred as your code will likely look cleaner.
 
 Creating a `DecimalNum` is similar to `DoubleNum`, but requires you to specify a precision and rounding mode via a
 [`MathContext`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/MathContext.html). Use
