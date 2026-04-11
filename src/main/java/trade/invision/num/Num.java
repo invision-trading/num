@@ -373,7 +373,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @see <a href="https://en.wikipedia.org/wiki/Natural_logarithm">Wikipedia</a>
      */
-    Num naturalLog();
+    Num ln();
 
     /**
      * Performs a common logarithm (logarithm with a base of ten) operation using this {@link Num} as the anti-logarithm
@@ -383,7 +383,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @see <a href="https://en.wikipedia.org/wiki/Common_logarithm">Wikipedia</a>
      */
-    Num commonLog();
+    Num log10();
 
     /**
      * Performs a binary logarithm (logarithm with a base of two) operation using this {@link Num} as the anti-logarithm
@@ -393,7 +393,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @see <a href="https://en.wikipedia.org/wiki/Binary_logarithm">Wikipedia</a>
      */
-    Num binaryLog();
+    Num log2();
 
     /**
      * @return {@link #log(Num)} {@link NumFactory#of(Number)}
@@ -1099,18 +1099,18 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num round(final int scale, final RoundingMode roundingMode);
 
     /**
-     * @return {@link #sigFigs(int, RoundingMode)} with <code>roundingMode</code> set to {@link RoundingMode#HALF_EVEN}
+     * @return {@link #significantFigures(int, RoundingMode)} with <code>roundingMode</code> set to {@link RoundingMode#HALF_EVEN}
      */
-    default Num sigFigs(final int significantFigures) {
-        return sigFigs(significantFigures, HALF_EVEN);
+    default Num significantFigures(final int significantFigures) {
+        return significantFigures(significantFigures, HALF_EVEN);
     }
 
     /**
-     * @return {@link #sigFigs(MathContext)} with {@link MathContext#getPrecision()} set to
+     * @return {@link #significantFigures(MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
      */
-    default Num sigFigs(final int significantFigures, final RoundingMode roundingMode) {
-        return sigFigs(new MathContext(significantFigures, roundingMode));
+    default Num significantFigures(final int significantFigures, final RoundingMode roundingMode) {
+        return significantFigures(new MathContext(significantFigures, roundingMode));
     }
 
     /**
@@ -1124,16 +1124,16 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @see <a href="https://en.wikipedia.org/wiki/Significant_figures">Wikipedia</a>
      */
-    Num sigFigs(final MathContext context);
+    Num significantFigures(final MathContext context);
 
     /**
-     * Performs a significant figures (sig figs) count operation on this {@link Num}.
+     * Performs a significant figures count operation on this {@link Num}.
      *
      * @return the significant figures count <code>int</code>
      *
      * @see <a href="https://en.wikipedia.org/wiki/Significant_figures">Wikipedia</a>
      */
-    int sigFigs();
+    int significantFigures();
 
     /**
      * Performs a mantissa retrieval operation by computing the <code>mantissa</code> of this {@link Num} as defined by

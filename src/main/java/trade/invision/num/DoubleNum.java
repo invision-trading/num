@@ -342,19 +342,19 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public Num naturalLog() {
+    public Num ln() {
         final var naturalLog = Math.log(wrapped);
         return !isFinite(naturalLog) ? NaN : new DoubleNum(naturalLog);
     }
 
     @Override
-    public Num commonLog() {
+    public Num log10() {
         final var commonLog = Math.log10(wrapped);
         return !isFinite(commonLog) ? NaN : new DoubleNum(commonLog);
     }
 
     @Override
-    public Num binaryLog() {
+    public Num log2() {
         final var numerator = Math.log(wrapped);
         return !isFinite(numerator) ? NaN : new DoubleNum(numerator / NATURAL_LOGARITHM_OF_2);
     }
@@ -579,13 +579,13 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public Num sigFigs(final MathContext context) {
-        return new DoubleNum(decimalNum(this, getContext()).sigFigs(context).toDouble());
+    public Num significantFigures(final MathContext context) {
+        return new DoubleNum(decimalNum(this, getContext()).significantFigures(context).toDouble());
     }
 
     @Override
-    public int sigFigs() {
-        return decimalNum(this, getContext()).sigFigs();
+    public int significantFigures() {
+        return decimalNum(this, getContext()).significantFigures();
     }
 
     @Override

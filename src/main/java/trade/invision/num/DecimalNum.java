@@ -757,7 +757,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num naturalLog() {
+    public Num ln() {
         try {
             return new DecimalNum(BigDecimalMath.log(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
@@ -766,7 +766,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num commonLog() {
+    public Num log10() {
         try {
             return new DecimalNum(BigDecimalMath.log10(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
@@ -775,7 +775,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num binaryLog() {
+    public Num log2() {
         try {
             return new DecimalNum(BigDecimalMath.log2(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
@@ -1046,12 +1046,12 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num sigFigs(final MathContext context) {
+    public Num significantFigures(final MathContext context) {
         return new DecimalNum(wrapped.round(context), precisestContext(context));
     }
 
     @Override
-    public int sigFigs() {
+    public int significantFigures() {
         return wrapped.stripTrailingZeros().precision();
     }
 

@@ -218,17 +218,17 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num naturalLog() {
+    public Num ln() {
         return this;
     }
 
     @Override
-    public Num commonLog() {
+    public Num log10() {
         return this;
     }
 
     @Override
-    public Num binaryLog() {
+    public Num log2() {
         return this;
     }
 
@@ -393,12 +393,12 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num sigFigs(final MathContext context) {
+    public Num significantFigures(final MathContext context) {
         return this;
     }
 
     @Override
-    public int sigFigs() {
+    public int significantFigures() {
         return 0;
     }
 
