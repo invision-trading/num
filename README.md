@@ -1,7 +1,7 @@
 # Num
 
-[![Maven Central](https://img.shields.io/badge/Maven_Central-1.11.0-blue?logo=apachemaven)](https://central.sonatype.com/artifact/trade.invision/num)
-[![Javadoc](https://img.shields.io/badge/javadoc-1.11.0-brightgreen)](https://javadoc.io/doc/trade.invision/num)
+[![Maven Central](https://img.shields.io/badge/Maven_Central-2.0.0-blue?logo=apachemaven)](https://central.sonatype.com/artifact/trade.invision/num)
+[![Javadoc](https://img.shields.io/badge/javadoc-2.0.0-brightgreen)](https://javadoc.io/doc/trade.invision/num)
 [![Java Version](https://img.shields.io/badge/Java_Version-25-orange?logo=java)](https://openjdk.org/projects/jdk/25)
 [![GitHub License](https://img.shields.io/github/license/Petersoj/jet)](https://github.com/Petersoj/jet/blob/main/LICENSE.txt)
 
@@ -16,13 +16,13 @@ decimal numbers
 For `build.gradle.kts`:
 
 ```kotlin
-implementation("trade.invision:num:1.11.0")
+implementation("trade.invision:num:2.0.0")
 ```
 
 For `build.gradle`:
 
 ```groovy
-implementation 'trade.invision:num:1.11.0'
+implementation 'trade.invision:num:2.0.0'
 ```
 
 For `pom.xml`:
@@ -31,7 +31,7 @@ For `pom.xml`:
 <dependency>
     <groupId>trade.invision</groupId>
     <artifactId>num</artifactId>
-    <version>1.11.0</version>
+    <version>2.0.0</version>
 </dependency>
 ```
 

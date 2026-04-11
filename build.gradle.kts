@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "trade.invision"
-version = "1.11.0"
+version = "2.0.0"
 
 java {
     sourceCompatibility = VERSION_25
@@ -98,7 +98,7 @@ publishing {
                 }
             }
             scm {
-                connection = "scm:git:${pom.url}.git"
+                connection = pom.url.map { "scm:git:$it.git" }
                 developerConnection = connection
                 url = pom.url
             }
