@@ -1243,7 +1243,7 @@ public final class DecimalNum implements Num {
 
     @SuppressWarnings("ReferenceEquality")
     @Override
-    public NumFactory factory() {
+    public NumFactory getFactory() {
         if (factory == null) {
             // Use reference equality instead of object equality for performance.
             if (context == DECIMAL32) {
@@ -1284,7 +1284,7 @@ public final class DecimalNum implements Num {
     }
 
     private DecimalNum asDecimalNum(final Num num) {
-        return (DecimalNum) (num instanceof final DoubleNum doubleNum ? factory().of(doubleNum) : num);
+        return (DecimalNum) (num instanceof final DoubleNum doubleNum ? getFactory().of(doubleNum) : num);
     }
 
     private MathContext precisestContext(final MathContext other) {

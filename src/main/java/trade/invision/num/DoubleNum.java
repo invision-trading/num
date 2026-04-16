@@ -242,7 +242,7 @@ public final class DoubleNum implements Num {
             return NaN;
         }
         if (addend instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).add(decimalNum);
+            return decimalNum.getFactory().of(this).add(decimalNum);
         }
         return doubleNum(wrapped + ((DoubleNum) addend).wrapped);
     }
@@ -253,7 +253,7 @@ public final class DoubleNum implements Num {
             return NaN;
         }
         if (subtrahend instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).subtract(decimalNum);
+            return decimalNum.getFactory().of(this).subtract(decimalNum);
         }
         return doubleNum(wrapped - ((DoubleNum) subtrahend).wrapped);
     }
@@ -264,7 +264,7 @@ public final class DoubleNum implements Num {
             return NaN;
         }
         if (multiplier instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).multiply(decimalNum);
+            return decimalNum.getFactory().of(this).multiply(decimalNum);
         }
         return doubleNum(wrapped * ((DoubleNum) multiplier).wrapped);
     }
@@ -275,7 +275,7 @@ public final class DoubleNum implements Num {
             return NaN;
         }
         if (divisor instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).divide(decimalNum);
+            return decimalNum.getFactory().of(this).divide(decimalNum);
         }
         return doubleNum(wrapped / ((DoubleNum) divisor).wrapped);
     }
@@ -286,7 +286,7 @@ public final class DoubleNum implements Num {
             return NaN;
         }
         if (divisor instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).remainder(decimalNum);
+            return decimalNum.getFactory().of(this).remainder(decimalNum);
         }
         return doubleNum(wrapped % ((DoubleNum) divisor).wrapped);
     }
@@ -297,7 +297,7 @@ public final class DoubleNum implements Num {
             return NaN;
         }
         if (exponent instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).power(decimalNum);
+            return decimalNum.getFactory().of(this).power(decimalNum);
         }
         return doubleNum(Math.pow(wrapped, ((DoubleNum) exponent).wrapped));
     }
@@ -323,7 +323,7 @@ public final class DoubleNum implements Num {
             return NaN;
         }
         if (degree instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).nthRoot(decimalNum);
+            return decimalNum.getFactory().of(this).nthRoot(decimalNum);
         }
         return doubleNum(Math.pow(wrapped, 1.0 / ((DoubleNum) degree).wrapped));
     }
@@ -359,7 +359,7 @@ public final class DoubleNum implements Num {
             return NaN;
         }
         if (base instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).log(decimalNum);
+            return decimalNum.getFactory().of(this).log(decimalNum);
         }
         return doubleNum(Math.log(wrapped) / Math.log(((DoubleNum) base).wrapped));
     }
@@ -455,7 +455,7 @@ public final class DoubleNum implements Num {
             return NaN;
         }
         if (x instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).atan2(decimalNum);
+            return decimalNum.getFactory().of(this).atan2(decimalNum);
         }
         return doubleNum(Math.atan2(wrapped, ((DoubleNum) x).wrapped));
     }
@@ -496,7 +496,7 @@ public final class DoubleNum implements Num {
             return NaN;
         }
         if (y instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).hypotenuse(decimalNum);
+            return decimalNum.getFactory().of(this).hypotenuse(decimalNum);
         }
         return doubleNum(Math.hypot(wrapped, ((DoubleNum) y).wrapped));
     }
@@ -507,7 +507,7 @@ public final class DoubleNum implements Num {
             return NaN;
         }
         if (other instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).average(decimalNum);
+            return decimalNum.getFactory().of(this).average(decimalNum);
         }
         return doubleNum((wrapped + ((DoubleNum) other).wrapped) * 0.5);
     }
@@ -518,7 +518,7 @@ public final class DoubleNum implements Num {
             return NaN;
         }
         if (other instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).min(decimalNum);
+            return decimalNum.getFactory().of(this).min(decimalNum);
         }
         return wrapped <= ((DoubleNum) other).wrapped ? this : other;
     }
@@ -529,7 +529,7 @@ public final class DoubleNum implements Num {
             return NaN;
         }
         if (other instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).max(decimalNum);
+            return decimalNum.getFactory().of(this).max(decimalNum);
         }
         return wrapped >= ((DoubleNum) other).wrapped ? this : other;
     }
@@ -611,7 +611,7 @@ public final class DoubleNum implements Num {
             return false;
         }
         if (epsilon instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).isNegativeOrZero(decimalNum);
+            return decimalNum.getFactory().of(this).isNegativeOrZero(decimalNum);
         }
         return wrapped <= ((DoubleNum) epsilon).wrapped;
     }
@@ -632,7 +632,7 @@ public final class DoubleNum implements Num {
             return false;
         }
         if (epsilon instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).isPositiveOrZero(decimalNum);
+            return decimalNum.getFactory().of(this).isPositiveOrZero(decimalNum);
         }
         return wrapped >= -((DoubleNum) epsilon).wrapped;
     }
@@ -648,7 +648,7 @@ public final class DoubleNum implements Num {
             return false;
         }
         if (epsilon instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).isZero(decimalNum);
+            return decimalNum.getFactory().of(this).isZero(decimalNum);
         }
         return Math.abs(wrapped) <= ((DoubleNum) epsilon).wrapped;
     }
@@ -659,7 +659,7 @@ public final class DoubleNum implements Num {
             return false;
         }
         if (other instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).isEqual(decimalNum);
+            return decimalNum.getFactory().of(this).isEqual(decimalNum);
         }
         return wrapped == ((DoubleNum) other).wrapped;
     }
@@ -670,7 +670,7 @@ public final class DoubleNum implements Num {
             return false;
         }
         if (other instanceof DecimalNum || epsilon instanceof DecimalNum) {
-            return other.factory().of(this).isEqual(other, epsilon);
+            return other.getFactory().of(this).isEqual(other, epsilon);
         }
         return Math.abs(wrapped - ((DoubleNum) other).wrapped) <= ((DoubleNum) epsilon).wrapped;
     }
@@ -681,7 +681,7 @@ public final class DoubleNum implements Num {
             return false;
         }
         if (other instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).isLessThan(decimalNum);
+            return decimalNum.getFactory().of(this).isLessThan(decimalNum);
         }
         return wrapped < ((DoubleNum) other).wrapped;
     }
@@ -692,7 +692,7 @@ public final class DoubleNum implements Num {
             return false;
         }
         if (other instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).isLessThanOrEqual(decimalNum);
+            return decimalNum.getFactory().of(this).isLessThanOrEqual(decimalNum);
         }
         return wrapped <= ((DoubleNum) other).wrapped;
     }
@@ -703,7 +703,7 @@ public final class DoubleNum implements Num {
             return false;
         }
         if (other instanceof DecimalNum || epsilon instanceof DecimalNum) {
-            return other.factory().of(this).isLessThanOrEqual(other, epsilon);
+            return other.getFactory().of(this).isLessThanOrEqual(other, epsilon);
         }
         return ((DoubleNum) other).wrapped - wrapped >= -((DoubleNum) epsilon).wrapped;
     }
@@ -714,7 +714,7 @@ public final class DoubleNum implements Num {
             return false;
         }
         if (other instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).isGreaterThan(decimalNum);
+            return decimalNum.getFactory().of(this).isGreaterThan(decimalNum);
         }
         return wrapped > ((DoubleNum) other).wrapped;
     }
@@ -725,7 +725,7 @@ public final class DoubleNum implements Num {
             return false;
         }
         if (other instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).isGreaterThanOrEqual(decimalNum);
+            return decimalNum.getFactory().of(this).isGreaterThanOrEqual(decimalNum);
         }
         return wrapped >= ((DoubleNum) other).wrapped;
     }
@@ -736,7 +736,7 @@ public final class DoubleNum implements Num {
             return false;
         }
         if (other instanceof DecimalNum || epsilon instanceof DecimalNum) {
-            return other.factory().of(this).isGreaterThanOrEqual(other, epsilon);
+            return other.getFactory().of(this).isGreaterThanOrEqual(other, epsilon);
         }
         return wrapped - ((DoubleNum) other).wrapped >= -((DoubleNum) epsilon).wrapped;
     }
@@ -797,7 +797,7 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public NumFactory factory() {
+    public NumFactory getFactory() {
         return FACTORY;
     }
 
@@ -822,7 +822,7 @@ public final class DoubleNum implements Num {
             return 0;
         }
         if (o instanceof final DecimalNum decimalNum) {
-            return decimalNum.factory().of(this).compareTo(o);
+            return decimalNum.getFactory().of(this).compareTo(o);
         }
         return Double.compare(wrapped, ((DoubleNum) o).wrapped);
     }

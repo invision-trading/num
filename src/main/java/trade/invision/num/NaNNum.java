@@ -1312,7 +1312,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public NumFactory factory() {
+    public NumFactory getFactory() {
         return FACTORY;
     }
 

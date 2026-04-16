@@ -183,7 +183,7 @@ quick reference:
 - [`getContext`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#getContext())
 - [`getContextPrecision`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#getContextPrecision())
 - [`getContextRoundingMode`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#getContextRoundingMode())
-- [`factory`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#factory())
+- [`getFactory`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#getFactory())
 - [`equals`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#equals(java.lang.Object))
 - [`hashCode`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#hashCode())
 - [`toString`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#toString())
