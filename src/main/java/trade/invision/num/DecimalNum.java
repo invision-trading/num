@@ -1042,6 +1042,24 @@ public final class DecimalNum implements Num {
     }
 
     @Override
+    public Num min(final Num other) {
+        if (other.isNaN()) {
+            return NaN;
+        }
+        final var decimalNum = asDecimalNum(other);
+        return wrapped.compareTo(decimalNum.wrapped) <= 0 ? this : decimalNum;
+    }
+
+    @Override
+    public Num max(final Num other) {
+        if (other.isNaN()) {
+            return NaN;
+        }
+        final var decimalNum = asDecimalNum(other);
+        return wrapped.compareTo(decimalNum.wrapped) >= 0 ? this : decimalNum;
+    }
+
+    @Override
     public Num integerPart() {
         try {
             return new DecimalNum(BigDecimalMath.integralPart(wrapped), context);

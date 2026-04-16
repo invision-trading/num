@@ -555,6 +555,28 @@ public final class DoubleNum implements Num {
     }
 
     @Override
+    public Num min(final Num other) {
+        if (other.isNaN()) {
+            return NaN;
+        } else if (other instanceof final DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).min(decimalNum);
+        } else {
+            return wrapped <= ((DoubleNum) other).wrapped ? this : other;
+        }
+    }
+
+    @Override
+    public Num max(final Num other) {
+        if (other.isNaN()) {
+            return NaN;
+        } else if (other instanceof final DecimalNum decimalNum) {
+            return decimalNum.factory().of(this).max(decimalNum);
+        } else {
+            return wrapped >= ((DoubleNum) other).wrapped ? this : other;
+        }
+    }
+
+    @Override
     public Num integerPart() {
         return new DoubleNum((int) wrapped);
     }

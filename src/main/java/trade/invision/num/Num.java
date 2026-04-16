@@ -901,9 +901,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Maximum_and_minimum">
      * wikipedia.org/wiki/Maximum_and_minimum</a>
      */
-    default Num min(final Num other) {
-        return isLessThan(other) ? this : other; // NaN check not necessary when `other` is on RHS
-    }
+    Num min(final Num other);
 
     /**
      * @return {@link #max(Num)} {@link NumFactory#of(Number)}
@@ -948,9 +946,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Maximum_and_minimum">
      * wikipedia.org/wiki/Maximum_and_minimum</a>
      */
-    default Num max(final Num other) {
-        return isGreaterThan(other) ? this : other; // NaN check not necessary when `other` is on RHS
-    }
+    Num max(final Num other);
 
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(Number)} {@link NumFactory#of(Number)}
