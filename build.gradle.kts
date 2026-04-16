@@ -1,6 +1,7 @@
 import net.ltgt.gradle.errorprone.CheckSeverity.WARN
 import net.ltgt.gradle.errorprone.errorprone
 import org.gradle.api.JavaVersion.VERSION_25
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jreleaser.model.Active.ALWAYS
 import org.jreleaser.model.Active.NEVER
 
@@ -8,6 +9,7 @@ plugins {
     `java-library`
     id("io.freefair.lombok") version "9.2.0"
     id("net.ltgt.errorprone") version "5.1.0"
+    jacoco
     `maven-publish`
     id("org.jreleaser") version "1.23.0"
 }
@@ -34,6 +36,10 @@ dependencies {
     errorprone("com.google.errorprone:error_prone_core:2.48.0")
     errorprone("com.uber.nullaway:nullaway:0.13.1")
     errorprone("net.jacobpeterson:final-coat:1.2.1")
+
+    testImplementation(platform("org.junit:junit-bom:6.0.3"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.withType(JavaCompile::class) {
@@ -62,6 +68,22 @@ tasks.withType(JavaCompile::class) {
 
         check("FinalCoat", WARN)
     }
+}
+
+tasks.withType(Test::class) {
+    useJUnitPlatform()
+    systemProperty("junit.jupiter.tempdir.cleanup.mode.default", "ON_SUCCESS")
+    systemProperty("java.io.tmpdir", temporaryDir.path)
+    testLogging {
+        events(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
+        showStandardStreams = true
+    }
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.withType(JacocoReport::class) {
+    dependsOn(tasks.test)
+    reports.xml.required = true
 }
 
 tasks.withType(Javadoc::class) {
