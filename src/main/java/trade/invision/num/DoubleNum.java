@@ -1,6 +1,7 @@
 package trade.invision.num;
 
 import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -99,7 +100,7 @@ public final class DoubleNum implements Num {
         @Override
         public Num of(final Number number) {
             if (number instanceof final Integer aInteger) {
-                // Only using sequential numbers enables `TABLESWITCH` usage.
+                // Only using sequential numbers enables `TABLESWITCH` bytecode instruction.
                 return switch (aInteger) {
                     case -1 -> negativeOne();
                     case 0 -> zero();
@@ -801,7 +802,7 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public boolean equals(final Object obj) {
+    public boolean equals(final @Nullable Object obj) {
         return obj instanceof final DoubleNum doubleNum && ((Double) wrapped).equals(doubleNum.wrapped);
     }
 

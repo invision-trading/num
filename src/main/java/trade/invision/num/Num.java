@@ -3,6 +3,7 @@ package trade.invision.num;
 import com.google.errorprone.annotations.Immutable;
 import lombok.Generated;
 import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -2065,14 +2066,14 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     MathContext getContext();
 
     /**
-     * Returns {@link MathContext#getPrecision()} from {@link #getContext()}.
+     * @return {@link #getContext()} {@link MathContext#getPrecision()}
      */
     default int getContextPrecision() {
         return getContext().getPrecision();
     }
 
     /**
-     * Returns {@link MathContext#getRoundingMode()} from {@link #getContext()}.
+     * @return {@link #getContext()} {@link MathContext#getRoundingMode()}
      */
     default RoundingMode getContextRoundingMode() {
         return getContext().getRoundingMode();
@@ -2094,7 +2095,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return <code>true</code> for {@link Object} equality, <code>false</code> otherwise
      */
     @Override
-    boolean equals(final Object obj);
+    boolean equals(final @Nullable Object obj);
 
     @Override
     int hashCode();

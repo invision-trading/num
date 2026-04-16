@@ -2,6 +2,7 @@ package trade.invision.num;
 
 import lombok.Generated;
 import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -1316,7 +1317,7 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public boolean equals(final Object obj) {
+    public boolean equals(final @Nullable Object obj) {
         return this == obj;
     }
 

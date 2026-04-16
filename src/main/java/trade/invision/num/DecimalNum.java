@@ -182,7 +182,7 @@ public final class DecimalNum implements Num {
     /**
      * Creates a new {@link DecimalNum} for the given number {@link String} and {@link MathContext}.
      *
-     * @param string  the {@link String}
+     * @param string  the number {@link String}
      * @param context the {@link MathContext}
      *
      * @return the {@link Num}
@@ -362,7 +362,7 @@ public final class DecimalNum implements Num {
         @Override
         public Num of(final Number number) {
             if (number instanceof final Integer aInteger) {
-                // Only using sequential numbers enables `TABLESWITCH` usage.
+                // Only using sequential numbers enables `TABLESWITCH` bytecode instruction.
                 return switch (aInteger) {
                     case -1 -> negativeOne();
                     case 0 -> zero();
@@ -1260,7 +1260,7 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public boolean equals(final Object obj) {
+    public boolean equals(final @Nullable Object obj) {
         return obj instanceof final DecimalNum decimalNum &&
                 wrapped.equals(decimalNum.wrapped) &&
                 context.equals(decimalNum.context);
