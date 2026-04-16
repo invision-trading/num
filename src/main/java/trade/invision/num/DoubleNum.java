@@ -595,24 +595,16 @@ public final class DoubleNum implements Num {
                 return new DoubleNum(halfEven ? Math.rint(wrapped) : Math.round(wrapped));
             }
             final var multiplier = switch (scale) {
-                case -9 -> 0.000000001;
-                case -8 -> 0.00000001;
-                case -7 -> 0.0000001;
-                case -6 -> 0.000001;
-                case -5 -> 0.00001;
-                case -4 -> 0.0001;
-                case -3 -> 0.001;
-                case -2 -> 0.01;
-                case -1 -> 0.1;
-                case 1 -> 10.0;
-                case 2 -> 100.0;
-                case 3 -> 1000.0;
-                case 4 -> 10000.0;
-                case 5 -> 100000.0;
-                case 6 -> 1000000.0;
-                case 7 -> 10000000.0;
-                case 8 -> 100000000.0;
-                case 9 -> 1000000000.0;
+                case -15 -> 1e-15; case -14 -> 1e-14; case -13 -> 1e-13;
+                case -12 -> 1e-12; case -11 -> 1e-11; case -10 -> 1e-10;
+                case -9 -> 1e-9; case -8 -> 1e-8; case -7 -> 1e-7;
+                case -6 -> 1e-6; case -5 -> 1e-5; case -4 -> 1e-4;
+                case -3 -> 1e-3; case -2 -> 1e-2; case -1 -> 1e-1;
+                case 1 -> 1e1; case 2 -> 1e2; case 3 -> 1e3;
+                case 4 -> 1e4; case 5 -> 1e5; case 6 -> 1e6;
+                case 7 -> 1e7; case 8 -> 1e8; case 9 -> 1e9;
+                case 10 -> 1e10; case 11 -> 1e11; case 12 -> 1e12;
+                case 13 -> 1e13; case 14 -> 1e14; case 15 -> 1e15;
                 default -> Math.pow(10, scale);
             };
             final var inner = wrapped * multiplier;
