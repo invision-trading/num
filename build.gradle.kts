@@ -6,6 +6,7 @@ import org.jreleaser.model.Active.NEVER
 
 plugins {
     `java-library`
+    id("io.freefair.lombok") version "9.2.0"
     id("net.ltgt.errorprone") version "5.1.0"
     `maven-publish`
     id("org.jreleaser") version "1.23.0"

@@ -1,6 +1,7 @@
 package trade.invision.num;
 
 import com.google.errorprone.annotations.Immutable;
+import lombok.Generated;
 import org.jspecify.annotations.NullMarked;
 
 import java.math.BigDecimal;
@@ -36,6 +37,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #add(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num add(final Number addend) {
         return add(factory().of(addend));
     }
@@ -43,6 +45,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #add(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num add(final BigDecimal addend) {
         return add(factory().of(addend));
     }
@@ -50,6 +53,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #add(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num add(final String addend) {
         return add(factory().of(addend));
     }
@@ -57,6 +61,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #add(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num add(final Function<NumFactory, Num> addend) {
         return add(addend.apply(factory()));
     }
@@ -76,6 +81,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #subtract(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num subtract(final Number subtrahend) {
         return subtract(factory().of(subtrahend));
     }
@@ -83,6 +89,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #subtract(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num subtract(final BigDecimal subtrahend) {
         return subtract(factory().of(subtrahend));
     }
@@ -90,6 +97,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #subtract(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num subtract(final String subtrahend) {
         return subtract(factory().of(subtrahend));
     }
@@ -97,6 +105,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #subtract(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num subtract(final Function<NumFactory, Num> subtrahend) {
         return subtract(subtrahend.apply(factory()));
     }
@@ -116,6 +125,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #multiply(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num multiply(final Number multiplier) {
         return multiply(factory().of(multiplier));
     }
@@ -123,6 +133,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #multiply(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num multiply(final BigDecimal multiplier) {
         return multiply(factory().of(multiplier));
     }
@@ -130,6 +141,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #multiply(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num multiply(final String multiplier) {
         return multiply(factory().of(multiplier));
     }
@@ -137,6 +149,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #multiply(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num multiply(final Function<NumFactory, Num> multiplier) {
         return multiply(multiplier.apply(factory()));
     }
@@ -156,6 +169,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #divide(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num divide(final Number divisor) {
         return divide(factory().of(divisor));
     }
@@ -163,6 +177,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #divide(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num divide(final BigDecimal divisor) {
         return divide(factory().of(divisor));
     }
@@ -170,6 +185,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #divide(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num divide(final String divisor) {
         return divide(factory().of(divisor));
     }
@@ -177,6 +193,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #divide(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num divide(final Function<NumFactory, Num> divisor) {
         return divide(divisor.apply(factory()));
     }
@@ -196,6 +213,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #remainder(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num remainder(final Number divisor) {
         return remainder(factory().of(divisor));
     }
@@ -203,6 +221,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #remainder(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num remainder(final BigDecimal divisor) {
         return remainder(factory().of(divisor));
     }
@@ -210,6 +229,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #remainder(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num remainder(final String divisor) {
         return remainder(factory().of(divisor));
     }
@@ -217,6 +237,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #remainder(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num remainder(final Function<NumFactory, Num> divisor) {
         return remainder(divisor.apply(factory()));
     }
@@ -236,6 +257,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #power(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num power(final Number exponent) {
         return power(factory().of(exponent));
     }
@@ -243,6 +265,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #power(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num power(final BigDecimal exponent) {
         return power(factory().of(exponent));
     }
@@ -250,6 +273,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #power(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num power(final String exponent) {
         return power(factory().of(exponent));
     }
@@ -257,6 +281,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #power(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num power(final Function<NumFactory, Num> exponent) {
         return power(exponent.apply(factory()));
     }
@@ -307,6 +332,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #nthRoot(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num nthRoot(final Number degree) {
         return nthRoot(factory().of(degree));
     }
@@ -314,6 +340,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #nthRoot(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num nthRoot(final BigDecimal degree) {
         return nthRoot(factory().of(degree));
     }
@@ -321,6 +348,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #nthRoot(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num nthRoot(final String degree) {
         return nthRoot(factory().of(degree));
     }
@@ -328,6 +356,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #nthRoot(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num nthRoot(final Function<NumFactory, Num> degree) {
         return nthRoot(degree.apply(factory()));
     }
@@ -398,6 +427,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #log(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num log(final Number base) {
         return log(factory().of(base));
     }
@@ -405,6 +435,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #log(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num log(final BigDecimal base) {
         return log(factory().of(base));
     }
@@ -412,6 +443,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #log(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num log(final String base) {
         return log(factory().of(base));
     }
@@ -419,6 +451,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #log(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num log(final Function<NumFactory, Num> base) {
         return log(base.apply(factory()));
     }
@@ -596,6 +629,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #atan2(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num atan2(final Number x) {
         return atan2(factory().of(x));
     }
@@ -603,6 +637,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #atan2(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num atan2(final BigDecimal x) {
         return atan2(factory().of(x));
     }
@@ -610,6 +645,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #atan2(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num atan2(final String x) {
         return atan2(factory().of(x));
     }
@@ -617,6 +653,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #atan2(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num atan2(final Function<NumFactory, Num> x) {
         return atan2(x.apply(factory()));
     }
@@ -693,6 +730,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #hypotenuse(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num hypotenuse(final Number y) {
         return hypotenuse(factory().of(y));
     }
@@ -700,6 +738,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #hypotenuse(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num hypotenuse(final BigDecimal y) {
         return hypotenuse(factory().of(y));
     }
@@ -707,6 +746,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #hypotenuse(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num hypotenuse(final String y) {
         return hypotenuse(factory().of(y));
     }
@@ -714,6 +754,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #hypotenuse(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num hypotenuse(final Function<NumFactory, Num> y) {
         return hypotenuse(y.apply(factory()));
     }
@@ -733,6 +774,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #average(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num average(final Number other) {
         return average(factory().of(other));
     }
@@ -740,6 +782,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #average(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num average(final BigDecimal other) {
         return average(factory().of(other));
     }
@@ -747,6 +790,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #average(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num average(final String other) {
         return average(factory().of(other));
     }
@@ -754,6 +798,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #average(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num average(final Function<NumFactory, Num> other) {
         return average(other.apply(factory()));
     }
@@ -773,6 +818,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #min(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num min(final Number other) {
         return min(factory().of(other));
     }
@@ -780,6 +826,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #min(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num min(final BigDecimal other) {
         return min(factory().of(other));
     }
@@ -787,6 +834,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #min(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num min(final String other) {
         return min(factory().of(other));
     }
@@ -794,6 +842,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #min(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num min(final Function<NumFactory, Num> other) {
         return min(other.apply(factory()));
     }
@@ -815,6 +864,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #max(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num max(final Number other) {
         return max(factory().of(other));
     }
@@ -822,6 +872,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #max(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num max(final BigDecimal other) {
         return max(factory().of(other));
     }
@@ -829,6 +880,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #max(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num max(final String other) {
         return max(factory().of(other));
     }
@@ -836,6 +888,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #max(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num max(final Function<NumFactory, Num> other) {
         return max(other.apply(factory()));
     }
@@ -857,6 +910,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(Number)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num clamp(final Number min, final Number max) {
         return clamp(factory().of(min), factory().of(max));
     }
@@ -864,6 +918,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(Number)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num clamp(final Number min, final BigDecimal max) {
         return clamp(factory().of(min), factory().of(max));
     }
@@ -871,6 +926,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(Number)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num clamp(final Number min, final String max) {
         return clamp(factory().of(min), factory().of(max));
     }
@@ -879,6 +935,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(Number)}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num clamp(final Number min, final Function<NumFactory, Num> max) {
         return clamp(factory().of(min), max.apply(factory()));
     }
@@ -886,6 +943,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num clamp(final Number min, final Num max) {
         return clamp(factory().of(min), max);
     }
@@ -893,6 +951,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(BigDecimal)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num clamp(final BigDecimal min, final Number max) {
         return clamp(factory().of(min), factory().of(max));
     }
@@ -900,6 +959,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(BigDecimal)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num clamp(final BigDecimal min, final BigDecimal max) {
         return clamp(factory().of(min), factory().of(max));
     }
@@ -907,6 +967,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(BigDecimal)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num clamp(final BigDecimal min, final String max) {
         return clamp(factory().of(min), factory().of(max));
     }
@@ -915,6 +976,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(BigDecimal)}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num clamp(final BigDecimal min, final Function<NumFactory, Num> max) {
         return clamp(factory().of(min), max.apply(factory()));
     }
@@ -922,6 +984,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num clamp(final BigDecimal min, final Num max) {
         return clamp(factory().of(min), max);
     }
@@ -929,6 +992,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(String)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num clamp(final String min, final Number max) {
         return clamp(factory().of(min), factory().of(max));
     }
@@ -936,6 +1000,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(String)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num clamp(final String min, final BigDecimal max) {
         return clamp(factory().of(min), factory().of(max));
     }
@@ -943,6 +1008,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(String)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num clamp(final String min, final String max) {
         return clamp(factory().of(min), factory().of(max));
     }
@@ -951,6 +1017,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(String)}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num clamp(final String min, final Function<NumFactory, Num> max) {
         return clamp(factory().of(min), max.apply(factory()));
     }
@@ -958,6 +1025,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num clamp(final String min, final Num max) {
         return clamp(factory().of(min), max);
     }
@@ -966,6 +1034,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #clamp(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num clamp(final Function<NumFactory, Num> min, final Number max) {
         return clamp(min.apply(factory()), factory().of(max));
     }
@@ -974,6 +1043,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #clamp(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num clamp(final Function<NumFactory, Num> min, final BigDecimal max) {
         return clamp(min.apply(factory()), factory().of(max));
     }
@@ -982,6 +1052,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #clamp(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link NumFactory#of(String)}
      */
+    @Generated
     default Num clamp(final Function<NumFactory, Num> min, final String max) {
         return clamp(min.apply(factory()), factory().of(max));
     }
@@ -990,6 +1061,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #clamp(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num clamp(final Function<NumFactory, Num> min, final Function<NumFactory, Num> max) {
         return clamp(min.apply(factory()), max.apply(factory()));
     }
@@ -997,6 +1069,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num clamp(final Function<NumFactory, Num> min, final Num max) {
         return clamp(min.apply(factory()), max);
     }
@@ -1004,6 +1077,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num clamp(final Num min, final Number max) {
         return clamp(min, factory().of(max));
     }
@@ -1011,6 +1085,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num clamp(final Num min, final BigDecimal max) {
         return clamp(min, factory().of(max));
     }
@@ -1018,6 +1093,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num clamp(final Num min, final String max) {
         return clamp(min, factory().of(max));
     }
@@ -1025,6 +1101,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #clamp(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num clamp(final Num min, final Function<NumFactory, Num> max) {
         return clamp(min, max.apply(factory()));
     }
@@ -1068,6 +1145,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #round(int, RoundingMode)} with <code>scale</code> set to <code>0</code> and
      * <code>roundingMode</code> set to {@link RoundingMode#HALF_EVEN}
      */
+
     default Num round() {
         return round(0, HALF_EVEN);
     }
@@ -1099,7 +1177,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num round(final int scale, final RoundingMode roundingMode);
 
     /**
-     * @return {@link #significantFigures(int, RoundingMode)} with <code>roundingMode</code> set to {@link RoundingMode#HALF_EVEN}
+     * @return {@link #significantFigures(int, RoundingMode)} with <code>roundingMode</code> set to
+     * {@link RoundingMode#HALF_EVEN}
      */
     default Num significantFigures(final int significantFigures) {
         return significantFigures(significantFigures, HALF_EVEN);
@@ -1107,7 +1186,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     /**
      * @return {@link #significantFigures(MathContext)} with {@link MathContext#getPrecision()} set to
-     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>.
+     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
      */
     default Num significantFigures(final int significantFigures, final RoundingMode roundingMode) {
         return significantFigures(new MathContext(significantFigures, roundingMode));
@@ -1192,6 +1271,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isNegativeOrZero(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isNegativeOrZero(final Number epsilon) {
         return isNegativeOrZero(factory().of(epsilon));
     }
@@ -1199,6 +1279,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isNegativeOrZero(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isNegativeOrZero(final BigDecimal epsilon) {
         return isNegativeOrZero(factory().of(epsilon));
     }
@@ -1206,6 +1287,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isNegativeOrZero(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isNegativeOrZero(final String epsilon) {
         return isNegativeOrZero(factory().of(epsilon));
     }
@@ -1213,6 +1295,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isNegativeOrZero(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isNegativeOrZero(final Function<NumFactory, Num> epsilon) {
         return isNegativeOrZero(epsilon.apply(factory()));
     }
@@ -1257,6 +1340,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isPositiveOrZero(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isPositiveOrZero(final Number epsilon) {
         return isPositiveOrZero(factory().of(epsilon));
     }
@@ -1264,6 +1348,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isPositiveOrZero(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isPositiveOrZero(final BigDecimal epsilon) {
         return isPositiveOrZero(factory().of(epsilon));
     }
@@ -1271,6 +1356,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isPositiveOrZero(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isPositiveOrZero(final String epsilon) {
         return isPositiveOrZero(factory().of(epsilon));
     }
@@ -1278,6 +1364,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isPositiveOrZero(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isPositiveOrZero(final Function<NumFactory, Num> epsilon) {
         return isPositiveOrZero(epsilon.apply(factory()));
     }
@@ -1311,6 +1398,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isZero(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isZero(final Number epsilon) {
         return isZero(factory().of(epsilon));
     }
@@ -1318,6 +1406,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isZero(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isZero(final BigDecimal epsilon) {
         return isZero(factory().of(epsilon));
     }
@@ -1325,6 +1414,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isZero(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isZero(final String epsilon) {
         return isZero(factory().of(epsilon));
     }
@@ -1332,6 +1422,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isZero(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isZero(final Function<NumFactory, Num> epsilon) {
         return isZero(epsilon.apply(factory()));
     }
@@ -1353,6 +1444,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isEqual(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isEqual(final Number other) {
         return isEqual(factory().of(other));
     }
@@ -1360,6 +1452,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isEqual(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isEqual(final BigDecimal other) {
         return isEqual(factory().of(other));
     }
@@ -1367,6 +1460,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isEqual(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isEqual(final String other) {
         return isEqual(factory().of(other));
     }
@@ -1374,6 +1468,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isEqual(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isEqual(final Function<NumFactory, Num> other) {
         return isEqual(other.apply(factory()));
     }
@@ -1394,6 +1489,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)}
      * {@link NumFactory#of(Number)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isEqual(final Number other, final Number epsilon) {
         return isEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1402,6 +1498,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)}
      * {@link NumFactory#of(Number)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isEqual(final Number other, final BigDecimal epsilon) {
         return isEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1410,6 +1507,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)}
      * {@link NumFactory#of(Number)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isEqual(final Number other, final String epsilon) {
         return isEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1418,6 +1516,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)} {@link NumFactory#of(Number)}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isEqual(final Number other, final Function<NumFactory, Num> epsilon) {
         return isEqual(factory().of(other), epsilon.apply(factory()));
     }
@@ -1425,6 +1524,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isEqual(Num, Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isEqual(final Number other, final Num epsilon) {
         return isEqual(factory().of(other), epsilon);
     }
@@ -1433,6 +1533,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)}
      * {@link NumFactory#of(BigDecimal)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isEqual(final BigDecimal other, final Number epsilon) {
         return isEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1441,6 +1542,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)}
      * {@link NumFactory#of(BigDecimal)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isEqual(final BigDecimal other, final BigDecimal epsilon) {
         return isEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1449,6 +1551,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)}
      * {@link NumFactory#of(BigDecimal)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isEqual(final BigDecimal other, final String epsilon) {
         return isEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1457,6 +1560,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)} {@link NumFactory#of(BigDecimal)}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isEqual(final BigDecimal other, final Function<NumFactory, Num> epsilon) {
         return isEqual(factory().of(other), epsilon.apply(factory()));
     }
@@ -1464,6 +1568,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isEqual(Num, Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isEqual(final BigDecimal other, final Num epsilon) {
         return isEqual(factory().of(other), epsilon);
     }
@@ -1472,6 +1577,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)}
      * {@link NumFactory#of(String)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isEqual(final String other, final Number epsilon) {
         return isEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1480,6 +1586,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)}
      * {@link NumFactory#of(String)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isEqual(final String other, final BigDecimal epsilon) {
         return isEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1488,6 +1595,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)}
      * {@link NumFactory#of(String)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isEqual(final String other, final String epsilon) {
         return isEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1496,6 +1604,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)} {@link NumFactory#of(String)}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isEqual(final String other, final Function<NumFactory, Num> epsilon) {
         return isEqual(factory().of(other), epsilon.apply(factory()));
     }
@@ -1503,6 +1612,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isEqual(Num, Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isEqual(final String other, final Num epsilon) {
         return isEqual(factory().of(other), epsilon);
     }
@@ -1511,6 +1621,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isEqual(final Function<NumFactory, Num> other, final Number epsilon) {
         return isEqual(other.apply(factory()), factory().of(epsilon));
     }
@@ -1519,6 +1630,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isEqual(final Function<NumFactory, Num> other, final BigDecimal epsilon) {
         return isEqual(other.apply(factory()), factory().of(epsilon));
     }
@@ -1527,6 +1639,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isEqual(final Function<NumFactory, Num> other, final String epsilon) {
         return isEqual(other.apply(factory()), factory().of(epsilon));
     }
@@ -1535,6 +1648,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isEqual(final Function<NumFactory, Num> other, final Function<NumFactory, Num> epsilon) {
         return isEqual(other.apply(factory()), epsilon.apply(factory()));
     }
@@ -1542,6 +1656,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isEqual(final Function<NumFactory, Num> other, final Num epsilon) {
         return isEqual(other.apply(factory()), epsilon);
     }
@@ -1549,6 +1664,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isEqual(Num, Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isEqual(final Num other, final Number epsilon) {
         return isEqual(other, factory().of(epsilon));
     }
@@ -1556,6 +1672,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isEqual(Num, Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isEqual(final Num other, final BigDecimal epsilon) {
         return isEqual(other, factory().of(epsilon));
     }
@@ -1563,6 +1680,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isEqual(Num, Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isEqual(final Num other, final String epsilon) {
         return isEqual(other, factory().of(epsilon));
     }
@@ -1570,6 +1688,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isEqual(final Num other, final Function<NumFactory, Num> epsilon) {
         return isEqual(other, epsilon.apply(factory()));
     }
@@ -1592,6 +1711,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThan(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isLessThan(final Number other) {
         return isLessThan(factory().of(other));
     }
@@ -1599,6 +1719,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThan(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isLessThan(final BigDecimal other) {
         return isLessThan(factory().of(other));
     }
@@ -1606,6 +1727,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThan(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isLessThan(final String other) {
         return isLessThan(factory().of(other));
     }
@@ -1613,6 +1735,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThan(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isLessThan(final Function<NumFactory, Num> other) {
         return isLessThan(other.apply(factory()));
     }
@@ -1632,6 +1755,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThanOrEqual(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Number other) {
         return isLessThanOrEqual(factory().of(other));
     }
@@ -1639,6 +1763,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThanOrEqual(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final BigDecimal other) {
         return isLessThanOrEqual(factory().of(other));
     }
@@ -1646,6 +1771,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThanOrEqual(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final String other) {
         return isLessThanOrEqual(factory().of(other));
     }
@@ -1653,6 +1779,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThanOrEqual(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Function<NumFactory, Num> other) {
         return isLessThanOrEqual(other.apply(factory()));
     }
@@ -1674,6 +1801,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)}
      * {@link NumFactory#of(Number)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Number other, final Number epsilon) {
         return isLessThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1682,6 +1810,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)}
      * {@link NumFactory#of(Number)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Number other, final BigDecimal epsilon) {
         return isLessThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1690,6 +1819,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)}
      * {@link NumFactory#of(Number)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Number other, final String epsilon) {
         return isLessThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1698,6 +1828,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link NumFactory#of(Number)}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Number other, final Function<NumFactory, Num> epsilon) {
         return isLessThanOrEqual(factory().of(other), epsilon.apply(factory()));
     }
@@ -1705,6 +1836,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Number other, final Num epsilon) {
         return isLessThanOrEqual(factory().of(other), epsilon);
     }
@@ -1713,6 +1845,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)}
      * {@link NumFactory#of(BigDecimal)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final BigDecimal other, final Number epsilon) {
         return isLessThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1721,6 +1854,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)}
      * {@link NumFactory#of(BigDecimal)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final BigDecimal other, final BigDecimal epsilon) {
         return isLessThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1729,6 +1863,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)}
      * {@link NumFactory#of(BigDecimal)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final BigDecimal other, final String epsilon) {
         return isLessThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1737,6 +1872,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link NumFactory#of(BigDecimal)}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isLessThanOrEqual(final BigDecimal other, final Function<NumFactory, Num> epsilon) {
         return isLessThanOrEqual(factory().of(other), epsilon.apply(factory()));
     }
@@ -1744,6 +1880,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final BigDecimal other, final Num epsilon) {
         return isLessThanOrEqual(factory().of(other), epsilon);
     }
@@ -1752,6 +1889,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)}
      * {@link NumFactory#of(String)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final String other, final Number epsilon) {
         return isLessThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1760,6 +1898,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)}
      * {@link NumFactory#of(String)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final String other, final BigDecimal epsilon) {
         return isLessThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1768,6 +1907,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)}
      * {@link NumFactory#of(String)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final String other, final String epsilon) {
         return isLessThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1776,6 +1916,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link NumFactory#of(String)}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isLessThanOrEqual(final String other, final Function<NumFactory, Num> epsilon) {
         return isLessThanOrEqual(factory().of(other), epsilon.apply(factory()));
     }
@@ -1783,6 +1924,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final String other, final Num epsilon) {
         return isLessThanOrEqual(factory().of(other), epsilon);
     }
@@ -1791,6 +1933,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Function<NumFactory, Num> other, final Number epsilon) {
         return isLessThanOrEqual(other.apply(factory()), factory().of(epsilon));
     }
@@ -1799,6 +1942,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Function<NumFactory, Num> other, final BigDecimal epsilon) {
         return isLessThanOrEqual(other.apply(factory()), factory().of(epsilon));
     }
@@ -1807,6 +1951,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Function<NumFactory, Num> other, final String epsilon) {
         return isLessThanOrEqual(other.apply(factory()), factory().of(epsilon));
     }
@@ -1815,6 +1960,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Function<NumFactory, Num> other, final Function<NumFactory, Num> epsilon) {
         return isLessThanOrEqual(other.apply(factory()), epsilon.apply(factory()));
     }
@@ -1822,6 +1968,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Function<NumFactory, Num> other, final Num epsilon) {
         return isLessThanOrEqual(other.apply(factory()), epsilon);
     }
@@ -1829,6 +1976,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Num other, final Number epsilon) {
         return isLessThanOrEqual(other, factory().of(epsilon));
     }
@@ -1836,6 +1984,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Num other, final BigDecimal epsilon) {
         return isLessThanOrEqual(other, factory().of(epsilon));
     }
@@ -1843,6 +1992,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Num other, final String epsilon) {
         return isLessThanOrEqual(other, factory().of(epsilon));
     }
@@ -1850,6 +2000,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isLessThanOrEqual(final Num other, final Function<NumFactory, Num> epsilon) {
         return isLessThanOrEqual(other, epsilon.apply(factory()));
     }
@@ -1872,6 +2023,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThan(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isGreaterThan(final Number other) {
         return isGreaterThan(factory().of(other));
     }
@@ -1879,6 +2031,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThan(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isGreaterThan(final BigDecimal other) {
         return isGreaterThan(factory().of(other));
     }
@@ -1886,6 +2039,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThan(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isGreaterThan(final String other) {
         return isGreaterThan(factory().of(other));
     }
@@ -1893,6 +2047,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThan(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isGreaterThan(final Function<NumFactory, Num> other) {
         return isGreaterThan(other.apply(factory()));
     }
@@ -1912,6 +2067,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThanOrEqual(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Number other) {
         return isGreaterThanOrEqual(factory().of(other));
     }
@@ -1919,6 +2075,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThanOrEqual(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final BigDecimal other) {
         return isGreaterThanOrEqual(factory().of(other));
     }
@@ -1926,6 +2083,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThanOrEqual(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final String other) {
         return isGreaterThanOrEqual(factory().of(other));
     }
@@ -1933,6 +2091,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThanOrEqual(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Function<NumFactory, Num> other) {
         return isGreaterThanOrEqual(other.apply(factory()));
     }
@@ -1954,6 +2113,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)}
      * {@link NumFactory#of(Number)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Number other, final Number epsilon) {
         return isGreaterThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1962,6 +2122,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)}
      * {@link NumFactory#of(Number)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Number other, final BigDecimal epsilon) {
         return isGreaterThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1970,6 +2131,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)}
      * {@link NumFactory#of(Number)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Number other, final String epsilon) {
         return isGreaterThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -1978,6 +2140,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link NumFactory#of(Number)}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Number other, final Function<NumFactory, Num> epsilon) {
         return isGreaterThanOrEqual(factory().of(other), epsilon.apply(factory()));
     }
@@ -1985,6 +2148,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Number other, final Num epsilon) {
         return isGreaterThanOrEqual(factory().of(other), epsilon);
     }
@@ -1993,6 +2157,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)}
      * {@link NumFactory#of(BigDecimal)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final BigDecimal other, final Number epsilon) {
         return isGreaterThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -2001,6 +2166,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)}
      * {@link NumFactory#of(BigDecimal)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final BigDecimal other, final BigDecimal epsilon) {
         return isGreaterThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -2009,6 +2175,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)}
      * {@link NumFactory#of(BigDecimal)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final BigDecimal other, final String epsilon) {
         return isGreaterThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -2017,6 +2184,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link NumFactory#of(BigDecimal)}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final BigDecimal other, final Function<NumFactory, Num> epsilon) {
         return isGreaterThanOrEqual(factory().of(other), epsilon.apply(factory()));
     }
@@ -2024,6 +2192,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final BigDecimal other, final Num epsilon) {
         return isGreaterThanOrEqual(factory().of(other), epsilon);
     }
@@ -2032,6 +2201,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)}
      * {@link NumFactory#of(String)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final String other, final Number epsilon) {
         return isGreaterThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -2040,6 +2210,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)}
      * {@link NumFactory#of(String)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final String other, final BigDecimal epsilon) {
         return isGreaterThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -2048,6 +2219,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)}
      * {@link NumFactory#of(String)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final String other, final String epsilon) {
         return isGreaterThanOrEqual(factory().of(other), factory().of(epsilon));
     }
@@ -2056,6 +2228,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link NumFactory#of(String)}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final String other, final Function<NumFactory, Num> epsilon) {
         return isGreaterThanOrEqual(factory().of(other), epsilon.apply(factory()));
     }
@@ -2063,6 +2236,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final String other, final Num epsilon) {
         return isGreaterThanOrEqual(factory().of(other), epsilon);
     }
@@ -2071,6 +2245,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Function<NumFactory, Num> other, final Number epsilon) {
         return isGreaterThanOrEqual(other.apply(factory()), factory().of(epsilon));
     }
@@ -2079,6 +2254,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Function<NumFactory, Num> other, final BigDecimal epsilon) {
         return isGreaterThanOrEqual(other.apply(factory()), factory().of(epsilon));
     }
@@ -2087,6 +2263,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Function<NumFactory, Num> other, final String epsilon) {
         return isGreaterThanOrEqual(other.apply(factory()), factory().of(epsilon));
     }
@@ -2095,6 +2272,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      * {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Function<NumFactory, Num> other,
             final Function<NumFactory, Num> epsilon) {
         return isGreaterThanOrEqual(other.apply(factory()), epsilon.apply(factory()));
@@ -2103,6 +2281,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Function<NumFactory, Num> other, final Num epsilon) {
         return isGreaterThanOrEqual(other.apply(factory()), epsilon);
     }
@@ -2110,6 +2289,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Num other, final Number epsilon) {
         return isGreaterThanOrEqual(other, factory().of(epsilon));
     }
@@ -2117,6 +2297,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Num other, final BigDecimal epsilon) {
         return isGreaterThanOrEqual(other, factory().of(epsilon));
     }
@@ -2124,6 +2305,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Num other, final String epsilon) {
         return isGreaterThanOrEqual(other, factory().of(epsilon));
     }
@@ -2131,6 +2313,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default boolean isGreaterThanOrEqual(final Num other, final Function<NumFactory, Num> epsilon) {
         return isGreaterThanOrEqual(other, epsilon.apply(factory()));
     }
@@ -2160,6 +2343,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #ifNaN(Num)} {@link NumFactory#of(Number)}
      */
+    @Generated
     default Num ifNaN(final Number replacement) {
         return ifNaN(factory().of(replacement));
     }
@@ -2167,6 +2351,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #ifNaN(Num)} {@link NumFactory#of(BigDecimal)}
      */
+    @Generated
     default Num ifNaN(final BigDecimal replacement) {
         return ifNaN(factory().of(replacement));
     }
@@ -2174,6 +2359,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #ifNaN(Num)} {@link NumFactory#of(String)}
      */
+    @Generated
     default Num ifNaN(final String replacement) {
         return ifNaN(factory().of(replacement));
     }
@@ -2181,6 +2367,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     /**
      * @return {@link #ifNaN(Num)} {@link Function#apply(Object)} {@link #factory()}
      */
+    @Generated
     default Num ifNaN(final Function<NumFactory, Num> replacement) {
         return ifNaN(replacement.apply(factory()));
     }
