@@ -12,6 +12,7 @@ import java.util.random.RandomGenerator;
 import static java.lang.Double.isFinite;
 import static java.lang.Double.parseDouble;
 import static java.math.MathContext.DECIMAL64;
+import static java.math.RoundingMode.HALF_EVEN;
 import static java.math.RoundingMode.HALF_UP;
 import static trade.invision.num.DecimalNum.decimalNum;
 import static trade.invision.num.NaNNum.NaN;
@@ -588,9 +589,10 @@ public final class DoubleNum implements Num {
 
     @Override
     public Num round(final int scale, final RoundingMode roundingMode) {
-        if (roundingMode == HALF_UP) {
+        final var halfEven = roundingMode == HALF_EVEN;
+        if (halfEven || roundingMode == HALF_UP) {
             if (scale == 0) {
-                return new DoubleNum(Math.rint(wrapped));
+                return new DoubleNum(halfEven ? Math.rint(wrapped) : Math.round(wrapped));
             }
             final var multiplier = switch (scale) {
                 case -9 -> 0.000000001;
@@ -613,7 +615,8 @@ public final class DoubleNum implements Num {
                 case 9 -> 1000000000.0;
                 default -> Math.pow(10, scale);
             };
-            return new DoubleNum(Math.rint(wrapped * multiplier) / multiplier);
+            final var inner = wrapped * multiplier;
+            return new DoubleNum((halfEven ? Math.rint(inner) : Math.round(inner)) / multiplier);
         }
         return new DoubleNum(decimalNum(this, getContext()).round(scale, roundingMode).toDouble());
     }
