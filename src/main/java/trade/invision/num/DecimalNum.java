@@ -659,7 +659,11 @@ public final class DecimalNum implements Num {
         }
         final var decimalNum = asDecimalNum(addend);
         final var context = precisestContext(decimalNum.context);
-        return new DecimalNum(wrapped.add(decimalNum.wrapped, context), context);
+        try {
+            return new DecimalNum(wrapped.add(decimalNum.wrapped, context), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
@@ -669,7 +673,11 @@ public final class DecimalNum implements Num {
         }
         final var decimalNum = asDecimalNum(subtrahend);
         final var context = precisestContext(decimalNum.context);
-        return new DecimalNum(wrapped.subtract(decimalNum.wrapped, context), context);
+        try {
+            return new DecimalNum(wrapped.subtract(decimalNum.wrapped, context), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
@@ -679,7 +687,11 @@ public final class DecimalNum implements Num {
         }
         final var decimalNum = asDecimalNum(multiplier);
         final var context = precisestContext(decimalNum.context);
-        return new DecimalNum(wrapped.multiply(decimalNum.wrapped, context), context);
+        try {
+            return new DecimalNum(wrapped.multiply(decimalNum.wrapped, context), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
@@ -726,12 +738,20 @@ public final class DecimalNum implements Num {
 
     @Override
     public Num square() {
-        return new DecimalNum(wrapped.multiply(wrapped, context), context);
+        try {
+            return new DecimalNum(wrapped.multiply(wrapped, context), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
     public Num cube() {
-        return new DecimalNum(wrapped.multiply(wrapped, context).multiply(wrapped, context), context);
+        try {
+            return new DecimalNum(wrapped.multiply(wrapped, context).multiply(wrapped, context), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
@@ -839,22 +859,38 @@ public final class DecimalNum implements Num {
 
     @Override
     public Num increment() {
-        return new DecimalNum(wrapped.add(ONE, context), context);
+        try {
+            return new DecimalNum(wrapped.add(ONE, context), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
     public Num decrement() {
-        return new DecimalNum(wrapped.subtract(ONE, context), context);
+        try {
+            return new DecimalNum(wrapped.subtract(ONE, context), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
     public Num floor() {
-        return new DecimalNum(wrapped.setScale(0, FLOOR), context);
+        try {
+            return new DecimalNum(wrapped.setScale(0, FLOOR), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
     public Num ceil() {
-        return new DecimalNum(wrapped.setScale(0, CEILING), context);
+        try {
+            return new DecimalNum(wrapped.setScale(0, CEILING), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
@@ -1022,9 +1058,9 @@ public final class DecimalNum implements Num {
         }
         final var decimalNum = asDecimalNum(y);
         final var context = precisestContext(decimalNum.context);
-        final var xSquared = wrapped.multiply(wrapped, context);
-        final var ySquared = decimalNum.wrapped.multiply(decimalNum.wrapped, context);
         try {
+            final var xSquared = wrapped.multiply(wrapped, context);
+            final var ySquared = decimalNum.wrapped.multiply(decimalNum.wrapped, context);
             return new DecimalNum(BigDecimalMath.sqrt(xSquared.add(ySquared, context), context), context);
         } catch (final ArithmeticException arithmeticException) {
             return NaN;
@@ -1038,7 +1074,11 @@ public final class DecimalNum implements Num {
         }
         final var decimalNum = asDecimalNum(other);
         final var context = precisestContext(decimalNum.context);
-        return new DecimalNum(wrapped.add(decimalNum.wrapped, context).multiply(HALF, context), context);
+        try {
+            return new DecimalNum(wrapped.add(decimalNum.wrapped, context).multiply(HALF, context), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
@@ -1079,17 +1119,29 @@ public final class DecimalNum implements Num {
 
     @Override
     public Num round(final int scale, final RoundingMode roundingMode) {
-        return new DecimalNum(wrapped.setScale(scale, roundingMode), context);
+        try {
+            return new DecimalNum(wrapped.setScale(scale, roundingMode), context);
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
     public Num significantFigures(final MathContext context) {
-        return new DecimalNum(wrapped.round(context), precisestContext(context));
+        try {
+            return new DecimalNum(wrapped.round(context), precisestContext(context));
+        } catch (final ArithmeticException arithmeticException) {
+            return NaN;
+        }
     }
 
     @Override
     public int significantFigures() {
-        return wrapped.stripTrailingZeros().precision();
+        try {
+            return wrapped.stripTrailingZeros().precision();
+        } catch (final ArithmeticException arithmeticException) {
+            return 0;
+        }
     }
 
     @Override
@@ -1103,7 +1155,11 @@ public final class DecimalNum implements Num {
 
     @Override
     public int exponent() {
-        return BigDecimalMath.exponent(wrapped);
+        try {
+            return BigDecimalMath.exponent(wrapped);
+        } catch (final ArithmeticException arithmeticException) {
+            return 0;
+        }
     }
 
     @Override
@@ -1162,8 +1218,12 @@ public final class DecimalNum implements Num {
             return false;
         }
         final var decimalNum = asDecimalNum(other);
-        return wrapped.subtract(decimalNum.wrapped, precisestContext(decimalNum.context)).abs()
-                .compareTo(asDecimalNum(epsilon).wrapped) <= 0;
+        try {
+            return wrapped.subtract(decimalNum.wrapped, precisestContext(decimalNum.context)).abs()
+                    .compareTo(asDecimalNum(epsilon).wrapped) <= 0;
+        } catch (final ArithmeticException arithmeticException) {
+            return false;
+        }
     }
 
     @Override
@@ -1182,8 +1242,12 @@ public final class DecimalNum implements Num {
             return false;
         }
         final var decimalNum = asDecimalNum(other);
-        return decimalNum.wrapped.subtract(wrapped, precisestContext(decimalNum.context))
-                .compareTo(asDecimalNum(epsilon).wrapped.negate()) >= 0;
+        try {
+            return decimalNum.wrapped.subtract(wrapped, precisestContext(decimalNum.context))
+                    .compareTo(asDecimalNum(epsilon).wrapped.negate()) >= 0;
+        } catch (final ArithmeticException arithmeticException) {
+            return false;
+        }
     }
 
     @Override
@@ -1202,8 +1266,12 @@ public final class DecimalNum implements Num {
             return false;
         }
         final var decimalNum = asDecimalNum(other);
-        return wrapped.subtract(decimalNum.wrapped, precisestContext(decimalNum.context))
-                .compareTo(asDecimalNum(epsilon).wrapped.negate()) >= 0;
+        try {
+            return wrapped.subtract(decimalNum.wrapped, precisestContext(decimalNum.context))
+                    .compareTo(asDecimalNum(epsilon).wrapped.negate()) >= 0;
+        } catch (final ArithmeticException arithmeticException) {
+            return false;
+        }
     }
 
     @Override
