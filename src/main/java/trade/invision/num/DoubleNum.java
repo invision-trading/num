@@ -51,13 +51,6 @@ public final class DoubleNum implements Num {
     }
 
     /**
-     * @return {@link #doubleNum(Number)} {@link BigDecimal#doubleValue()}
-     */
-    public static Num doubleNum(final BigDecimal bigDecimal) {
-        return doubleNum(bigDecimal.doubleValue());
-    }
-
-    /**
      * @return {@link #doubleNum(double)} {@link Double#parseDouble(String)}
      *
      * @throws NumberFormatException thrown for {@link NumberFormatException}s
@@ -124,11 +117,6 @@ public final class DoubleNum implements Num {
                 };
             }
             return doubleNum(number);
-        }
-
-        @Override
-        public Num of(final BigDecimal bigDecimal) {
-            return doubleNum(bigDecimal);
         }
 
         @Override
@@ -759,11 +747,6 @@ public final class DoubleNum implements Num {
 
     @Override
     public Num ifNaN(final Number replacement) {
-        return this;
-    }
-
-    @Override
-    public Num ifNaN(final BigDecimal replacement) {
         return this;
     }
 

@@ -3,7 +3,6 @@ package trade.invision.num;
 import com.google.errorprone.annotations.Immutable;
 import org.jspecify.annotations.NullMarked;
 
-import java.math.BigDecimal;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.random.RandomGenerator;
 
@@ -22,15 +21,6 @@ public interface NumFactory {
      * @return the {@link Num}
      */
     Num of(final Number number);
-
-    /**
-     * Gets a {@link Num} with the value of the given {@link BigDecimal}.
-     *
-     * @param bigDecimal the {@link BigDecimal}
-     *
-     * @return the {@link Num}
-     */
-    Num of(final BigDecimal bigDecimal);
 
     /**
      * Gets a {@link Num} with the value of the given number {@link String}.

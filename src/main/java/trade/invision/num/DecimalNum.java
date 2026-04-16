@@ -96,7 +96,7 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * Creates a new {@link DecimalNum} using the given {@link Number} and {@link MathContext}.
+     * Creates a new {@link DecimalNum} for the given {@link Number} and {@link MathContext}.
      *
      * @param number  the {@link Number}
      * @param context the {@link MathContext}
@@ -113,7 +113,7 @@ public final class DecimalNum implements Num {
                     new DecimalNum(BigDecimal.valueOf(aFloat).round(context), context);
             case final Double aDouble -> !Double.isFinite(aDouble) ? NaN :
                     new DecimalNum(BigDecimal.valueOf(aDouble).round(context), context);
-            case final BigDecimal bigDecimal -> decimalNum(bigDecimal, context);
+            case final BigDecimal bigDecimal -> new DecimalNum(bigDecimal.round(context), context);
             default -> new DecimalNum(new BigDecimal(number.toString(), context), context);
         };
     }
@@ -180,8 +180,7 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * Creates a new {@link DecimalNum} using the given {@link String} representing a number and the given
-     * {@link MathContext}.
+     * Creates a new {@link DecimalNum} for the given number {@link String} and {@link MathContext}.
      *
      * @param string  the {@link String}
      * @param context the {@link MathContext}
@@ -192,83 +191,6 @@ public final class DecimalNum implements Num {
      */
     public static Num decimalNum(final String string, final MathContext context) throws NumberFormatException {
         return string.equals(NaN.toString()) ? NaN : new DecimalNum(new BigDecimal(string, context), context);
-    }
-
-    /**
-     * @return {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
-     * {@link MathContext#DECIMAL32}
-     */
-    public static Num decimalNum32(final BigDecimal bigDecimal) {
-        return decimalNum(bigDecimal, DECIMAL32);
-    }
-
-    /**
-     * @return {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}
-     */
-    public static Num decimalNum32(final BigDecimal bigDecimal, final RoundingMode roundingMode) {
-        return decimalNum(bigDecimal, DECIMAL32.getPrecision(), roundingMode);
-    }
-
-    /**
-     * @return {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
-     * {@link MathContext#DECIMAL64}
-     */
-    public static Num decimalNum64(final BigDecimal bigDecimal) {
-        return decimalNum(bigDecimal, DECIMAL64);
-    }
-
-    /**
-     * @return {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}
-     */
-    public static Num decimalNum64(final BigDecimal bigDecimal, final RoundingMode roundingMode) {
-        return decimalNum(bigDecimal, DECIMAL64.getPrecision(), roundingMode);
-    }
-
-    /**
-     * @return {@link #decimalNum(BigDecimal, MathContext)} with <code>context</code> set to
-     * {@link MathContext#DECIMAL128}
-     */
-    public static Num decimalNum128(final BigDecimal bigDecimal) {
-        return decimalNum(bigDecimal, DECIMAL128);
-    }
-
-    /**
-     * @return {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}
-     */
-    public static Num decimalNum128(final BigDecimal bigDecimal, final RoundingMode roundingMode) {
-        return decimalNum(bigDecimal, DECIMAL128.getPrecision(), roundingMode);
-    }
-
-    /**
-     * @return {@link #decimalNum(BigDecimal, int, RoundingMode)} with <code>roundingMode</code> set to
-     * {@link RoundingMode#HALF_EVEN}
-     */
-    public static Num decimalNum(final BigDecimal bigDecimal, final int significantFigures) {
-        return decimalNum(bigDecimal, significantFigures, HALF_EVEN);
-    }
-
-    /**
-     * @return {@link #decimalNum(BigDecimal, MathContext)} with {@link MathContext#getPrecision()} set to
-     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
-     */
-    public static Num decimalNum(final BigDecimal bigDecimal, final int significantFigures,
-            final RoundingMode roundingMode) {
-        return decimalNum(bigDecimal, new MathContext(significantFigures, roundingMode));
-    }
-
-    /**
-     * Creates a new {@link DecimalNum} using the given {@link BigDecimal} and {@link MathContext}.
-     *
-     * @param bigDecimal the {@link BigDecimal}
-     * @param context    the {@link MathContext}
-     *
-     * @return the {@link Num}
-     */
-    public static Num decimalNum(final BigDecimal bigDecimal, final MathContext context) {
-        return new DecimalNum(bigDecimal.round(context), context);
     }
 
     /**
@@ -333,12 +255,7 @@ public final class DecimalNum implements Num {
     }
 
     /**
-     * Creates a new {@link DecimalNum} using the given {@link Num} and {@link MathContext}.
-     *
-     * @param num     the {@link Num}
-     * @param context the {@link MathContext}
-     *
-     * @return the {@link Num}
+     * @return {@link #decimalNum(Number, MathContext)} {@link Num#unwrap()}
      */
     public static Num decimalNum(final Num num, final MathContext context) {
         return decimalNum(num.unwrap(), context);
@@ -463,11 +380,6 @@ public final class DecimalNum implements Num {
                 };
             }
             return decimalNum(number, context);
-        }
-
-        @Override
-        public Num of(final BigDecimal bigDecimal) {
-            return decimalNum(bigDecimal, context);
         }
 
         @Override
@@ -1281,11 +1193,6 @@ public final class DecimalNum implements Num {
 
     @Override
     public Num ifNaN(final Number replacement) {
-        return this;
-    }
-
-    @Override
-    public Num ifNaN(final BigDecimal replacement) {
         return this;
     }
 

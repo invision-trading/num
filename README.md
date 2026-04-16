@@ -88,7 +88,7 @@ precision of `32` will result in a `DecimalNum` with a context precision of `32`
 
 ## Usage
 
-To create a `DoubleNum`, provide an existing `Number` (`byte`, `short`, `int`, `long`, `float`, `double`), `BigDecimal`,
+To create a `DoubleNum`, provide an existing `Number` (`byte`, `short`, `int`, `long`, `float`, `double`, `BigDecimal`),
 `String`, `NumFactory` lambda, or `Num` to the `DoubleNum.doubleNum()` static method. Statically importing `doubleNum()`
 is preferred as your code will likely look cleaner.
 
@@ -102,8 +102,7 @@ provides approximately the same precision as `double`, allowing up to 16 signifi
 You can create a [`NumFactory`](src/main/java/trade/invision/num/NumFactory.java) instance to abstract the `Num`
 creation process by using one of the `NumFactory` creation methods available in `DoubleNum` or `DecimalNum` (e.g.
 `DecimalNum.decimalNum64Factory()`). The `NumFactory` defines the underlying number representation for new `Num`
-instances, so you can create a `Num` from an existing `Number`, `BigDecimal`, `String`, or `Num` by simply using
-`NumFactory.of(...)`.
+instances, so you can create a `Num` from an existing `Number`, `String`, or `Num` by simply using `NumFactory.of(...)`.
 
 Check out the [Javadoc](https://javadoc.io/doc/trade.invision/num) for all classes and method signatures, but here's a
 quick reference:
