@@ -1123,11 +1123,7 @@ public final class DecimalNum implements Num {
 
     @Override
     public boolean isNegativeOrZero(final Num epsilon) {
-        if (epsilon.isZero()) {
-            return isNegativeOrZero();
-        } else {
-            return !epsilon.isNaN() && wrapped.compareTo(asDecimalNum(epsilon).wrapped) <= 0;
-        }
+        return !epsilon.isNaN() && wrapped.compareTo(asDecimalNum(epsilon).wrapped) <= 0;
     }
 
     @Override
@@ -1142,11 +1138,7 @@ public final class DecimalNum implements Num {
 
     @Override
     public boolean isPositiveOrZero(final Num epsilon) {
-        if (epsilon.isZero()) {
-            return isPositiveOrZero();
-        } else {
-            return !epsilon.isNaN() && wrapped.compareTo(asDecimalNum(epsilon).wrapped.negate()) >= 0;
-        }
+        return !epsilon.isNaN() && wrapped.compareTo(asDecimalNum(epsilon).wrapped.negate()) >= 0;
     }
 
     @Override
@@ -1156,11 +1148,7 @@ public final class DecimalNum implements Num {
 
     @Override
     public boolean isZero(final Num epsilon) {
-        if (epsilon.isZero()) {
-            return isZero();
-        } else {
-            return !epsilon.isNaN() && wrapped.abs().compareTo(asDecimalNum(epsilon).wrapped) <= 0;
-        }
+        return !epsilon.isNaN() && wrapped.abs().compareTo(asDecimalNum(epsilon).wrapped) <= 0;
     }
 
     @Override
@@ -1170,9 +1158,6 @@ public final class DecimalNum implements Num {
 
     @Override
     public boolean isEqual(final Num other, final Num epsilon) {
-        if (epsilon.isZero()) {
-            return isEqual(other);
-        }
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
@@ -1193,9 +1178,6 @@ public final class DecimalNum implements Num {
 
     @Override
     public boolean isLessThanOrEqual(final Num other, final Num epsilon) {
-        if (epsilon.isZero()) {
-            return isLessThanOrEqual(other);
-        }
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
@@ -1216,9 +1198,6 @@ public final class DecimalNum implements Num {
 
     @Override
     public boolean isGreaterThanOrEqual(final Num other, final Num epsilon) {
-        if (epsilon.isZero()) {
-            return isGreaterThanOrEqual(other);
-        }
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }

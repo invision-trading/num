@@ -657,9 +657,7 @@ public final class DoubleNum implements Num {
 
     @Override
     public boolean isNegativeOrZero(final Num epsilon) {
-        if (epsilon.isZero()) {
-            return isNegativeOrZero();
-        } else if (epsilon.isNaN()) {
+        if (epsilon.isNaN()) {
             return false;
         } else if (epsilon instanceof final DecimalNum decimalNum) {
             return decimalNum.factory().of(this).isNegativeOrZero(decimalNum);
@@ -680,9 +678,7 @@ public final class DoubleNum implements Num {
 
     @Override
     public boolean isPositiveOrZero(final Num epsilon) {
-        if (epsilon.isZero()) {
-            return isPositiveOrZero();
-        } else if (epsilon.isNaN()) {
+        if (epsilon.isNaN()) {
             return false;
         } else if (epsilon instanceof final DecimalNum decimalNum) {
             return decimalNum.factory().of(this).isPositiveOrZero(decimalNum);
@@ -698,9 +694,7 @@ public final class DoubleNum implements Num {
 
     @Override
     public boolean isZero(final Num epsilon) {
-        if (epsilon.isZero()) {
-            return isZero();
-        } else if (epsilon.isNaN()) {
+        if (epsilon.isNaN()) {
             return false;
         } else if (epsilon instanceof final DecimalNum decimalNum) {
             return decimalNum.factory().of(this).isZero(decimalNum);
@@ -722,9 +716,7 @@ public final class DoubleNum implements Num {
 
     @Override
     public boolean isEqual(final Num other, final Num epsilon) {
-        if (epsilon.isZero()) {
-            return isEqual(other);
-        } else if (other.isNaN() || epsilon.isNaN()) {
+        if (other.isNaN() || epsilon.isNaN()) {
             return false;
         } else if (other instanceof DecimalNum || epsilon instanceof DecimalNum) {
             return other.factory().of(this).isEqual(other, epsilon);
@@ -757,9 +749,7 @@ public final class DoubleNum implements Num {
 
     @Override
     public boolean isLessThanOrEqual(final Num other, final Num epsilon) {
-        if (epsilon.isZero()) {
-            return isLessThanOrEqual(other);
-        } else if (other.isNaN() || epsilon.isNaN()) {
+        if (other.isNaN() || epsilon.isNaN()) {
             return false;
         } else if (other instanceof DecimalNum || epsilon instanceof DecimalNum) {
             return other.factory().of(this).isLessThanOrEqual(other, epsilon);
@@ -792,9 +782,7 @@ public final class DoubleNum implements Num {
 
     @Override
     public boolean isGreaterThanOrEqual(final Num other, final Num epsilon) {
-        if (epsilon.isZero()) {
-            return isGreaterThanOrEqual(other);
-        } else if (other.isNaN() || epsilon.isNaN()) {
+        if (other.isNaN() || epsilon.isNaN()) {
             return false;
         } else if (other instanceof DecimalNum || epsilon instanceof DecimalNum) {
             return other.factory().of(this).isGreaterThanOrEqual(other, epsilon);
