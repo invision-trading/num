@@ -27,8 +27,9 @@ import static trade.invision.num.NaNNum.NaN;
  * @see Num
  * @see BigDecimal
  * @see BigDecimalMath
- * @see <a href="https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic">Wikipedia</a>
- * @see <a href="https://github.com/eobermuhlner/big-math">big-math GitHub</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic">
+ * wikipedia.org/wiki/Arbitrary-precision_arithmetic</a>
+ * @see <a href="https://github.com/eobermuhlner/big-math">github.com/eobermuhlner/big-math</a>
  */
 @NullMarked
 public final class DecimalNum implements Num {

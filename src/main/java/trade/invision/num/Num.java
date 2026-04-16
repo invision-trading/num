@@ -28,7 +28,8 @@ import static java.math.RoundingMode.HALF_EVEN;
  * @see DoubleNum
  * @see DecimalNum
  * @see NaNNum
- * @see <a href="https://en.wikipedia.org/wiki/Computer_algebra">Wikipedia</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Computer_algebra">
+ * wikipedia.org/wiki/Computer_algebra</a>
  */
 @NullMarked
 @Immutable
@@ -74,7 +75,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the sum {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Addition">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Addition">
+     * wikipedia.org/wiki/Addition</a>
      */
     Num add(final Num addend);
 
@@ -118,7 +120,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the difference {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Subtraction">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Subtraction">
+     * wikipedia.org/wiki/Subtraction</a>
      */
     Num subtract(final Num subtrahend);
 
@@ -162,7 +165,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the product {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Multiplication">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Multiplication">
+     * wikipedia.org/wiki/Multiplication</a>
      */
     Num multiply(final Num multiplier);
 
@@ -206,7 +210,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the quotient {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Division_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Division_(mathematics)">
+     * wikipedia.org/wiki/Division_(mathematics)</a>
      */
     Num divide(final Num divisor);
 
@@ -250,7 +255,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the remainder {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Remainder">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Remainder">
+     * wikipedia.org/wiki/Remainder</a>
      */
     Num remainder(final Num divisor);
 
@@ -294,7 +300,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the power {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Exponentiation">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Exponentiation">
+     * wikipedia.org/wiki/Exponentiation</a>
      */
     Num power(final Num exponent);
 
@@ -304,7 +311,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the squared {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Square_(algebra)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Square_(algebra)">
+     * wikipedia.org/wiki/Square_(algebra)</a>
      */
     Num square();
 
@@ -314,7 +322,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the cubed {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Cube_(algebra)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Cube_(algebra)">
+     * wikipedia.org/wiki/Cube_(algebra)</a>
      */
     Num cube();
 
@@ -325,7 +334,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the exponential {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Exponential_function">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Exponential_function">
+     * wikipedia.org/wiki/Exponential_function</a>
      */
     Num exponential();
 
@@ -369,7 +379,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the root {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Nth_root">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Nth_root">
+     * wikipedia.org/wiki/Nth_root</a>
      */
     Num nthRoot(final Num degree);
 
@@ -379,7 +390,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the square root {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Square_root">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Square_root">
+     * wikipedia.org/wiki/Square_root</a>
      */
     Num squareRoot();
 
@@ -389,7 +401,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the cube root {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Cube_root">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Cube_root">
+     * wikipedia.org/wiki/Cube_root</a>
      */
     Num cubeRoot();
 
@@ -400,7 +413,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the natural logarithm {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Natural_logarithm">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Natural_logarithm">
+     * wikipedia.org/wiki/Natural_logarithm</a>
      */
     Num ln();
 
@@ -410,7 +424,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the common logarithm {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Common_logarithm">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Common_logarithm">
+     * wikipedia.org/wiki/Common_logarithm</a>
      */
     Num log10();
 
@@ -420,7 +435,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the binary logarithm {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Binary_logarithm">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Binary_logarithm">
+     * wikipedia.org/wiki/Binary_logarithm</a>
      */
     Num log2();
 
@@ -462,7 +478,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the logarithm {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Logarithm">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Logarithm">
+     * wikipedia.org/wiki/Logarithm</a>
      */
     Num log(final Num base);
 
@@ -472,7 +489,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the absolute value {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Absolute_value">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Absolute_value">
+     * wikipedia.org/wiki/Absolute_value</a>
      */
     Num absoluteValue();
 
@@ -482,7 +500,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the negated {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Additive_inverse">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Additive_inverse">
+     * wikipedia.org/wiki/Additive_inverse</a>
      */
     Num negate();
 
@@ -492,7 +511,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the reciprocal {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Multiplicative_inverse">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Multiplicative_inverse">
+     * wikipedia.org/wiki/Multiplicative_inverse</a>
      */
     Num reciprocal();
 
@@ -501,7 +521,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the incremented {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Increment_and_decrement_operators">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Increment_and_decrement_operators">
+     * wikipedia.org/wiki/Increment_and_decrement_operators</a>
      */
     Num increment();
 
@@ -510,7 +531,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the decremented {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Increment_and_decrement_operators">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Increment_and_decrement_operators">
+     * wikipedia.org/wiki/Increment_and_decrement_operators</a>
      */
     Num decrement();
 
@@ -520,7 +542,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the floored {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Floor_and_ceiling_functions">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Floor_and_ceiling_functions">
+     * wikipedia.org/wiki/Floor_and_ceiling_functions</a>
      */
     Num floor();
 
@@ -530,7 +553,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the ceiled {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Floor_and_ceiling_functions">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Floor_and_ceiling_functions">
+     * wikipedia.org/wiki/Floor_and_ceiling_functions</a>
      */
     Num ceil();
 
@@ -540,7 +564,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the degrees {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Degree_(angle)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Degree_(angle)">
+     * wikipedia.org/wiki/Degree_(angle)</a>
      */
     Num degrees();
 
@@ -550,7 +575,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the radians {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Radian">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Radian">
+     * wikipedia.org/wiki/Radian</a>
      */
     Num radians();
 
@@ -559,7 +585,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the pi {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Pi">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Pi">
+     * wikipedia.org/wiki/Pi</a>
      */
     Num pi();
 
@@ -568,7 +595,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the <i>e</i> {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/E_(mathematical_constant)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/E_(mathematical_constant)">
+     * wikipedia.org/wiki/E_(mathematical_constant)</a>
      */
     Num e();
 
@@ -577,7 +605,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the sine {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Trigonometric_functions">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Trigonometric_functions">
+     * wikipedia.org/wiki/Trigonometric_functions</a>
      */
     Num sin();
 
@@ -586,7 +615,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the cosine {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Trigonometric_functions">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Trigonometric_functions">
+     * wikipedia.org/wiki/Trigonometric_functions</a>
      */
     Num cos();
 
@@ -595,7 +625,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the tangent {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Trigonometric_functions">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Trigonometric_functions">
+     * wikipedia.org/wiki/Trigonometric_functions</a>
      */
     Num tan();
 
@@ -604,7 +635,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the inverse sine {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions">
+     * wikipedia.org/wiki/Inverse_trigonometric_functions</a>
      */
     Num asin();
 
@@ -613,7 +645,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the inverse cosine {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions">
+     * wikipedia.org/wiki/Inverse_trigonometric_functions</a>
      */
     Num acos();
 
@@ -622,7 +655,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the inverse tangent {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions">
+     * wikipedia.org/wiki/Inverse_trigonometric_functions</a>
      */
     Num atan();
 
@@ -666,7 +700,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the 2-argument inverse tangent {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Atan2">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Atan2">
+     * wikipedia.org/wiki/Atan2</a>
      */
     Num atan2(final Num x);
 
@@ -675,7 +710,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the hyperbolic sine {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Hyperbolic_functions">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Hyperbolic_functions">
+     * wikipedia.org/wiki/Hyperbolic_functions</a>
      */
     Num sinh();
 
@@ -684,7 +720,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the hyperbolic cosine {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Hyperbolic_functions">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Hyperbolic_functions">
+     * wikipedia.org/wiki/Hyperbolic_functions</a>
      */
     Num cosh();
 
@@ -693,7 +730,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the hyperbolic tangent {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Hyperbolic_functions">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Hyperbolic_functions">
+     * wikipedia.org/wiki/Hyperbolic_functions</a>
      */
     Num tanh();
 
@@ -703,7 +741,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the inverse hyperbolic sine {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions">
+     * wikipedia.org/wiki/Inverse_hyperbolic_functions</a>
      */
     Num asinh();
 
@@ -713,7 +752,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the inverse hyperbolic cosine {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions">
+     * wikipedia.org/wiki/Inverse_hyperbolic_functions</a>
      */
     Num acosh();
 
@@ -723,7 +763,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the inverse hyperbolic tangent {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions">
+     * wikipedia.org/wiki/Inverse_hyperbolic_functions</a>
      */
     Num atanh();
 
@@ -767,7 +808,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the hypotenuse {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Hypotenuse">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Hypotenuse">
+     * wikipedia.org/wiki/Hypotenuse</a>
      */
     Num hypotenuse(final Num y);
 
@@ -811,7 +853,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the average {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Mean">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Mean">
+     * wikipedia.org/wiki/Mean</a>
      */
     Num average(final Num other);
 
@@ -855,7 +898,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the minimum {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Maximum_and_minimum">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Maximum_and_minimum">
+     * wikipedia.org/wiki/Maximum_and_minimum</a>
      */
     default Num min(final Num other) {
         return isLessThan(other) ? this : other; // NaN check not necessary when `other` is on RHS
@@ -901,7 +945,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the maximum {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Maximum_and_minimum">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Maximum_and_minimum">
+     * wikipedia.org/wiki/Maximum_and_minimum</a>
      */
     default Num max(final Num other) {
         return isGreaterThan(other) ? this : other; // NaN check not necessary when `other` is on RHS
@@ -1115,7 +1160,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the clamped {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Clamp_(function)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Clamp_(function)">
+     * wikipedia.org/wiki/Clamp_(function)</a>
      */
     default Num clamp(final Num min, final Num max) {
         return max.min(max(min));
@@ -1127,7 +1173,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the integer part {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Integer_part">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Integer_part">
+     * wikipedia.org/wiki/Integer_part</a>
      */
     Num integerPart();
 
@@ -1137,7 +1184,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the fractional part {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Fractional_part">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Fractional_part">
+     * wikipedia.org/wiki/Fractional_part</a>
      */
     Num fractionalPart();
 
@@ -1172,7 +1220,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the rounded {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Rounding">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Rounding">
+     * wikipedia.org/wiki/Rounding</a>
      */
     Num round(final int scale, final RoundingMode roundingMode);
 
@@ -1201,7 +1250,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the precision-modified {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Significant_figures">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Significant_figures">
+     * wikipedia.org/wiki/Significant_figures</a>
      */
     Num significantFigures(final MathContext context);
 
@@ -1210,7 +1260,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the significant figures count <code>int</code>
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Significant_figures">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Significant_figures">
+     * wikipedia.org/wiki/Significant_figures</a>
      */
     int significantFigures();
 
@@ -1220,7 +1271,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the mantissa {@link Num}
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Scientific_notation">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Scientific_notation">
+     * wikipedia.org/wiki/Scientific_notation</a>
      * @see #exponent()
      */
     Num mantissa();
@@ -1231,7 +1283,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the exponent <code>int</code>
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Scientific_notation">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Scientific_notation">
+     * wikipedia.org/wiki/Scientific_notation</a>
      * @see #mantissa()
      */
     int exponent();
@@ -1242,7 +1295,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return the signum <code>int</code>
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Sign_function">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Sign_function">
+     * wikipedia.org/wiki/Sign_function</a>
      */
     int signum();
 
@@ -1252,8 +1306,10 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return <code>true</code> if this {@link Num} is less than zero, <code>false</code> otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Negative_number">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Negative_number">
+     * wikipedia.org/wiki/Negative_number</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">
+     * wikipedia.org/wiki/Inequality_(mathematics)</a>
      */
     boolean isNegative();
 
@@ -1263,8 +1319,10 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return <code>true</code> if this {@link Num} is less than or equal to zero, <code>false</code> otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Negative_number">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Negative_number">
+     * wikipedia.org/wiki/Negative_number</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">
+     * wikipedia.org/wiki/Inequality_(mathematics)</a>
      */
     boolean isNegativeOrZero();
 
@@ -1309,9 +1367,12 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return <code>true</code> if this {@link Num} is tolerantly less than or equal to zero, <code>false</code>
      * otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Negative_number">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Negative_number">
+     * wikipedia.org/wiki/Negative_number</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">
+     * wikipedia.org/wiki/Inequality_(mathematics)</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">
+     * wikipedia.org/wiki/Machine_epsilon</a>
      */
     boolean isNegativeOrZero(final Num epsilon);
 
@@ -1321,8 +1382,10 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return <code>true</code> if this {@link Num} is greater than zero, <code>false</code> otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Positive_number">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Positive_number">
+     * wikipedia.org/wiki/Positive_number</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">
+     * wikipedia.org/wiki/Inequality_(mathematics)</a>
      */
     boolean isPositive();
 
@@ -1332,8 +1395,10 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return <code>true</code> if this {@link Num} is greater than or equal to zero, <code>false</code> otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Positive_number">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Positive_number">
+     * wikipedia.org/wiki/Positive_number</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">
+     * wikipedia.org/wiki/Inequality_(mathematics)</a>
      */
     boolean isPositiveOrZero();
 
@@ -1378,9 +1443,12 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return <code>true</code> if this {@link Num} is tolerantly greater than or equal to zero, <code>false</code>
      * otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Positive_number">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Positive_number">
+     * wikipedia.org/wiki/Positive_number</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">
+     * wikipedia.org/wiki/Inequality_(mathematics)</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">
+     * wikipedia.org/wiki/Machine_epsilon</a>
      */
     boolean isPositiveOrZero(final Num epsilon);
 
@@ -1390,8 +1458,10 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return <code>true</code> if this {@link Num} is equal to zero, <code>false</code> otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/0">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/0">
+     * wikipedia.org/wiki/0</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">
+     * wikipedia.org/wiki/Equality_(mathematics)</a>
      */
     boolean isZero();
 
@@ -1435,9 +1505,12 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return <code>true</code> if this {@link Num} is tolerantly equal to zero, <code>false</code> otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/0">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/0">
+     * wikipedia.org/wiki/0</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">
+     * wikipedia.org/wiki/Equality_(mathematics)</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">
+     * wikipedia.org/wiki/Machine_epsilon</a>
      */
     boolean isZero(final Num epsilon);
 
@@ -1481,7 +1554,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return <code>true</code> if this {@link Num} is equal to <code>other</code>, <code>false</code> otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">
+     * wikipedia.org/wiki/Equality_(mathematics)</a>
      */
     boolean isEqual(final Num other);
 
@@ -1703,8 +1777,10 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return <code>true</code> if this {@link Num} is tolerantly equal to <code>other</code>, <code>false</code>
      * otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Equality_(mathematics)">
+     * wikipedia.org/wiki/Equality_(mathematics)</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">
+     * wikipedia.org/wiki/Machine_epsilon</a>
      */
     boolean isEqual(final Num other, final Num epsilon);
 
@@ -1748,7 +1824,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return <code>true</code> if this {@link Num} is less than <code>other</code>, <code>false</code> otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">
+     * wikipedia.org/wiki/Inequality_(mathematics)</a>
      */
     boolean isLessThan(final Num other);
 
@@ -1793,7 +1870,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return <code>true</code> if this {@link Num} is less than or equal to <code>other</code>, <code>false</code>
      * otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">
+     * wikipedia.org/wiki/Inequality_(mathematics)</a>
      */
     boolean isLessThanOrEqual(final Num other);
 
@@ -2015,8 +2093,10 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return <code>true</code> if this {@link Num} is tolerantly less than or equal to <code>other</code>,
      * <code>false</code> otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">
+     * wikipedia.org/wiki/Inequality_(mathematics)</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">
+     * wikipedia.org/wiki/Machine_epsilon</a>
      */
     boolean isLessThanOrEqual(final Num other, final Num epsilon);
 
@@ -2060,7 +2140,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      *
      * @return <code>true</code> if this {@link Num} is greater than <code>other</code>, <code>false</code> otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">
+     * wikipedia.org/wiki/Inequality_(mathematics)</a>
      */
     boolean isGreaterThan(final Num other);
 
@@ -2105,7 +2186,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return <code>true</code> if this {@link Num} is greater than or equal to <code>other</code>, <code>false</code>
      * otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">
+     * wikipedia.org/wiki/Inequality_(mathematics)</a>
      */
     boolean isGreaterThanOrEqual(final Num other);
 
@@ -2328,8 +2410,10 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return <code>true</code> if this {@link Num} is tolerantly greater than or equal to <code>other</code>,
      * <code>false</code> otherwise
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">Wikipedia</a>
-     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">Wikipedia</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Inequality_(mathematics)">
+     * wikipedia.org/wiki/Inequality_(mathematics)</a>
+     * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">
+     * wikipedia.org/wiki/Machine_epsilon</a>
      */
     boolean isGreaterThanOrEqual(final Num other, final Num epsilon);
 

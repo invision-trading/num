@@ -23,8 +23,10 @@ import static trade.invision.num.NaNNum.NaN;
  * @see Num
  * @see Double
  * @see Math
- * @see <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic">Wikipedia</a>
- * @see <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">Wikipedia</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic">
+ * wikipedia.org/wiki/Floating-point_arithmetic</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">
+ * wikipedia.org/wiki/Double-precision_floating-point_format</a>
  */
 @NullMarked
 public final class DoubleNum implements Num {
@@ -229,8 +231,8 @@ public final class DoubleNum implements Num {
 
     private final double wrapped;
 
-    private DoubleNum(final double aDouble) {
-        wrapped = aDouble;
+    private DoubleNum(final double wrapped) {
+        this.wrapped = wrapped;
     }
 
     @Override

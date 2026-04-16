@@ -18,14 +18,15 @@ import static java.math.MathContext.DECIMAL64;
  * compares unordered with itself and all other values. It is not negative, positive, or zero.
  *
  * @see #NaN
- * @see <a href="https://en.wikipedia.org/wiki/NaN">Wikipedia</a>
- * @see <a href="https://stackoverflow.com/a/1573715/4352701">Stack Overflow</a>
+ * @see <a href="https://en.wikipedia.org/wiki/NaN">wikipedia.org/wiki/NaN</a>
+ * @see <a href="https://stackoverflow.com/a/1573715/4352701">stackoverflow.com - What is the rationale for all
+ * comparisons returning false for IEEE754 NaN values?</a>
  */
 @NullMarked
 public final class NaNNum implements Num {
 
     /**
-     * Singleton instance of {@link NaNNum}.
+     * The singleton instance of {@link NaNNum}.
      */
     @SuppressWarnings("IdentifierName")
     public static final NaNNum NaN = new NaNNum();
