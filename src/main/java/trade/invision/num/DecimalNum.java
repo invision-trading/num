@@ -19,12 +19,11 @@ import static java.math.MathContext.DECIMAL64;
 import static java.math.RoundingMode.CEILING;
 import static java.math.RoundingMode.FLOOR;
 import static java.math.RoundingMode.HALF_EVEN;
-import static trade.invision.num.NaNNum.NaN;
+import static trade.invision.num.NaNNum.nanNum;
 
 /**
  * {@link DecimalNum} is a {@link Num} implementation using arbitrary-precision decimal numbers via {@link BigDecimal}.
  *
- * @see Num
  * @see BigDecimal
  * @see BigDecimalMath
  * @see <a href="https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic">
@@ -33,6 +32,10 @@ import static trade.invision.num.NaNNum.NaN;
  */
 @NullMarked
 public final class DecimalNum implements Num {
+
+    private static Num nan(final MathContext context) {
+        return nanNum(context, decimalNumFactory(context));
+    }
 
     /**
      * @return {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}
@@ -109,9 +112,9 @@ public final class DecimalNum implements Num {
         return switch (number) {
             case final Integer aInteger -> new DecimalNum(new BigDecimal(aInteger, context), context);
             case final Long aLong -> new DecimalNum(new BigDecimal(aLong, context), context);
-            case final Float aFloat -> !Float.isFinite(aFloat) ? NaN :
+            case final Float aFloat -> !Float.isFinite(aFloat) ? nan(context) :
                     new DecimalNum(BigDecimal.valueOf(aFloat).round(context), context);
-            case final Double aDouble -> !Double.isFinite(aDouble) ? NaN :
+            case final Double aDouble -> !Double.isFinite(aDouble) ? nan(context) :
                     new DecimalNum(BigDecimal.valueOf(aDouble).round(context), context);
             case final BigDecimal bigDecimal -> new DecimalNum(bigDecimal.round(context), context);
             default -> new DecimalNum(new BigDecimal(number.toString(), context), context);
@@ -190,7 +193,7 @@ public final class DecimalNum implements Num {
      * @throws NumberFormatException thrown for {@link NumberFormatException}s
      */
     public static Num decimalNum(final String string, final MathContext context) throws NumberFormatException {
-        return string.equals(NaN.toString()) ? NaN : new DecimalNum(new BigDecimal(string, context), context);
+        return string.equals(NaNNum.STRING) ? nan(context) : new DecimalNum(new BigDecimal(string, context), context);
     }
 
     /**
@@ -577,84 +580,84 @@ public final class DecimalNum implements Num {
     @Override
     public Num add(final Num addend) {
         if (addend.isNaN()) {
-            return NaN;
+            return addend;
         }
         final var decimalNum = asDecimalNum(addend);
         final var context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(wrapped.add(decimalNum.wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
     @Override
     public Num subtract(final Num subtrahend) {
         if (subtrahend.isNaN()) {
-            return NaN;
+            return subtrahend;
         }
         final var decimalNum = asDecimalNum(subtrahend);
         final var context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(wrapped.subtract(decimalNum.wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
     @Override
     public Num multiply(final Num multiplier) {
         if (multiplier.isNaN()) {
-            return NaN;
+            return multiplier;
         }
         final var decimalNum = asDecimalNum(multiplier);
         final var context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(wrapped.multiply(decimalNum.wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
     @Override
     public Num divide(final Num divisor) {
         if (divisor.isNaN()) {
-            return NaN;
+            return divisor;
         }
         final var decimalNum = asDecimalNum(divisor);
         final var context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(wrapped.divide(decimalNum.wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
     @Override
     public Num remainder(final Num divisor) {
         if (divisor.isNaN()) {
-            return NaN;
+            return divisor;
         }
         final var decimalNum = asDecimalNum(divisor);
         final var context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(wrapped.remainder(decimalNum.wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
     @Override
     public Num power(final Num exponent) {
         if (exponent.isNaN()) {
-            return NaN;
+            return exponent;
         }
         final var decimalNum = asDecimalNum(exponent);
         final var context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(BigDecimalMath.pow(wrapped, decimalNum.wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -663,7 +666,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(wrapped.multiply(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -672,7 +675,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(wrapped.multiply(wrapped, context).multiply(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -681,21 +684,21 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.exp(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
     @Override
     public Num nthRoot(final Num degree) {
         if (degree.isNaN()) {
-            return NaN;
+            return degree;
         }
         final var decimalNum = asDecimalNum(degree);
         final var context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(BigDecimalMath.root(wrapped, decimalNum.wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -704,7 +707,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.sqrt(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -713,7 +716,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.root(wrapped, THREE, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -722,7 +725,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.log(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -731,7 +734,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.log10(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -740,14 +743,14 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.log2(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
     @Override
     public Num log(final Num base) {
         if (base.isNaN()) {
-            return NaN;
+            return base;
         }
         final var decimalNum = asDecimalNum(base);
         final var context = precisestContext(decimalNum.context);
@@ -756,7 +759,7 @@ public final class DecimalNum implements Num {
             final var denominator = BigDecimalMath.log(decimalNum.wrapped, context);
             return new DecimalNum(numerator.divide(denominator, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -775,7 +778,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.reciprocal(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -784,7 +787,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(wrapped.add(ONE, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -793,7 +796,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(wrapped.subtract(ONE, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -802,7 +805,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(wrapped.setScale(0, FLOOR), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -811,7 +814,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(wrapped.setScale(0, CEILING), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -820,7 +823,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.toDegrees(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -829,7 +832,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.toRadians(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -838,7 +841,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.pi(context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -847,7 +850,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.e(context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -856,7 +859,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.sin(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -865,7 +868,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.cos(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -874,7 +877,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.tan(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -883,7 +886,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.asin(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -892,7 +895,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.acos(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -901,21 +904,21 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.atan(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
     @Override
     public Num atan2(final Num x) {
         if (x.isNaN()) {
-            return NaN;
+            return x;
         }
         final var decimalNum = asDecimalNum(x);
         final var context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(BigDecimalMath.atan2(wrapped, decimalNum.wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -924,7 +927,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.sinh(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -933,7 +936,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.cosh(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -942,7 +945,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.tanh(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -951,7 +954,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.asinh(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -960,7 +963,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.acosh(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -969,14 +972,14 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.atanh(wrapped, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
     @Override
     public Num hypotenuse(final Num y) {
         if (y.isNaN()) {
-            return NaN;
+            return y;
         }
         final var decimalNum = asDecimalNum(y);
         final var context = precisestContext(decimalNum.context);
@@ -985,28 +988,28 @@ public final class DecimalNum implements Num {
             final var ySquared = decimalNum.wrapped.multiply(decimalNum.wrapped, context);
             return new DecimalNum(BigDecimalMath.sqrt(xSquared.add(ySquared, context), context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
     @Override
     public Num average(final Num other) {
         if (other.isNaN()) {
-            return NaN;
+            return other;
         }
         final var decimalNum = asDecimalNum(other);
         final var context = precisestContext(decimalNum.context);
         try {
             return new DecimalNum(wrapped.add(decimalNum.wrapped, context).multiply(HALF, context), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
     @Override
     public Num min(final Num other) {
         if (other.isNaN()) {
-            return NaN;
+            return other;
         }
         final var decimalNum = asDecimalNum(other);
         return wrapped.compareTo(decimalNum.wrapped) <= 0 ? this : decimalNum;
@@ -1015,7 +1018,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num max(final Num other) {
         if (other.isNaN()) {
-            return NaN;
+            return other;
         }
         final var decimalNum = asDecimalNum(other);
         return wrapped.compareTo(decimalNum.wrapped) >= 0 ? this : decimalNum;
@@ -1026,7 +1029,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.integralPart(wrapped), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -1035,7 +1038,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.fractionalPart(wrapped), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -1044,7 +1047,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(wrapped.setScale(scale, roundingMode), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -1053,7 +1056,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(wrapped.round(context), precisestContext(context));
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -1071,7 +1074,7 @@ public final class DecimalNum implements Num {
         try {
             return new DecimalNum(BigDecimalMath.mantissa(wrapped), context);
         } catch (final ArithmeticException arithmeticException) {
-            return NaN;
+            return nan(context);
         }
     }
 
@@ -1262,8 +1265,7 @@ public final class DecimalNum implements Num {
     @Override
     public boolean equals(final @Nullable Object obj) {
         return obj instanceof final DecimalNum decimalNum &&
-                wrapped.equals(decimalNum.wrapped) &&
-                context.equals(decimalNum.context);
+                wrapped.equals(decimalNum.wrapped) && context.equals(decimalNum.context);
     }
 
     @Override

@@ -16,13 +16,12 @@ import static java.math.MathContext.DECIMAL64;
 import static java.math.RoundingMode.HALF_EVEN;
 import static java.math.RoundingMode.HALF_UP;
 import static trade.invision.num.DecimalNum.decimalNum;
-import static trade.invision.num.NaNNum.NaN;
+import static trade.invision.num.NaNNum.nanNum;
 
 /**
  * {@link DoubleNum} is a {@link Num} implementation using floating-point binary numbers via {@link Double}. The
  * <code>double</code> primitive type is used where possible in order to avoid the {@link Double} boxed type.
  *
- * @see Num
  * @see Double
  * @see Math
  * @see <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic">
@@ -33,69 +32,26 @@ import static trade.invision.num.NaNNum.NaN;
 @NullMarked
 public final class DoubleNum implements Num {
 
-    /**
-     * Creates a new {@link DoubleNum} for the given <code>double</code>.
-     *
-     * @param aDouble the <code>double</code>
-     *
-     * @return the {@link Num}
-     */
-    public static Num doubleNum(final double aDouble) {
-        return !isFinite(aDouble) ? NaN : new DoubleNum(aDouble);
-    }
-
-    /**
-     * @return {@link #doubleNum(double)} {@link Number#doubleValue()}
-     */
-    public static Num doubleNum(final Number number) {
-        return doubleNum(number.doubleValue());
-    }
-
-    /**
-     * @return {@link #doubleNum(double)} {@link Double#parseDouble(String)}
-     *
-     * @throws NumberFormatException thrown for {@link NumberFormatException}s
-     */
-    public static Num doubleNum(final String string) throws NumberFormatException {
-        return doubleNum(parseDouble(string));
-    }
-
-    /**
-     * @return {@link #doubleNum(Number)} {@link Num#unwrap()}
-     */
-    public static Num doubleNum(final Num num) {
-        return doubleNum(num.unwrap());
-    }
-
-    /**
-     * Gets the {@link NumFactory} for {@link DoubleNum}.
-     *
-     * @return the {@link DoubleNum} {@link NumFactory}
-     */
-    public static NumFactory doubleNumFactory() {
-        return FACTORY;
-    }
-
-    private static final Num NEGATIVE_ONE = doubleNum(-1);
-    private static final Num ZERO = doubleNum(0);
-    private static final Num ONE = doubleNum(1);
-    private static final Num TWO = doubleNum(2);
-    private static final Num THREE = doubleNum(3);
-    private static final Num FOUR = doubleNum(4);
-    private static final Num FIVE = doubleNum(5);
-    private static final Num SIX = doubleNum(6);
-    private static final Num SEVEN = doubleNum(7);
-    private static final Num EIGHT = doubleNum(8);
-    private static final Num NINE = doubleNum(9);
-    private static final Num TEN = doubleNum(10);
-    private static final Num HUNDRED = doubleNum(100);
-    private static final Num THOUSAND = doubleNum(1000);
-    private static final Num TENTH = doubleNum(0.1);
-    private static final Num HUNDREDTH = doubleNum(0.01);
-    private static final Num THOUSANDTH = doubleNum(0.001);
-    private static final Num HALF = doubleNum(0.5);
-
     private static final NumFactory FACTORY = new NumFactory() {
+
+        private static final Num NEGATIVE_ONE = doubleNum(-1);
+        private static final Num ZERO = doubleNum(0);
+        private static final Num ONE = doubleNum(1);
+        private static final Num TWO = doubleNum(2);
+        private static final Num THREE = doubleNum(3);
+        private static final Num FOUR = doubleNum(4);
+        private static final Num FIVE = doubleNum(5);
+        private static final Num SIX = doubleNum(6);
+        private static final Num SEVEN = doubleNum(7);
+        private static final Num EIGHT = doubleNum(8);
+        private static final Num NINE = doubleNum(9);
+        private static final Num TEN = doubleNum(10);
+        private static final Num HUNDRED = doubleNum(100);
+        private static final Num THOUSAND = doubleNum(1000);
+        private static final Num TENTH = doubleNum(0.1);
+        private static final Num HUNDREDTH = doubleNum(0.01);
+        private static final Num THOUSANDTH = doubleNum(0.001);
+        private static final Num HALF = doubleNum(0.5);
 
         @Override
         public Num of(final Number number) {
@@ -226,6 +182,52 @@ public final class DoubleNum implements Num {
         }
     };
 
+    private static final MathContext CONTEXT = DECIMAL64;
+    private static final Num NAN = nanNum(CONTEXT, FACTORY);
+
+    /**
+     * Creates a new {@link DoubleNum} for the given <code>double</code>.
+     *
+     * @param aDouble the <code>double</code>
+     *
+     * @return the {@link Num}
+     */
+    public static Num doubleNum(final double aDouble) {
+        return !isFinite(aDouble) ? NAN : new DoubleNum(aDouble);
+    }
+
+    /**
+     * @return {@link #doubleNum(double)} {@link Number#doubleValue()}
+     */
+    public static Num doubleNum(final Number number) {
+        return doubleNum(number.doubleValue());
+    }
+
+    /**
+     * @return {@link #doubleNum(double)} {@link Double#parseDouble(String)}
+     *
+     * @throws NumberFormatException thrown for {@link NumberFormatException}s
+     */
+    public static Num doubleNum(final String string) throws NumberFormatException {
+        return doubleNum(parseDouble(string));
+    }
+
+    /**
+     * @return {@link #doubleNum(Number)} {@link Num#unwrap()}
+     */
+    public static Num doubleNum(final Num num) {
+        return doubleNum(num.unwrap());
+    }
+
+    /**
+     * Gets the {@link NumFactory} for {@link DoubleNum}.
+     *
+     * @return the {@link DoubleNum} {@link NumFactory}
+     */
+    public static NumFactory doubleNumFactory() {
+        return FACTORY;
+    }
+
     private static final double NATURAL_LOGARITHM_OF_2 = 0.6931471805599453;
     private static final Num PI = doubleNum(Math.PI);
     private static final Num E = doubleNum(Math.E);
@@ -239,7 +241,7 @@ public final class DoubleNum implements Num {
     @Override
     public Num add(final Num addend) {
         if (addend.isNaN()) {
-            return NaN;
+            return addend;
         }
         if (addend instanceof final DecimalNum decimalNum) {
             return decimalNum.getFactory().of(this).add(decimalNum);
@@ -250,7 +252,7 @@ public final class DoubleNum implements Num {
     @Override
     public Num subtract(final Num subtrahend) {
         if (subtrahend.isNaN()) {
-            return NaN;
+            return subtrahend;
         }
         if (subtrahend instanceof final DecimalNum decimalNum) {
             return decimalNum.getFactory().of(this).subtract(decimalNum);
@@ -261,7 +263,7 @@ public final class DoubleNum implements Num {
     @Override
     public Num multiply(final Num multiplier) {
         if (multiplier.isNaN()) {
-            return NaN;
+            return multiplier;
         }
         if (multiplier instanceof final DecimalNum decimalNum) {
             return decimalNum.getFactory().of(this).multiply(decimalNum);
@@ -272,7 +274,7 @@ public final class DoubleNum implements Num {
     @Override
     public Num divide(final Num divisor) {
         if (divisor.isNaN()) {
-            return NaN;
+            return divisor;
         }
         if (divisor instanceof final DecimalNum decimalNum) {
             return decimalNum.getFactory().of(this).divide(decimalNum);
@@ -283,7 +285,7 @@ public final class DoubleNum implements Num {
     @Override
     public Num remainder(final Num divisor) {
         if (divisor.isNaN()) {
-            return NaN;
+            return divisor;
         }
         if (divisor instanceof final DecimalNum decimalNum) {
             return decimalNum.getFactory().of(this).remainder(decimalNum);
@@ -294,7 +296,7 @@ public final class DoubleNum implements Num {
     @Override
     public Num power(final Num exponent) {
         if (exponent.isNaN()) {
-            return NaN;
+            return exponent;
         }
         if (exponent instanceof final DecimalNum decimalNum) {
             return decimalNum.getFactory().of(this).power(decimalNum);
@@ -320,7 +322,7 @@ public final class DoubleNum implements Num {
     @Override
     public Num nthRoot(final Num degree) {
         if (degree.isNaN()) {
-            return NaN;
+            return degree;
         }
         if (degree instanceof final DecimalNum decimalNum) {
             return decimalNum.getFactory().of(this).nthRoot(decimalNum);
@@ -356,7 +358,7 @@ public final class DoubleNum implements Num {
     @Override
     public Num log(final Num base) {
         if (base.isNaN()) {
-            return NaN;
+            return base;
         }
         if (base instanceof final DecimalNum decimalNum) {
             return decimalNum.getFactory().of(this).log(decimalNum);
@@ -452,7 +454,7 @@ public final class DoubleNum implements Num {
     @Override
     public Num atan2(final Num x) {
         if (x.isNaN()) {
-            return NaN;
+            return x;
         }
         if (x instanceof final DecimalNum decimalNum) {
             return decimalNum.getFactory().of(this).atan2(decimalNum);
@@ -493,7 +495,7 @@ public final class DoubleNum implements Num {
     @Override
     public Num hypotenuse(final Num y) {
         if (y.isNaN()) {
-            return NaN;
+            return y;
         }
         if (y instanceof final DecimalNum decimalNum) {
             return decimalNum.getFactory().of(this).hypotenuse(decimalNum);
@@ -504,7 +506,7 @@ public final class DoubleNum implements Num {
     @Override
     public Num average(final Num other) {
         if (other.isNaN()) {
-            return NaN;
+            return other;
         }
         if (other instanceof final DecimalNum decimalNum) {
             return decimalNum.getFactory().of(this).average(decimalNum);
@@ -515,7 +517,7 @@ public final class DoubleNum implements Num {
     @Override
     public Num min(final Num other) {
         if (other.isNaN()) {
-            return NaN;
+            return other;
         }
         if (other instanceof final DecimalNum decimalNum) {
             return decimalNum.getFactory().of(this).min(decimalNum);
@@ -526,7 +528,7 @@ public final class DoubleNum implements Num {
     @Override
     public Num max(final Num other) {
         if (other.isNaN()) {
-            return NaN;
+            return other;
         }
         if (other instanceof final DecimalNum decimalNum) {
             return decimalNum.getFactory().of(this).max(decimalNum);
@@ -793,7 +795,7 @@ public final class DoubleNum implements Num {
 
     @Override
     public MathContext getContext() {
-        return DECIMAL64;
+        return CONTEXT;
     }
 
     @Override

@@ -83,8 +83,8 @@ interoperable with each other. Operations involving different implementations wi
 an increase in precision. For example, subtracting a `DecimalNum` from a `DoubleNum` will result in a `DecimalNum`. For
 another example, subtracting a `DecimalNum` with a context precision of `16` from a `DecimalNum` with a context
 precision of `32` will result in a `DecimalNum` with a context precision of `32`. Mathematical operations that result in
-`NaN`, `+Infinity`, `-Infinity`, or throw an `ArithmeticException` will yield
-[`NaNNum.NaN`](src/main/java/trade/invision/num/NaNNum.java).
+`NaN`, `+Infinity`, `-Infinity`, or throw an `ArithmeticException` will yield a
+[`NaNNum`](src/main/java/trade/invision/num/NaNNum.java).
 
 ## Usage
 

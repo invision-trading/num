@@ -24,7 +24,7 @@ import static java.math.RoundingMode.HALF_EVEN;
  * {@link DecimalNum} with a {@link DecimalNum#getContextPrecision()} of <code>32</code> will result in a
  * {@link DecimalNum} with a {@link DecimalNum#getContextPrecision()} of <code>32</code>. Mathematical operations that
  * result in <code>NaN</code>, <code>+Infinity</code>, <code>-Infinity</code>, or throw an {@link ArithmeticException}
- * will yield {@link NaNNum#NaN}.
+ * will yield a {@link NaNNum}.
  *
  * @see DoubleNum
  * @see DecimalNum
@@ -1936,9 +1936,9 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     boolean isGreaterThanOrEqual(final Num other, final Num epsilon);
 
     /**
-     * Checks if this {@link Num} is {@link NaNNum#NaN}.
+     * Checks if this {@link Num} is a {@link NaNNum}.
      *
-     * @return <code>true</code> if {@link NaNNum#NaN}, <code>false</code> otherwise
+     * @return <code>true</code> if a {@link NaNNum}, <code>false</code> otherwise
      */
     boolean isNaN();
 
@@ -2080,7 +2080,8 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
-     * Gets the {@link NumFactory} to get {@link Num} instances with the same type as this {@link Num}.
+     * Gets the {@link NumFactory} to get {@link Num} instances with the same type as this {@link Num} (except if this
+     * {@link Num} is a {@link NaNNum}, see {@link NaNNum#nanNum(MathContext, NumFactory)}).
      *
      * @return the {@link NumFactory}
      */

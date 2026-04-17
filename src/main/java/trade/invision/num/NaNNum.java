@@ -2,23 +2,18 @@ package trade.invision.num;
 
 import lombok.Generated;
 import org.jspecify.annotations.NullMarked;
-import org.jspecify.annotations.Nullable;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.random.RandomGenerator;
-
-import static java.math.MathContext.DECIMAL64;
 
 /**
  * {@link NaNNum}, short for "Not a Number" (NaN), is a {@link Num} that represents an undefined and unrepresentable
  * numerical value. All operations result in itself or <code>0</code>. It is not equal to itself or any other value. It
  * compares unordered with itself and all other values. It is not negative, positive, or zero.
  *
- * @see #NaN
  * @see <a href="https://en.wikipedia.org/wiki/NaN">wikipedia.org/wiki/NaN</a>
  * @see <a href="https://stackoverflow.com/a/1573715/4352701">stackoverflow.com - What is the rationale for all
  * comparisons returning false for IEEE754 NaN values?</a>
@@ -27,134 +22,32 @@ import static java.math.MathContext.DECIMAL64;
 public final class NaNNum implements Num {
 
     /**
-     * The singleton instance of {@link NaNNum}.
+     * The {@link #toString()} constant: <code>"NaN"</code>
      */
-    @SuppressWarnings("IdentifierName")
-    public static final NaNNum NaN = new NaNNum();
+    public static final String STRING = "NaN";
 
     /**
-     * The {@link NumFactory} for {@link NaNNum}.
+     * Creates a new {@link NaNNum}.
+     * <p>
+     * The given {@link MathContext} and {@link NumFactory} should be set to the {@link #getContext()} and
+     * {@link #getFactory()} of the {@link Num} instance that caused the NaN result.
      *
-     * @return the {@link NumFactory}
+     * @param context the {@link MathContext} to return for {@link #getContext()}
+     * @param factory the {@link NumFactory} to return for {@link #getFactory()}
+     *
+     * @return the {@link NaNNum}
      */
-    public static NumFactory nanNumFactory() {
-        return FACTORY;
+    public static Num nanNum(final MathContext context, final NumFactory factory) {
+        return new NaNNum(context, factory);
     }
 
-    private static final NumFactory FACTORY = new NumFactory() {
+    private final @SuppressWarnings("Immutable") MathContext context;
+    private final NumFactory factory;
 
-        @Override
-        public Num of(final Number number) {
-            return NaN;
-        }
-
-        @Override
-        public Num of(final String string) {
-            return NaN;
-        }
-
-        @Override
-        public Num of(final Num num) {
-            return NaN;
-        }
-
-        @Override
-        public Num negativeOne() {
-            return NaN;
-        }
-
-        @Override
-        public Num zero() {
-            return NaN;
-        }
-
-        @Override
-        public Num one() {
-            return NaN;
-        }
-
-        @Override
-        public Num two() {
-            return NaN;
-        }
-
-        @Override
-        public Num three() {
-            return NaN;
-        }
-
-        @Override
-        public Num four() {
-            return NaN;
-        }
-
-        @Override
-        public Num five() {
-            return NaN;
-        }
-
-        @Override
-        public Num six() {
-            return NaN;
-        }
-
-        @Override
-        public Num seven() {
-            return NaN;
-        }
-
-        @Override
-        public Num eight() {
-            return NaN;
-        }
-
-        @Override
-        public Num nine() {
-            return NaN;
-        }
-
-        @Override
-        public Num ten() {
-            return NaN;
-        }
-
-        @Override
-        public Num hundred() {
-            return NaN;
-        }
-
-        @Override
-        public Num thousand() {
-            return NaN;
-        }
-
-        @Override
-        public Num tenth() {
-            return NaN;
-        }
-
-        @Override
-        public Num hundredth() {
-            return NaN;
-        }
-
-        @Override
-        public Num thousandth() {
-            return NaN;
-        }
-
-        @Override
-        public Num half() {
-            return NaN;
-        }
-
-        @Override
-        public Num random(final RandomGenerator randomGenerator) {
-            return NaN;
-        }
-    };
-
-    private NaNNum() {}
+    private NaNNum(final MathContext context, final NumFactory factory) {
+        this.context = context;
+        this.factory = factory;
+    }
 
     @Generated
     @Override
@@ -1283,7 +1176,7 @@ public final class NaNNum implements Num {
 
     @Override
     public Num ifNaNThrow() {
-        throw new ArithmeticException(toString());
+        throw new ArithmeticException(STRING);
     }
 
     @Override
@@ -1308,27 +1201,17 @@ public final class NaNNum implements Num {
 
     @Override
     public MathContext getContext() {
-        return DECIMAL64;
+        return context;
     }
 
     @Override
     public NumFactory getFactory() {
-        return FACTORY;
-    }
-
-    @Override
-    public boolean equals(final @Nullable Object obj) {
-        return this == obj;
-    }
-
-    @Override
-    public int hashCode() {
-        return 0;
+        return factory;
     }
 
     @Override
     public String toString() {
-        return "NaN";
+        return STRING;
     }
 
     @Override
