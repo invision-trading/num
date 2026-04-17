@@ -322,6 +322,10 @@ public final class DecimalNum implements Num {
         return decimalNumFactory(new MathContext(significantFigures, roundingMode));
     }
 
+    private static final Factory FACTORY_DECIMAL32 = new Factory(DECIMAL32);
+    private static final Factory FACTORY_DECIMAL64 = new Factory(DECIMAL64);
+    private static final Factory FACTORY_DECIMAL128 = new Factory(DECIMAL128);
+
     /**
      * Creates a new {@link NumFactory} for {@link DecimalNum} using the given {@link MathContext}.
      *
@@ -330,6 +334,15 @@ public final class DecimalNum implements Num {
      * @return the {@link DecimalNum} {@link NumFactory}
      */
     public static NumFactory decimalNumFactory(final MathContext context) {
+        if (context.equals(DECIMAL32)) {
+            return FACTORY_DECIMAL32;
+        }
+        if (context.equals(DECIMAL64)) {
+            return FACTORY_DECIMAL64;
+        }
+        if (context.equals(DECIMAL128)) {
+            return FACTORY_DECIMAL128;
+        }
         return new Factory(context);
     }
 
@@ -549,9 +562,6 @@ public final class DecimalNum implements Num {
         }
     }
 
-    private static final Factory FACTORY_DECIMAL32 = new Factory(DECIMAL32);
-    private static final Factory FACTORY_DECIMAL64 = new Factory(DECIMAL64);
-    private static final Factory FACTORY_DECIMAL128 = new Factory(DECIMAL128);
     private static final BigDecimal THREE = new BigDecimal(3);
     private static final BigDecimal HALF = BigDecimal.valueOf(0.5);
 
@@ -1241,20 +1251,10 @@ public final class DecimalNum implements Num {
         return context;
     }
 
-    @SuppressWarnings("ReferenceEquality")
     @Override
     public NumFactory getFactory() {
         if (factory == null) {
-            // Use reference equality instead of object equality for performance.
-            if (context == DECIMAL32) {
-                factory = FACTORY_DECIMAL32;
-            } else if (context == DECIMAL64) {
-                factory = FACTORY_DECIMAL64;
-            } else if (context == DECIMAL128) {
-                factory = FACTORY_DECIMAL128;
-            } else {
-                factory = new Factory(context);
-            }
+            factory = decimalNumFactory(context);
         }
         return factory;
     }
