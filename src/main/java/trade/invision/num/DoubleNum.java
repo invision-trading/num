@@ -182,8 +182,17 @@ public final class DoubleNum implements Num {
         }
     };
 
+    /**
+     * Gets the {@link NumFactory} for {@link DoubleNum}.
+     *
+     * @return the {@link DoubleNum} {@link NumFactory}
+     */
+    public static NumFactory doubleNumFactory() {
+        return FACTORY;
+    }
+
     private static final MathContext CONTEXT = DECIMAL64;
-    private static final Num NAN = nanNum(CONTEXT, FACTORY);
+    private static final @SuppressWarnings("IdentifierName") Num NaN = nanNum(CONTEXT, FACTORY);
 
     /**
      * Creates a new {@link DoubleNum} for the given <code>double</code>.
@@ -193,7 +202,7 @@ public final class DoubleNum implements Num {
      * @return the {@link Num}
      */
     public static Num doubleNum(final double aDouble) {
-        return !isFinite(aDouble) ? NAN : new DoubleNum(aDouble);
+        return !isFinite(aDouble) ? NaN : new DoubleNum(aDouble);
     }
 
     /**
@@ -217,15 +226,6 @@ public final class DoubleNum implements Num {
      */
     public static Num doubleNum(final Num num) {
         return doubleNum(num.unwrap());
-    }
-
-    /**
-     * Gets the {@link NumFactory} for {@link DoubleNum}.
-     *
-     * @return the {@link DoubleNum} {@link NumFactory}
-     */
-    public static NumFactory doubleNumFactory() {
-        return FACTORY;
     }
 
     private static final double NATURAL_LOGARITHM_OF_2 = 0.6931471805599453;
@@ -554,16 +554,36 @@ public final class DoubleNum implements Num {
                 return doubleNum(isHalfEven ? Math.rint(wrapped) : Math.round(wrapped));
             }
             final var multiplier = switch (scale) {
-                case -15 -> 1e-15; case -14 -> 1e-14; case -13 -> 1e-13;
-                case -12 -> 1e-12; case -11 -> 1e-11; case -10 -> 1e-10;
-                case -9 -> 1e-9; case -8 -> 1e-8; case -7 -> 1e-7;
-                case -6 -> 1e-6; case -5 -> 1e-5; case -4 -> 1e-4;
-                case -3 -> 1e-3; case -2 -> 1e-2; case -1 -> 1e-1;
-                case 1 -> 1e1; case 2 -> 1e2; case 3 -> 1e3;
-                case 4 -> 1e4; case 5 -> 1e5; case 6 -> 1e6;
-                case 7 -> 1e7; case 8 -> 1e8; case 9 -> 1e9;
-                case 10 -> 1e10; case 11 -> 1e11; case 12 -> 1e12;
-                case 13 -> 1e13; case 14 -> 1e14; case 15 -> 1e15;
+                case -15 -> 1e-15;
+                case -14 -> 1e-14;
+                case -13 -> 1e-13;
+                case -12 -> 1e-12;
+                case -11 -> 1e-11;
+                case -10 -> 1e-10;
+                case -9 -> 1e-9;
+                case -8 -> 1e-8;
+                case -7 -> 1e-7;
+                case -6 -> 1e-6;
+                case -5 -> 1e-5;
+                case -4 -> 1e-4;
+                case -3 -> 1e-3;
+                case -2 -> 1e-2;
+                case -1 -> 1e-1;
+                case 1 -> 1e1;
+                case 2 -> 1e2;
+                case 3 -> 1e3;
+                case 4 -> 1e4;
+                case 5 -> 1e5;
+                case 6 -> 1e6;
+                case 7 -> 1e7;
+                case 8 -> 1e8;
+                case 9 -> 1e9;
+                case 10 -> 1e10;
+                case 11 -> 1e11;
+                case 12 -> 1e12;
+                case 13 -> 1e13;
+                case 14 -> 1e14;
+                case 15 -> 1e15;
                 default -> Math.pow(10, scale);
             };
             final var inner = wrapped * multiplier;

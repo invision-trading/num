@@ -33,8 +33,327 @@ import static trade.invision.num.NaNNum.nanNum;
 @NullMarked
 public final class DecimalNum implements Num {
 
+    private static class Factory implements NumFactory {
+
+        private final @SuppressWarnings("Immutable") MathContext context;
+        private @LazyInit @Nullable Num negativeOne;
+        private @LazyInit @Nullable Num zero;
+        private @LazyInit @Nullable Num one;
+        private @LazyInit @Nullable Num two;
+        private @LazyInit @Nullable Num three;
+        private @LazyInit @Nullable Num four;
+        private @LazyInit @Nullable Num five;
+        private @LazyInit @Nullable Num six;
+        private @LazyInit @Nullable Num seven;
+        private @LazyInit @Nullable Num eight;
+        private @LazyInit @Nullable Num nine;
+        private @LazyInit @Nullable Num ten;
+        private @LazyInit @Nullable Num hundred;
+        private @LazyInit @Nullable Num thousand;
+        private @LazyInit @Nullable Num tenth;
+        private @LazyInit @Nullable Num hundredth;
+        private @LazyInit @Nullable Num thousandth;
+        private @LazyInit @Nullable Num half;
+
+        private Factory(final MathContext context) {
+            this.context = context;
+        }
+
+        @Override
+        public Num of(final Number number) {
+            if (number instanceof final Integer aInteger) {
+                // Only using sequential numbers enables `TABLESWITCH` bytecode instruction.
+                return switch (aInteger) {
+                    case -1 -> negativeOne();
+                    case 0 -> zero();
+                    case 1 -> one();
+                    case 2 -> two();
+                    case 3 -> three();
+                    case 4 -> four();
+                    case 5 -> five();
+                    case 6 -> six();
+                    case 7 -> seven();
+                    case 8 -> eight();
+                    case 9 -> nine();
+                    case 10 -> ten();
+                    default -> decimalNum(number, context);
+                };
+            }
+            return decimalNum(number, context);
+        }
+
+        @Override
+        public Num of(final String string) {
+            return decimalNum(string, context);
+        }
+
+        @Override
+        public Num of(final Num num) {
+            return decimalNum(num, context);
+        }
+
+        @Override
+        public Num negativeOne() {
+            if (negativeOne == null) {
+                negativeOne = of(-1);
+            }
+            return negativeOne;
+        }
+
+        @Override
+        public Num zero() {
+            if (zero == null) {
+                zero = of(0);
+            }
+            return zero;
+        }
+
+        @Override
+        public Num one() {
+            if (one == null) {
+                one = of(1);
+            }
+            return one;
+        }
+
+        @Override
+        public Num two() {
+            if (two == null) {
+                two = of(2);
+            }
+            return two;
+        }
+
+        @Override
+        public Num three() {
+            if (three == null) {
+                three = of(3);
+            }
+            return three;
+        }
+
+        @Override
+        public Num four() {
+            if (four == null) {
+                four = of(4);
+            }
+            return four;
+        }
+
+        @Override
+        public Num five() {
+            if (five == null) {
+                five = of(5);
+            }
+            return five;
+        }
+
+        @Override
+        public Num six() {
+            if (six == null) {
+                six = of(6);
+            }
+            return six;
+        }
+
+        @Override
+        public Num seven() {
+            if (seven == null) {
+                seven = of(7);
+            }
+            return seven;
+        }
+
+        @Override
+        public Num eight() {
+            if (eight == null) {
+                eight = of(8);
+            }
+            return eight;
+        }
+
+        @Override
+        public Num nine() {
+            if (nine == null) {
+                nine = of(9);
+            }
+            return nine;
+        }
+
+        @Override
+        public Num ten() {
+            if (ten == null) {
+                ten = of(10);
+            }
+            return ten;
+        }
+
+        @Override
+        public Num hundred() {
+            if (hundred == null) {
+                hundred = of(100);
+            }
+            return hundred;
+        }
+
+        @Override
+        public Num thousand() {
+            if (thousand == null) {
+                thousand = of(1000);
+            }
+            return thousand;
+        }
+
+        @Override
+        public Num tenth() {
+            if (tenth == null) {
+                tenth = of(0.1);
+            }
+            return tenth;
+        }
+
+        @Override
+        public Num hundredth() {
+            if (hundredth == null) {
+                hundredth = of(0.01);
+            }
+            return hundredth;
+        }
+
+        @Override
+        public Num thousandth() {
+            if (thousandth == null) {
+                thousandth = of(0.001);
+            }
+            return thousandth;
+        }
+
+        @Override
+        public Num half() {
+            if (half == null) {
+                half = of(0.5);
+            }
+            return half;
+        }
+
+        @Override
+        public Num random(final RandomGenerator randomGenerator) {
+            // https://gist.github.com/Petersoj/749b4ac7906054242ea2a2089a2e5b2d
+            final var prefix = "0.";
+            final var precision = context.getPrecision();
+            final var stringBuilder = new StringBuilder(prefix.length() + precision);
+            stringBuilder.append(prefix);
+            for (var digitIndex = 0; digitIndex < precision; digitIndex++) {
+                stringBuilder.append(randomGenerator.nextInt(10));
+            }
+            return of(stringBuilder.toString());
+        }
+    }
+
+    /**
+     * @return {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}
+     */
+    public static NumFactory decimalNum32Factory() {
+        return decimalNumFactory(DECIMAL32);
+    }
+
+    /**
+     * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}
+     */
+    public static NumFactory decimalNum32Factory(final RoundingMode roundingMode) {
+        return decimalNumFactory(DECIMAL32.getPrecision(), roundingMode);
+    }
+
+    /**
+     * @return {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}
+     */
+    public static NumFactory decimalNum64Factory() {
+        return decimalNumFactory(DECIMAL64);
+    }
+
+    /**
+     * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}
+     */
+    public static NumFactory decimalNum64Factory(final RoundingMode roundingMode) {
+        return decimalNumFactory(DECIMAL64.getPrecision(), roundingMode);
+    }
+
+    /**
+     * @return {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}
+     */
+    public static NumFactory decimalNum128Factory() {
+        return decimalNumFactory(DECIMAL128);
+    }
+
+    /**
+     * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
+     * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}
+     */
+    public static NumFactory decimalNum128Factory(final RoundingMode roundingMode) {
+        return decimalNumFactory(DECIMAL128.getPrecision(), roundingMode);
+    }
+
+    /**
+     * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>roundingMode</code> set to
+     * {@link RoundingMode#HALF_EVEN}
+     */
+    public static NumFactory decimalNumFactory(final int significantFigures) {
+        return decimalNumFactory(significantFigures, HALF_EVEN);
+    }
+
+    /**
+     * @return {@link #decimalNumFactory(MathContext)} with {@link MathContext#getPrecision()} set to
+     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
+     */
+    public static NumFactory decimalNumFactory(final int significantFigures, final RoundingMode roundingMode) {
+        return decimalNumFactory(new MathContext(significantFigures, roundingMode));
+    }
+
+    private static final Factory FACTORY_DECIMAL32 = new Factory(DECIMAL32);
+    private static final Factory FACTORY_DECIMAL64 = new Factory(DECIMAL64);
+    private static final Factory FACTORY_DECIMAL128 = new Factory(DECIMAL128);
+
+    /**
+     * Creates a new {@link NumFactory} for {@link DecimalNum} using the given {@link MathContext}.
+     *
+     * @param context the {@link MathContext}
+     *
+     * @return the {@link DecimalNum} {@link NumFactory}
+     */
+    public static NumFactory decimalNumFactory(final MathContext context) {
+        if (context.equals(DECIMAL32)) {
+            return FACTORY_DECIMAL32;
+        }
+        if (context.equals(DECIMAL64)) {
+            return FACTORY_DECIMAL64;
+        }
+        if (context.equals(DECIMAL128)) {
+            return FACTORY_DECIMAL128;
+        }
+        return new Factory(context);
+    }
+
+    private static final @SuppressWarnings("IdentifierName") Num NaN_DECIMAL32 =
+            nanNum(DECIMAL32, FACTORY_DECIMAL32);
+    private static final @SuppressWarnings("IdentifierName") Num NaN_DECIMAL64 =
+            nanNum(DECIMAL64, FACTORY_DECIMAL64);
+    private static final @SuppressWarnings("IdentifierName") Num NaN_DECIMAL128 =
+            nanNum(DECIMAL128, FACTORY_DECIMAL128);
+
     private static Num nan(final MathContext context) {
-        return nanNum(context, decimalNumFactory(context));
+        final var factory = decimalNumFactory(context);
+        if (factory == FACTORY_DECIMAL32) {
+            return NaN_DECIMAL32;
+        }
+        if (factory == FACTORY_DECIMAL64) {
+            return NaN_DECIMAL64;
+        }
+        if (factory == FACTORY_DECIMAL128) {
+            return NaN_DECIMAL128;
+        }
+        return nanNum(context, factory);
     }
 
     /**
@@ -262,307 +581,6 @@ public final class DecimalNum implements Num {
      */
     public static Num decimalNum(final Num num, final MathContext context) {
         return decimalNum(num.unwrap(), context);
-    }
-
-    /**
-     * @return {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}
-     */
-    public static NumFactory decimalNum32Factory() {
-        return decimalNumFactory(DECIMAL32);
-    }
-
-    /**
-     * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}
-     */
-    public static NumFactory decimalNum32Factory(final RoundingMode roundingMode) {
-        return decimalNumFactory(DECIMAL32.getPrecision(), roundingMode);
-    }
-
-    /**
-     * @return {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}
-     */
-    public static NumFactory decimalNum64Factory() {
-        return decimalNumFactory(DECIMAL64);
-    }
-
-    /**
-     * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}
-     */
-    public static NumFactory decimalNum64Factory(final RoundingMode roundingMode) {
-        return decimalNumFactory(DECIMAL64.getPrecision(), roundingMode);
-    }
-
-    /**
-     * @return {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}
-     */
-    public static NumFactory decimalNum128Factory() {
-        return decimalNumFactory(DECIMAL128);
-    }
-
-    /**
-     * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
-     * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}
-     */
-    public static NumFactory decimalNum128Factory(final RoundingMode roundingMode) {
-        return decimalNumFactory(DECIMAL128.getPrecision(), roundingMode);
-    }
-
-    /**
-     * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>roundingMode</code> set to
-     * {@link RoundingMode#HALF_EVEN}
-     */
-    public static NumFactory decimalNumFactory(final int significantFigures) {
-        return decimalNumFactory(significantFigures, HALF_EVEN);
-    }
-
-    /**
-     * @return {@link #decimalNumFactory(MathContext)} with {@link MathContext#getPrecision()} set to
-     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
-     */
-    public static NumFactory decimalNumFactory(final int significantFigures, final RoundingMode roundingMode) {
-        return decimalNumFactory(new MathContext(significantFigures, roundingMode));
-    }
-
-    private static final Factory FACTORY_DECIMAL32 = new Factory(DECIMAL32);
-    private static final Factory FACTORY_DECIMAL64 = new Factory(DECIMAL64);
-    private static final Factory FACTORY_DECIMAL128 = new Factory(DECIMAL128);
-
-    /**
-     * Creates a new {@link NumFactory} for {@link DecimalNum} using the given {@link MathContext}.
-     *
-     * @param context the {@link MathContext}
-     *
-     * @return the {@link DecimalNum} {@link NumFactory}
-     */
-    public static NumFactory decimalNumFactory(final MathContext context) {
-        if (context.equals(DECIMAL32)) {
-            return FACTORY_DECIMAL32;
-        }
-        if (context.equals(DECIMAL64)) {
-            return FACTORY_DECIMAL64;
-        }
-        if (context.equals(DECIMAL128)) {
-            return FACTORY_DECIMAL128;
-        }
-        return new Factory(context);
-    }
-
-    private static class Factory implements NumFactory {
-
-        private final @SuppressWarnings("Immutable") MathContext context;
-        private @LazyInit @Nullable Num negativeOne;
-        private @LazyInit @Nullable Num zero;
-        private @LazyInit @Nullable Num one;
-        private @LazyInit @Nullable Num two;
-        private @LazyInit @Nullable Num three;
-        private @LazyInit @Nullable Num four;
-        private @LazyInit @Nullable Num five;
-        private @LazyInit @Nullable Num six;
-        private @LazyInit @Nullable Num seven;
-        private @LazyInit @Nullable Num eight;
-        private @LazyInit @Nullable Num nine;
-        private @LazyInit @Nullable Num ten;
-        private @LazyInit @Nullable Num hundred;
-        private @LazyInit @Nullable Num thousand;
-        private @LazyInit @Nullable Num tenth;
-        private @LazyInit @Nullable Num hundredth;
-        private @LazyInit @Nullable Num thousandth;
-        private @LazyInit @Nullable Num half;
-
-        private Factory(final MathContext context) {
-            this.context = context;
-        }
-
-        @Override
-        public Num of(final Number number) {
-            if (number instanceof final Integer aInteger) {
-                // Only using sequential numbers enables `TABLESWITCH` bytecode instruction.
-                return switch (aInteger) {
-                    case -1 -> negativeOne();
-                    case 0 -> zero();
-                    case 1 -> one();
-                    case 2 -> two();
-                    case 3 -> three();
-                    case 4 -> four();
-                    case 5 -> five();
-                    case 6 -> six();
-                    case 7 -> seven();
-                    case 8 -> eight();
-                    case 9 -> nine();
-                    case 10 -> ten();
-                    default -> decimalNum(number, context);
-                };
-            }
-            return decimalNum(number, context);
-        }
-
-        @Override
-        public Num of(final String string) {
-            return decimalNum(string, context);
-        }
-
-        @Override
-        public Num of(final Num num) {
-            return decimalNum(num, context);
-        }
-
-        @Override
-        public Num negativeOne() {
-            if (negativeOne == null) {
-                negativeOne = of(-1);
-            }
-            return negativeOne;
-        }
-
-        @Override
-        public Num zero() {
-            if (zero == null) {
-                zero = of(0);
-            }
-            return zero;
-        }
-
-        @Override
-        public Num one() {
-            if (one == null) {
-                one = of(1);
-            }
-            return one;
-        }
-
-        @Override
-        public Num two() {
-            if (two == null) {
-                two = of(2);
-            }
-            return two;
-        }
-
-        @Override
-        public Num three() {
-            if (three == null) {
-                three = of(3);
-            }
-            return three;
-        }
-
-        @Override
-        public Num four() {
-            if (four == null) {
-                four = of(4);
-            }
-            return four;
-        }
-
-        @Override
-        public Num five() {
-            if (five == null) {
-                five = of(5);
-            }
-            return five;
-        }
-
-        @Override
-        public Num six() {
-            if (six == null) {
-                six = of(6);
-            }
-            return six;
-        }
-
-        @Override
-        public Num seven() {
-            if (seven == null) {
-                seven = of(7);
-            }
-            return seven;
-        }
-
-        @Override
-        public Num eight() {
-            if (eight == null) {
-                eight = of(8);
-            }
-            return eight;
-        }
-
-        @Override
-        public Num nine() {
-            if (nine == null) {
-                nine = of(9);
-            }
-            return nine;
-        }
-
-        @Override
-        public Num ten() {
-            if (ten == null) {
-                ten = of(10);
-            }
-            return ten;
-        }
-
-        @Override
-        public Num hundred() {
-            if (hundred == null) {
-                hundred = of(100);
-            }
-            return hundred;
-        }
-
-        @Override
-        public Num thousand() {
-            if (thousand == null) {
-                thousand = of(1000);
-            }
-            return thousand;
-        }
-
-        @Override
-        public Num tenth() {
-            if (tenth == null) {
-                tenth = of(0.1);
-            }
-            return tenth;
-        }
-
-        @Override
-        public Num hundredth() {
-            if (hundredth == null) {
-                hundredth = of(0.01);
-            }
-            return hundredth;
-        }
-
-        @Override
-        public Num thousandth() {
-            if (thousandth == null) {
-                thousandth = of(0.001);
-            }
-            return thousandth;
-        }
-
-        @Override
-        public Num half() {
-            if (half == null) {
-                half = of(0.5);
-            }
-            return half;
-        }
-
-        @Override
-        public Num random(final RandomGenerator randomGenerator) {
-            // https://gist.github.com/Petersoj/749b4ac7906054242ea2a2089a2e5b2d
-            final var prefix = "0.";
-            final var stringBuilder = new StringBuilder(prefix.length() + context.getPrecision());
-            stringBuilder.append(prefix);
-            for (var digitIndex = 0; digitIndex < context.getPrecision(); digitIndex++) {
-                stringBuilder.append(randomGenerator.nextInt(10));
-            }
-            return of(stringBuilder.toString());
-        }
     }
 
     private static final BigDecimal THREE = new BigDecimal(3);
