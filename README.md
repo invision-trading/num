@@ -71,20 +71,21 @@ representations at runtime.
 
 ## The `Num` Interface
 
-[`Num`](src/main/java/trade/invision/num/Num.java), short for "number", is an interface for performing mathematical
-operations on real decimal numbers. Implementations wrap a
+[`Num`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html), short for "number", is an
+interface for performing mathematical operations on real decimal numbers. Implementations wrap a
 [`Number`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Number.html) instance so that
 performing mathematical operations on floating-point binary numbers
 ([`Double`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Double.html) via
-[`DoubleNum`](src/main/java/trade/invision/num/DoubleNum.java)) or arbitrary-precision decimal numbers
+[`DoubleNum`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/DoubleNum.html)) or
+arbitrary-precision decimal numbers
 ([`BigDecimal`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html) via
-[`DecimalNum`](src/main/java/trade/invision/num/DecimalNum.java)) is simple. All implementations of this interface are
-interoperable with each other. Operations involving different implementations will result in a `Num` that trends towards
-an increase in precision. For example, subtracting a `DecimalNum` from a `DoubleNum` will result in a `DecimalNum`. For
-another example, subtracting a `DecimalNum` with a context precision of `16` from a `DecimalNum` with a context
-precision of `32` will result in a `DecimalNum` with a context precision of `32`. Mathematical operations that result in
-`NaN`, `+Infinity`, `-Infinity`, or throw an `ArithmeticException` will yield a
-[`NaNNum`](src/main/java/trade/invision/num/NaNNum.java).
+[`DecimalNum`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/DecimalNum.html)) is simple. All
+implementations of this interface are interoperable with each other. Operations involving different implementations will
+result in a `Num` that trends towards an increase in precision. For example, subtracting a `DecimalNum` from a
+`DoubleNum` will result in a `DecimalNum`. For another example, subtracting a `DecimalNum` with a context precision of
+`16` from a `DecimalNum` with a context precision of `32` will result in a `DecimalNum` with a context precision of
+`32`. Mathematical operations that result in `NaN`, `+Infinity`, `-Infinity`, or throw an `ArithmeticException` will
+yield a [`NaNNum`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/NaNNum.html).
 
 ## Usage
 
