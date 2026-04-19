@@ -33,49 +33,12 @@ import static trade.invision.num.NaNNum.nanNum;
 public final class DoubleNum implements Num {
 
     /**
-     * The {@link DoubleNum} {@link NumFactory}.
+     * The {@link NumFactory} for {@link DoubleNum}.
      */
     public static final NumFactory FACTORY = new NumFactory() {
 
-        private static final Num NEGATIVE_ONE = doubleNum(-1);
-        private static final Num ZERO = doubleNum(0);
-        private static final Num ONE = doubleNum(1);
-        private static final Num TWO = doubleNum(2);
-        private static final Num THREE = doubleNum(3);
-        private static final Num FOUR = doubleNum(4);
-        private static final Num FIVE = doubleNum(5);
-        private static final Num SIX = doubleNum(6);
-        private static final Num SEVEN = doubleNum(7);
-        private static final Num EIGHT = doubleNum(8);
-        private static final Num NINE = doubleNum(9);
-        private static final Num TEN = doubleNum(10);
-        private static final Num HUNDRED = doubleNum(100);
-        private static final Num THOUSAND = doubleNum(1000);
-        private static final Num TENTH = doubleNum(0.1);
-        private static final Num HUNDREDTH = doubleNum(0.01);
-        private static final Num THOUSANDTH = doubleNum(0.001);
-        private static final Num HALF = doubleNum(0.5);
-
         @Override
         public Num of(final Number number) {
-            if (number instanceof final Integer aInteger) {
-                // Only using sequential numbers enables `TABLESWITCH` bytecode instruction.
-                return switch (aInteger) {
-                    case -1 -> negativeOne();
-                    case 0 -> zero();
-                    case 1 -> one();
-                    case 2 -> two();
-                    case 3 -> three();
-                    case 4 -> four();
-                    case 5 -> five();
-                    case 6 -> six();
-                    case 7 -> seven();
-                    case 8 -> eight();
-                    case 9 -> nine();
-                    case 10 -> ten();
-                    default -> doubleNum(number);
-                };
-            }
             return doubleNum(number);
         }
 
@@ -87,96 +50,6 @@ public final class DoubleNum implements Num {
         @Override
         public Num of(final Num num) {
             return doubleNum(num);
-        }
-
-        @Override
-        public Num negativeOne() {
-            return NEGATIVE_ONE;
-        }
-
-        @Override
-        public Num zero() {
-            return ZERO;
-        }
-
-        @Override
-        public Num one() {
-            return ONE;
-        }
-
-        @Override
-        public Num two() {
-            return TWO;
-        }
-
-        @Override
-        public Num three() {
-            return THREE;
-        }
-
-        @Override
-        public Num four() {
-            return FOUR;
-        }
-
-        @Override
-        public Num five() {
-            return FIVE;
-        }
-
-        @Override
-        public Num six() {
-            return SIX;
-        }
-
-        @Override
-        public Num seven() {
-            return SEVEN;
-        }
-
-        @Override
-        public Num eight() {
-            return EIGHT;
-        }
-
-        @Override
-        public Num nine() {
-            return NINE;
-        }
-
-        @Override
-        public Num ten() {
-            return TEN;
-        }
-
-        @Override
-        public Num hundred() {
-            return HUNDRED;
-        }
-
-        @Override
-        public Num thousand() {
-            return THOUSAND;
-        }
-
-        @Override
-        public Num tenth() {
-            return TENTH;
-        }
-
-        @Override
-        public Num hundredth() {
-            return HUNDREDTH;
-        }
-
-        @Override
-        public Num thousandth() {
-            return THOUSANDTH;
-        }
-
-        @Override
-        public Num half() {
-            return HALF;
         }
 
         @Override

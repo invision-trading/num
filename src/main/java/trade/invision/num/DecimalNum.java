@@ -35,24 +35,6 @@ public final class DecimalNum implements Num {
     private static class Factory implements NumFactory {
 
         private final @SuppressWarnings("Immutable") MathContext context;
-        private @LazyInit @Nullable Num negativeOne;
-        private @LazyInit @Nullable Num zero;
-        private @LazyInit @Nullable Num one;
-        private @LazyInit @Nullable Num two;
-        private @LazyInit @Nullable Num three;
-        private @LazyInit @Nullable Num four;
-        private @LazyInit @Nullable Num five;
-        private @LazyInit @Nullable Num six;
-        private @LazyInit @Nullable Num seven;
-        private @LazyInit @Nullable Num eight;
-        private @LazyInit @Nullable Num nine;
-        private @LazyInit @Nullable Num ten;
-        private @LazyInit @Nullable Num hundred;
-        private @LazyInit @Nullable Num thousand;
-        private @LazyInit @Nullable Num tenth;
-        private @LazyInit @Nullable Num hundredth;
-        private @LazyInit @Nullable Num thousandth;
-        private @LazyInit @Nullable Num half;
 
         private Factory(final MathContext context) {
             this.context = context;
@@ -60,24 +42,6 @@ public final class DecimalNum implements Num {
 
         @Override
         public Num of(final Number number) {
-            if (number instanceof final Integer aInteger) {
-                // Only using sequential numbers enables `TABLESWITCH` bytecode instruction.
-                return switch (aInteger) {
-                    case -1 -> negativeOne();
-                    case 0 -> zero();
-                    case 1 -> one();
-                    case 2 -> two();
-                    case 3 -> three();
-                    case 4 -> four();
-                    case 5 -> five();
-                    case 6 -> six();
-                    case 7 -> seven();
-                    case 8 -> eight();
-                    case 9 -> nine();
-                    case 10 -> ten();
-                    default -> decimalNum(number, context);
-                };
-            }
             return decimalNum(number, context);
         }
 
@@ -89,150 +53,6 @@ public final class DecimalNum implements Num {
         @Override
         public Num of(final Num num) {
             return decimalNum(num, context);
-        }
-
-        @Override
-        public Num negativeOne() {
-            if (negativeOne == null) {
-                negativeOne = of(-1);
-            }
-            return negativeOne;
-        }
-
-        @Override
-        public Num zero() {
-            if (zero == null) {
-                zero = of(0);
-            }
-            return zero;
-        }
-
-        @Override
-        public Num one() {
-            if (one == null) {
-                one = of(1);
-            }
-            return one;
-        }
-
-        @Override
-        public Num two() {
-            if (two == null) {
-                two = of(2);
-            }
-            return two;
-        }
-
-        @Override
-        public Num three() {
-            if (three == null) {
-                three = of(3);
-            }
-            return three;
-        }
-
-        @Override
-        public Num four() {
-            if (four == null) {
-                four = of(4);
-            }
-            return four;
-        }
-
-        @Override
-        public Num five() {
-            if (five == null) {
-                five = of(5);
-            }
-            return five;
-        }
-
-        @Override
-        public Num six() {
-            if (six == null) {
-                six = of(6);
-            }
-            return six;
-        }
-
-        @Override
-        public Num seven() {
-            if (seven == null) {
-                seven = of(7);
-            }
-            return seven;
-        }
-
-        @Override
-        public Num eight() {
-            if (eight == null) {
-                eight = of(8);
-            }
-            return eight;
-        }
-
-        @Override
-        public Num nine() {
-            if (nine == null) {
-                nine = of(9);
-            }
-            return nine;
-        }
-
-        @Override
-        public Num ten() {
-            if (ten == null) {
-                ten = of(10);
-            }
-            return ten;
-        }
-
-        @Override
-        public Num hundred() {
-            if (hundred == null) {
-                hundred = of(100);
-            }
-            return hundred;
-        }
-
-        @Override
-        public Num thousand() {
-            if (thousand == null) {
-                thousand = of(1000);
-            }
-            return thousand;
-        }
-
-        @Override
-        public Num tenth() {
-            if (tenth == null) {
-                tenth = of(0.1);
-            }
-            return tenth;
-        }
-
-        @Override
-        public Num hundredth() {
-            if (hundredth == null) {
-                hundredth = of(0.01);
-            }
-            return hundredth;
-        }
-
-        @Override
-        public Num thousandth() {
-            if (thousandth == null) {
-                thousandth = of(0.001);
-            }
-            return thousandth;
-        }
-
-        @Override
-        public Num half() {
-            if (half == null) {
-                half = of(0.5);
-            }
-            return half;
         }
 
         @Override

@@ -89,21 +89,22 @@ yield a [`NaNNum`](https://javadoc.io/doc/trade.invision/num/latest/trade/invisi
 
 ## Usage
 
-To create a `DoubleNum`, provide an existing `Number` (`byte`, `short`, `int`, `long`, `float`, `double`, `BigDecimal`),
-`String`, `NumFactory` lambda, or `Num` to the `DoubleNum.doubleNum()` static method. Statically importing `doubleNum()`
-is preferred as your code will likely look cleaner.
+To get a `DoubleNum` instance, provide a `Number` (`byte`, `short`, `int`, `long`, `float`, `double`, `BigDecimal`),
+`String`, or existing `Num` to the `DoubleNum.doubleNum()` static method. Statically importing `doubleNum()` is
+preferred as your code will likely look cleaner.
 
-Creating a `DecimalNum` is similar to `DoubleNum`, but requires you to specify a precision and rounding mode via a
-[`MathContext`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/MathContext.html). Use
+Getting a `DecimalNum` instance is similar to `DoubleNum`, but requires you to specify a precision and rounding mode via
+a [`MathContext`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/MathContext.html). Use
 `DecimalNum.decimalNum(String, MathContext)` or use one of the convenience methods, such as `decimalNum64()` which
 provides approximately the same precision as `double`, allowing up to 16 significant figures of precision and the same
 [rounding policy](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/RoundingMode.html#HALF_EVEN) as
 `double`. Again, statically importing `decimalNum()` is preferred as your code will likely look cleaner.
 
-You can create a [`NumFactory`](src/main/java/trade/invision/num/NumFactory.java) instance to abstract the `Num`
-creation process by using one of the `NumFactory` creation methods available in `DoubleNum` or `DecimalNum` (e.g.
-`DecimalNum.decimalNum64Factory()`). The `NumFactory` defines the underlying number representation for new `Num`
-instances, so you can create a `Num` from an existing `Number`, `String`, or `Num` by simply using `NumFactory.of(...)`.
+The [`NumFactory`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/NumFactory.html) interface makes
+it easy to get `Num` instances from a given `Number`, `String`, or existing `Num` by simply using `NumFactory.of(...)`
+instead of calling the `DoubleNum` or `DecimalNum` static methods directly. To get a `NumFactory` for `DoubleNum`
+instances, use `DoubleNum.FACTORY`. To get a `NumFactory` for `DecimalNum` instances, use one of the static methods such
+as `DecimalNum.decimalNum64Factory()`.
 
 Check out the [Javadoc](https://javadoc.io/doc/trade.invision/num) for all classes and method signatures, but here's a
 quick reference:
