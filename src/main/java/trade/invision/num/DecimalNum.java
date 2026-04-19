@@ -8,7 +8,6 @@ import org.jspecify.annotations.Nullable;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
-import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.random.RandomGenerator;
 
@@ -1112,11 +1111,6 @@ public final class DecimalNum implements Num {
 
     @Override
     public Num ifNaN(final String replacement) {
-        return this;
-    }
-
-    @Override
-    public Num ifNaN(final Function<NumFactory, Num> replacement) {
         return this;
     }
 

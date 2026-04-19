@@ -6,7 +6,6 @@ import org.jspecify.annotations.NullMarked;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -61,12 +60,6 @@ public final class NaNNum implements Num {
         return this;
     }
 
-    @Generated
-    @Override
-    public Num add(final Function<NumFactory, Num> addend) {
-        return this;
-    }
-
     @Override
     public Num add(final Num addend) {
         return this;
@@ -81,12 +74,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public Num subtract(final String subtrahend) {
-        return this;
-    }
-
-    @Generated
-    @Override
-    public Num subtract(final Function<NumFactory, Num> subtrahend) {
         return this;
     }
 
@@ -107,12 +94,6 @@ public final class NaNNum implements Num {
         return this;
     }
 
-    @Generated
-    @Override
-    public Num multiply(final Function<NumFactory, Num> multiplier) {
-        return this;
-    }
-
     @Override
     public Num multiply(final Num multiplier) {
         return this;
@@ -127,12 +108,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public Num divide(final String divisor) {
-        return this;
-    }
-
-    @Generated
-    @Override
-    public Num divide(final Function<NumFactory, Num> divisor) {
         return this;
     }
 
@@ -153,12 +128,6 @@ public final class NaNNum implements Num {
         return this;
     }
 
-    @Generated
-    @Override
-    public Num remainder(final Function<NumFactory, Num> divisor) {
-        return this;
-    }
-
     @Override
     public Num remainder(final Num divisor) {
         return this;
@@ -173,12 +142,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public Num power(final String exponent) {
-        return this;
-    }
-
-    @Generated
-    @Override
-    public Num power(final Function<NumFactory, Num> exponent) {
         return this;
     }
 
@@ -211,12 +174,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public Num nthRoot(final String degree) {
-        return this;
-    }
-
-    @Generated
-    @Override
-    public Num nthRoot(final Function<NumFactory, Num> degree) {
         return this;
     }
 
@@ -259,12 +216,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public Num log(final String base) {
-        return this;
-    }
-
-    @Generated
-    @Override
-    public Num log(final Function<NumFactory, Num> base) {
         return this;
     }
 
@@ -370,12 +321,6 @@ public final class NaNNum implements Num {
         return this;
     }
 
-    @Generated
-    @Override
-    public Num atan2(final Function<NumFactory, Num> x) {
-        return this;
-    }
-
     @Override
     public Num atan2(final Num x) {
         return this;
@@ -423,12 +368,6 @@ public final class NaNNum implements Num {
         return this;
     }
 
-    @Generated
-    @Override
-    public Num hypotenuse(final Function<NumFactory, Num> y) {
-        return this;
-    }
-
     @Override
     public Num hypotenuse(final Num y) {
         return this;
@@ -443,12 +382,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public Num average(final String other) {
-        return this;
-    }
-
-    @Generated
-    @Override
-    public Num average(final Function<NumFactory, Num> other) {
         return this;
     }
 
@@ -469,12 +402,6 @@ public final class NaNNum implements Num {
         return this;
     }
 
-    @Generated
-    @Override
-    public Num min(final Function<NumFactory, Num> other) {
-        return this;
-    }
-
     @Override
     public Num min(final Num other) {
         return this;
@@ -492,12 +419,6 @@ public final class NaNNum implements Num {
         return this;
     }
 
-    @Generated
-    @Override
-    public Num max(final Function<NumFactory, Num> other) {
-        return this;
-    }
-
     @Override
     public Num max(final Num other) {
         return this;
@@ -512,12 +433,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public Num clamp(final Number min, final String max) {
-        return this;
-    }
-
-    @Generated
-    @Override
-    public Num clamp(final Number min, final Function<NumFactory, Num> max) {
         return this;
     }
 
@@ -541,37 +456,7 @@ public final class NaNNum implements Num {
 
     @Generated
     @Override
-    public Num clamp(final String min, final Function<NumFactory, Num> max) {
-        return this;
-    }
-
-    @Generated
-    @Override
     public Num clamp(final String min, final Num max) {
-        return this;
-    }
-
-    @Generated
-    @Override
-    public Num clamp(final Function<NumFactory, Num> min, final Number max) {
-        return this;
-    }
-
-    @Generated
-    @Override
-    public Num clamp(final Function<NumFactory, Num> min, final String max) {
-        return this;
-    }
-
-    @Generated
-    @Override
-    public Num clamp(final Function<NumFactory, Num> min, final Function<NumFactory, Num> max) {
-        return this;
-    }
-
-    @Generated
-    @Override
-    public Num clamp(final Function<NumFactory, Num> min, final Num max) {
         return this;
     }
 
@@ -584,12 +469,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public Num clamp(final Num min, final String max) {
-        return this;
-    }
-
-    @Generated
-    @Override
-    public Num clamp(final Num min, final Function<NumFactory, Num> max) {
         return this;
     }
 
@@ -691,12 +570,6 @@ public final class NaNNum implements Num {
         return false;
     }
 
-    @Generated
-    @Override
-    public boolean isNegativeOrZero(final Function<NumFactory, Num> epsilon) {
-        return false;
-    }
-
     @Override
     public boolean isNegativeOrZero(final Num epsilon) {
         return false;
@@ -724,12 +597,6 @@ public final class NaNNum implements Num {
         return false;
     }
 
-    @Generated
-    @Override
-    public boolean isPositiveOrZero(final Function<NumFactory, Num> epsilon) {
-        return false;
-    }
-
     @Override
     public boolean isPositiveOrZero(final Num epsilon) {
         return false;
@@ -752,12 +619,6 @@ public final class NaNNum implements Num {
         return false;
     }
 
-    @Generated
-    @Override
-    public boolean isZero(final Function<NumFactory, Num> epsilon) {
-        return false;
-    }
-
     @Override
     public boolean isZero(final Num epsilon) {
         return false;
@@ -775,12 +636,6 @@ public final class NaNNum implements Num {
         return false;
     }
 
-    @Generated
-    @Override
-    public boolean isEqual(final Function<NumFactory, Num> other) {
-        return false;
-    }
-
     @Override
     public boolean isEqual(final Num other) {
         return false;
@@ -795,12 +650,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public boolean isEqual(final Number other, final String epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isEqual(final Number other, final Function<NumFactory, Num> epsilon) {
         return false;
     }
 
@@ -824,37 +673,7 @@ public final class NaNNum implements Num {
 
     @Generated
     @Override
-    public boolean isEqual(final String other, final Function<NumFactory, Num> epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
     public boolean isEqual(final String other, final Num epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isEqual(final Function<NumFactory, Num> other, final Number epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isEqual(final Function<NumFactory, Num> other, final String epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isEqual(final Function<NumFactory, Num> other, final Function<NumFactory, Num> epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isEqual(final Function<NumFactory, Num> other, final Num epsilon) {
         return false;
     }
 
@@ -867,12 +686,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public boolean isEqual(final Num other, final String epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isEqual(final Num other, final Function<NumFactory, Num> epsilon) {
         return false;
     }
 
@@ -893,12 +706,6 @@ public final class NaNNum implements Num {
         return false;
     }
 
-    @Generated
-    @Override
-    public boolean isLessThan(final Function<NumFactory, Num> other) {
-        return false;
-    }
-
     @Override
     public boolean isLessThan(final Num other) {
         return false;
@@ -916,12 +723,6 @@ public final class NaNNum implements Num {
         return false;
     }
 
-    @Generated
-    @Override
-    public boolean isLessThanOrEqual(final Function<NumFactory, Num> other) {
-        return false;
-    }
-
     @Override
     public boolean isLessThanOrEqual(final Num other) {
         return false;
@@ -936,12 +737,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public boolean isLessThanOrEqual(final Number other, final String epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isLessThanOrEqual(final Number other, final Function<NumFactory, Num> epsilon) {
         return false;
     }
 
@@ -965,37 +760,7 @@ public final class NaNNum implements Num {
 
     @Generated
     @Override
-    public boolean isLessThanOrEqual(final String other, final Function<NumFactory, Num> epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
     public boolean isLessThanOrEqual(final String other, final Num epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isLessThanOrEqual(final Function<NumFactory, Num> other, final Number epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isLessThanOrEqual(final Function<NumFactory, Num> other, final String epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isLessThanOrEqual(final Function<NumFactory, Num> other, final Function<NumFactory, Num> epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isLessThanOrEqual(final Function<NumFactory, Num> other, final Num epsilon) {
         return false;
     }
 
@@ -1008,12 +773,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public boolean isLessThanOrEqual(final Num other, final String epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isLessThanOrEqual(final Num other, final Function<NumFactory, Num> epsilon) {
         return false;
     }
 
@@ -1034,12 +793,6 @@ public final class NaNNum implements Num {
         return false;
     }
 
-    @Generated
-    @Override
-    public boolean isGreaterThan(final Function<NumFactory, Num> other) {
-        return false;
-    }
-
     @Override
     public boolean isGreaterThan(final Num other) {
         return false;
@@ -1057,12 +810,6 @@ public final class NaNNum implements Num {
         return false;
     }
 
-    @Generated
-    @Override
-    public boolean isGreaterThanOrEqual(final Function<NumFactory, Num> other) {
-        return false;
-    }
-
     @Override
     public boolean isGreaterThanOrEqual(final Num other) {
         return false;
@@ -1077,12 +824,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public boolean isGreaterThanOrEqual(final Number other, final String epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isGreaterThanOrEqual(final Number other, final Function<NumFactory, Num> epsilon) {
         return false;
     }
 
@@ -1106,38 +847,7 @@ public final class NaNNum implements Num {
 
     @Generated
     @Override
-    public boolean isGreaterThanOrEqual(final String other, final Function<NumFactory, Num> epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
     public boolean isGreaterThanOrEqual(final String other, final Num epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isGreaterThanOrEqual(final Function<NumFactory, Num> other, final Number epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isGreaterThanOrEqual(final Function<NumFactory, Num> other, final String epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isGreaterThanOrEqual(final Function<NumFactory, Num> other,
-            final Function<NumFactory, Num> epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isGreaterThanOrEqual(final Function<NumFactory, Num> other, final Num epsilon) {
         return false;
     }
 
@@ -1150,12 +860,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public boolean isGreaterThanOrEqual(final Num other, final String epsilon) {
-        return false;
-    }
-
-    @Generated
-    @Override
-    public boolean isGreaterThanOrEqual(final Num other, final Function<NumFactory, Num> epsilon) {
         return false;
     }
 
@@ -1223,12 +927,6 @@ public final class NaNNum implements Num {
     @Generated
     @Override
     public int compareTo(final String o) {
-        return 0;
-    }
-
-    @Generated
-    @Override
-    public int compareTo(final Function<NumFactory, Num> o) {
         return 0;
     }
 

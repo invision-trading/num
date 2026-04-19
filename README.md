@@ -102,9 +102,9 @@ provides approximately the same precision as `double`, allowing up to 16 signifi
 
 The [`NumFactory`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/NumFactory.html) interface makes
 it easy to get `Num` instances from a given `Number`, `String`, or existing `Num` by simply using `NumFactory.of(...)`
-instead of calling the `DoubleNum` or `DecimalNum` static methods directly. To get a `NumFactory` for `DoubleNum`
-instances, use `DoubleNum.FACTORY`. To get a `NumFactory` for `DecimalNum` instances, use one of the static methods such
-as `DecimalNum.decimalNum64Factory()`.
+instead of calling the `DoubleNum` or `DecimalNum` static methods directly. To get a `NumFactory` instance for
+`DoubleNum`, use `DoubleNum.FACTORY`. To get a `NumFactory` instance for `DecimalNum`, use one of the static methods
+such as `DecimalNum.decimalNum64Factory()`.
 
 Check out the [Javadoc](https://javadoc.io/doc/trade.invision/num) for all classes and method signatures, but here's a
 quick reference:
