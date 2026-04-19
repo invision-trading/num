@@ -192,7 +192,11 @@ public final class DoubleNum implements Num {
     }
 
     private static final MathContext CONTEXT = DECIMAL64;
-    private static final @SuppressWarnings("IdentifierName") Num NaN = nanNum(CONTEXT, FACTORY);
+
+    /**
+     * The {@link NaNNum} constant for this {@link DoubleNum}.
+     */
+    public static final @SuppressWarnings("IdentifierName") Num NaN = nanNum(CONTEXT, FACTORY);
 
     /**
      * Creates a new {@link DoubleNum} for the given <code>double</code>.
