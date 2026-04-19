@@ -32,7 +32,10 @@ import static trade.invision.num.NaNNum.nanNum;
 @NullMarked
 public final class DoubleNum implements Num {
 
-    private static final NumFactory FACTORY = new NumFactory() {
+    /**
+     * The {@link DoubleNum} {@link NumFactory}.
+     */
+    public static final NumFactory FACTORY = new NumFactory() {
 
         private static final Num NEGATIVE_ONE = doubleNum(-1);
         private static final Num ZERO = doubleNum(0);
@@ -181,15 +184,6 @@ public final class DoubleNum implements Num {
             return of(randomGenerator.nextDouble());
         }
     };
-
-    /**
-     * Gets the {@link NumFactory} for {@link DoubleNum}.
-     *
-     * @return the {@link DoubleNum} {@link NumFactory}
-     */
-    public static NumFactory doubleNumFactory() {
-        return FACTORY;
-    }
 
     private static final MathContext CONTEXT = DECIMAL64;
 
