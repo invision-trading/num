@@ -1,5 +1,6 @@
 package trade.invision.num;
 
+import lombok.Generated;
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 
@@ -638,11 +639,13 @@ public final class DoubleNum implements Num {
         return false;
     }
 
+    @Generated
     @Override
     public Num ifNaN(final Number replacement) {
         return this;
     }
 
+    @Generated
     @Override
     public Num ifNaN(final String replacement) {
         return this;
