@@ -1214,6 +1214,24 @@ public final class NaNNum implements Num {
         return STRING;
     }
 
+    @Generated
+    @Override
+    public int compareTo(final Number o) {
+        return 0;
+    }
+
+    @Generated
+    @Override
+    public int compareTo(final String o) {
+        return 0;
+    }
+
+    @Generated
+    @Override
+    public int compareTo(final Function<NumFactory, Num> o) {
+        return 0;
+    }
+
     @Override
     public int compareTo(final Num o) {
         return 0;

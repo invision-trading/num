@@ -2103,4 +2103,28 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
 
     @Override
     String toString();
+
+    /**
+     * @return {@link #compareTo(Object)} {@link NumFactory#of(Number)}
+     */
+    @Generated
+    default int compareTo(final Number o) {
+        return compareTo(getFactory().of(o));
+    }
+
+    /**
+     * @return {@link #compareTo(Object)} {@link NumFactory#of(String)}
+     */
+    @Generated
+    default int compareTo(final String o) {
+        return compareTo(getFactory().of(o));
+    }
+
+    /**
+     * @return {@link #compareTo(Object)} {@link Function#apply(Object)} {@link #getFactory()}
+     */
+    @Generated
+    default int compareTo(final Function<NumFactory, Num> o) {
+        return compareTo(o.apply(getFactory()));
+    }
 }
