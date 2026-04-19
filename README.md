@@ -109,6 +109,8 @@ such as `DecimalNum.decimalNum64Factory()`.
 Check out the [Javadoc](https://javadoc.io/doc/trade.invision/num) for all classes and method signatures, but here's a
 quick reference:
 
+For `Num`:
+
 - [`add`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#add(trade.invision.num.Num))
 - [`subtract`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#subtract(trade.invision.num.Num))
 - [`multiply`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#multiply(trade.invision.num.Num))
@@ -134,8 +136,6 @@ quick reference:
 - [`ceil`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#ceil())
 - [`degrees`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#degrees())
 - [`radians`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#radians())
-- [`pi`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#pi())
-- [`e`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#e())
 - [`sin`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#sin())
 - [`cos`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#cos())
 - [`tan`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#tan())
@@ -189,6 +189,13 @@ quick reference:
 - [`equals`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#equals(java.lang.Object))
 - [`hashCode`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#hashCode())
 - [`toString`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/Num.html#toString())
+
+For `NumFactory`:
+
+- [`of`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/NumFactory.html#of(java.lang.Number))
+- [`random`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/NumFactory.html#random())
+- [`pi`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/NumFactory.html#pi())
+- [`e`](https://javadoc.io/doc/trade.invision/num/latest/trade/invision/num/NumFactory.html#e())
 
 ## Acknowledgement
 

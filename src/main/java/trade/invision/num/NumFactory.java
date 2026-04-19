@@ -55,4 +55,24 @@ public interface NumFactory {
      * @return the random {@link Num}
      */
     Num random(final RandomGenerator randomGenerator);
+
+    /**
+     * Returns the π (pi) mathematical constant.
+     *
+     * @return the pi {@link Num}
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Pi">
+     * wikipedia.org/wiki/Pi</a>
+     */
+    Num pi();
+
+    /**
+     * Returns the <i>e</i> (Euler's number) mathematical constant.
+     *
+     * @return the <i>e</i> {@link Num}
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/E_(mathematical_constant)">
+     * wikipedia.org/wiki/E_(mathematical_constant)</a>
+     */
+    Num e();
 }

@@ -453,26 +453,6 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num radians();
 
     /**
-     * Returns the π (pi) mathematical constant with a precision of {@link #getContextPrecision()}.
-     *
-     * @return the pi {@link Num}
-     *
-     * @see <a href="https://en.wikipedia.org/wiki/Pi">
-     * wikipedia.org/wiki/Pi</a>
-     */
-    Num pi();
-
-    /**
-     * Returns the <i>e</i> (Euler's number) mathematical constant with a precision of {@link #getContextPrecision()}.
-     *
-     * @return the <i>e</i> {@link Num}
-     *
-     * @see <a href="https://en.wikipedia.org/wiki/E_(mathematical_constant)">
-     * wikipedia.org/wiki/E_(mathematical_constant)</a>
-     */
-    Num e();
-
-    /**
      * Performs a trigonometric sine operation of this {@link Num} in radians: <code>sin(this)</code>.
      *
      * @return the sine {@link Num}

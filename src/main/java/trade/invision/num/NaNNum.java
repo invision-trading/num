@@ -270,16 +270,6 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num pi() {
-        return this;
-    }
-
-    @Override
-    public Num e() {
-        return this;
-    }
-
-    @Override
     public Num sin() {
         return this;
     }

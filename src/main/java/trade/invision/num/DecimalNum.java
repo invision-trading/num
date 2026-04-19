@@ -66,6 +66,16 @@ public final class DecimalNum implements Num {
             }
             return of(stringBuilder.toString());
         }
+
+        @Override
+        public Num pi() {
+            return new DecimalNum(BigDecimalMath.pi(context), context);
+        }
+
+        @Override
+        public Num e() {
+            return new DecimalNum(BigDecimalMath.e(context), context);
+        }
     }
 
     /**
@@ -730,24 +740,6 @@ public final class DecimalNum implements Num {
     public Num radians() {
         try {
             return new DecimalNum(BigDecimalMath.toRadians(wrapped, context), context);
-        } catch (final ArithmeticException arithmeticException) {
-            return nanNum(context);
-        }
-    }
-
-    @Override
-    public Num pi() {
-        try {
-            return new DecimalNum(BigDecimalMath.pi(context), context);
-        } catch (final ArithmeticException arithmeticException) {
-            return nanNum(context);
-        }
-    }
-
-    @Override
-    public Num e() {
-        try {
-            return new DecimalNum(BigDecimalMath.e(context), context);
         } catch (final ArithmeticException arithmeticException) {
             return nanNum(context);
         }

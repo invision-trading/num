@@ -37,6 +37,9 @@ public final class DoubleNum implements Num {
      */
     public static final NumFactory FACTORY = new NumFactory() {
 
+        private static final Num PI = doubleNum(Math.PI);
+        private static final Num E = doubleNum(Math.E);
+
         @Override
         public Num of(final Number number) {
             return doubleNum(number);
@@ -55,6 +58,16 @@ public final class DoubleNum implements Num {
         @Override
         public Num random(final RandomGenerator randomGenerator) {
             return of(randomGenerator.nextDouble());
+        }
+
+        @Override
+        public Num pi() {
+            return PI;
+        }
+
+        @Override
+        public Num e() {
+            return E;
         }
     };
 
@@ -100,8 +113,6 @@ public final class DoubleNum implements Num {
     }
 
     private static final double NATURAL_LOGARITHM_OF_2 = 0.6931471805599453;
-    private static final Num PI = doubleNum(Math.PI);
-    private static final Num E = doubleNum(Math.E);
 
     private final double wrapped;
 
@@ -280,16 +291,6 @@ public final class DoubleNum implements Num {
     @Override
     public Num radians() {
         return doubleNum(Math.toRadians(wrapped));
-    }
-
-    @Override
-    public Num pi() {
-        return PI;
-    }
-
-    @Override
-    public Num e() {
-        return E;
     }
 
     @Override
