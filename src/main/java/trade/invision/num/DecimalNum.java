@@ -1,7 +1,6 @@
 package trade.invision.num;
 
 import ch.obermuhlner.math.big.BigDecimalMath;
-import com.google.errorprone.annotations.concurrent.LazyInit;
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 
@@ -470,7 +469,6 @@ public final class DecimalNum implements Num {
 
     private final BigDecimal wrapped;
     private final @SuppressWarnings("Immutable") MathContext context;
-    private @LazyInit @Nullable NumFactory factory;
 
     private DecimalNum(final BigDecimal wrapped, final MathContext context) {
         this.wrapped = wrapped;
@@ -1146,10 +1144,7 @@ public final class DecimalNum implements Num {
 
     @Override
     public NumFactory getFactory() {
-        if (factory == null) {
-            factory = decimalNumFactory(context);
-        }
-        return factory;
+        return decimalNumFactory(context);
     }
 
     @Override
