@@ -1130,11 +1130,6 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public Num ifNaNThrow(final RuntimeException runtimeException) {
-        return this;
-    }
-
-    @Override
     public Number unwrap() {
         return wrapped;
     }

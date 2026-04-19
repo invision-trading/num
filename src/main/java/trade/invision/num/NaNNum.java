@@ -889,11 +889,6 @@ public final class NaNNum implements Num {
     }
 
     @Override
-    public Num ifNaNThrow(final RuntimeException runtimeException) {
-        throw runtimeException;
-    }
-
-    @Override
     public Number unwrap() {
         return Double.NaN;
     }

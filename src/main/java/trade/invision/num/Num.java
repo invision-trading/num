@@ -1571,15 +1571,6 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     Num ifNaNThrow(final Supplier<RuntimeException> runtimeException) throws RuntimeException;
 
     /**
-     * Throws the given {@link RuntimeException} if {@link #isNaN()}, otherwise returns this {@link Num}.
-     *
-     * @param runtimeException the {@link RuntimeException}
-     *
-     * @throws RuntimeException the given {@link RuntimeException}
-     */
-    Num ifNaNThrow(final RuntimeException runtimeException) throws RuntimeException;
-
-    /**
      * Gets the wrapped {@link Number} value of this {@link Num}.
      *
      * @return the {@link Number}
