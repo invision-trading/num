@@ -462,7 +462,6 @@ public final class NaNNum implements Num {
         return this;
     }
 
-    @Generated
     @Override
     public Num clamp(final Num min, final Num max) {
         return this;
@@ -478,19 +477,16 @@ public final class NaNNum implements Num {
         return this;
     }
 
-    @Generated
     @Override
     public Num round() {
         return this;
     }
 
-    @Generated
     @Override
     public Num round(final RoundingMode roundingMode) {
         return this;
     }
 
-    @Generated
     @Override
     public Num round(final int scale) {
         return this;
