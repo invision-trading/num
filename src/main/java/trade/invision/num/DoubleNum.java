@@ -13,6 +13,8 @@ import java.util.random.RandomGenerator;
 import static java.lang.Double.isFinite;
 import static java.lang.Double.parseDouble;
 import static java.math.MathContext.DECIMAL64;
+import static java.math.RoundingMode.CEILING;
+import static java.math.RoundingMode.FLOOR;
 import static java.math.RoundingMode.HALF_EVEN;
 import static java.math.RoundingMode.HALF_UP;
 import static trade.invision.num.DecimalNum.decimalNum;
@@ -420,10 +422,9 @@ public final class DoubleNum implements Num {
 
     @Override
     public Num round(final int scale, final RoundingMode roundingMode) {
-        final var isHalfEven = roundingMode == HALF_EVEN;
-        if (isHalfEven || roundingMode == HALF_UP) {
+        if (roundingMode == CEILING || roundingMode == FLOOR || roundingMode == HALF_UP || roundingMode == HALF_EVEN) {
             if (scale == 0) {
-                return doubleNum(isHalfEven ? Math.rint(wrapped) : Math.round(wrapped));
+                return doubleNum(doRound(wrapped, roundingMode));
             }
             final var multiplier = switch (scale) {
                 case -15 -> 1e-15;
@@ -458,10 +459,19 @@ public final class DoubleNum implements Num {
                 case 15 -> 1e15;
                 default -> Math.pow(10, scale);
             };
-            final var inner = wrapped * multiplier;
-            return doubleNum((isHalfEven ? Math.rint(inner) : Math.round(inner)) / multiplier);
+            return doubleNum(doRound(wrapped * multiplier, roundingMode) / multiplier);
         }
         return doubleNum(decimalNum(this, getContext()).round(scale, roundingMode).toDouble());
+    }
+
+    private double doRound(final double number, final RoundingMode roundingMode) {
+        return switch (roundingMode) {
+            case CEILING -> Math.ceil(number);
+            case FLOOR -> Math.floor(number);
+            case HALF_UP -> Math.round(number);
+            case HALF_EVEN -> Math.rint(number);
+            default -> throw new UnsupportedOperationException();
+        };
     }
 
     @Override
