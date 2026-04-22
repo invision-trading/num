@@ -573,8 +573,11 @@ public final class DoubleNum implements Num {
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
-        if (other instanceof DecimalNum || epsilon instanceof DecimalNum) {
-            return other.getFactory().of(this).isEqual(other, epsilon);
+        if (other instanceof final DecimalNum decimalNum) {
+            return decimalNum.getFactory().of(this).isEqual(other, epsilon);
+        }
+        if (epsilon instanceof final DecimalNum decimalNum) {
+            return decimalNum.getFactory().of(this).isEqual(other, epsilon);
         }
         return Math.abs(wrapped - ((DoubleNum) other).wrapped) <= ((DoubleNum) epsilon).wrapped;
     }
@@ -606,8 +609,11 @@ public final class DoubleNum implements Num {
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
-        if (other instanceof DecimalNum || epsilon instanceof DecimalNum) {
-            return other.getFactory().of(this).isLessThanOrEqual(other, epsilon);
+        if (other instanceof final DecimalNum decimalNum) {
+            return decimalNum.getFactory().of(this).isLessThanOrEqual(other, epsilon);
+        }
+        if (epsilon instanceof final DecimalNum decimalNum) {
+            return decimalNum.getFactory().of(this).isLessThanOrEqual(other, epsilon);
         }
         return ((DoubleNum) other).wrapped - wrapped >= -((DoubleNum) epsilon).wrapped;
     }
@@ -639,8 +645,11 @@ public final class DoubleNum implements Num {
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
-        if (other instanceof DecimalNum || epsilon instanceof DecimalNum) {
-            return other.getFactory().of(this).isGreaterThanOrEqual(other, epsilon);
+        if (other instanceof final DecimalNum decimalNum) {
+            return decimalNum.getFactory().of(this).isGreaterThanOrEqual(other, epsilon);
+        }
+        if (epsilon instanceof final DecimalNum decimalNum) {
+            return decimalNum.getFactory().of(this).isGreaterThanOrEqual(other, epsilon);
         }
         return wrapped - ((DoubleNum) other).wrapped >= -((DoubleNum) epsilon).wrapped;
     }
