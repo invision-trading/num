@@ -344,6 +344,8 @@ public final class DecimalNum implements Num {
      */
     public static Num decimalNum(final Number number, final MathContext context) throws NumberFormatException {
         return switch (number) {
+            case final Byte aByte -> new DecimalNum(new BigDecimal(aByte, context), context);
+            case final Short aShort -> new DecimalNum(new BigDecimal(aShort, context), context);
             case final Integer aInteger -> new DecimalNum(new BigDecimal(aInteger, context), context);
             case final Long aLong -> new DecimalNum(new BigDecimal(aLong, context), context);
             case final Float aFloat -> !Float.isFinite(aFloat) ? nanNum(context) :
