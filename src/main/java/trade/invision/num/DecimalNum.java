@@ -531,7 +531,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num add(final Num addend) {
         if (addend.isNaN()) {
-            return addend;
+            return nanNum(context);
         }
         final var decimalNum = asDecimalNum(addend);
         final var context = precisestContext(decimalNum.context);
@@ -545,7 +545,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num subtract(final Num subtrahend) {
         if (subtrahend.isNaN()) {
-            return subtrahend;
+            return nanNum(context);
         }
         final var decimalNum = asDecimalNum(subtrahend);
         final var context = precisestContext(decimalNum.context);
@@ -559,7 +559,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num multiply(final Num multiplier) {
         if (multiplier.isNaN()) {
-            return multiplier;
+            return nanNum(context);
         }
         final var decimalNum = asDecimalNum(multiplier);
         final var context = precisestContext(decimalNum.context);
@@ -573,7 +573,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num divide(final Num divisor) {
         if (divisor.isNaN()) {
-            return divisor;
+            return nanNum(context);
         }
         final var decimalNum = asDecimalNum(divisor);
         final var context = precisestContext(decimalNum.context);
@@ -587,7 +587,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num remainder(final Num divisor) {
         if (divisor.isNaN()) {
-            return divisor;
+            return nanNum(context);
         }
         final var decimalNum = asDecimalNum(divisor);
         final var context = precisestContext(decimalNum.context);
@@ -601,7 +601,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num power(final Num exponent) {
         if (exponent.isNaN()) {
-            return exponent;
+            return nanNum(context);
         }
         final var decimalNum = asDecimalNum(exponent);
         final var context = precisestContext(decimalNum.context);
@@ -642,7 +642,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num nthRoot(final Num degree) {
         if (degree.isNaN()) {
-            return degree;
+            return nanNum(context);
         }
         final var decimalNum = asDecimalNum(degree);
         final var context = precisestContext(decimalNum.context);
@@ -701,7 +701,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num log(final Num base) {
         if (base.isNaN()) {
-            return base;
+            return nanNum(context);
         }
         final var decimalNum = asDecimalNum(base);
         final var context = precisestContext(decimalNum.context);
@@ -844,7 +844,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num atan2(final Num x) {
         if (x.isNaN()) {
-            return x;
+            return nanNum(context);
         }
         final var decimalNum = asDecimalNum(x);
         final var context = precisestContext(decimalNum.context);
@@ -912,7 +912,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num hypotenuse(final Num y) {
         if (y.isNaN()) {
-            return y;
+            return nanNum(context);
         }
         final var decimalNum = asDecimalNum(y);
         final var context = precisestContext(decimalNum.context);
@@ -928,7 +928,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num average(final Num other) {
         if (other.isNaN()) {
-            return other;
+            return nanNum(context);
         }
         final var decimalNum = asDecimalNum(other);
         final var context = precisestContext(decimalNum.context);
@@ -942,7 +942,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num min(final Num other) {
         if (other.isNaN()) {
-            return other;
+            return nanNum(context);
         }
         final var decimalNum = asDecimalNum(other);
         return wrapped.compareTo(decimalNum.wrapped) <= 0 ? this : decimalNum;
@@ -951,7 +951,7 @@ public final class DecimalNum implements Num {
     @Override
     public Num max(final Num other) {
         if (other.isNaN()) {
-            return other;
+            return nanNum(context);
         }
         final var decimalNum = asDecimalNum(other);
         return wrapped.compareTo(decimalNum.wrapped) >= 0 ? this : decimalNum;
