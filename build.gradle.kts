@@ -96,7 +96,7 @@ tasks.withType(Javadoc::class) {
     }
 }
 
-val jreleaserMavenRepositoryDirectory = rootProject.layout.buildDirectory.dir("jreleaser-staging")
+val jreleaserMavenRepositoryDirectory = layout.buildDirectory.dir("jreleaser-staging")
 
 publishing {
     publications.create("jreleaser", MavenPublication::class) {
@@ -155,4 +155,8 @@ jreleaser {
             uploadAssets = NEVER
         }
     }
+}
+
+tasks.jreleaserFullRelease {
+    mustRunAfter(tasks.build)
 }
