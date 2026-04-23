@@ -867,8 +867,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
     }
 
     /**
-     * @return {@link #significantFigures(MathContext)} with {@link MathContext#getPrecision()} set to
-     * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
+     * @return {@link #significantFigures(MathContext)} with {@link MathContext#MathContext(int, RoundingMode)}
      */
     default Num significantFigures(final int significantFigures, final RoundingMode roundingMode) {
         return significantFigures(new MathContext(significantFigures, roundingMode));

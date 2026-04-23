@@ -81,6 +81,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}
      */
+    @Generated
     public static NumFactory decimalNum32Factory() {
         return decimalNumFactory(DECIMAL32);
     }
@@ -89,6 +90,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static NumFactory decimalNum32Factory(final RoundingMode roundingMode) {
         return decimalNumFactory(DECIMAL32.getPrecision(), roundingMode);
     }
@@ -96,6 +98,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}
      */
+    @Generated
     public static NumFactory decimalNum64Factory() {
         return decimalNumFactory(DECIMAL64);
     }
@@ -104,6 +107,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static NumFactory decimalNum64Factory(final RoundingMode roundingMode) {
         return decimalNumFactory(DECIMAL64.getPrecision(), roundingMode);
     }
@@ -111,6 +115,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #decimalNumFactory(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}
      */
+    @Generated
     public static NumFactory decimalNum128Factory() {
         return decimalNumFactory(DECIMAL128);
     }
@@ -119,6 +124,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static NumFactory decimalNum128Factory(final RoundingMode roundingMode) {
         return decimalNumFactory(DECIMAL128.getPrecision(), roundingMode);
     }
@@ -127,6 +133,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNumFactory(int, RoundingMode)} with <code>roundingMode</code> set to
      * {@link RoundingMode#HALF_EVEN}
      */
+    @Generated
     public static NumFactory decimalNumFactory(final int significantFigures) {
         return decimalNumFactory(significantFigures, HALF_EVEN);
     }
@@ -135,6 +142,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNumFactory(MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
      */
+    @Generated
     public static NumFactory decimalNumFactory(final int significantFigures, final RoundingMode roundingMode) {
         return decimalNumFactory(new MathContext(significantFigures, roundingMode));
     }
@@ -166,6 +174,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #nanNum(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}
      */
+    @Generated
     public static Num nanNum32() {
         return nanNum(DECIMAL32);
     }
@@ -174,6 +183,7 @@ public final class DecimalNum implements Num {
      * @return {@link #nanNum(int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static Num nanNum32(final RoundingMode roundingMode) {
         return nanNum(DECIMAL32.getPrecision(), roundingMode);
     }
@@ -181,6 +191,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #nanNum(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}
      */
+    @Generated
     public static Num nanNum64() {
         return nanNum(DECIMAL64);
     }
@@ -189,6 +200,7 @@ public final class DecimalNum implements Num {
      * @return {@link #nanNum(int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static Num nanNum64(final RoundingMode roundingMode) {
         return nanNum(DECIMAL64.getPrecision(), roundingMode);
     }
@@ -196,6 +208,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #nanNum(MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}
      */
+    @Generated
     public static Num nanNum128() {
         return nanNum(DECIMAL128);
     }
@@ -204,6 +217,7 @@ public final class DecimalNum implements Num {
      * @return {@link #nanNum(int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static Num nanNum128(final RoundingMode roundingMode) {
         return nanNum(DECIMAL128.getPrecision(), roundingMode);
     }
@@ -211,6 +225,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #nanNum(int, RoundingMode)} with <code>roundingMode</code> set to {@link RoundingMode#HALF_EVEN}
      */
+    @Generated
     public static Num nanNum(final int significantFigures) {
         return nanNum(significantFigures, HALF_EVEN);
     }
@@ -219,6 +234,7 @@ public final class DecimalNum implements Num {
      * @return {@link #nanNum(MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
      */
+    @Generated
     public static Num nanNum(final int significantFigures, final RoundingMode roundingMode) {
         return nanNum(new MathContext(significantFigures, roundingMode));
     }
@@ -250,6 +266,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}
      */
+    @Generated
     public static Num decimalNum32(final Number number) {
         return decimalNum(number, DECIMAL32);
     }
@@ -258,6 +275,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(Number, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static Num decimalNum32(final Number number, final RoundingMode roundingMode) {
         return decimalNum(number, DECIMAL32.getPrecision(), roundingMode);
     }
@@ -265,6 +283,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}
      */
+    @Generated
     public static Num decimalNum64(final Number number) {
         return decimalNum(number, DECIMAL64);
     }
@@ -273,6 +292,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(Number, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static Num decimalNum64(final Number number, final RoundingMode roundingMode) {
         return decimalNum(number, DECIMAL64.getPrecision(), roundingMode);
     }
@@ -280,6 +300,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #decimalNum(Number, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}
      */
+    @Generated
     public static Num decimalNum128(final Number number) {
         return decimalNum(number, DECIMAL128);
     }
@@ -288,6 +309,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(Number, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static Num decimalNum128(final Number number, final RoundingMode roundingMode) {
         return decimalNum(number, DECIMAL128.getPrecision(), roundingMode);
     }
@@ -296,6 +318,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(Number, int, RoundingMode)} with <code>roundingMode</code> set to
      * {@link RoundingMode#HALF_EVEN}
      */
+    @Generated
     public static Num decimalNum(final Number number, final int significantFigures) {
         return decimalNum(number, significantFigures, HALF_EVEN);
     }
@@ -304,6 +327,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(Number, MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
      */
+    @Generated
     public static Num decimalNum(final Number number, final int significantFigures, final RoundingMode roundingMode) {
         return decimalNum(number, new MathContext(significantFigures, roundingMode));
     }
@@ -334,6 +358,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}
      */
+    @Generated
     public static Num decimalNum32(final String string) {
         return decimalNum(string, DECIMAL32);
     }
@@ -342,6 +367,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(String, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static Num decimalNum32(final String string, final RoundingMode roundingMode) {
         return decimalNum(string, DECIMAL32.getPrecision(), roundingMode);
     }
@@ -349,6 +375,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}
      */
+    @Generated
     public static Num decimalNum64(final String string) {
         return decimalNum(string, DECIMAL64);
     }
@@ -357,6 +384,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(String, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static Num decimalNum64(final String string, final RoundingMode roundingMode) {
         return decimalNum(string, DECIMAL64.getPrecision(), roundingMode);
     }
@@ -364,6 +392,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #decimalNum(String, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}
      */
+    @Generated
     public static Num decimalNum128(final String string) {
         return decimalNum(string, DECIMAL128);
     }
@@ -372,6 +401,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(String, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static Num decimalNum128(final String string, final RoundingMode roundingMode) {
         return decimalNum(string, DECIMAL128.getPrecision(), roundingMode);
     }
@@ -380,6 +410,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(String, int, RoundingMode)} with <code>roundingMode</code> set to
      * {@link RoundingMode#HALF_EVEN}
      */
+    @Generated
     public static Num decimalNum(final String string, final int significantFigures) {
         return decimalNum(string, significantFigures, HALF_EVEN);
     }
@@ -388,6 +419,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(String, MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
      */
+    @Generated
     public static Num decimalNum(final String string, final int significantFigures, final RoundingMode roundingMode) {
         return decimalNum(string, new MathContext(significantFigures, roundingMode));
     }
@@ -410,6 +442,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL32}
      */
+    @Generated
     public static Num decimalNum32(final Num num) {
         return decimalNum(num, DECIMAL32);
     }
@@ -418,6 +451,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(Num, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL32} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static Num decimalNum32(final Num num, final RoundingMode roundingMode) {
         return decimalNum(num, DECIMAL32.getPrecision(), roundingMode);
     }
@@ -425,6 +459,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL64}
      */
+    @Generated
     public static Num decimalNum64(final Num num) {
         return decimalNum(num, DECIMAL64);
     }
@@ -433,6 +468,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(Num, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL64} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static Num decimalNum64(final Num num, final RoundingMode roundingMode) {
         return decimalNum(num, DECIMAL64.getPrecision(), roundingMode);
     }
@@ -440,6 +476,7 @@ public final class DecimalNum implements Num {
     /**
      * @return {@link #decimalNum(Num, MathContext)} with <code>context</code> set to {@link MathContext#DECIMAL128}
      */
+    @Generated
     public static Num decimalNum128(final Num num) {
         return decimalNum(num, DECIMAL128);
     }
@@ -448,6 +485,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(Num, int, RoundingMode)} with <code>significantFigures</code> set to
      * {@link MathContext#DECIMAL128} {@link MathContext#getPrecision()}
      */
+    @Generated
     public static Num decimalNum128(final Num num, final RoundingMode roundingMode) {
         return decimalNum(num, DECIMAL128.getPrecision(), roundingMode);
     }
@@ -456,6 +494,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(Num, int, RoundingMode)} with <code>roundingMode</code> set to
      * {@link RoundingMode#HALF_EVEN}
      */
+    @Generated
     public static Num decimalNum(final Num num, final int significantFigures) {
         return decimalNum(num, significantFigures, HALF_EVEN);
     }
@@ -464,6 +503,7 @@ public final class DecimalNum implements Num {
      * @return {@link #decimalNum(Num, MathContext)} with {@link MathContext#getPrecision()} set to
      * <code>significantFigures</code> and {@link MathContext#getRoundingMode()} set to <code>roundingMode</code>
      */
+    @Generated
     public static Num decimalNum(final Num num, final int significantFigures, final RoundingMode roundingMode) {
         return decimalNum(num, new MathContext(significantFigures, roundingMode));
     }
