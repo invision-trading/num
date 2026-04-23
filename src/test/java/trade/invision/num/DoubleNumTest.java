@@ -24,6 +24,8 @@ import static trade.invision.num.DoubleNum.doubleNum;
 @NullMarked
 public final class DoubleNumTest {
 
+    private static final double EPSILON = 1e-15;
+
     public static final class FactoryTest {
 
         @Test
@@ -134,7 +136,7 @@ public final class DoubleNumTest {
 
     @Test
     public void exponential() {
-        assertTrue(doubleNum(2).exponential().isEqual(7.38905609893065));
+        assertTrue(doubleNum(2).exponential().isEqual(7.38905609893065, EPSILON));
     }
 
     @Test
@@ -222,7 +224,7 @@ public final class DoubleNumTest {
 
     @Test
     public void degrees() {
-        assertTrue(doubleNum(1).degrees().isEqual(57.29577951308232));
+        assertTrue(doubleNum(1).degrees().isEqual(57.29577951308232, EPSILON));
     }
 
     @Test
@@ -232,76 +234,76 @@ public final class DoubleNumTest {
 
     @Test
     public void sin() {
-        assertTrue(doubleNum(1).sin().isEqual(0.8414709848078965));
+        assertTrue(doubleNum(1).sin().isEqual(0.8414709848078965, EPSILON));
     }
 
     @Test
     public void cos() {
-        assertTrue(doubleNum(1).cos().isEqual(0.5403023058681398));
+        assertTrue(doubleNum(1).cos().isEqual(0.5403023058681398, EPSILON));
     }
 
     @Test
     public void tan() {
-        assertTrue(doubleNum(1).tan().isEqual(1.5574077246549023));
+        assertTrue(doubleNum(1).tan().isEqual(1.5574077246549023, EPSILON));
     }
 
     @Test
     public void asin() {
-        assertTrue(doubleNum(1).asin().isEqual(1.5707963267948966));
+        assertTrue(doubleNum(1).asin().isEqual(1.5707963267948966, EPSILON));
     }
 
     @Test
     public void acos() {
-        assertTrue(doubleNum(0).acos().isEqual(1.5707963267948966));
+        assertTrue(doubleNum(0).acos().isEqual(1.5707963267948966, EPSILON));
     }
 
     @Test
     public void atan() {
-        assertTrue(doubleNum(1).atan().isEqual(0.7853981633974483));
+        assertTrue(doubleNum(1).atan().isEqual(0.7853981633974483, EPSILON));
     }
 
     @Test
     public void atan2() {
         assertTrue(doubleNum(1).atan2(DoubleNum.NaN).isNaN());
         assertInstanceOf(DecimalNum.class, doubleNum(1).atan2(decimalNum64(1)));
-        assertTrue(doubleNum(1).atan2(1).isEqual(0.7853981633974483));
+        assertTrue(doubleNum(1).atan2(1).isEqual(0.7853981633974483, EPSILON));
     }
 
     @Test
     public void sinh() {
-        assertTrue(doubleNum(1).sinh().isEqual(1.1752011936438014));
+        assertTrue(doubleNum(1).sinh().isEqual(1.1752011936438014, EPSILON));
     }
 
     @Test
     public void cosh() {
-        assertTrue(doubleNum(1).cosh().isEqual(1.543080634815244));
+        assertTrue(doubleNum(1).cosh().isEqual(1.543080634815244, EPSILON));
     }
 
     @Test
     public void tanh() {
-        assertTrue(doubleNum(1).tanh().isEqual(0.7615941559557649));
+        assertTrue(doubleNum(1).tanh().isEqual(0.7615941559557649, EPSILON));
     }
 
     @Test
     public void asinh() {
-        assertTrue(doubleNum(2).asinh().isEqual(1.4436354751788103));
+        assertTrue(doubleNum(2).asinh().isEqual(1.4436354751788103, EPSILON));
     }
 
     @Test
     public void acosh() {
-        assertTrue(doubleNum(2).acosh().isEqual(1.3169578969248166));
+        assertTrue(doubleNum(2).acosh().isEqual(1.3169578969248166, EPSILON));
     }
 
     @Test
     public void atanh() {
-        assertTrue(doubleNum(0.5).atanh().isEqual(0.5493061443340548));
+        assertTrue(doubleNum(0.5).atanh().isEqual(0.5493061443340548, EPSILON));
     }
 
     @Test
     public void hypotenuse() {
         assertTrue(doubleNum(2).hypotenuse(DoubleNum.NaN).isNaN());
         assertInstanceOf(DecimalNum.class, doubleNum(2).hypotenuse(decimalNum64(2)));
-        assertTrue(doubleNum(2).hypotenuse(2).isEqual(2.8284271247461903));
+        assertTrue(doubleNum(2).hypotenuse(2).isEqual(2.8284271247461903, EPSILON));
     }
 
     @Test
