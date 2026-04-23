@@ -15,7 +15,7 @@ plugins {
 }
 
 group = "trade.invision"
-version = "3.0.0"
+version = "3.0.1"
 
 java {
     sourceCompatibility = VERSION_25
