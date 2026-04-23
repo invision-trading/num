@@ -2,6 +2,7 @@
 
 [![Maven Central](https://img.shields.io/badge/Maven_Central-2.0.0-blue?logo=apachemaven)](https://central.sonatype.com/artifact/trade.invision/num)
 [![Javadoc](https://img.shields.io/badge/javadoc-2.0.0-brightgreen)](https://javadoc.io/doc/trade.invision/num)
+[![Codecov](https://codecov.io/gh/invision-trading/num/graph/badge.svg?token=0B51RX4AIL)](https://codecov.io/gh/invision-trading/num)
 [![Java Version](https://img.shields.io/badge/Java_Version-25-orange?logo=java)](https://openjdk.org/projects/jdk/25)
 [![GitHub License](https://img.shields.io/github/license/Petersoj/jet)](https://github.com/Petersoj/jet/blob/main/LICENSE.txt)
 
