@@ -127,9 +127,7 @@ publishing {
             }
         }
     }
-    repositories.maven {
-        url = uri(jreleaserMavenRepositoryDirectory)
-    }
+    repositories.maven(uri(jreleaserMavenRepositoryDirectory))
 }
 
 jreleaser {
@@ -146,6 +144,7 @@ jreleaser {
                     active = ALWAYS
                     url = "https://central.sonatype.com/api/v1/publisher"
                     stagingRepository(jreleaserMavenRepositoryDirectory.get())
+                    skipPublicationCheck = true
                 }
             }
         }
