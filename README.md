@@ -4,7 +4,7 @@
 [![Javadoc](https://img.shields.io/badge/javadoc-3.0.1-brightgreen)](https://javadoc.io/doc/trade.invision/num)
 [![Codecov](https://codecov.io/gh/invision-trading/num/graph/badge.svg?token=0B51RX4AIL)](https://codecov.io/gh/invision-trading/num)
 [![Java Version](https://img.shields.io/badge/Java_Version-25-orange?logo=java)](https://openjdk.org/projects/jdk/25)
-[![GitHub License](https://img.shields.io/github/license/Petersoj/jet)](https://github.com/Petersoj/jet/blob/main/LICENSE.txt)
+[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/invision-trading/num/blob/main/LICENSE.txt)
 
 A Java library that abstracts the mathematical operations on real decimal numbers represented in computer memory as
 floating-point binary numbers
@@ -203,15 +203,15 @@ For `NumFactory`:
 This library's `Num` interface was inspired by the `Num` interface of the excellent [ta4j](https://github.com/ta4j/ta4j)
 library. There are several improvements and additions that this library's `Num` interface provides:
 
-- Interoperability between `DoubleNum` and `DecimalNum`.
+- Interoperability between `DoubleNum` and `DecimalNum`
 - Several more mathematical operations (e.g. trigonometry functions) via
   [Math](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Math.html) in `DoubleNum` and via
-  [big-math](https://github.com/eobermuhlner/big-math) in `DecimalNum`.
-- No default precision for `DecimalNum` (see [ta4j issue](https://github.com/ta4j/ta4j/issues/1086)).
-- Configurable epsilon for tolerant comparison operations (see [ta4j
-  `DoubleNum`](https://github.com/ta4j/ta4j/blob/1101dbe059cda92d7dd1f86e755b0466782911d5/ta4j-core/src/main/java/org/ta4j/core/num/DoubleNum.java#L53)).
-- `Number` used instead of primitive overloads.
-- Documentation improvements.
+  [big-math](https://github.com/eobermuhlner/big-math) in `DecimalNum`
+- No default precision for `DecimalNum` (see [ta4j issue](https://github.com/ta4j/ta4j/issues/1086))
+- Configurable epsilon for tolerant comparison operations (see
+  [ta4j `DoubleNum`](https://github.com/ta4j/ta4j/blob/1101dbe059cda92d7dd1f86e755b0466782911d5/ta4j-core/src/main/java/org/ta4j/core/num/DoubleNum.java#L53))
+- `Number` used instead of primitive overloads
+- Documentation improvements
 
 Big thanks to [Eric Obermühlner](https://github.com/eobermuhlner) for the excellent
 [big-math](https://github.com/eobermuhlner/big-math) library.
