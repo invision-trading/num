@@ -251,13 +251,13 @@ public final class DecimalNum implements Num {
      */
     public static Num nanNum(final MathContext context) {
         final var factory = decimalNumFactory(context);
-        if (factory == FACTORY_DECIMAL32) {
+        if (factory.equals(FACTORY_DECIMAL32)) {
             return NaN_DECIMAL32;
         }
-        if (factory == FACTORY_DECIMAL64) {
+        if (factory.equals(FACTORY_DECIMAL64)) {
             return NaN_DECIMAL64;
         }
-        if (factory == FACTORY_DECIMAL128) {
+        if (factory.equals(FACTORY_DECIMAL128)) {
             return NaN_DECIMAL128;
         }
         return NaNNum.nanNum(context, factory);
