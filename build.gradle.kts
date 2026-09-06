@@ -7,11 +7,12 @@ import org.jreleaser.model.Active.NEVER
 
 plugins {
     `java-library`
-    id("io.freefair.lombok") version "9.2.0"
-    id("net.ltgt.errorprone") version "5.1.0"
+    id("io.freefair.lombok") version "9.5.0"
+    id("net.ltgt.errorprone") version "5.1.1"
     jacoco
+    id("io.github.ben-manes.versions") version "0.61.0"
     `maven-publish`
-    id("org.jreleaser") version "1.23.0"
+    id("org.jreleaser") version "1.26.0"
 }
 
 group = "trade.invision"
@@ -29,15 +30,15 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jspecify:jspecify:1.0.0")
-    implementation("com.google.guava:guava:33.5.0-jre")
+    implementation("org.jspecify:jspecify:1.0.1")
+    implementation("com.google.guava:guava:33.7.1-jre")
     implementation("ch.obermuhlner:big-math:2.3.2")
 
-    errorprone("com.google.errorprone:error_prone_core:2.48.0")
-    errorprone("com.uber.nullaway:nullaway:0.13.1")
-    errorprone("net.jacobpeterson:final-coat:1.2.1")
+    errorprone("com.google.errorprone:error_prone_core:2.50.0")
+    errorprone("com.uber.nullaway:nullaway:0.14.1")
+    errorprone("net.jacobpeterson:final-coat:1.2.3")
 
-    testImplementation(platform("org.junit:junit-bom:6.0.3"))
+    testImplementation(platform("org.junit:junit-bom:6.1.3"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
@@ -47,6 +48,7 @@ tasks.withType(JavaCompile::class) {
         allErrorsAsWarnings = true
         allSuggestionsAsWarnings = true
         disableWarningsInGeneratedCode = true
+        excludedPaths = ".*/build/.*"
 
         disable("MissingSummary")
         disable("NullableOptional")
