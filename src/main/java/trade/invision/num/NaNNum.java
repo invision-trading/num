@@ -2,6 +2,7 @@ package trade.invision.num;
 
 import lombok.Generated;
 import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -546,18 +547,18 @@ public final class NaNNum implements Num {
 
     @Generated
     @Override
-    public boolean isNegativeOrZero(final Number epsilon) {
+    public boolean isNegativeOrZero(final @Nullable Number epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isNegativeOrZero(final String epsilon) {
+    public boolean isNegativeOrZero(final @Nullable String epsilon) {
         return false;
     }
 
     @Override
-    public boolean isNegativeOrZero(final Num epsilon) {
+    public boolean isNegativeOrZero(final @Nullable Num epsilon) {
         return false;
     }
 
@@ -573,18 +574,18 @@ public final class NaNNum implements Num {
 
     @Generated
     @Override
-    public boolean isPositiveOrZero(final Number epsilon) {
+    public boolean isPositiveOrZero(final @Nullable Number epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isPositiveOrZero(final String epsilon) {
+    public boolean isPositiveOrZero(final @Nullable String epsilon) {
         return false;
     }
 
     @Override
-    public boolean isPositiveOrZero(final Num epsilon) {
+    public boolean isPositiveOrZero(final @Nullable Num epsilon) {
         return false;
     }
 
@@ -595,18 +596,18 @@ public final class NaNNum implements Num {
 
     @Generated
     @Override
-    public boolean isZero(final Number epsilon) {
+    public boolean isZero(final @Nullable Number epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isZero(final String epsilon) {
+    public boolean isZero(final @Nullable String epsilon) {
         return false;
     }
 
     @Override
-    public boolean isZero(final Num epsilon) {
+    public boolean isZero(final @Nullable Num epsilon) {
         return false;
     }
 
@@ -629,54 +630,54 @@ public final class NaNNum implements Num {
 
     @Generated
     @Override
-    public boolean isEqual(final Number other, final Number epsilon) {
+    public boolean isEqual(final Number other, final @Nullable Number epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isEqual(final Number other, final String epsilon) {
+    public boolean isEqual(final Number other, final @Nullable String epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isEqual(final Number other, final Num epsilon) {
+    public boolean isEqual(final Number other, final @Nullable Num epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isEqual(final String other, final Number epsilon) {
+    public boolean isEqual(final String other, final @Nullable Number epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isEqual(final String other, final String epsilon) {
+    public boolean isEqual(final String other, final @Nullable String epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isEqual(final String other, final Num epsilon) {
+    public boolean isEqual(final String other, final @Nullable Num epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isEqual(final Num other, final Number epsilon) {
+    public boolean isEqual(final Num other, final @Nullable Number epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isEqual(final Num other, final String epsilon) {
+    public boolean isEqual(final Num other, final @Nullable String epsilon) {
         return false;
     }
 
     @Override
-    public boolean isEqual(final Num other, final Num epsilon) {
+    public boolean isEqual(final Num other, final @Nullable Num epsilon) {
         return false;
     }
 
@@ -716,54 +717,54 @@ public final class NaNNum implements Num {
 
     @Generated
     @Override
-    public boolean isLessThanOrEqual(final Number other, final Number epsilon) {
+    public boolean isLessThanOrEqual(final Number other, final @Nullable Number epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isLessThanOrEqual(final Number other, final String epsilon) {
+    public boolean isLessThanOrEqual(final Number other, final @Nullable String epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isLessThanOrEqual(final Number other, final Num epsilon) {
+    public boolean isLessThanOrEqual(final Number other, final @Nullable Num epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isLessThanOrEqual(final String other, final Number epsilon) {
+    public boolean isLessThanOrEqual(final String other, final @Nullable Number epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isLessThanOrEqual(final String other, final String epsilon) {
+    public boolean isLessThanOrEqual(final String other, final @Nullable String epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isLessThanOrEqual(final String other, final Num epsilon) {
+    public boolean isLessThanOrEqual(final String other, final @Nullable Num epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isLessThanOrEqual(final Num other, final Number epsilon) {
+    public boolean isLessThanOrEqual(final Num other, final @Nullable Number epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isLessThanOrEqual(final Num other, final String epsilon) {
+    public boolean isLessThanOrEqual(final Num other, final @Nullable String epsilon) {
         return false;
     }
 
     @Override
-    public boolean isLessThanOrEqual(final Num other, final Num epsilon) {
+    public boolean isLessThanOrEqual(final Num other, final @Nullable Num epsilon) {
         return false;
     }
 
@@ -803,54 +804,54 @@ public final class NaNNum implements Num {
 
     @Generated
     @Override
-    public boolean isGreaterThanOrEqual(final Number other, final Number epsilon) {
+    public boolean isGreaterThanOrEqual(final Number other, final @Nullable Number epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isGreaterThanOrEqual(final Number other, final String epsilon) {
+    public boolean isGreaterThanOrEqual(final Number other, final @Nullable String epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isGreaterThanOrEqual(final Number other, final Num epsilon) {
+    public boolean isGreaterThanOrEqual(final Number other, final @Nullable Num epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isGreaterThanOrEqual(final String other, final Number epsilon) {
+    public boolean isGreaterThanOrEqual(final String other, final @Nullable Number epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isGreaterThanOrEqual(final String other, final String epsilon) {
+    public boolean isGreaterThanOrEqual(final String other, final @Nullable String epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isGreaterThanOrEqual(final String other, final Num epsilon) {
+    public boolean isGreaterThanOrEqual(final String other, final @Nullable Num epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isGreaterThanOrEqual(final Num other, final Number epsilon) {
+    public boolean isGreaterThanOrEqual(final Num other, final @Nullable Number epsilon) {
         return false;
     }
 
     @Generated
     @Override
-    public boolean isGreaterThanOrEqual(final Num other, final String epsilon) {
+    public boolean isGreaterThanOrEqual(final Num other, final @Nullable String epsilon) {
         return false;
     }
 
     @Override
-    public boolean isGreaterThanOrEqual(final Num other, final Num epsilon) {
+    public boolean isGreaterThanOrEqual(final Num other, final @Nullable Num epsilon) {
         return false;
     }
 

@@ -416,6 +416,7 @@ public final class DecimalNumTest {
 
     @Test
     public void isNegativeOrZeroNum() {
+        assertTrue(decimalNum64(-1).isNegativeOrZero((Num) null));
         assertFalse(decimalNum64(0).isNegativeOrZero(DecimalNum.nanNum64()));
         assertTrue(decimalNum64(0).isNegativeOrZero(decimalNum64(0.1)));
         assertTrue(decimalNum64(-1).isNegativeOrZero(0.1));
@@ -443,6 +444,7 @@ public final class DecimalNumTest {
 
     @Test
     public void isPositiveOrZeroNum() {
+        assertTrue(decimalNum64(1).isPositiveOrZero((Num) null));
         assertFalse(decimalNum64(0).isPositiveOrZero(DecimalNum.nanNum64()));
         assertTrue(decimalNum64(0).isPositiveOrZero(decimalNum64(0.1)));
         assertFalse(decimalNum64(-1).isPositiveOrZero(0.1));
@@ -463,6 +465,7 @@ public final class DecimalNumTest {
 
     @Test
     public void isZeroNum() {
+        assertTrue(decimalNum64(0).isZero((Num) null));
         assertFalse(decimalNum64(0).isZero(DecimalNum.nanNum64()));
         assertTrue(decimalNum64(0).isZero(decimalNum64(0.1)));
         assertFalse(decimalNum64(-1).isZero(0.1));
@@ -484,6 +487,7 @@ public final class DecimalNumTest {
 
     @Test
     public void isEqualNum() {
+        assertTrue(decimalNum64(1).isEqual(1, (Num) null));
         assertFalse(decimalNum64(0).isEqual(0, DecimalNum.nanNum64()));
         assertFalse(decimalNum64(0).isEqual(DecimalNum.nanNum64(), 0));
         assertTrue(decimalNum64(0).isEqual(0, decimalNum64(0.1)));
@@ -517,6 +521,7 @@ public final class DecimalNumTest {
 
     @Test
     public void isLessThanOrEqualNum() {
+        assertTrue(decimalNum64(0).isLessThanOrEqual(0, (Num) null));
         assertFalse(decimalNum64(0).isLessThanOrEqual(0, DecimalNum.nanNum64()));
         assertFalse(decimalNum64(0).isLessThanOrEqual(DecimalNum.nanNum64(), 0));
         assertTrue(decimalNum64(0).isLessThanOrEqual(0, decimalNum64(0.1)));
@@ -550,6 +555,7 @@ public final class DecimalNumTest {
 
     @Test
     public void isGreaterThanOrEqualNum() {
+        assertTrue(decimalNum64(0).isGreaterThanOrEqual(0, (Num) null));
         assertFalse(decimalNum64(0).isGreaterThanOrEqual(0, DecimalNum.nanNum64()));
         assertFalse(decimalNum64(0).isGreaterThanOrEqual(DecimalNum.nanNum64(), 0));
         assertTrue(decimalNum64(0).isGreaterThanOrEqual(0, decimalNum64(0.1)));

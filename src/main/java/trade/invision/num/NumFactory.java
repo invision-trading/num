@@ -9,8 +9,8 @@ import java.util.random.RandomGenerator;
 /**
  * {@link NumFactory} is an interface for getting {@link Num} instances.
  */
-@NullMarked
 @Immutable
+@NullMarked
 public interface NumFactory {
 
     /**

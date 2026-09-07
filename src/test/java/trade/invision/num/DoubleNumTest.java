@@ -426,6 +426,7 @@ public final class DoubleNumTest {
 
     @Test
     public void isNegativeOrZeroNum() {
+        assertTrue(doubleNum(-1).isNegativeOrZero((Num) null));
         assertFalse(doubleNum(0).isNegativeOrZero(DoubleNum.NaN));
         assertTrue(doubleNum(0).isNegativeOrZero(decimalNum64(0.1)));
         assertTrue(doubleNum(-1).isNegativeOrZero(0.1));
@@ -453,6 +454,7 @@ public final class DoubleNumTest {
 
     @Test
     public void isPositiveOrZeroNum() {
+        assertTrue(doubleNum(1).isPositiveOrZero((Num) null));
         assertFalse(doubleNum(0).isPositiveOrZero(DoubleNum.NaN));
         assertTrue(doubleNum(0).isPositiveOrZero(decimalNum64(0.1)));
         assertFalse(doubleNum(-1).isPositiveOrZero(0.1));
@@ -473,6 +475,7 @@ public final class DoubleNumTest {
 
     @Test
     public void isZeroNum() {
+        assertTrue(doubleNum(0).isZero((Num) null));
         assertFalse(doubleNum(0).isZero(DoubleNum.NaN));
         assertTrue(doubleNum(0).isZero(decimalNum64(0.1)));
         assertFalse(doubleNum(-1).isZero(0.1));
@@ -494,6 +497,7 @@ public final class DoubleNumTest {
 
     @Test
     public void isEqualNum() {
+        assertTrue(doubleNum(1).isEqual(1, (Num) null));
         assertFalse(doubleNum(0).isEqual(0, DoubleNum.NaN));
         assertFalse(doubleNum(0).isEqual(DoubleNum.NaN, 0));
         assertTrue(doubleNum(0).isEqual(0, decimalNum64(0.1)));
@@ -527,6 +531,7 @@ public final class DoubleNumTest {
 
     @Test
     public void isLessThanOrEqualNum() {
+        assertTrue(doubleNum(0).isLessThanOrEqual(0, (Num) null));
         assertFalse(doubleNum(0).isLessThanOrEqual(0, DoubleNum.NaN));
         assertFalse(doubleNum(0).isLessThanOrEqual(DoubleNum.NaN, 0));
         assertTrue(doubleNum(0).isLessThanOrEqual(0, decimalNum64(0.1)));
@@ -560,6 +565,7 @@ public final class DoubleNumTest {
 
     @Test
     public void isGreaterThanOrEqualNum() {
+        assertTrue(doubleNum(0).isGreaterThanOrEqual(0, (Num) null));
         assertFalse(doubleNum(0).isGreaterThanOrEqual(0, DoubleNum.NaN));
         assertFalse(doubleNum(0).isGreaterThanOrEqual(DoubleNum.NaN, 0));
         assertTrue(doubleNum(0).isGreaterThanOrEqual(0, decimalNum64(0.1)));

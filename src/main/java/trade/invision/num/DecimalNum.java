@@ -1036,8 +1036,9 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public boolean isNegativeOrZero(final Num epsilon) {
-        return !epsilon.isNaN() && wrapped.compareTo(asDecimalNum(epsilon).wrapped) <= 0;
+    public boolean isNegativeOrZero(final @Nullable Num epsilon) {
+        return epsilon == null ? isNegativeOrZero() :
+                !epsilon.isNaN() && wrapped.compareTo(asDecimalNum(epsilon).wrapped) <= 0;
     }
 
     @Override
@@ -1051,8 +1052,9 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public boolean isPositiveOrZero(final Num epsilon) {
-        return !epsilon.isNaN() && wrapped.compareTo(asDecimalNum(epsilon).wrapped.negate()) >= 0;
+    public boolean isPositiveOrZero(final @Nullable Num epsilon) {
+        return epsilon == null ? isPositiveOrZero() :
+                !epsilon.isNaN() && wrapped.compareTo(asDecimalNum(epsilon).wrapped.negate()) >= 0;
     }
 
     @Override
@@ -1061,8 +1063,9 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public boolean isZero(final Num epsilon) {
-        return !epsilon.isNaN() && wrapped.abs().compareTo(asDecimalNum(epsilon).wrapped) <= 0;
+    public boolean isZero(final @Nullable Num epsilon) {
+        return epsilon == null ? isZero() :
+                !epsilon.isNaN() && wrapped.abs().compareTo(asDecimalNum(epsilon).wrapped) <= 0;
     }
 
     @Override
@@ -1071,7 +1074,10 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public boolean isEqual(final Num other, final Num epsilon) {
+    public boolean isEqual(final Num other, final @Nullable Num epsilon) {
+        if (epsilon == null) {
+            return isEqual(other);
+        }
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
@@ -1095,7 +1101,10 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public boolean isLessThanOrEqual(final Num other, final Num epsilon) {
+    public boolean isLessThanOrEqual(final Num other, final @Nullable Num epsilon) {
+        if (epsilon == null) {
+            return isLessThanOrEqual(other);
+        }
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
@@ -1119,7 +1128,10 @@ public final class DecimalNum implements Num {
     }
 
     @Override
-    public boolean isGreaterThanOrEqual(final Num other, final Num epsilon) {
+    public boolean isGreaterThanOrEqual(final Num other, final @Nullable Num epsilon) {
+        if (epsilon == null) {
+            return isGreaterThanOrEqual(other);
+        }
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }

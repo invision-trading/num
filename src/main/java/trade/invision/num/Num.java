@@ -31,8 +31,8 @@ import static java.math.RoundingMode.HALF_EVEN;
  * @see <a href="https://en.wikipedia.org/wiki/Computer_algebra">
  * wikipedia.org/wiki/Computer_algebra</a>
  */
-@NullMarked
 @Immutable
+@NullMarked
 public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNum, NaNNum {
 
     /**
@@ -962,16 +962,16 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isNegativeOrZero(Num)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isNegativeOrZero(final Number epsilon) {
-        return isNegativeOrZero(getFactory().of(epsilon));
+    default boolean isNegativeOrZero(final @Nullable Number epsilon) {
+        return epsilon == null ? isNegativeOrZero() : isNegativeOrZero(getFactory().of(epsilon));
     }
 
     /**
      * @return {@link #isNegativeOrZero(Num)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isNegativeOrZero(final String epsilon) {
-        return isNegativeOrZero(getFactory().of(epsilon));
+    default boolean isNegativeOrZero(final @Nullable String epsilon) {
+        return epsilon == null ? isNegativeOrZero() : isNegativeOrZero(getFactory().of(epsilon));
     }
 
     /**
@@ -990,7 +990,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">
      * wikipedia.org/wiki/Machine_epsilon</a>
      */
-    boolean isNegativeOrZero(final Num epsilon);
+    boolean isNegativeOrZero(final @Nullable Num epsilon);
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is greater than zero: <code>this
@@ -1022,16 +1022,16 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isPositiveOrZero(Num)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isPositiveOrZero(final Number epsilon) {
-        return isPositiveOrZero(getFactory().of(epsilon));
+    default boolean isPositiveOrZero(final @Nullable Number epsilon) {
+        return epsilon == null ? isPositiveOrZero() : isPositiveOrZero(getFactory().of(epsilon));
     }
 
     /**
      * @return {@link #isPositiveOrZero(Num)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isPositiveOrZero(final String epsilon) {
-        return isPositiveOrZero(getFactory().of(epsilon));
+    default boolean isPositiveOrZero(final @Nullable String epsilon) {
+        return epsilon == null ? isPositiveOrZero() : isPositiveOrZero(getFactory().of(epsilon));
     }
 
     /**
@@ -1050,7 +1050,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">
      * wikipedia.org/wiki/Machine_epsilon</a>
      */
-    boolean isPositiveOrZero(final Num epsilon);
+    boolean isPositiveOrZero(final @Nullable Num epsilon);
 
     /**
      * Performs a mathematical comparison operation to determine if this {@link Num} is equal to zero:
@@ -1069,16 +1069,16 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isZero(Num)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isZero(final Number epsilon) {
-        return isZero(getFactory().of(epsilon));
+    default boolean isZero(final @Nullable Number epsilon) {
+        return epsilon == null ? isZero() : isZero(getFactory().of(epsilon));
     }
 
     /**
      * @return {@link #isZero(Num)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isZero(final String epsilon) {
-        return isZero(getFactory().of(epsilon));
+    default boolean isZero(final @Nullable String epsilon) {
+        return epsilon == null ? isZero() : isZero(getFactory().of(epsilon));
     }
 
     /**
@@ -1096,7 +1096,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">
      * wikipedia.org/wiki/Machine_epsilon</a>
      */
-    boolean isZero(final Num epsilon);
+    boolean isZero(final @Nullable Num epsilon);
 
     /**
      * @return {@link #isEqual(Num)} {@link NumFactory#of(Number)}
@@ -1132,8 +1132,9 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * {@link NumFactory#of(Number)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isEqual(final Number other, final Number epsilon) {
-        return isEqual(getFactory().of(other), getFactory().of(epsilon));
+    default boolean isEqual(final Number other, final @Nullable Number epsilon) {
+        return epsilon == null ? isEqual(getFactory().of(other)) :
+                isEqual(getFactory().of(other), getFactory().of(epsilon));
     }
 
     /**
@@ -1141,15 +1142,16 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * {@link NumFactory#of(Number)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isEqual(final Number other, final String epsilon) {
-        return isEqual(getFactory().of(other), getFactory().of(epsilon));
+    default boolean isEqual(final Number other, final @Nullable String epsilon) {
+        return epsilon == null ? isEqual(getFactory().of(other)) :
+                isEqual(getFactory().of(other), getFactory().of(epsilon));
     }
 
     /**
      * @return {@link #isEqual(Num, Num)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isEqual(final Number other, final Num epsilon) {
+    default boolean isEqual(final Number other, final @Nullable Num epsilon) {
         return isEqual(getFactory().of(other), epsilon);
     }
 
@@ -1158,8 +1160,9 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * {@link NumFactory#of(String)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isEqual(final String other, final Number epsilon) {
-        return isEqual(getFactory().of(other), getFactory().of(epsilon));
+    default boolean isEqual(final String other, final @Nullable Number epsilon) {
+        return epsilon == null ? isEqual(getFactory().of(other)) :
+                isEqual(getFactory().of(other), getFactory().of(epsilon));
     }
 
     /**
@@ -1167,15 +1170,16 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * {@link NumFactory#of(String)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isEqual(final String other, final String epsilon) {
-        return isEqual(getFactory().of(other), getFactory().of(epsilon));
+    default boolean isEqual(final String other, final @Nullable String epsilon) {
+        return epsilon == null ? isEqual(getFactory().of(other)) :
+                isEqual(getFactory().of(other), getFactory().of(epsilon));
     }
 
     /**
      * @return {@link #isEqual(Num, Num)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isEqual(final String other, final Num epsilon) {
+    default boolean isEqual(final String other, final @Nullable Num epsilon) {
         return isEqual(getFactory().of(other), epsilon);
     }
 
@@ -1183,16 +1187,18 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isEqual(Num, Num)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isEqual(final Num other, final Number epsilon) {
-        return isEqual(other, getFactory().of(epsilon));
+    default boolean isEqual(final Num other, final @Nullable Number epsilon) {
+        return epsilon == null ? isEqual(other) :
+                isEqual(other, getFactory().of(epsilon));
     }
 
     /**
      * @return {@link #isEqual(Num, Num)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isEqual(final Num other, final String epsilon) {
-        return isEqual(other, getFactory().of(epsilon));
+    default boolean isEqual(final Num other, final @Nullable String epsilon) {
+        return epsilon == null ? isEqual(other) :
+                isEqual(other, getFactory().of(epsilon));
     }
 
     /**
@@ -1210,7 +1216,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">
      * wikipedia.org/wiki/Machine_epsilon</a>
      */
-    boolean isEqual(final Num other, final Num epsilon);
+    boolean isEqual(final Num other, final @Nullable Num epsilon);
 
     /**
      * @return {@link #isLessThan(Num)} {@link NumFactory#of(Number)}
@@ -1276,8 +1282,9 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * {@link NumFactory#of(Number)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isLessThanOrEqual(final Number other, final Number epsilon) {
-        return isLessThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
+    default boolean isLessThanOrEqual(final Number other, final @Nullable Number epsilon) {
+        return epsilon == null ? isLessThanOrEqual(getFactory().of(other)) :
+                isLessThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
     }
 
     /**
@@ -1285,15 +1292,16 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * {@link NumFactory#of(Number)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isLessThanOrEqual(final Number other, final String epsilon) {
-        return isLessThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
+    default boolean isLessThanOrEqual(final Number other, final @Nullable String epsilon) {
+        return epsilon == null ? isLessThanOrEqual(getFactory().of(other)) :
+                isLessThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
     }
 
     /**
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isLessThanOrEqual(final Number other, final Num epsilon) {
+    default boolean isLessThanOrEqual(final Number other, final @Nullable Num epsilon) {
         return isLessThanOrEqual(getFactory().of(other), epsilon);
     }
 
@@ -1302,8 +1310,9 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * {@link NumFactory#of(String)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isLessThanOrEqual(final String other, final Number epsilon) {
-        return isLessThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
+    default boolean isLessThanOrEqual(final String other, final @Nullable Number epsilon) {
+        return epsilon == null ? isLessThanOrEqual(getFactory().of(other)) :
+                isLessThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
     }
 
     /**
@@ -1311,15 +1320,16 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * {@link NumFactory#of(String)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isLessThanOrEqual(final String other, final String epsilon) {
-        return isLessThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
+    default boolean isLessThanOrEqual(final String other, final @Nullable String epsilon) {
+        return epsilon == null ? isLessThanOrEqual(getFactory().of(other)) :
+                isLessThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
     }
 
     /**
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isLessThanOrEqual(final String other, final Num epsilon) {
+    default boolean isLessThanOrEqual(final String other, final @Nullable Num epsilon) {
         return isLessThanOrEqual(getFactory().of(other), epsilon);
     }
 
@@ -1327,16 +1337,18 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isLessThanOrEqual(final Num other, final Number epsilon) {
-        return isLessThanOrEqual(other, getFactory().of(epsilon));
+    default boolean isLessThanOrEqual(final Num other, final @Nullable Number epsilon) {
+        return epsilon == null ? isLessThanOrEqual(other) :
+                isLessThanOrEqual(other, getFactory().of(epsilon));
     }
 
     /**
      * @return {@link #isLessThanOrEqual(Num, Num)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isLessThanOrEqual(final Num other, final String epsilon) {
-        return isLessThanOrEqual(other, getFactory().of(epsilon));
+    default boolean isLessThanOrEqual(final Num other, final @Nullable String epsilon) {
+        return epsilon == null ? isLessThanOrEqual(other) :
+                isLessThanOrEqual(other, getFactory().of(epsilon));
     }
 
     /**
@@ -1354,7 +1366,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">
      * wikipedia.org/wiki/Machine_epsilon</a>
      */
-    boolean isLessThanOrEqual(final Num other, final Num epsilon);
+    boolean isLessThanOrEqual(final Num other, final @Nullable Num epsilon);
 
     /**
      * @return {@link #isGreaterThan(Num)} {@link NumFactory#of(Number)}
@@ -1420,8 +1432,9 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * {@link NumFactory#of(Number)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isGreaterThanOrEqual(final Number other, final Number epsilon) {
-        return isGreaterThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
+    default boolean isGreaterThanOrEqual(final Number other, final @Nullable Number epsilon) {
+        return epsilon == null ? isGreaterThanOrEqual(getFactory().of(other)) :
+                isGreaterThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
     }
 
     /**
@@ -1429,15 +1442,16 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * {@link NumFactory#of(Number)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isGreaterThanOrEqual(final Number other, final String epsilon) {
-        return isGreaterThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
+    default boolean isGreaterThanOrEqual(final Number other, final @Nullable String epsilon) {
+        return epsilon == null ? isGreaterThanOrEqual(getFactory().of(other)) :
+                isGreaterThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
     }
 
     /**
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isGreaterThanOrEqual(final Number other, final Num epsilon) {
+    default boolean isGreaterThanOrEqual(final Number other, final @Nullable Num epsilon) {
         return isGreaterThanOrEqual(getFactory().of(other), epsilon);
     }
 
@@ -1446,8 +1460,9 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * {@link NumFactory#of(String)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isGreaterThanOrEqual(final String other, final Number epsilon) {
-        return isGreaterThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
+    default boolean isGreaterThanOrEqual(final String other, final @Nullable Number epsilon) {
+        return epsilon == null ? isGreaterThanOrEqual(getFactory().of(other)) :
+                isGreaterThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
     }
 
     /**
@@ -1455,15 +1470,16 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * {@link NumFactory#of(String)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isGreaterThanOrEqual(final String other, final String epsilon) {
-        return isGreaterThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
+    default boolean isGreaterThanOrEqual(final String other, final @Nullable String epsilon) {
+        return epsilon == null ? isGreaterThanOrEqual(getFactory().of(other)) :
+                isGreaterThanOrEqual(getFactory().of(other), getFactory().of(epsilon));
     }
 
     /**
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isGreaterThanOrEqual(final String other, final Num epsilon) {
+    default boolean isGreaterThanOrEqual(final String other, final @Nullable Num epsilon) {
         return isGreaterThanOrEqual(getFactory().of(other), epsilon);
     }
 
@@ -1471,16 +1487,18 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link NumFactory#of(Number)}
      */
     @Generated
-    default boolean isGreaterThanOrEqual(final Num other, final Number epsilon) {
-        return isGreaterThanOrEqual(other, getFactory().of(epsilon));
+    default boolean isGreaterThanOrEqual(final Num other, final @Nullable Number epsilon) {
+        return epsilon == null ? isGreaterThanOrEqual(other) :
+                isGreaterThanOrEqual(other, getFactory().of(epsilon));
     }
 
     /**
      * @return {@link #isGreaterThanOrEqual(Num, Num)} {@link NumFactory#of(String)}
      */
     @Generated
-    default boolean isGreaterThanOrEqual(final Num other, final String epsilon) {
-        return isGreaterThanOrEqual(other, getFactory().of(epsilon));
+    default boolean isGreaterThanOrEqual(final Num other, final @Nullable String epsilon) {
+        return epsilon == null ? isGreaterThanOrEqual(other) :
+                isGreaterThanOrEqual(other, getFactory().of(epsilon));
     }
 
     /**
@@ -1498,7 +1516,7 @@ public sealed interface Num extends Comparable<Num> permits DoubleNum, DecimalNu
      * @see <a href="https://en.wikipedia.org/wiki/Machine_epsilon">
      * wikipedia.org/wiki/Machine_epsilon</a>
      */
-    boolean isGreaterThanOrEqual(final Num other, final Num epsilon);
+    boolean isGreaterThanOrEqual(final Num other, final @Nullable Num epsilon);
 
     /**
      * Checks if this {@link Num} is a {@link NaNNum}.

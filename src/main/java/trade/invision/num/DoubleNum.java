@@ -510,7 +510,10 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public boolean isNegativeOrZero(final Num epsilon) {
+    public boolean isNegativeOrZero(final @Nullable Num epsilon) {
+        if (epsilon == null) {
+            return isNegativeOrZero();
+        }
         if (epsilon.isNaN()) {
             return false;
         }
@@ -531,7 +534,10 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public boolean isPositiveOrZero(final Num epsilon) {
+    public boolean isPositiveOrZero(final @Nullable Num epsilon) {
+        if (epsilon == null) {
+            return isPositiveOrZero();
+        }
         if (epsilon.isNaN()) {
             return false;
         }
@@ -547,7 +553,10 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public boolean isZero(final Num epsilon) {
+    public boolean isZero(final @Nullable Num epsilon) {
+        if (epsilon == null) {
+            return isZero();
+        }
         if (epsilon.isNaN()) {
             return false;
         }
@@ -569,7 +578,10 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public boolean isEqual(final Num other, final Num epsilon) {
+    public boolean isEqual(final Num other, final @Nullable Num epsilon) {
+        if (epsilon == null) {
+            return isEqual(other);
+        }
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
@@ -605,7 +617,10 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public boolean isLessThanOrEqual(final Num other, final Num epsilon) {
+    public boolean isLessThanOrEqual(final Num other, final @Nullable Num epsilon) {
+        if (epsilon == null) {
+            return isLessThanOrEqual(other);
+        }
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
@@ -641,7 +656,10 @@ public final class DoubleNum implements Num {
     }
 
     @Override
-    public boolean isGreaterThanOrEqual(final Num other, final Num epsilon) {
+    public boolean isGreaterThanOrEqual(final Num other, final @Nullable Num epsilon) {
+        if (epsilon == null) {
+            return isGreaterThanOrEqual(other);
+        }
         if (other.isNaN() || epsilon.isNaN()) {
             return false;
         }
