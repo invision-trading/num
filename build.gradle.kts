@@ -29,9 +29,11 @@ repositories {
     mavenCentral()
 }
 
+val guavaVersion = "33.7.1-jre"
+
 dependencies {
     implementation("org.jspecify:jspecify:1.0.1")
-    implementation("com.google.guava:guava:33.7.1-jre")
+    implementation("com.google.guava:guava:$guavaVersion")
     implementation("ch.obermuhlner:big-math:2.3.2")
 
     errorprone("com.google.errorprone:error_prone_core:2.50.0")
@@ -43,7 +45,7 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-tasks.withType(JavaCompile::class) {
+tasks.withType(JavaCompile::class).configureEach {
     options.errorprone {
         allErrorsAsWarnings = true
         allSuggestionsAsWarnings = true
@@ -72,7 +74,7 @@ tasks.withType(JavaCompile::class) {
     }
 }
 
-tasks.withType(Test::class) {
+tasks.withType(Test::class).configureEach {
     useJUnitPlatform()
     systemProperty("junit.jupiter.tempdir.cleanup.mode.default", "ON_SUCCESS")
     systemProperty("java.io.tmpdir", temporaryDir.path)
@@ -83,17 +85,17 @@ tasks.withType(Test::class) {
     finalizedBy(tasks.jacocoTestReport)
 }
 
-tasks.withType(JacocoReport::class) {
+tasks.withType(JacocoReport::class).configureEach {
     dependsOn(tasks.test)
     reports.xml.required = true
 }
 
-tasks.withType(Javadoc::class) {
+tasks.withType(Javadoc::class).configureEach {
     options {
         (this as StandardJavadocDocletOptions).addBooleanOption("Xdoclint:none", true)
-        links = listOf(
-                "https://docs.oracle.com/en/java/javase/${java.targetCompatibility.majorVersion}/docs/api/",
+        links("https://docs.oracle.com/en/java/javase/${java.targetCompatibility.majorVersion}/docs/api/",
                 "https://jspecify.dev/docs/api/",
+                "https://guava.dev/releases/$guavaVersion/api/docs/",
                 "https://errorprone.info/api/latest/")
     }
 }
