@@ -1,5 +1,6 @@
 package trade.invision.num;
 
+import lombok.AllArgsConstructor;
 import lombok.Generated;
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
@@ -8,6 +9,8 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.function.Supplier;
+
+import static lombok.AccessLevel.PRIVATE;
 
 /**
  * {@link NaNNum}, short for "Not a Number" (NaN), is a {@link Num} that represents an undefined and unrepresentable
@@ -18,6 +21,7 @@ import java.util.function.Supplier;
  * @see <a href="https://stackoverflow.com/a/1573715/4352701">stackoverflow.com - What is the rationale for all
  * comparisons returning false for IEEE754 NaN values?</a>
  */
+@AllArgsConstructor(access = PRIVATE)
 @NullMarked
 public final class NaNNum implements Num {
 
@@ -43,11 +47,6 @@ public final class NaNNum implements Num {
 
     private final @SuppressWarnings("Immutable") MathContext context;
     private final NumFactory factory;
-
-    private NaNNum(final MathContext context, final NumFactory factory) {
-        this.context = context;
-        this.factory = factory;
-    }
 
     @Generated
     @Override

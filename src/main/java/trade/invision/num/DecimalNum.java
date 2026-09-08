@@ -1,6 +1,7 @@
 package trade.invision.num;
 
 import ch.obermuhlner.math.big.BigDecimalMath;
+import lombok.AllArgsConstructor;
 import lombok.Generated;
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
@@ -18,6 +19,7 @@ import static java.math.MathContext.DECIMAL64;
 import static java.math.RoundingMode.CEILING;
 import static java.math.RoundingMode.FLOOR;
 import static java.math.RoundingMode.HALF_EVEN;
+import static lombok.AccessLevel.PRIVATE;
 
 /**
  * {@link DecimalNum} is a {@link Num} implementation using arbitrary-precision decimal numbers via {@link BigDecimal}.
@@ -28,16 +30,14 @@ import static java.math.RoundingMode.HALF_EVEN;
  * wikipedia.org/wiki/Arbitrary-precision_arithmetic</a>
  * @see <a href="https://github.com/eobermuhlner/big-math">github.com/eobermuhlner/big-math</a>
  */
+@AllArgsConstructor(access = PRIVATE)
 @NullMarked
 public final class DecimalNum implements Num {
 
+    @AllArgsConstructor(access = PRIVATE)
     private static class Factory implements NumFactory {
 
         private final @SuppressWarnings("Immutable") MathContext context;
-
-        private Factory(final MathContext context) {
-            this.context = context;
-        }
 
         @Override
         public Num of(final Number number) {
@@ -522,11 +522,6 @@ public final class DecimalNum implements Num {
 
     private final BigDecimal wrapped;
     private final @SuppressWarnings("Immutable") MathContext context;
-
-    private DecimalNum(final BigDecimal wrapped, final MathContext context) {
-        this.wrapped = wrapped;
-        this.context = context;
-    }
 
     @Override
     public Num add(final Num addend) {

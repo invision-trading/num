@@ -1,5 +1,6 @@
 package trade.invision.num;
 
+import lombok.AllArgsConstructor;
 import lombok.Generated;
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
@@ -17,6 +18,7 @@ import static java.math.RoundingMode.CEILING;
 import static java.math.RoundingMode.FLOOR;
 import static java.math.RoundingMode.HALF_EVEN;
 import static java.math.RoundingMode.HALF_UP;
+import static lombok.AccessLevel.PRIVATE;
 import static trade.invision.num.DecimalNum.decimalNum;
 import static trade.invision.num.NaNNum.nanNum;
 
@@ -31,6 +33,7 @@ import static trade.invision.num.NaNNum.nanNum;
  * @see <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">
  * wikipedia.org/wiki/Double-precision_floating-point_format</a>
  */
+@AllArgsConstructor(access = PRIVATE)
 @NullMarked
 public final class DoubleNum implements Num {
 
@@ -117,10 +120,6 @@ public final class DoubleNum implements Num {
     private static final double NATURAL_LOGARITHM_OF_2 = 0.6931471805599453;
 
     private final double wrapped;
-
-    private DoubleNum(final double wrapped) {
-        this.wrapped = wrapped;
-    }
 
     @Override
     public Num add(final Num addend) {
